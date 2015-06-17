@@ -7,7 +7,7 @@
 #     contains an input string (with any number of spaces)
 #
 # usage: vmd -dispdev text -e get_com_distance.tcl \
-#           -args PSF PDB DCD \
+#           -args PSF DCD \
 #                 OUTPUT_DATA \
 #                 FILE_SELECTION_1 \
 #                 FILE_SELECTION_2
@@ -19,9 +19,6 @@ puts "'------------'"
 set ccc 0
 set in_psf [lindex $argv $ccc]
 puts "in psf  $in_psf"
-incr ccc
-set in_pdb [lindex $argv $ccc]
-puts $in_pdb 
 
 incr ccc
 set in_dcd [lindex $argv $ccc]
@@ -32,11 +29,11 @@ incr ccc
 set output_file_name [lindex $argv $ccc]
 
 incr ccc
-# a file containing an atom selection string for alignment
+# a file containing an atom selection 1
 set file_selection_1 [lindex $argv $ccc]
 
 incr ccc
-# a file containing an atom selection string for the RMSD measurement
+# a file containing an atom selection 2
 set file_selection_2 [lindex $argv $ccc]
 
 #=================================================================
@@ -48,16 +45,14 @@ proc get_selection_str {in_file_name} {
   return $my_str
 }
 
-proc load {in_psf in_pdb in_dcd} {
-  ## load psf, pdb and dcd 
+proc load {in_psf in_dcd} {
+  ## load psf, and dcd 
   puts "=============================================================="
   puts "--------------------------------------------------------------"
   puts "     Loading $in_psf"
-  puts "     Loading $in_pdb"
   puts "     Loading $in_dcd"
   puts "--------------------------------------------------------------"
   set molId [mol new $in_psf]
-  mol addfile $in_pdb molid $molId 
  
   mol addfile $in_dcd waitfor all molid $molId 
   return $molId
@@ -105,14 +100,14 @@ proc write_output {in_list output_file_name} {
 #                     MAIN 
 #---------------------------------------------------------------------------
 
-## get atom selection string for alignment
+## string for atom selection 1
 set str_selection_1 [get_selection_str $file_selection_1]
 
-## get atom selection string for RMSD calculation
+## string for atom selection 2
 set str_selection_2 [get_selection_str $file_selection_2]
 
-set molId [load $in_psf $in_pdb $in_dcd]
-set list_com_distances [get_com_distance $molId $str_selection_2]
+set molId [load $in_psf $in_dcd]
+set list_com_distances [get_com_distance $molId $str_selection_1 $str_selection_2]
 write_output $list_com_distances $output_file_name
 mol delete $molId 
 
