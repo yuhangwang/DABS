@@ -1,0 +1,1 @@
+* vmdtcl: Tcl scripts to be executed by VMD (http://www.ks.uiuc.edu/Research/vmd/)
