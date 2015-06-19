@@ -36,6 +36,13 @@ class FigureParameters:
 		"""
 		return FigureParameters._defaults_
 
+	@staticmethod
+	def get_description():
+		"""
+		Description of this class 
+		"""
+		return "FIGURE PARAMETERS"
+
 
 class AxisParameters:
 	"""
@@ -69,6 +76,12 @@ class AxisParameters:
 		"""
 		return AxisParameters._defaults_
 
+	@staticmethod
+	def get_description():
+		"""
+		Description of this class 
+		"""
+		return "AXIS PARAMETERS"
 
 class LegendParameters:
 	"""
@@ -76,9 +89,12 @@ class LegendParameters:
 	"""
 	_convention_ = {
 		"LEGEND LOCATION":"legend_location",
-		"LEGEND BOX ANCHOR COORDINATE TUPLE":"lengend_box_anchor_coordiante_tuple",
-		"LEGEND FRAME ALPHA":"lengend_frame_alpha",
+		"LEGEND BOX ANCHOR COORDINATE TUPLE":"legend_box_anchor_coordinate_tuple",
+		"LEGEND FRAME ALPHA":"legend_frame_alpha",
 		"LEGEND FONT SIZE":"legend_font_size",
+		"LEGEND HANDLE LENGTH":"legend_handle_length",
+		"LEGEND BORDER PADDING":"legend_border_padding",
+		"LEGEND VERTICAL SPACING":"legend_vertical_spacing",
 		"ROUND LEGEND BOX":"use_round_legend_box",
 		"SHOW LEGEND FRAME":"show_legend_frame",
 		"NUMBER OF LEGEND COLUMNS":"number_of_legend_columns",
@@ -86,12 +102,15 @@ class LegendParameters:
 
 	_defaults_ = {
 		"legend_location":"lower left",
-		"lengend_box_anchor_coordiante_tuple":(0.8, 0.1),
+		"legend_box_anchor_coordinate_tuple":(0.8, 0.1),
 		"legend_frame_alpha":1.0,
+		"legend_font_size":15,
+		"legend_handle_length":3,
+		"legend_border_padding":0.3,
+		"legend_vertical_spacing":0,
 		"use_round_legend_box":True,
 		"show_legend_frame":True,
 		"number_of_legend_columns":1,
-		"legend_font_size":15,
 		}
 
 	@staticmethod
@@ -108,6 +127,12 @@ class LegendParameters:
 		"""
 		return LegendParameters._defaults_
 
+	@staticmethod
+	def get_description():
+		"""
+		Description of this class 
+		"""
+		return "LEGEND PARAMETERS"
 
 class LineParameters:
 	"""
@@ -134,6 +159,13 @@ class LineParameters:
 		Get the default value dictionary
 		"""
 		return LineParameters._defaults_
+
+	@staticmethod
+	def get_description():
+		"""
+		Description of this class 
+		"""
+		return "LINE PARAMETERS"
 
 
 class GridParameters:
@@ -176,6 +208,124 @@ class GridParameters:
 		"""
 		return GridParameters._defaults_
 
+	@staticmethod
+	def get_description():
+		"""
+		Description of this class 
+		"""
+		return "GRID PARAMETERS"
+
+
+class TickParameters:
+	"""
+	Tick and its label parameters
+	"""
+	_convention_ = {
+		"X TICK MAJOR MINOR OR BOTH":"x_tick_major_minor_or_both",
+		"Y TICK MAJOR MINOR OR BOTH":"y_tick_major_minor_or_both",
+		"X TICK IN OUT OR INOUT":"x_tick_in_out_or_inout",
+		"Y TICK IN OUT OR INOUT":"y_tick_in_out_or_inout",
+		"X TICK LENGTH":"x_tick_length",
+		"Y TICK LENGTH":"y_tick_length",
+		"X TICK WIDTH":"x_tick_width",
+		"Y TICK WIDTH":"y_tick_width",
+		"X TICK LABEL FONT SIZE":"x_tick_label_font_size",
+		"Y TICK LABEL FONT SIZE":"y_tick_label_font_size",
+		"X TICK COLOR":"x_tick_color",
+		"Y TICK COLOR":"y_tick_color",
+		"X TICK LABEL COLOR":"x_tick_label_color",
+		"Y TICK LABEL COLOR":"y_tick_label_color",
+		"X TICK LABEL PADDING":"x_tick_label_padding",
+		"Y TICK LABEL PADDING":"y_tick_label_padding",
+		"X TICK AND LABEL Z ORDER":"x_tick_and_label_z_order",
+		"Y TICK AND LABEL Z ORDER":"y_tick_and_label_z_order",
+		"X TICK SHOW TOP":"x_tick_show_top",
+		"X TICK SHOW BOTTOM":"x_tick_show_bottom",
+		"Y TICK SHOW LEFT":"y_tick_show_left",
+		"Y TICK SHOW RIGHT":"y_tick_show_right",		
+		"X TICK LABEL SHOW TOP":"x_tick_label_show_top",
+		"X TICK LABEL SHOW BOTTOM":"x_tick_label_show_bottom",
+		"Y TICK LABEL SHOW LEFT":"y_tick_label_show_left",
+		"Y TICK LABEL SHOW RIGHT":"y_tick_label_show_right",
+		"X TICK RESET OLD PARAMETERS":"x_tick_reset_old_parameters",
+		"Y TICK RESET OLD PARAMETERS":"y_tick_reset_old_parameters",
+		}
+
+	# Default parameters corresponding to entries in _convention_
+	_user_defaults_ = {
+		"x_tick_major_minor_or_both":"major",
+		"y_tick_major_minor_or_both":"major",
+		"x_tick_in_out_or_inout":"inout",
+		"y_tick_in_out_or_inout":"inout",
+		"x_tick_length":5,
+		"y_tick_length":5,
+		"x_tick_width":2,
+		"y_tick_width":2,
+		"x_tick_label_font_size":25,
+		"y_tick_label_font_size":25,
+		"x_tick_color":'k',
+		"y_tick_color":'k',
+		"x_tick_label_color":'k',
+		"y_tick_label_color":'k',
+		"x_tick_label_padding":10,
+		"y_tick_label_padding":10,
+		"x_tick_and_label_z_order":0,
+		"y_tick_and_label_z_order":0,
+		"x_tick_show_top":True,
+		"x_tick_show_bottom":True,
+		"y_tick_show_left":True,
+		"y_tick_show_right":True,
+		"x_tick_label_show_top":False,
+		"x_tick_label_show_bottom":True,
+		"y_tick_label_show_left":True,
+		"y_tick_label_show_right":False,
+		"x_tick_reset_old_parameters":False,
+		"y_tick_reset_old_parameters":False,
+
+		}
+
+	# The following additional defaults are only used internally
+	# for the sake of symmetry between x and y parameters.
+	# However they are not exposed to users, because
+	# these parameters are meaningless.
+	# For example, 'y' axis doesn't have ticks on the top.
+	# This is useful since we can now use a for loop
+	# to iterate all options for x and y axis uniformly.
+	_internal_defaults_ = {
+		"y_tick_show_top":False,
+		"y_tick_show_bottom":False,
+		"x_tick_show_left":False,
+		"x_tick_show_right":False,
+		"y_tick_label_show_top":False,
+		"y_tick_label_show_bottom":False,
+		"x_tick_label_show_left":False,
+		"x_tick_label_show_right":False,
+		}
+
+	## Now merge the two default dictionaries
+	_defaults_ = _user_defaults_.copy()
+	_defaults_.update(_internal_defaults_)
+
+	@staticmethod
+	def get_convention():
+		"""
+		Get the convention dictionary
+		"""
+		return TickParameters._convention_
+
+	@staticmethod
+	def get_defaults():
+		"""
+		Get the default value dictionary
+		"""
+		return TickParameters._defaults_	
+
+	@staticmethod
+	def get_description():
+		"""
+		Description of this class 
+		"""
+		return "TICK PARAMETERS"
 
 class PlotParameters:
 	"""
@@ -187,7 +337,9 @@ class PlotParameters:
 			AxisParameters,
 			LineParameters,
 			LegendParameters,
-			GridParameters]
+			GridParameters,
+			TickParameters,
+			]
 
 		self._convention_ = {}
 		self._defaults_ = {}
