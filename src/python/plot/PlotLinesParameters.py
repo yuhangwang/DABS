@@ -4,6 +4,42 @@ Author: Yuhang Wang
 Date: 06/19/2015
 """
 
+class ExternalDependencyParameters:
+	"""
+	External dependency parameters
+	"""
+	_convention_ = {
+		"USE LATEX":"use_latex",
+		"USE SCIPY":"use_scipy",
+		}
+
+	_defaults_ = {
+		"use_latex":False,
+		"use_scipy":False,
+		}
+
+	@staticmethod
+	def get_convention():
+		"""
+		Get the convention dictionary
+		"""
+		return ExternalDependencyParameters._convention_
+
+	@staticmethod
+	def get_defaults():
+		"""
+		Get the default value dictionary
+		"""
+		return ExternalDependencyParameters._defaults_
+
+	@staticmethod
+	def get_description():
+		"""
+		Description of this class 
+		"""
+		return "EXERNAL DEPENDENCY PARAMETERS"
+
+
 class FigureParameters:
 	"""
 	Figure parameters
@@ -92,9 +128,20 @@ class LegendParameters:
 		"LEGEND BOX ANCHOR COORDINATE TUPLE":"legend_box_anchor_coordinate_tuple",
 		"LEGEND FRAME ALPHA":"legend_frame_alpha",
 		"LEGEND FONT SIZE":"legend_font_size",
+		"LEGEND FONT WEIGHT":"legend_font_weight",
+		"LEGEND LINE WIDTH":"legend_line_width",
+		"LEGEND MARKER SCALE":"legend_marker_scale",
+		"LEGEND NUMBER OF MAKRER POINTS":"legend_number_of_marker_points",
+		"LEGEND NUMBER OF SCATTER MAKRER POINTS":"legend_number_of_scatter_marker_points",
 		"LEGEND HANDLE LENGTH":"legend_handle_length",
 		"LEGEND BORDER PADDING":"legend_border_padding",
 		"LEGEND VERTICAL SPACING":"legend_vertical_spacing",
+		"LEGEND PADDING BETWEEN HANDLE AND TEXT":"legend_padding_between_handle_and_text",
+		"LEGEND PADDING BETWEEN BORDER AND AXES":"legend_padding_between_border_and_axes",
+		"LEGEND COLUMN SPACING":"legend_column_spacing",
+		"LEGEND FACE COLOR":"legend_face_color",
+		"LEGEND EDGE COLOR":"legend_edge_color",
+		"LEGEND FACE ALPHA":"legend_face_alpha",
 		"ROUND LEGEND BOX":"use_round_legend_box",
 		"SHOW LEGEND FRAME":"show_legend_frame",
 		"NUMBER OF LEGEND COLUMNS":"number_of_legend_columns",
@@ -103,11 +150,22 @@ class LegendParameters:
 	_defaults_ = {
 		"legend_location":"lower left",
 		"legend_box_anchor_coordinate_tuple":(0.8, 0.1),
-		"legend_frame_alpha":1.0,
+		"legend_frame_alpha":0.5,
 		"legend_font_size":15,
-		"legend_handle_length":3,
-		"legend_border_padding":0.3,
-		"legend_vertical_spacing":0,
+		"legend_font_weight":800,
+		"legend_line_width":8,
+		"legend_marker_scale":1,
+		"legend_number_of_marker_points":None,
+		"legend_number_of_scatter_marker_points":None,
+		"legend_handle_length":2,
+		"legend_border_padding":0.5,
+		"legend_vertical_spacing":0.5,
+		"legend_padding_between_handle_and_text":0.5,
+		"legend_padding_between_border_and_axes":0,
+		"legend_column_spacing":0.8,
+		"legend_face_color":'w',
+		"legend_edge_color":'k',
+		"legend_face_alpha":1.0,
 		"use_round_legend_box":True,
 		"show_legend_frame":True,
 		"number_of_legend_columns":1,
@@ -231,6 +289,8 @@ class TickParameters:
 		"Y TICK WIDTH":"y_tick_width",
 		"X TICK LABEL FONT SIZE":"x_tick_label_font_size",
 		"Y TICK LABEL FONT SIZE":"y_tick_label_font_size",
+		"X TICK LABEL FONT WEIGHT":"x_tick_label_font_weight",
+		"Y TICK LABEL FONT WEIGHT":"y_tick_label_font_weight",
 		"X TICK COLOR":"x_tick_color",
 		"Y TICK COLOR":"y_tick_color",
 		"X TICK LABEL COLOR":"x_tick_label_color",
@@ -247,6 +307,8 @@ class TickParameters:
 		"X TICK LABEL SHOW BOTTOM":"x_tick_label_show_bottom",
 		"Y TICK LABEL SHOW LEFT":"y_tick_label_show_left",
 		"Y TICK LABEL SHOW RIGHT":"y_tick_label_show_right",
+		"X TICK LABEL NUMBER OF DECIMAL PLACES":"x_tick_label_number_of_decimal_places",
+		"Y TICK LABEL NUMBER OF DECIMAL PLACES":"y_tick_label_number_of_decimal_places",
 		"X TICK RESET OLD PARAMETERS":"x_tick_reset_old_parameters",
 		"Y TICK RESET OLD PARAMETERS":"y_tick_reset_old_parameters",
 		}
@@ -261,8 +323,10 @@ class TickParameters:
 		"y_tick_length":5,
 		"x_tick_width":2,
 		"y_tick_width":2,
-		"x_tick_label_font_size":25,
-		"y_tick_label_font_size":25,
+		"x_tick_label_font_size":20,
+		"y_tick_label_font_size":20,
+		"x_tick_label_font_weight":0,
+		"y_tick_label_font_weight":0,
 		"x_tick_color":'k',
 		"y_tick_color":'k',
 		"x_tick_label_color":'k',
@@ -279,9 +343,10 @@ class TickParameters:
 		"x_tick_label_show_bottom":True,
 		"y_tick_label_show_left":True,
 		"y_tick_label_show_right":False,
+		"x_tick_label_number_of_decimal_places":None,
+		"y_tick_label_number_of_decimal_places":None,
 		"x_tick_reset_old_parameters":False,
 		"y_tick_reset_old_parameters":False,
-
 		}
 
 	# The following additional defaults are only used internally
@@ -327,12 +392,14 @@ class TickParameters:
 		"""
 		return "TICK PARAMETERS"
 
+
 class PlotParameters:
 	"""
 	Plot parameters
 	"""
 	def __init__(self):
 		self._list_of_parameter_classes_ = [
+			ExternalDependencyParameters,
 			FigureParameters,
 			AxisParameters,
 			LineParameters,

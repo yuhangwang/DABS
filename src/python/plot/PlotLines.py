@@ -15,13 +15,6 @@ import re
 import numpy 
 import PlotLinesParameters
 
-#------------------------------------------------
-# LaTex
-#------------------------------------------------
-import matplotlib
-matplotlib.rcParams['text.usetex']=True
-matplotlib.rcParams['text.latex.unicode']=True
-#------------------------------------------------
 
 #================================================
 
@@ -42,9 +35,9 @@ def string_to_bool_or_not(YES_or_NO):
 				otherwise the original string is returned
 	:param str YES_or_NO: either "YES" or "NO"
 	"""
-	if YES_or_NO == "YES":
+	if re.match(r"YES", YES_or_NO):
 		return True
-	elif YES_or_NO == "NO":
+	elif re.match(r"NO", YES_or_NO):
 		return False
 	else:
 		return YES_or_NO
@@ -119,11 +112,19 @@ def read_plot_parameters(file_plotParameters, dict_convention, dict_default_para
 				print("WARNING: you have specified an unknown parameter: \"{0}\"".format(key))
 				continue
 
-			print("\"{0}\"\t\"{1}\"".format(new_key, value))
-
 			# convert to 'raw string literal' to preserve LaTex formating
 			value = r"{0}".format(value)
-			dict_plot_parameters[new_key] = string_to_number_or_not(string_to_bool_or_not(value))
+
+			# check whether string "value" can be converted to boolean
+			value = string_to_bool_or_not(value)
+
+			# If not, try to convert it to a number
+			if type(value) is not bool:
+				value = string_to_number_or_not(value)
+			
+			print("{0} ==> {1}".format(new_key, value))
+			
+			dict_plot_parameters[new_key] = value
 	print("\n")
 	return dict_plot_parameters
 
@@ -163,9 +164,19 @@ def add_legend(object_axis,
 		legend_frame_alpha=None,
 		number_of_legend_columns=1,
 		legend_font_size=10, 
+		legend_font_weight=0,
+		legend_line_width=1,
+		legend_marker_scale=2,
+		legend_number_of_marker_points=None,
+		legend_number_of_scatter_marker_points=None,
 		legend_handle_length=None,
 		legend_border_padding=None,
 		legend_vertical_spacing=None,
+		legend_padding_between_handle_and_text=None,
+		legend_padding_between_border_and_axes=None,
+		legend_column_spacing=None,
+		legend_face_color=None,
+		legend_edge_color=None,
 		):
 	"""
 	Add legend
@@ -179,12 +190,28 @@ def add_legend(object_axis,
 		(default: None, which means taking value from legend.framealpha rcParam)
 	:param int number_legend_columns: number of legend columns (default: 1)
 	:param int legend_font_size: font size for the legend
+	:param int legend_font_weight: font weight (0-1000)
+	:param int legend_line_width: line width for the legend 
+	:param int legend_marker_scale: apply a scaling factor to the size of legend marker (relative to the original size)
+			(default: 3)
+	:param int legend_number_of_marker_points: number of marker samples in the legend 
+			(default: None, i.e., use value from "legend.numpoints" in matplotlib's rcParam)	
+	:param int legend_number_of_scatter_marker_points: number of marker samples in the legend for scatter plots
+			(default: None, i.e., use value from "legend.scatterpoints" in matplotlib's rcParam)
 	:param int legend_handle_length: unit: font-size unit 
 			(default: None, i.e., use value from "legend.handlelength" in matplotlib's rcParam)
 	:param float legend_border_padding: the whitespace between legend and the border in fractional float numbers  
 			(default: None, i.e., use value from "legend.borderpad" in matplotlib's rcParam)
-	:param float legend_vertical_spacing: the vertical spacing between legend entries (unit: fraction of font-size units)
+	:param float legend_vertical_spacing: the vertical spacing between legend entries (unit: fraction of the font-size )
 			(default: None, i.e., use value from "legend.labelspacing" in matplotlib's rcParam)
+	:param float legend_padding_between_handle_and_text: unit: fraction of the font size
+			(default: None, i.e., use value from "legend.handletextpad" in matplotlib's rcParam)
+	:param float legend_padding_between_border_and_axes: unit: fraction of the font-size 
+			(default: None, i.e., use value from "legend.borderaxespad" in matplotlib's rcParam)
+	:param float legend_column_spacing: spacing between columns; unit: fraction of the font-size
+			(default: None, i.e., use value from "legend.columnspacing" in matplotlib's rcParam)
+	:param float legend_face_color: legend face color (default: None, i.e., use matplotlib default)
+	:param float legend_edge_color: legend edge color (default: None, i.e., use matplotlib default)
 	"""
 	Plot.legend(fancybox=use_round_legend_box,
 		loc=legend_location, 
@@ -193,10 +220,31 @@ def add_legend(object_axis,
 		framealpha=legend_frame_alpha,
 		ncol=number_of_legend_columns,
 		fontsize=legend_font_size,
+		markerscale=legend_marker_scale,
+		numpoints=legend_number_of_marker_points,
 		handlelength=legend_handle_length,
 		borderpad=legend_border_padding,
 		labelspacing=legend_vertical_spacing,
+		handletextpad=legend_padding_between_handle_and_text,
+		borderaxespad=legend_padding_between_border_and_axes,
+		columnspacing=legend_column_spacing,
 		)
+	object_legend = object_axis.get_legend()
+	object_legend_lines = object_legend.get_lines() # get all the lines.Line2D instance from the legend
+	object_legend_text  = object_legend.get_texts() # get all the text.Text instance from the legend
+	Plot.setp(object_legend_lines, linewidth=legend_line_width)
+	Plot.setp(object_legend_text, fontweight='bold')
+
+	# Change legend face color
+	object_legend_frame = object_legend.get_frame() # get the patch.Rectangle instance surrounding the legend
+	if legend_face_color is not None:
+		object_legend_frame.set_facecolor(legend_face_color)	
+
+	# Change legend edge color
+	if legend_face_color is not None:
+		object_legend_frame.set_edgecolor(legend_edge_color)	
+
+	return object_legend
 
 def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
 		grid_line_style='-', 
@@ -224,9 +272,15 @@ def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
 		alpha=grid_line_alpha,
 		zorder=grid_z_order)
 
-def refine_ticks(object_axis, which_axis, tick_major_minor_or_both, tick_in_out_or_inout, 
-		tick_length, tick_width, tick_label_font_size,
-		tick_color, tick_label_color, tick_label_padding,
+def refine_ticks(object_axis, which_axis, 
+		tick_major_minor_or_both, 
+		tick_in_out_or_inout, 
+		tick_length, 
+		tick_width, 
+		tick_label_font_size, 
+		tick_label_font_weight,
+		tick_color, tick_label_color, 
+		tick_label_padding,
 		tick_and_label_z_order=0,
 		tick_show_top=True,
 		tick_show_bottom=True,
@@ -236,6 +290,7 @@ def refine_ticks(object_axis, which_axis, tick_major_minor_or_both, tick_in_out_
 		tick_label_show_bottom=True,
 		tick_label_show_left=True,
 		tick_label_show_right=False,
+		tick_label_number_of_decimal_places=None,
 		tick_reset_old_parameters=False,
 		):
 	"""
@@ -246,7 +301,8 @@ def refine_ticks(object_axis, which_axis, tick_major_minor_or_both, tick_in_out_
 	:param str tick_in_out_or_inout: "in" | "out" | "inout" to control whether to put ticks inside, outside the axes or both
 	:param str tick_length: tick length (unit: points)
 	:param str tick_width: tick width (unit: points)
-	:param str tick_label_font_size: tick label font size in unit points | using shorthand strings (e.g. "large")
+	:param int tick_label_font_size: tick label font size in unit points or using shorthand strings (e.g. "large")
+	:param int tick_label_font_weight: tick label font weight (0-1000)
 	:param str tick_color: tick color (any matplotlib color specifications)
 	:param str tick_label_color: tick label color (any matplotlib color specifications)
 	:param str tick_label_padding: distance between tick marks and tick labels
@@ -259,6 +315,8 @@ def refine_ticks(object_axis, which_axis, tick_major_minor_or_both, tick_in_out_
 	:param bool tick_label_show_bottom:	True | False (default: True)
 	:param bool tick_label_show_left:		True | False (default: True)
 	:param bool tick_label_show_right:		True | False (default: False)
+	:param int tick_label_number_of_decimal_places: number of decimal places in the tick label 
+			(default: None, i.e., use the matplotlib default)
 	:param bool tick_reset_old_parameters: reset old parameters before using new ones
 	"""
 	object_axis.tick_params(
@@ -283,6 +341,23 @@ def refine_ticks(object_axis, which_axis, tick_major_minor_or_both, tick_in_out_
 		reset=tick_reset_old_parameters,
 		)
 
+	# change font weight for tick labels
+	dict_tick_label_font = {
+		# "family":"serif",
+		"weight":900,
+	}
+	function_set_tick_labels = getattr(object_axis, "set_{0}ticklabels".format(which_axis))
+	method_get_ticks = getattr(object_axis, "get_{0}ticks".format(which_axis))
+	function_set_tick_labels(method_get_ticks(), dict_tick_label_font)
+
+	# make x tick label a formatted string
+	if tick_label_number_of_decimal_places is not None:
+		def fn_formatter(tick_value, tick_position):
+			return "{0:.{1}f}".format(tick_value, tick_label_number_of_decimal_places)
+		temp_axis = getattr(object_axis, "get_{0}axis".format(which_axis))()
+		temp_axis.set_major_formatter(matplotlib.ticker.FuncFormatter(fn_formatter))
+
+
 def plot(list_data_and_legend, dict_parameters):
 	"""
 	Plot every data series in list_data_and_legend
@@ -301,6 +376,23 @@ def plot(list_data_and_legend, dict_parameters):
 		squeeze=True,subplot_kw=None,gridspec_kw=None,
 		)
 
+	#----------------------------------------------------------------------------------------------
+	# Grid
+	#----------------------------------------------------------------------------------------------
+	add_grid(object_figure, 
+		dict_parameters["show_grid"],
+		dict_parameters["grid_ticks"],
+		dict_parameters["grid_axis"],		
+		dict_parameters["grid_line_style"],
+		dict_parameters["grid_line_width"],
+		dict_parameters["grid_line_color"],
+		dict_parameters["grid_line_alpha"],
+		dict_parameters["grid_z_order"])
+	
+
+	#----------------------------------------------------------------------------------------------
+	# Plot 
+	#----------------------------------------------------------------------------------------------
 	for list_data_and_legend in list_data_and_legend:
 		data, legend = list_data_and_legend
 		X = data[:,0]
@@ -331,26 +423,23 @@ def plot(list_data_and_legend, dict_parameters):
 		legend_frame_alpha = dict_parameters["legend_frame_alpha"],
 		number_of_legend_columns = dict_parameters["number_of_legend_columns"],
 		legend_font_size = dict_parameters["legend_font_size"],
+		legend_font_weight = dict_parameters["legend_font_weight"],
+		legend_line_width = dict_parameters["legend_line_width"],
+		legend_marker_scale = dict_parameters["legend_marker_scale"],
+		legend_number_of_marker_points = dict_parameters["legend_number_of_marker_points"],
+		legend_number_of_scatter_marker_points = dict_parameters["legend_number_of_marker_points"],
 		legend_handle_length = dict_parameters["legend_handle_length"],
 		legend_border_padding = dict_parameters["legend_border_padding"],
 		legend_vertical_spacing = dict_parameters["legend_vertical_spacing"],
+		legend_padding_between_handle_and_text = dict_parameters["legend_padding_between_handle_and_text"],
+		legend_padding_between_border_and_axes = dict_parameters["legend_padding_between_border_and_axes"],
+		legend_column_spacing = dict_parameters["legend_column_spacing"],
+		legend_face_color = dict_parameters["legend_face_color"],
+		legend_edge_color = dict_parameters["legend_edge_color"],
 		)
 
 	#----------------------------------------------------------------------------------------------
-	# Grid
-	#----------------------------------------------------------------------------------------------
-	add_grid(object_figure, 
-		dict_parameters["show_grid"],
-		dict_parameters["grid_ticks"],
-		dict_parameters["grid_axis"],		
-		dict_parameters["grid_line_style"],
-		dict_parameters["grid_line_width"],
-		dict_parameters["grid_line_color"],
-		dict_parameters["grid_line_alpha"],
-		dict_parameters["grid_z_order"])
-
-	#----------------------------------------------------------------------------------------------
-	# X Tick 
+	# X and Y Ticks
 	#----------------------------------------------------------------------------------------------
 	for which_axis in ['x','y']:
 		refine_ticks(object_axis, which_axis, 
@@ -359,6 +448,7 @@ def plot(list_data_and_legend, dict_parameters):
 			tick_length = dict_parameters[which_axis+"_tick_length"], 
 			tick_width = dict_parameters[which_axis+"_tick_width"], 
 			tick_label_font_size = dict_parameters[which_axis+"_tick_label_font_size"],
+			tick_label_font_weight = dict_parameters[which_axis+"_tick_label_font_weight"],
 			tick_color = dict_parameters[which_axis+"_tick_color"], 
 			tick_label_color = dict_parameters[which_axis+"_tick_label_color"], 
 			tick_label_padding = dict_parameters[which_axis+"_tick_label_padding"],
@@ -371,6 +461,7 @@ def plot(list_data_and_legend, dict_parameters):
 			tick_label_show_bottom = dict_parameters[which_axis+"_tick_label_show_bottom"],
 			tick_label_show_left = dict_parameters[which_axis+"_tick_label_show_left"],
 			tick_label_show_right = dict_parameters[which_axis+"_tick_label_show_right"],
+			tick_label_number_of_decimal_places = dict_parameters[which_axis+"_tick_label_number_of_decimal_places"],
 			tick_reset_old_parameters = dict_parameters[which_axis+"_tick_reset_old_parameters"],
 			)
 	return (object_figure, object_axis)
@@ -380,8 +471,21 @@ def plot(list_data_and_legend, dict_parameters):
 if __name__ == '__main__':
 	list_data_and_legend = read_data(file_listInputDataFiles)
 	object_plot_parameters = PlotLinesParameters.PlotParameters()
+
 	list_plot_parameters = read_plot_parameters(file_plotParameters,
 						object_plot_parameters.get_convention(),
 						object_plot_parameters.get_defaults())
+
+	if list_plot_parameters["use_latex"] is True:
+		#------------------------------------------------
+		# Use LaTex
+		#------------------------------------------------
+		import matplotlib
+		matplotlib.rcParams['text.usetex'] = True
+		matplotlib.rcParams['text.latex.unicode'] = True
+
+	if list_plot_parameters["use_scipy"] is True:
+		import scipy
+
 	plot(list_data_and_legend, list_plot_parameters)
 	Plot.show()
