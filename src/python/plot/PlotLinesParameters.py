@@ -39,6 +39,56 @@ class ExternalDependencyParameters:
 		"""
 		return "EXERNAL DEPENDENCY PARAMETERS"
 
+class PanelParameters:
+	"""
+	Panel Parameters
+	"""
+	_convention_ = {
+		"PANEL LABEL FONT SIZE":"panel_label_font_size",
+		"PANEL LABEL HORIZONTAL ALIGNMENT":"panel_label_horizontal_alignment",
+		"PANEL LABEL VERTICAL ALIGNMENT":"panel_label_vertical_alignment",
+		"PANEL BOX FACE COLOR":"panel_box_face_color",
+		"PANEL BOX EDGE COLOR":"panel_box_edge_color",
+		"PANEL BOX TRANSPARENCY":"panel_box_transparency",
+		"PANEL BOX PADDING":"panel_box_padding",
+		"PNAEL BOX LINE WIDTH":"panel_box_line_width",
+		"PANEL BOX LINE STYLE":"panel_box_line_style",
+		"PANEL BOX SHAPE":"panel_box_shape",
+		}
+
+	_defaults_ = {
+		"panel_label_font_size":25,
+		"panel_label_horizontal_alignment":"left",
+		"panel_label_vertical_alignment":"center",
+		"panel_box_face_color":'w',
+		"panel_box_edge_color":'w',
+		"panel_box_transparency":0.8,
+		"panel_box_padding":0.2,
+		"panel_box_line_width":1,
+		"panel_box_line_style":"solid",
+		"panel_box_shape":"square",
+		}
+
+	@staticmethod
+	def get_convention():
+		"""
+		Get the convention dictionary
+		"""
+		return PanelParameters._convention_
+
+	@staticmethod
+	def get_defaults():
+		"""
+		Get the default value dictionary
+		"""
+		return PanelParameters._defaults_
+
+	@staticmethod
+	def get_description():
+		"""
+		Description of this class 
+		"""
+		return "PANEL PARAMETERS"
 
 class FigureParameters:
 	"""
@@ -54,7 +104,10 @@ class FigureParameters:
 		"FIGURE SHARE X":"figure_share_x",
 		"FIGURE SHARE Y":"figure_share_y",
 		"FIGURE SUBPLOTS VERTICAL SPACING":"figure_subplots_vertical_spacing",
-		"FIGURE_SUBPLOTS HORIZONTAL SPACING":"figure_subplots_horizontal_spacing",
+		"FIGURE SUBPLOTS HORIZONTAL SPACING":"figure_subplots_horizontal_spacing",
+		"FIGURE DPI":"figure_dpi",
+		"FIGURE TRANSPARENT":'figure_transparent',
+		"FIGURE PADDING":"figure_padding",
 		}
 
 	_defaults_ = {
@@ -68,6 +121,9 @@ class FigureParameters:
 		"figure_share_y":False,
 		"figure_subplots_vertical_spacing":0,
 		"figure_subplots_horizontal_spacing":0,
+		"figure_dpi":150,
+		"figure_transparent":False,
+		"figure_padding":0.2,
 		}
 
 	@staticmethod
@@ -371,6 +427,10 @@ class TickParameters:
 		"Y TICK RESET OLD PARAMETER":"y_tick_reset_old_parameter",
 		"HIDE OVERLAPPING X TICK LABEL":"x_tick_label_hide_overlap",
 		"HIDE OVERLAPPING Y TICK LABEL":"y_tick_label_hide_overlap",
+		"HIDE FIRST X TICK LABEL":"x_tick_label_hide_first",
+		"HIDE FIRST Y TICK LABEL":"y_tick_label_hide_first",
+		"HIDE LAST X TICK LABEL":"x_tick_label_hide_last",
+		"HIDE LAST Y TICK LABEL":"y_tick_label_hide_last",
 		"X TICK MAX NUMBER":"x_tick_max_number",
 		"Y TICK MAX NUMBER":"y_tick_max_number",
 		}
@@ -411,6 +471,10 @@ class TickParameters:
 		"y_tick_reset_old_parameter":False,
 		"x_tick_label_hide_overlap":False,
 		"y_tick_label_hide_overlap":False,
+		"x_tick_label_hide_first":True,
+		"y_tick_label_hide_first":True,
+		"x_tick_label_hide_last":False,
+		"y_tick_label_hide_last":False,
 		"x_tick_max_number":10,
 		"y_tick_max_number":10,
 		}
@@ -467,6 +531,7 @@ class PlotParameters:
 		self._list_of_parameter_classes_ = [
 			ExternalDependencyParameters,
 			FigureParameters,
+			PanelParameters,
 			AxisParameters,
 			LineParameters,
 			LegendParameters,

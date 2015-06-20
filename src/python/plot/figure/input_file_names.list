@@ -1,0 +1,4 @@
+./data/data1.dat; data1; (0,0); A; (0.05, 0.8)
+./data/data2.dat; data2; (1,0); B; (0.05, 0.8)
+./data/data3.dat; data3; (2,0); C; (0.05, 0.8)
+./data/data4.dat; data4; (3,0); D; (0.05, 0.8)

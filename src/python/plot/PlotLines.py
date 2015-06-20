@@ -8,7 +8,9 @@ Usage: python PlotLines.py FILE_LIST-OF-INPUT-DATA-FILE-NAMES FILE_PLOT-PARAMETE
 # Use Python 3 style
 #================================================
 from __future__ import print_function, division
+# from __future__ import unicode_literals
 #================================================
+import matplotlib
 import matplotlib.pyplot as Plot 
 import sys
 import re
@@ -23,9 +25,17 @@ ccc = 1
 file_listInputDataFiles = sys.argv[ccc]
 ccc += 1
 file_plotParameters = sys.argv[ccc]
+ccc += 1
+file_name_output = sys.argv[ccc]
 
 
 
+def is_string(input):
+	"""
+	Check whether input is a string: plain string or unicode 
+	ref: http://stackoverflow.com/questions/1303243/how-to-find-out-if-a-python-object-a-string
+	"""
+	return isinstance(input,basestring)
 
 def string_to_bool_or_not(input):
 	"""
@@ -36,11 +46,11 @@ def string_to_bool_or_not(input):
 	:param str input: either "YES" or "NO"
 	"""
 	# only proceed when the input type is "str"
-	if type(input) is not str: return input 
+	if not is_string(input): return input 
 
-	if re.match(r"YES", input):
+	if input == "YES":
 		return True
-	elif re.match(r"NO", input):
+	elif input == "NO":
 		return False
 	else:
 		return input
@@ -95,21 +105,33 @@ def read_data(file_listInputDataFiles):
 			for i in range(len(tmp_list)):
 				tmp_list[i] = tmp_list[i].strip()
 
-			# Item 1 and 2
+			#----------------------------------------------------------------------------
 			# "file_name" and "legend" are mandatory which are always the first two items
+			#----------------------------------------------------------------------------
+			# Item 1: file name
 			file_name = tmp_list[0]
+
+			# Item 2: legend label
 			legend = tmp_list[1]
 
-			# Item 3
-			# The third item is the figure panel number
+			# Item 3: panel number
 			if len(tmp_list) >= 3:
 				which_figure_panel = string_to_numerical_tuple(tmp_list[2])
 			else:
 				which_figure_panel = (0,0)
 
+			# Item 4: panel label, e.g., 'A', 'B', 'C'
+			if len(tmp_list) >= 5:
+				panel_label = tmp_list[3]
+				panel_label_coordinates = string_to_numerical_tuple(tmp_list[4])
+			else:
+				panel_label = None
+				panel_label_coordinates = None
+
 			data = numpy.loadtxt(file_name)
-			print("Loading data from: {0}\t{1}\t[{2}]".format(file_name, data.shape, legend))
-			list_data_and_legend.append([data, legend, which_figure_panel])
+			print("Loading data from: {0}\t{1}\t[{2}]\t{3}\t{4}".format(file_name, data.shape, 
+				legend,panel_label, panel_label_coordinates))
+			list_data_and_legend.append([data, legend, which_figure_panel, panel_label, panel_label_coordinates])
 	print("\n")
 	return list_data_and_legend
 
@@ -165,9 +187,8 @@ def read_plot_parameters(file_plotParameters, dict_convention, dict_default_para
 						value[i] = value[i].strip()
 						value[i] = string_to_number_or_not(value[i])
 						value[i] = string_to_bool_or_not(value[i])
- 
+
 			print("{0} ==> {1}".format(new_key, value))
-			
 			dict_plot_parameters[new_key] = value
 	print("\n")
 	return dict_plot_parameters
@@ -200,7 +221,58 @@ def add_axis_label(object_axis, axis_name, label_content, label_font_size, label
 		msg += "\tYour 'axis_name' = \"{0}\"".format(axis_name)
 		print(msg)
 		return
-	
+
+def add_panel_label(object_axis, x, y, 
+			panel_label, 
+			panel_label_font_size,
+			panel_label_horizontal_alignment,
+			panel_label_vertical_alignment,
+			panel_box_face_color,
+			panel_box_edge_color,
+			panel_box_transparency,
+			panel_box_padding,
+			panel_box_line_width,
+			panel_box_line_style,
+			panel_box_shape,
+			):
+	"""
+	Add a label to the panel 
+	:param object object_axis: a matplotlib Axis object
+	:param str panel_label: panel label (string)
+	:param float x: x coordinate (0-1.0) with 0 for lower left and 1.0 for upper right
+	:param float y: y coordinate (0-1.0) with 0 for lower left and 1.0 for upper right
+	:param int panel_label_font_size: unit: points 
+	:param int panel_label_font_weight: 0-1000
+	:param str panel_label_horizontal_alignment: [ "center" | "right" | "left" ]
+	:param str panel_label_vertical_alignment: [ "center" | "top" | "bottom" | "baseline" ]
+	:param str panel_box_face_color: face color of the panel box (default: 'w'(i.e., white))
+	:param str panel_box_edge_color: face color of the panel box (default: 'k'(i.e., black))
+	:param float panel_box_transparency: 0-1.0
+	:param int panel_box_padding: numerical value (default: 10)
+	:param int panel_box_line_width: default: 4
+	:param int panel_box_line_style: ["solid" | "dashed" | "dashdot" | "dotted"] default: "solid"
+	:param str panel_box_shape: "square"(default) or "round"
+	"""
+	dict_font_properties = {
+		"fontsize":panel_label_font_size,
+		}
+	dict_panel_box_properties = {
+		"boxstyle":"{0},pad={1}".format(panel_box_shape, panel_box_padding),
+		"facecolor":panel_box_face_color,
+		"edgecolor":panel_box_edge_color,
+		"alpha":panel_box_transparency,
+		"linewidth":panel_box_line_width,
+		"linestyle":panel_box_line_style,
+		}
+	object_axis.text(x,y, panel_label,
+		fontdict=dict_font_properties,
+		horizontalalignment=panel_label_horizontal_alignment,
+		verticalalignment=panel_label_vertical_alignment,
+		fontweight=0,
+		transform=object_axis.transAxes, # use axis coordinate instead of the default data coordinate
+		bbox=dict_panel_box_properties,
+		)
+
 def add_legend(list_line_objects, list_legend_labels,
 		use_round_legend_box,
 		legend_location, 
@@ -491,8 +563,6 @@ def update_ticks_and_labels(object_axis, x_or_y, axis_min, axis_max, list_new_ti
 		object_axis.set_xlim([axis_min,axis_max])
 		object_axis.set_xticks(list_new_ticks)
 	elif x_or_y == 'y':
-		print("update  y ticks")
-		print("use new ticks:", list_new_ticks)
 		object_axis.set_ylim([axis_min,axis_max])
 		object_axis.set_yticks(list_new_ticks)
 	else:
@@ -500,6 +570,27 @@ def update_ticks_and_labels(object_axis, x_or_y, axis_min, axis_max, list_new_ti
 		msg += "your value of x_or_y = {0}".format(x_or_y)
 		print(msg)
 		return
+
+
+def save_figure(object_figure, output_file_name, 
+	figure_dpi,
+	figure_padding=0.2,
+	figure_transparent=False,
+	):
+	"""
+	Save figure 
+	:param object object_figure: matplotlib Figure object 
+	:param str output_file_name: output file name 
+	:param int figure_dpi: figure resolution in DPI unit (dots/inch)
+	:param float figure_padding: padding between edge of the canvas and the figure edge (default: 0.2)
+	:param float figure_transparent: True | False (default: False)
+	"""
+	object_figure.savefig(output_file_name, 
+		bbox_inches='tight', 
+		dpi=figure_dpi, 
+		pad_inches=figure_padding,
+		transparent=figure_transparent,
+		)
 
 
 def plot(list_data_legend_and_others, dict_parameters):
@@ -523,8 +614,6 @@ def plot(list_data_legend_and_others, dict_parameters):
 		sharex=dict_parameters["figure_share_x"],
 		sharey=dict_parameters["figure_share_y"],
 		squeeze=auto_adjust_returning_dimension,
-		subplot_kw=None,
-		gridspec_kw=None,
 		)
 	object_figure.subplots_adjust(hspace=dict_parameters["figure_subplots_vertical_spacing"],
 		wspace=dict_parameters['figure_subplots_horizontal_spacing'])
@@ -554,7 +643,7 @@ def plot(list_data_legend_and_others, dict_parameters):
 	ccc = 0
 	for item in list_data_legend_and_others:
 		line_color = list_colors[ccc%len(list_colors)]
-		data, legend, which_panel = item
+		data, legend, which_panel, panel_label, panel_label_coordinates  = item
 		X = data[:,0]
 		Y = data[:,1]
 		id_row_panel, id_column_panel = which_panel
@@ -599,7 +688,24 @@ def plot(list_data_legend_and_others, dict_parameters):
 
 		print(id_row_panel, id_column_panel)
 		
-
+		#----------------------------------------------------------------------------------------------
+		# Add panel number 
+		#----------------------------------------------------------------------------------------------
+		if panel_label is not None:
+			print("Add panel label!")
+			x_panel_label, y_panel_label = panel_label_coordinates
+			add_panel_label(object_axis, x_panel_label, y_panel_label, panel_label,
+				dict_parameters["panel_label_font_size"],
+				dict_parameters["panel_label_horizontal_alignment"],
+				dict_parameters["panel_label_vertical_alignment"],
+				dict_parameters["panel_box_face_color"],
+				dict_parameters["panel_box_edge_color"],
+				dict_parameters["panel_box_transparency"],
+				dict_parameters["panel_box_padding"],
+				dict_parameters["panel_box_line_width"],
+				dict_parameters["panel_box_line_style"],
+				dict_parameters["panel_box_shape"],
+				)
 		ccc += 1
 
 	#----------------------------------------------------------------------------------------------
@@ -614,8 +720,14 @@ def plot(list_data_legend_and_others, dict_parameters):
 
 	if dict_parameters["y_tick_label_hide_overlap"]:
 		which_axis = 'y'
-		list_new_tick_labels = list_y_tick_labels[:-1]
-		print(list_new_tick_labels)
+
+		if dict_parameters["y_tick_label_hide_first"]:
+			list_new_tick_labels = list_y_tick_labels[1:]
+		elif dict_parameters["y_tick_label_hide_last"]:
+			list_new_tick_labels = list_y_tick_labels[:-1]
+		else:
+			list_new_tick_labels = list_y_tick_labels
+
 		# remove the first tick label for any subplot above the first row and below the last row
 		for i_row in range(1,dict_parameters['figure_number_of_rows']-1):
 			for i_column in range(0,dict_parameters["figure_number_of_columns"]):
@@ -625,8 +737,14 @@ def plot(list_data_legend_and_others, dict_parameters):
 		
 	if dict_parameters["x_tick_label_hide_overlap"]:
 		which_axis = 'x'
-		list_new_tick_labels = list_x_tick_labels[:-1]
-		print(list_new_tick_labels)
+
+		if dict_parameters["x_tick_label_hide_first"]:
+			list_new_tick_labels = list_x_tick_labels[1:]
+		elif dict_parameters["x_tick_label_hide_last"]:
+			list_new_tick_labels = list_x_tick_labels[:-1]
+		else:
+			list_new_tick_labels = list_x_tick_labels
+
 		# remove the first tick label for any subplot between the first column and the last column
 		for i_row in range(0,dict_parameters['figure_number_of_rows']):
 			for i_column in range(1,dict_parameters["figure_number_of_columns"]-1):
@@ -652,7 +770,6 @@ def plot(list_data_legend_and_others, dict_parameters):
 	return (object_figure, list_axis_objects)
 
 
-
 if __name__ == '__main__':
 	list_data_legend_and_others = read_data(file_listInputDataFiles)
 	object_plot_parameters = PlotLinesParameters.PlotParameters()
@@ -665,12 +782,18 @@ if __name__ == '__main__':
 		#------------------------------------------------
 		# Use LaTex
 		#------------------------------------------------
-		import matplotlib
 		matplotlib.rcParams['text.usetex'] = True
 		matplotlib.rcParams['text.latex.unicode'] = True
+		matplotlib.rcParams['text.latex.preamble'] = [r'\boldmath']
 
 	if list_plot_parameters["use_scipy"] is True:
 		import scipy
 
-	plot(list_data_legend_and_others, list_plot_parameters)
+	object_figure, list_axis_objects = plot(list_data_legend_and_others, list_plot_parameters)
+
+	save_figure(object_figure, file_name_output,
+		figure_dpi = list_plot_parameters["figure_dpi"],
+		figure_padding = list_plot_parameters["figure_padding"],
+		figure_transparent = list_plot_parameters["figure_transparent"],
+		)
 	Plot.show()
