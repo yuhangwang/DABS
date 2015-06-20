@@ -49,6 +49,12 @@ class FigureParameters:
 		"FIGURE TITLE FONT SIZE":"figure_title_font_size",
 		"FIGURE LENGTH":"figure_length",
 		"FIGURE HEIGHT":"figure_height",
+		"FIGURE NUMBER OF ROWS":"figure_number_of_rows",
+		"FIGURE NUMBER OF COLUMNS":"figure_number_of_columns",
+		"FIGURE SHARE X":"figure_share_x",
+		"FIGURE SHARE Y":"figure_share_y",
+		"FIGURE SUBPLOTS VERTICAL SPACING":"figure_subplots_vertical_spacing",
+		"FIGURE_SUBPLOTS HORIZONTAL SPACING":"figure_subplots_horizontal_spacing",
 		}
 
 	_defaults_ = {
@@ -56,6 +62,12 @@ class FigureParameters:
 		"figure_title_font_size":40,
 		"figure_length":12,
 		"figure_height":8,
+		"figure_number_of_rows":1,
+		"figure_number_of_columns":1,
+		"figure_share_x":False,
+		"figure_share_y":False,
+		"figure_subplots_vertical_spacing":0,
+		"figure_subplots_horizontal_spacing":0,
 		}
 
 	@staticmethod
@@ -85,17 +97,21 @@ class AxisParameters:
 	Axis parameters 
 	"""		
 	_convention_ = {
-		"X LABEL":"xLabel",
-		"Y LABEL":"yLabel",
-		"X LABEL FONT SIZE":"xLabel_fontSize",
-		"Y LABEL FONT SIZE":"yLabel_fontSize",
+		"X LABEL":"x_label",
+		"Y LABEL":"y_label",
+		"X LABEL PADDING":"x_label_padding",
+		"Y LABEL PADDING":"y_label_padding",
+		"X LABEL FONT SIZE":"x_label_font_size",
+		"Y LABEL FONT SIZE":"y_label_font_size",
 	}
 
 	_defaults_ = {
-		"xLabel":'X',
-		"yLabel":'Y',
-		"xLabel_fontSize":30,
-		"yLabel_fontSize":30,
+		"x_label":'X',
+		"y_label":'Y',
+		"x_label_padding":None,
+		"y_label_padding":None,
+		"x_label_font_size":30,
+		"y_label_font_size":30,
 		}
 
 	@staticmethod
@@ -126,7 +142,7 @@ class LegendParameters:
 	_convention_ = {
 		"LEGEND LOCATION":"legend_location",
 		"LEGEND BOX ANCHOR COORDINATE TUPLE":"legend_box_anchor_coordinate_tuple",
-		"LEGEND FRAME ALPHA":"legend_frame_alpha",
+		"LEGEND FRAME TRANSPARENCY":"legend_frame_transparency",
 		"LEGEND FONT SIZE":"legend_font_size",
 		"LEGEND FONT WEIGHT":"legend_font_weight",
 		"LEGEND LINE WIDTH":"legend_line_width",
@@ -141,7 +157,7 @@ class LegendParameters:
 		"LEGEND COLUMN SPACING":"legend_column_spacing",
 		"LEGEND FACE COLOR":"legend_face_color",
 		"LEGEND EDGE COLOR":"legend_edge_color",
-		"LEGEND FACE ALPHA":"legend_face_alpha",
+		"LEGEND FACE TRANSPARENCY":"legend_face_transparency",
 		"ROUND LEGEND BOX":"use_round_legend_box",
 		"SHOW LEGEND FRAME":"show_legend_frame",
 		"NUMBER OF LEGEND COLUMNS":"number_of_legend_columns",
@@ -150,7 +166,7 @@ class LegendParameters:
 	_defaults_ = {
 		"legend_location":"lower left",
 		"legend_box_anchor_coordinate_tuple":(0.8, 0.1),
-		"legend_frame_alpha":0.5,
+		"legend_frame_transparency":0.5,
 		"legend_font_size":15,
 		"legend_font_weight":800,
 		"legend_line_width":8,
@@ -165,7 +181,7 @@ class LegendParameters:
 		"legend_column_spacing":0.8,
 		"legend_face_color":'w',
 		"legend_edge_color":'k',
-		"legend_face_alpha":1.0,
+		"legend_face_transparency":1.0,
 		"use_round_legend_box":True,
 		"show_legend_frame":True,
 		"number_of_legend_columns":1,
@@ -192,16 +208,58 @@ class LegendParameters:
 		"""
 		return "LEGEND PARAMETERS"
 
+class ColorParameters:
+	"""
+	Color parameters 
+	"""
+	_convention_ = {
+		"COLOR ORDER":"color_order",
+		}
+
+	_defaults_ = {
+		"color_order":['k','r','g','b','m','y','c'],
+		}
+
+	@staticmethod
+	def get_convention():
+		"""
+		Get the convention dictionary
+		"""
+		return ColorParameters._convention_
+
+	@staticmethod
+	def get_defaults():
+		"""
+		Get the default value dictionary
+		"""
+		return ColorParameters._defaults_
+
+	@staticmethod
+	def get_description():
+		"""
+		Description of this class 
+		"""
+		return "COLOR PARAMETERS"
+
+
 class LineParameters:
 	"""
 	Line parameters 
 	"""
 	_convention_ = {
-		"LINE STYLE":"lineStyle",
+		"LINE STYLE":"line_style",
+		"LINE TRANSPARENCY":"line_transparency",
+		"SHOW BLOCK AVERAGED LINE":"show_block_averaged_line",
+		"LINE BLOCK AVERAGE BLOCK SIZE":"line_block_average_block_size",
+		"BLOCK AVERAGED LINE WIDTH":"block_averaged_line_width",
 		}
 
 	_defaults_ = {
-		"lineStyle":'-',
+		"line_style":'-',
+		"line_transparency":1.0,
+		"show_block_averaged_line":False,
+		"line_block_average_block_size":1,
+		"block_averaged_line_width":2,
 		}
 
 	@staticmethod
@@ -234,7 +292,7 @@ class GridParameters:
 		"GRID TICKS":"grid_ticks",
 		"GRID AXIS":"grid_axis",
 		"GRID LINE COLOR":"grid_line_color",
-		"GRID LINE ALPHA":"grid_line_alpha",
+		"GRID LINE TRANSPARENCY":"grid_line_transparency",
 		"GRID LINE WIDTH":"grid_line_width",
 		"GRID LINE STYLE":"grid_line_style",
 		"GRID Z ORDER":"grid_z_order",
@@ -245,7 +303,7 @@ class GridParameters:
 		"grid_ticks":"major",
 		"grid_axis":"both",
 		"grid_line_color":'k',
-		"grid_line_alpha":0.2,
+		"grid_line_transparency":0.2,
 		"grid_line_width":1,
 		"grid_line_style":'--',
 		"grid_z_order":-1,
@@ -309,8 +367,12 @@ class TickParameters:
 		"Y TICK LABEL SHOW RIGHT":"y_tick_label_show_right",
 		"X TICK LABEL NUMBER OF DECIMAL PLACES":"x_tick_label_number_of_decimal_places",
 		"Y TICK LABEL NUMBER OF DECIMAL PLACES":"y_tick_label_number_of_decimal_places",
-		"X TICK RESET OLD PARAMETERS":"x_tick_reset_old_parameters",
-		"Y TICK RESET OLD PARAMETERS":"y_tick_reset_old_parameters",
+		"X TICK RESET OLD PARAMETER":"x_tick_reset_old_parameter",
+		"Y TICK RESET OLD PARAMETER":"y_tick_reset_old_parameter",
+		"HIDE OVERLAPPING X TICK LABEL":"x_tick_label_hide_overlap",
+		"HIDE OVERLAPPING Y TICK LABEL":"y_tick_label_hide_overlap",
+		"X TICK MAX NUMBER":"x_tick_max_number",
+		"Y TICK MAX NUMBER":"y_tick_max_number",
 		}
 
 	# Default parameters corresponding to entries in _convention_
@@ -345,8 +407,12 @@ class TickParameters:
 		"y_tick_label_show_right":False,
 		"x_tick_label_number_of_decimal_places":None,
 		"y_tick_label_number_of_decimal_places":None,
-		"x_tick_reset_old_parameters":False,
-		"y_tick_reset_old_parameters":False,
+		"x_tick_reset_old_parameter":False,
+		"y_tick_reset_old_parameter":False,
+		"x_tick_label_hide_overlap":False,
+		"y_tick_label_hide_overlap":False,
+		"x_tick_max_number":10,
+		"y_tick_max_number":10,
 		}
 
 	# The following additional defaults are only used internally
@@ -406,6 +472,7 @@ class PlotParameters:
 			LegendParameters,
 			GridParameters,
 			TickParameters,
+			ColorParameters,
 			]
 
 		self._convention_ = {}
