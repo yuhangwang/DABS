@@ -25,8 +25,6 @@ ccc = 1
 file_listInputDataFiles = sys.argv[ccc]
 ccc += 1
 file_plotParameters = sys.argv[ccc]
-ccc += 1
-file_name_output = sys.argv[ccc]
 
 
 
@@ -791,7 +789,11 @@ if __name__ == '__main__':
 
 	object_figure, list_axis_objects = plot(list_data_legend_and_others, list_plot_parameters)
 
-	save_figure(object_figure, file_name_output,
+	#-----------------------------------------------------------------
+	# Save figure
+	#-----------------------------------------------------------------
+	save_figure(object_figure, 
+		list_plot_parameters["figure_output_file_name"],
 		figure_dpi = list_plot_parameters["figure_dpi"],
 		figure_padding = list_plot_parameters["figure_padding"],
 		figure_transparent = list_plot_parameters["figure_transparent"],

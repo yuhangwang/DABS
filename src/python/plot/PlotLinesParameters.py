@@ -95,6 +95,7 @@ class FigureParameters:
 	Figure parameters
 	"""
 	_convention_ = {
+		"FIGURE OUTPUT FILE NAME":"figure_output_file_name",
 		"FIGURE TITLE":"figure_title",
 		"FIGURE TITLE FONT SIZE":"figure_title_font_size",
 		"FIGURE LENGTH":"figure_length",
@@ -111,6 +112,7 @@ class FigureParameters:
 		}
 
 	_defaults_ = {
+		"figure_output_file_name":"output.png",
 		"figure_title":None,
 		"figure_title_font_size":40,
 		"figure_length":12,

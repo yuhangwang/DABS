@@ -85,6 +85,7 @@ if ID_test_case == 1 then
 
   		-- Figure
   		-- table_parameters["FIGURE TITLE"] = "DOJF2 RMSD"
+      table_parameters["FIGURE OUTPUT FILE NAME"] = file_name_output
   		table_parameters["FIGURE TITLE FONT SIZE"] = 40
   		table_parameters["FIGURE NUMBER OF ROWS"] = 4
   		table_parameters["FIGURE NUMBER OF COLUMNS"] = 1
@@ -132,7 +133,7 @@ if ID_test_case == 1 then
   		-- Step 3. plot
   		--------------------------------------------------------------------
   		local in_script = "PlotLines.py"
-  		local cmd = table.concat({"python", in_script,  file_list_of_inputs, file_plot_parameters, file_name_output}, " ")
+  		local cmd = table.concat({"python", in_script,  file_list_of_inputs, file_plot_parameters}, " ")
   		os.execute(cmd)
 
 
