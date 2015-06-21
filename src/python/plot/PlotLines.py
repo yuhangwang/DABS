@@ -486,15 +486,6 @@ def refine_figure(object_axis, object_figure, dict_parameters, list_line_objects
 	:param list list_legend_labels: list of strings to be used as legend labels 
 	"""
 	#----------------------------------------------------------------------------------------------
-	# Figure title
-	#----------------------------------------------------------------------------------------------
-	if dict_parameters["figure_title"] is not None:
-		object_axis = list_axis_objects[0]
-		add_title(object_axis, dict_parameters["figure_title"], dict_parameters["figure_title_font_size"])
-
-
-
-	#----------------------------------------------------------------------------------------------
 	# 	Legend
 	#----------------------------------------------------------------------------------------------
 	add_legend(list_line_objects, list_legend_labels, 
@@ -590,6 +581,50 @@ def save_figure(object_figure, output_file_name,
 		transparent=figure_transparent,
 		)
 
+def return_smaller(input_1, input_2):
+	"""
+	Compare two inputs and return the smaller one 
+	If one of them is None, return the other input 
+	:param number input_1: input 1
+	:param number input_2: input 2
+	:return: number 
+	"""
+	if input_1 is None: return input_2
+	if input_2 is None: return input_1
+	if input_1 > input_2:
+		return input_2
+	else:
+		return input_1
+
+def return_bigger(input_1, input_2):
+	"""
+	Compare two inputs and return the bigger one 
+	If one of them is None, return the other input 
+	:param number input_1: input 1
+	:param number input_2: input 2
+	:return: number 
+	"""
+	if input_1 is None: return input_2
+	if input_2 is None: return input_1
+	if input_1 > input_2:
+		return input_1
+	else:
+		return input_2
+
+def set_axis_limits(object_axis, which_axis, new_min, new_max):
+	"""
+	Set the X axis limits 
+	:param object object_axis: matlotlib Axis object 
+	:param str which_axis: 'x' or 'y'
+	:param float new_min: new min 
+	:param float new_max: new max
+	"""
+	if which_axis == 'x':
+		object_axis.set_xlim([new_min,new_max])
+	elif which_axis == 'y':
+		object_axis.set_ylim([new_min,new_max])
+	else:
+		return
 
 def plot(list_data_legend_and_others, dict_parameters):
 	"""
@@ -616,14 +651,21 @@ def plot(list_data_legend_and_others, dict_parameters):
 	object_figure.subplots_adjust(hspace=dict_parameters["figure_subplots_vertical_spacing"],
 		wspace=dict_parameters['figure_subplots_horizontal_spacing'])
 
+	#----------------------------------------------------------
 	# make an extra axis just to show the common X/Y label
+	#----------------------------------------------------------
 	object_extra_axis = object_figure.add_subplot(1,1,1)
 	object_extra_axis.patch.set_alpha(0.)
+
 	# turn off the extra axis's tick labels
 	Plot.setp(object_extra_axis.get_xticklabels(), visible=False)
 	Plot.setp(object_extra_axis.get_yticklabels(), visible=False)
 	object_extra_axis.set_xticks([])
 	object_extra_axis.set_yticks([])
+
+	# Figure title
+	if dict_parameters["figure_title"] is not None:
+		add_title(object_extra_axis, dict_parameters["figure_title"], dict_parameters["figure_title_font_size"])
 
 	#----------------------------------------------------------------------------------------------
 	#	Axis Label
@@ -639,11 +681,21 @@ def plot(list_data_legend_and_others, dict_parameters):
 	list_line_objects  = []
 	list_legend_labels = []
 	ccc = 0
+	global_x_min = None 
+	global_x_max = None
+	
 	for item in list_data_legend_and_others:
 		line_color = list_colors[ccc%len(list_colors)]
 		data, legend, which_panel, panel_label, panel_label_coordinates  = item
 		X = data[:,0]
 		Y = data[:,1]
+
+		# update global min/max along X
+		x_min = numpy.amin(X)
+		x_max = numpy.amax(X)
+		global_x_min = return_smaller(global_x_min, x_min)
+		global_x_max = return_bigger(global_x_max, x_max)
+
 		id_row_panel, id_column_panel = which_panel
 		object_axis = list_axis_objects[id_row_panel, id_column_panel]
 
@@ -684,13 +736,10 @@ def plot(list_data_legend_and_others, dict_parameters):
 			dict_parameters["grid_line_transparency"],
 			dict_parameters["grid_z_order"])
 
-		print(id_row_panel, id_column_panel)
-		
 		#----------------------------------------------------------------------------------------------
 		# Add panel number 
 		#----------------------------------------------------------------------------------------------
 		if panel_label is not None:
-			print("Add panel label!")
 			x_panel_label, y_panel_label = panel_label_coordinates
 			add_panel_label(object_axis, x_panel_label, y_panel_label, panel_label,
 				dict_parameters["panel_label_font_size"],
@@ -704,7 +753,16 @@ def plot(list_data_legend_and_others, dict_parameters):
 				dict_parameters["panel_box_line_style"],
 				dict_parameters["panel_box_shape"],
 				)
+		
 		ccc += 1
+	#----------------------------------------------------------------------------------------------
+	# Set the limits of X axis to match the global_x_min and global_x_max
+	#----------------------------------------------------------------------------------------------
+	which_axis = 'x'
+	for i in range(0,dict_parameters["figure_number_of_rows"]):
+		for j in range(0, dict_parameters["figure_number_of_columns"]):
+			object_axis = list_axis_objects[i,j]
+		set_axis_limits(object_axis,which_axis,global_x_min, global_x_max)
 
 	#----------------------------------------------------------------------------------------------
 	# Remove overlapping tick labels
@@ -730,7 +788,6 @@ def plot(list_data_legend_and_others, dict_parameters):
 		for i_row in range(1,dict_parameters['figure_number_of_rows']-1):
 			for i_column in range(0,dict_parameters["figure_number_of_columns"]):
 				object_axis = list_axis_objects[i_row,i_column]
-				print(i_row,i_column, object_axis)
 				update_ticks_and_labels(object_axis,which_axis, ymin,ymax,list_new_tick_labels)
 		
 	if dict_parameters["x_tick_label_hide_overlap"]:
@@ -747,7 +804,6 @@ def plot(list_data_legend_and_others, dict_parameters):
 		for i_row in range(0,dict_parameters['figure_number_of_rows']):
 			for i_column in range(1,dict_parameters["figure_number_of_columns"]-1):
 				object_axis = list_axis_objects[i_row,i_column]
-				print(i_row,i_column, object_axis)
 				update_ticks_and_labels(object_axis,which_axis, ymin,ymax,list_new_tick_labels)
 		
 
@@ -755,14 +811,10 @@ def plot(list_data_legend_and_others, dict_parameters):
 	# Refine the figure
 	#----------------------------------------------------------------------------------------------
 	n_rows, n_columns = numpy.shape(list_axis_objects)
-	print(list_axis_objects)
 	for i in range(n_rows):
 		for j in range(n_columns):
 			object_axis = list_axis_objects[i,j]
-			print(i,j)
-			print(object_axis)
 			object_legend = object_axis.get_legend()
-			print(object_legend)
 			refine_figure(object_axis, object_figure, dict_parameters, list_line_objects, list_legend_labels)
 
 	return (object_figure, list_axis_objects)
