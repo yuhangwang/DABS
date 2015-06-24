@@ -4,6 +4,50 @@ Author: Yuhang Wang
 Date: 06/19/2015
 """
 
+class InputFileParameters:
+	"""
+	Input file parameters 
+	"""
+	def __init__(self):
+		self._convention_ = {
+			"FILE":"file",
+			"LEGEND":"legend",
+			"LEGEND COORDINATE":"legend_coordinate",
+			"LEGEND PANEL COORDINATE":"legend_panel_coordinate",
+			'PANEL COORDINATE':"panel_coordinate",
+			"PANEL LABEL":"panel_label",
+			"PANEL LABEL COORDINATE":"panel_label_coordinate",
+			}
+
+		self._defaults_ = {
+			"file":None,
+			"legend":None,
+			"legend_coordinate":"best",
+			"legend_panel_coordinate":0,
+			"panel_coordinate":(0,0),
+			"panel_label":None,
+			"panel_label_coordinate":None,
+			}
+
+	def get_convention(self):
+		"""
+		Get the convention dictionary
+		"""
+		return self._convention_
+
+	def get_defaults(self):
+		"""
+		Get the default value dictionary
+		"""
+		return InputFileParameters._defaults_
+
+	def get_description(self):
+		"""
+		Description of this class 
+		"""
+		return "INPUT FILE KEYWORDS"
+
+
 class ExternalDependencyParameters:
 	"""
 	External dependency parameters
@@ -30,7 +74,7 @@ class ExternalDependencyParameters:
 		"""
 		Get the default value dictionary
 		"""
-		return ExternalDependencyParameters._defaults_
+		return ExternalDependencyParameters._defaults_.copy()
 
 	@staticmethod
 	def get_description():
@@ -49,7 +93,7 @@ class PanelParameters:
 		"PANEL LABEL VERTICAL ALIGNMENT":"panel_label_vertical_alignment",
 		"PANEL BOX FACE COLOR":"panel_box_face_color",
 		"PANEL BOX EDGE COLOR":"panel_box_edge_color",
-		"PANEL BOX TRANSPARENCY":"panel_box_transparency",
+		"PANEL BOX OPACITY":"panel_box_opacity",
 		"PANEL BOX PADDING":"panel_box_padding",
 		"PNAEL BOX LINE WIDTH":"panel_box_line_width",
 		"PANEL BOX LINE STYLE":"panel_box_line_style",
@@ -62,7 +106,7 @@ class PanelParameters:
 		"panel_label_vertical_alignment":"center",
 		"panel_box_face_color":'w',
 		"panel_box_edge_color":'w',
-		"panel_box_transparency":0.8,
+		"panel_box_opacity":0.8,
 		"panel_box_padding":0.2,
 		"panel_box_line_width":1,
 		"panel_box_line_style":"solid",
@@ -81,7 +125,7 @@ class PanelParameters:
 		"""
 		Get the default value dictionary
 		"""
-		return PanelParameters._defaults_
+		return PanelParameters._defaults_.copy()
 
 	@staticmethod
 	def get_description():
@@ -109,6 +153,9 @@ class FigureParameters:
 		"FIGURE DPI":"figure_dpi",
 		"FIGURE TRANSPARENT":'figure_transparent',
 		"FIGURE PADDING":"figure_padding",
+		"FIGURE USE GLOBAL X LIMITS":"figure_use_global_x_limits",
+		"FIGURE X LIMITS TIGHT":"figure_x_limits_tight",
+		"FIGURE Y LIMITS TIGHT":"figure_y_limits_tight",
 		}
 
 	_defaults_ = {
@@ -121,11 +168,14 @@ class FigureParameters:
 		"figure_number_of_columns":1,
 		"figure_share_x":False,
 		"figure_share_y":False,
-		"figure_subplots_vertical_spacing":0,
-		"figure_subplots_horizontal_spacing":0,
+		"figure_subplots_vertical_spacing":None,
+		"figure_subplots_horizontal_spacing":None,
 		"figure_dpi":150,
 		"figure_transparent":False,
 		"figure_padding":0.2,
+		"figure_use_global_x_limits":False,
+		"figure_x_limits_tight":True,
+		"figure_y_limits_tight":False,
 		}
 
 	@staticmethod
@@ -140,7 +190,7 @@ class FigureParameters:
 		"""
 		Get the default value dictionary
 		"""
-		return FigureParameters._defaults_
+		return FigureParameters._defaults_.copy()
 
 	@staticmethod
 	def get_description():
@@ -184,7 +234,7 @@ class AxisParameters:
 		"""
 		Get the default value dictionary
 		"""
-		return AxisParameters._defaults_
+		return AxisParameters._defaults_.copy()
 
 	@staticmethod
 	def get_description():
@@ -198,9 +248,9 @@ class LegendParameters:
 	Legend parameters
 	"""
 	_convention_ = {
+		"LEGEND ON":"legend_on",
 		"LEGEND LOCATION":"legend_location",
-		"LEGEND BOX ANCHOR COORDINATE TUPLE":"legend_box_anchor_coordinate_tuple",
-		"LEGEND FRAME TRANSPARENCY":"legend_frame_transparency",
+		"LEGEND FRAME OPACITY":"legend_frame_opacity",
 		"LEGEND FONT SIZE":"legend_font_size",
 		"LEGEND FONT WEIGHT":"legend_font_weight",
 		"LEGEND LINE WIDTH":"legend_line_width",
@@ -215,16 +265,17 @@ class LegendParameters:
 		"LEGEND COLUMN SPACING":"legend_column_spacing",
 		"LEGEND FACE COLOR":"legend_face_color",
 		"LEGEND EDGE COLOR":"legend_edge_color",
-		"LEGEND FACE TRANSPARENCY":"legend_face_transparency",
+		"LEGEND FACE OPACITY":"legend_face_opacity",
 		"ROUND LEGEND BOX":"use_round_legend_box",
 		"SHOW LEGEND FRAME":"show_legend_frame",
 		"NUMBER OF LEGEND COLUMNS":"number_of_legend_columns",
+		"USE GLOBAL LEGEND":"use_global_legend",
 		}
 
 	_defaults_ = {
+		"legend_on":False,
 		"legend_location":"lower left",
-		"legend_box_anchor_coordinate_tuple":(0.8, 0.1),
-		"legend_frame_transparency":0.5,
+		"legend_frame_opacity":0.5,
 		"legend_font_size":15,
 		"legend_font_weight":800,
 		"legend_line_width":8,
@@ -239,10 +290,11 @@ class LegendParameters:
 		"legend_column_spacing":0.8,
 		"legend_face_color":'w',
 		"legend_edge_color":'k',
-		"legend_face_transparency":1.0,
+		"legend_face_opacity":1.0,
 		"use_round_legend_box":True,
 		"show_legend_frame":True,
 		"number_of_legend_columns":1,
+		"use_global_legend":True,
 		}
 
 	@staticmethod
@@ -257,7 +309,7 @@ class LegendParameters:
 		"""
 		Get the default value dictionary
 		"""
-		return LegendParameters._defaults_
+		return LegendParameters._defaults_.copy()
 
 	@staticmethod
 	def get_description():
@@ -272,10 +324,12 @@ class ColorParameters:
 	"""
 	_convention_ = {
 		"COLOR ORDER":"color_order",
+		"USE COLOR MAP COOL":"use_color_map_cool",
 		}
 
 	_defaults_ = {
 		"color_order":['k','r','g','b','m','y','c'],
+		"use_color_map_cool":False,
 		}
 
 	@staticmethod
@@ -290,7 +344,7 @@ class ColorParameters:
 		"""
 		Get the default value dictionary
 		"""
-		return ColorParameters._defaults_
+		return ColorParameters._defaults_.copy()
 
 	@staticmethod
 	def get_description():
@@ -306,7 +360,7 @@ class LineParameters:
 	"""
 	_convention_ = {
 		"LINE STYLE":"line_style",
-		"LINE TRANSPARENCY":"line_transparency",
+		"LINE OPACITY":"line_opacity",
 		"SHOW BLOCK AVERAGED LINE":"show_block_averaged_line",
 		"LINE BLOCK AVERAGE BLOCK SIZE":"line_block_average_block_size",
 		"BLOCK AVERAGED LINE WIDTH":"block_averaged_line_width",
@@ -314,7 +368,7 @@ class LineParameters:
 
 	_defaults_ = {
 		"line_style":'-',
-		"line_transparency":1.0,
+		"line_opacity":1.0,
 		"show_block_averaged_line":False,
 		"line_block_average_block_size":1,
 		"block_averaged_line_width":2,
@@ -332,7 +386,7 @@ class LineParameters:
 		"""
 		Get the default value dictionary
 		"""
-		return LineParameters._defaults_
+		return LineParameters._defaults_.copy()
 
 	@staticmethod
 	def get_description():
@@ -350,7 +404,7 @@ class GridParameters:
 		"GRID TICKS":"grid_ticks",
 		"GRID AXIS":"grid_axis",
 		"GRID LINE COLOR":"grid_line_color",
-		"GRID LINE TRANSPARENCY":"grid_line_transparency",
+		"GRID LINE OPACITY":"grid_line_opacity",
 		"GRID LINE WIDTH":"grid_line_width",
 		"GRID LINE STYLE":"grid_line_style",
 		"GRID Z ORDER":"grid_z_order",
@@ -361,7 +415,7 @@ class GridParameters:
 		"grid_ticks":"major",
 		"grid_axis":"both",
 		"grid_line_color":'k',
-		"grid_line_transparency":0.2,
+		"grid_line_opacity":0.2,
 		"grid_line_width":1,
 		"grid_line_style":'--',
 		"grid_z_order":-1,
@@ -380,7 +434,7 @@ class GridParameters:
 		"""
 		Get the default value dictionary
 		"""
-		return GridParameters._defaults_
+		return GridParameters._defaults_.copy()
 
 	@staticmethod
 	def get_description():
@@ -515,7 +569,7 @@ class TickParameters:
 		"""
 		Get the default value dictionary
 		"""
-		return TickParameters._defaults_	
+		return TickParameters._defaults_.copy()	
 
 	@staticmethod
 	def get_description():
@@ -560,4 +614,4 @@ class PlotParameters:
 		return self._convention_
 
 	def get_defaults(self):
-		return self._defaults_
+		return self._defaults_.copy()

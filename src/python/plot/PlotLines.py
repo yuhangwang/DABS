@@ -16,15 +16,16 @@ import sys
 import re
 import numpy 
 import PlotLinesParameters
+import pyparsing
 
 
 #================================================
 
 
 ccc = 1
-file_listInputDataFiles = sys.argv[ccc]
+file_input_information = sys.argv[ccc]
 ccc += 1
-file_plotParameters = sys.argv[ccc]
+file_plot_parameters = sys.argv[ccc]
 
 
 
@@ -34,6 +35,15 @@ def is_string(input):
 	ref: http://stackoverflow.com/questions/1303243/how-to-find-out-if-a-python-object-a-string
 	"""
 	return isinstance(input,basestring)
+
+def is_convertible_to_list(input):
+	"""
+	Check whether an input string is convertible to a list
+	"""
+	if type(input) is str:
+		return (re.match(r"\(.+\)", input) is not None)
+	else:
+		return False
 
 def string_to_bool_or_not(input):
 	"""
@@ -70,87 +80,116 @@ def string_to_number_or_not(input):
 		return input
 
 
-def string_to_numerical_tuple(input_string):
+def to_boolean_list_or_not(my_input):
 	"""
-	Convert a string like "(1, 2, 3)" to a tuple (1,2,3)
-	:param str input_string: input string of the form "(1,2,3)"
-	"""
-	_raw_list = re.match(r"\(((.*,)+.*)\)", input_string).group(1).split(',')
-	for i in range(len(_raw_list)):
-		_raw_list[i] = _raw_list[i].strip()
-		_raw_list[i] = string_to_number_or_not(_raw_list[i])
-	return tuple(_raw_list)
+	convert every element in a list to numerical values if possible
+	If not, keep the original value 
+	"""	
+	output = []	
+	if type(my_input) is list:
+		for item in my_input:
+			output.append(to_boolean_list_or_not(item))
+		return output
+	else:
+		return string_to_bool_or_not(my_input)
 
 
-def read_data(file_listInputDataFiles):
+def to_numerical_list_or_not(my_input):
+	"""
+	convert every element in a list to numerical values if possible
+	If not, keep the original value 
+	"""	
+	output = []	
+	if type(my_input) is list:
+		for item in my_input:
+			output.append(to_numerical_list_or_not(item))
+		return output
+	else:
+		return string_to_number_or_not(my_input)
+
+def string_to_tuple_or_not(input):
+	"""
+	convert string to a list 
+	"""
+	number_float = pyparsing.Word(pyparsing.nums+'.')
+	content = pyparsing.Word(pyparsing.alphas) | number_float 
+	parens = pyparsing.nestedExpr('(', ')', content=content)
+
+	list_result = parens.parseString(input).asList()[0]
+	list_result = to_boolean_list_or_not(list_result)
+	list_result = to_numerical_list_or_not(list_result)
+	list_result = tuple(list_result)
+	return list_result
+
+def read_input_information(file_input_information):
 	"""
 	Read a file containing a list of input file names
 	Then put the content of each data file into a list 
-	:param file_listInputDataFiles: file that contains a list of file names 
+	:param file_input_information: file that contains a list of file names 
 	:return: a python list of numpy arrays
 	"""
 	print("======================================================")
 	print("  Read input data files and legends")
-	print("  File: {0}".format(file_listInputDataFiles))
+	print("  File: {0}".format(file_input_information))
 	print("======================================================")
-	list_data_and_legend = []
-	with open(file_listInputDataFiles, 'r') as IN:
+	
+	dict_input_file_keywords = PlotLinesParameters.InputFileParameters.get_convention()
+	list_input_information = []
+	with open(file_input_information, 'r') as IN:
 		for line in IN:
 			line = line.strip()
 			tmp_list = line.split(";")
 
-			# remove extra leading/trailing whitespaces
+			# remove extra leading/trailing white spaces
 			for i in range(len(tmp_list)):
 				tmp_list[i] = tmp_list[i].strip()
 
-			#----------------------------------------------------------------------------
-			# "file_name" and "legend" are mandatory which are always the first two items
-			#----------------------------------------------------------------------------
-			# Item 1: file name
-			file_name = tmp_list[0]
+			dict_current_line = PlotLinesParameters.InputFileParameters.get_defaults()
+			for item in tmp_list:
+				key, value = item.split(":")
+				key = key.strip()
+				value = value.strip()
+				
+				# change to internal keyword
+				if key in dict_input_file_keywords.keys():
+					key = dict_input_file_keywords[key]
+				else:
+					msg = "ERROR HINT: input keyword not recognized: \"{0}\"".format(key)
+					raise UserWarning(msg)
 
-			# Item 2: legend label
-			legend = tmp_list[1]
+				if is_convertible_to_list(value):
+					value = string_to_tuple_or_not(value)
+				else:
+					value = string_to_bool_or_not(value)
+					value = string_to_number_or_not(value)
 
-			# Item 3: panel number
-			if len(tmp_list) >= 3:
-				which_figure_panel = string_to_numerical_tuple(tmp_list[2])
-			else:
-				which_figure_panel = (0,0)
+				dict_current_line[key] = value
+				print(key,': ', value)
 
-			# Item 4: panel label, e.g., 'A', 'B', 'C'
-			if len(tmp_list) >= 5:
-				panel_label = tmp_list[3]
-				panel_label_coordinates = string_to_numerical_tuple(tmp_list[4])
-			else:
-				panel_label = None
-				panel_label_coordinates = None
-
-			data = numpy.loadtxt(file_name)
-			print("Loading data from: {0}\t{1}\t[{2}]\t{3}\t{4}".format(file_name, data.shape, 
-				legend,panel_label, panel_label_coordinates))
-			list_data_and_legend.append([data, legend, which_figure_panel, panel_label, panel_label_coordinates])
-	print("\n")
-	return list_data_and_legend
+			dict_current_line["input_data"] = numpy.loadtxt(dict_current_line["file"])
+			print("Loading data file: {0}".format(dict_current_line["file"]))
+			list_input_information.append(dict_current_line)
+	print(list_input_information)
+	return list_input_information
 
 
-def read_plot_parameters(file_plotParameters, dict_convention, dict_default_parameters):
+def read_plot_parameters(file_plot_parameters, dict_convention, dict_default_parameters):
 	"""
 	Read a file containing a list of plot parameters 
 	and put them into a python dictionary.
-	:param str file_plotParameters: name of the file that contains plotting parameters 
+	:param str file_plot_parameters: name of the file that contains plotting parameters 
 	:return: python dictionary
 	"""
 	print("======================================================")
 	print("  Read plotting parameters")
-	print("  File: {0}".format(file_plotParameters))
+	print("  File: {0}".format(file_plot_parameters))
 	print("======================================================")
 	
 	# Fill up with defaults
 	dict_plot_parameters = dict_default_parameters
 
     # Update parameters based on user's specifications
-	with open(file_plotParameters, 'r') as IN:
+	with open(file_plot_parameters, 'r') as IN:
 		for line in IN:
 			line = line.strip()
 			key,value = line.split(':')
@@ -176,15 +215,8 @@ def read_plot_parameters(file_plotParameters, dict_convention, dict_default_para
 			value = string_to_number_or_not(value)
 
 			# if "new_key" is "color_order", then convert it a list
-			if type(value) is str:
-				regex_result = re.match(r"\(((.*,)+.*)\)", value)
-				if regex_result is not None:
-					value = regex_result.group(1).split(',')
-					# remove extra whitespaces
-					for i in range(len(value)):
-						value[i] = value[i].strip()
-						value[i] = string_to_number_or_not(value[i])
-						value[i] = string_to_bool_or_not(value[i])
+			if type(value) is str and is_convertible_to_list(value):
+				value = string_to_tuple_or_not(value)
 
 			print("{0} ==> {1}".format(new_key, value))
 			dict_plot_parameters[new_key] = value
@@ -227,7 +259,7 @@ def add_panel_label(object_axis, x, y,
 			panel_label_vertical_alignment,
 			panel_box_face_color,
 			panel_box_edge_color,
-			panel_box_transparency,
+			panel_box_opacity,
 			panel_box_padding,
 			panel_box_line_width,
 			panel_box_line_style,
@@ -245,7 +277,7 @@ def add_panel_label(object_axis, x, y,
 	:param str panel_label_vertical_alignment: [ "center" | "top" | "bottom" | "baseline" ]
 	:param str panel_box_face_color: face color of the panel box (default: 'w'(i.e., white))
 	:param str panel_box_edge_color: face color of the panel box (default: 'k'(i.e., black))
-	:param float panel_box_transparency: 0-1.0
+	:param float panel_box_opacity: 0-1.0
 	:param int panel_box_padding: numerical value (default: 10)
 	:param int panel_box_line_width: default: 4
 	:param int panel_box_line_style: ["solid" | "dashed" | "dashdot" | "dotted"] default: "solid"
@@ -258,7 +290,7 @@ def add_panel_label(object_axis, x, y,
 		"boxstyle":"{0},pad={1}".format(panel_box_shape, panel_box_padding),
 		"facecolor":panel_box_face_color,
 		"edgecolor":panel_box_edge_color,
-		"alpha":panel_box_transparency,
+		"alpha":panel_box_opacity,
 		"linewidth":panel_box_line_width,
 		"linestyle":panel_box_line_style,
 		}
@@ -274,9 +306,9 @@ def add_panel_label(object_axis, x, y,
 def add_legend(list_line_objects, list_legend_labels,
 		use_round_legend_box,
 		legend_location, 
-		legend_box_anchor_coordinate_tuple,
+		legend_coordinate,
 		show_legend_frame=None, 
-		legend_frame_transparency=None,
+		legend_frame_opacity=None,
 		number_of_legend_columns=1,
 		legend_font_size=10, 
 		legend_font_weight=0,
@@ -299,10 +331,10 @@ def add_legend(list_line_objects, list_legend_labels,
 	:param list list_legend_labels: list of legend labels
 	:param use_round_legend_box: True or False to decide whether to use round legend box 
 	:param legend_location: the legend_location of the lengend within the plot area
-	:param legend_box_anchor_coordinate_tuple: a tuple of two numbers between 0 and 1, e.g. (0.5, 0.5)
+	:param legend_coordinate: a tuple of two numbers between 0 and 1, e.g. (0.5, 0.5)
 	:param bool show_legend_frame: True or False to decide whether to show legend box frame 
 		(default: None, which will take value from legend.frameon rcParam)
-	:param float legend_frame_transparency: a number between 0.0 and 1.0 
+	:param float legend_frame_opacity: a number between 0.0 and 1.0 
 		(default: None, which means taking value from legend.framealpha rcParam)
 	:param int number_legend_columns: number of legend columns (default: 1)
 	:param int legend_font_size: font size for the legend
@@ -332,9 +364,9 @@ def add_legend(list_line_objects, list_legend_labels,
 	Plot.legend(list_line_objects, list_legend_labels,
 		fancybox=use_round_legend_box,
 		loc=legend_location, 
-		bbox_to_anchor=legend_box_anchor_coordinate_tuple,
+		bbox_to_anchor=legend_coordinate,
 		frameon=show_legend_frame,
-		framealpha=legend_frame_transparency,
+		framealpha=legend_frame_opacity,
 		ncol=number_of_legend_columns,
 		fontsize=legend_font_size,
 		markerscale=legend_marker_scale,
@@ -367,7 +399,7 @@ def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
 		grid_line_style='-', 
 		grid_line_width=2,
 		grid_line_color='k',
-		grid_line_transparency=1.0,
+		grid_line_opacity=1.0,
 		grid_z_order=0):
 	"""
 	Add grids 
@@ -378,7 +410,7 @@ def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
 	:param grid_line_style: default: '-'
 	:param grid_line_width: line width (default: 2)
 	:param grid_line_color: line color (default: 'k')
-	:param grid_line_transparency: line transparency (default: 1.0)
+	:param grid_line_opacity: line opacity (default: 1.0)
 	:param grid_z_order: grid order along z (any number; default: 0)
 	"""
 	Plot.grid(show_grid, which_ticks, which_axis, 
@@ -386,7 +418,7 @@ def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
 		linestyle=grid_line_style,
 		linewidth=grid_line_width,
 		color=grid_line_color,
-		alpha=grid_line_transparency,
+		alpha=grid_line_opacity,
 		zorder=grid_z_order)
 
 def refine_ticks(object_axis, which_axis, 
@@ -476,41 +508,59 @@ def refine_ticks(object_axis, which_axis,
 		temp_axis = getattr(object_axis, "get_{0}axis".format(which_axis))()
 		temp_axis.set_major_formatter(matplotlib.ticker.FuncFormatter(fn_formatter))
 
-def refine_figure(object_axis, object_figure, dict_parameters, list_line_objects, list_legend_labels):
+
+def add_and_refine_legend(list_legend_information,dict_parameters):
+	"""
+	Add and refine the legends
+	:param list_legend_information: a dictionary of dictionaries. 
+		The key is the panel ID (i.e., 0, 1, 2, ...);
+		The value is a sub-dictionary with keys: "object_axis", "list_line_objects", "list_legend_labels", "legend_coordinate"
+	:param dict dict_parameters: python dictionary of plotting parameters 
+	"""
+	object_old_axis_object = Plot.gca() # store the current axis object
+	for dict_legend_parameters in list_legend_information:
+		object_axis = dict_legend_parameters["object_axis"]
+		list_line_objects = dict_legend_parameters["list_line_objects"]
+		list_legend_labels = dict_legend_parameters["list_legend_labels"]
+		legend_coordinate = dict_legend_parameters["legend_coordinate"]
+		# set new current axis
+		print(object_axis)
+		Plot.sca(object_axis)
+		add_legend(list_line_objects, list_legend_labels, 
+			use_round_legend_box = dict_parameters["use_round_legend_box"], 
+			legend_location = dict_parameters["legend_location"],
+			legend_coordinate = legend_coordinate,
+			show_legend_frame = dict_parameters["show_legend_frame"],
+			legend_frame_opacity = dict_parameters["legend_frame_opacity"],
+			number_of_legend_columns = dict_parameters["number_of_legend_columns"],
+			legend_font_size = dict_parameters["legend_font_size"],
+			legend_font_weight = dict_parameters["legend_font_weight"],
+			legend_line_width = dict_parameters["legend_line_width"],
+			legend_marker_scale = dict_parameters["legend_marker_scale"],
+			legend_number_of_marker_points = dict_parameters["legend_number_of_marker_points"],
+			legend_number_of_scatter_marker_points = dict_parameters["legend_number_of_marker_points"],
+			legend_handle_length = dict_parameters["legend_handle_length"],
+			legend_border_padding = dict_parameters["legend_border_padding"],
+			legend_vertical_spacing = dict_parameters["legend_vertical_spacing"],
+			legend_padding_between_handle_and_text = dict_parameters["legend_padding_between_handle_and_text"],
+			legend_padding_between_border_and_axes = dict_parameters["legend_padding_between_border_and_axes"],
+			legend_column_spacing = dict_parameters["legend_column_spacing"],
+			legend_face_color = dict_parameters["legend_face_color"],
+			legend_edge_color = dict_parameters["legend_edge_color"],
+			)
+	
+	# reset current axis back to the original
+	Plot.sca(object_old_axis_object)
+
+def refine_figure(object_axis, object_figure, dict_parameters):
 	"""
 	Refine the figure using parameters stored in the dictionary "dict_parameters"
 	:param object object_axis: matplotlib Axis object 
 	:param object object_figure: matplotlib Figure object 
 	:param dict dict_parameters: python dictionary of plotting parameters 
-	:param list list_line_objects: list of matplotlib line objects
-	:param list list_legend_labels: list of strings to be used as legend labels 
 	"""
-	#----------------------------------------------------------------------------------------------
-	# 	Legend
-	#----------------------------------------------------------------------------------------------
-	add_legend(list_line_objects, list_legend_labels, 
-		use_round_legend_box = dict_parameters["use_round_legend_box"], 
-		legend_location = dict_parameters["legend_location"],
-		legend_box_anchor_coordinate_tuple = dict_parameters["legend_box_anchor_coordinate_tuple"],
-		show_legend_frame = dict_parameters["show_legend_frame"],
-		legend_frame_transparency = dict_parameters["legend_frame_transparency"],
-		number_of_legend_columns = dict_parameters["number_of_legend_columns"],
-		legend_font_size = dict_parameters["legend_font_size"],
-		legend_font_weight = dict_parameters["legend_font_weight"],
-		legend_line_width = dict_parameters["legend_line_width"],
-		legend_marker_scale = dict_parameters["legend_marker_scale"],
-		legend_number_of_marker_points = dict_parameters["legend_number_of_marker_points"],
-		legend_number_of_scatter_marker_points = dict_parameters["legend_number_of_marker_points"],
-		legend_handle_length = dict_parameters["legend_handle_length"],
-		legend_border_padding = dict_parameters["legend_border_padding"],
-		legend_vertical_spacing = dict_parameters["legend_vertical_spacing"],
-		legend_padding_between_handle_and_text = dict_parameters["legend_padding_between_handle_and_text"],
-		legend_padding_between_border_and_axes = dict_parameters["legend_padding_between_border_and_axes"],
-		legend_column_spacing = dict_parameters["legend_column_spacing"],
-		legend_face_color = dict_parameters["legend_face_color"],
-		legend_edge_color = dict_parameters["legend_edge_color"],
-		)
-
+	object_old_axis_object = Plot.gca()
+	Plot.sca(object_axis)
 	#----------------------------------------------------------------------------------------------
 	# X and Y Ticks
 	#----------------------------------------------------------------------------------------------
@@ -537,6 +587,7 @@ def refine_figure(object_axis, object_figure, dict_parameters, list_line_objects
 			tick_label_number_of_decimal_places = dict_parameters[which_axis+"_tick_label_number_of_decimal_places"],
 			tick_reset_old_parameter = dict_parameters[which_axis+"_tick_reset_old_parameter"],
 			)
+	Plot.sca(object_old_axis_object)
 
 
 def update_ticks_and_labels(object_axis, x_or_y, axis_min, axis_max, list_new_ticks):
@@ -626,10 +677,10 @@ def set_axis_limits(object_axis, which_axis, new_min, new_max):
 	else:
 		return
 
-def plot(list_data_legend_and_others, dict_parameters):
+def plot(list_input_information, dict_parameters):
 	"""
-	Plot every data series in list_data_legend_and_others
-	:param list list_data_legend_and_others: a list of data arrays|numpy arrays
+	Plot every data series in list_input_information
+	:param list list_input_information: a list of dictionaries
 	:param dict dict_parameters: a python dictionary of plotting parameters
 	:return: object for the current plot
 	"""
@@ -638,7 +689,7 @@ def plot(list_data_legend_and_others, dict_parameters):
 	print("======================================================")
 
 	figureSize=(dict_parameters["figure_length"], dict_parameters["figure_height"])
-	
+	dict_legend_information = dict()
 
 	auto_adjust_returning_dimension = False
 	object_figure, list_axis_objects = Plot.subplots(nrows=dict_parameters["figure_number_of_rows"],
@@ -663,6 +714,11 @@ def plot(list_data_legend_and_others, dict_parameters):
 	object_extra_axis.set_xticks([])
 	object_extra_axis.set_yticks([])
 
+	# Make the frame line transparent
+	for child in object_extra_axis.get_children():
+		if isinstance(child, matplotlib.spines.Spine):
+			child.set_color((0,0,0,0))
+
 	# Figure title
 	if dict_parameters["figure_title"] is not None:
 		add_title(object_extra_axis, dict_parameters["figure_title"], dict_parameters["figure_title_font_size"])
@@ -674,19 +730,44 @@ def plot(list_data_legend_and_others, dict_parameters):
 		dict_parameters["x_label_padding"])
 	add_axis_label(object_extra_axis, 'y', dict_parameters["y_label"], dict_parameters["y_label_font_size"],
 		dict_parameters["y_label_padding"])
-	#----------------------------------------------------------------------------------------------
-	# Plot 
-	#----------------------------------------------------------------------------------------------
 	list_colors = dict_parameters["color_order"]
 	list_line_objects  = []
 	list_legend_labels = []
 	ccc = 0
 	global_x_min = None 
 	global_x_max = None
+
+	last_which_panel = None
 	
-	for item in list_data_legend_and_others:
-		line_color = list_colors[ccc%len(list_colors)]
-		data, legend, which_panel, panel_label, panel_label_coordinates  = item
+	#----------------------------------------------------------------------------------------------
+	# ========= *** Start Plotting!  *** ================
+	#----------------------------------------------------------------------------------------------
+	for item in list_input_information:
+		data   = item["input_data"]
+		legend = item["legend"]
+		legend_coordinate = item["legend_coordinate"]
+		legend_panel_coordinate = item["legend_panel_coordinate"]
+		panel_coordinate = item["panel_coordinate"]
+		panel_label = item["panel_label"]
+		panel_label_coordinate = item["panel_label_coordinate"]
+		file_input = item["file"]
+
+
+
+		# if panel_coordinate != last_which_panel:
+		# 	# reset counter 
+		# 	ccc = 0
+		last_which_panel = panel_coordinate
+
+		# line color
+		if dict_parameters["use_color_map_cool"]:
+			print(ccc)
+			line_color = Plot.cm.cool(ccc*10)
+			print(line_color)
+		else:
+			line_color = list_colors[ccc%len(list_colors)]
+
+		# Get X & Y data
 		X = data[:,0]
 		Y = data[:,1]
 
@@ -696,17 +777,50 @@ def plot(list_data_legend_and_others, dict_parameters):
 		global_x_min = return_smaller(global_x_min, x_min)
 		global_x_max = return_bigger(global_x_max, x_max)
 
-		id_row_panel, id_column_panel = which_panel
+
+
+		id_row_panel, id_column_panel = panel_coordinate
 		object_axis = list_axis_objects[id_row_panel, id_column_panel]
+
+		print("=====", file_input, id_row_panel, id_column_panel, "==========")
 
 		# Set the current active Axes instance to this axis 
 		Plot.sca(object_axis)
 
-		object_plot, = object_axis.plot(X,Y, 
+		object_line, = object_axis.plot(X,Y, 
 			color=line_color,
-			alpha=dict_parameters["line_transparency"],
+			alpha=dict_parameters["line_opacity"],
 			linestyle=dict_parameters["line_style"],
 			)
+
+		#-------------------------------------------------------------
+		# set up legend information
+		#-------------------------------------------------------------
+		if legend_panel_coordinate not in dict_legend_information:
+			dict_legend_information[legend_panel_coordinate] = dict()
+		id_row_panel, id_column_panel = legend_panel_coordinate
+		dict_legend_information[legend_panel_coordinate]["object_axis"] = list_axis_objects[id_row_panel, id_column_panel]
+		
+		# add new legend label
+		if "list_legend_labels" not in dict_legend_information[legend_panel_coordinate].keys():
+			dict_legend_information[legend_panel_coordinate]["list_legend_labels"] = []
+		dict_legend_information[legend_panel_coordinate]["list_legend_labels"].append(legend)
+
+		# add line object
+		if "list_line_objects" not in dict_legend_information[legend_panel_coordinate].keys():
+			dict_legend_information[legend_panel_coordinate]["list_line_objects"] = []
+		dict_legend_information[legend_panel_coordinate]["list_line_objects"].append(object_line)
+
+		# add legend coordinate
+		if "legend_coordinate" not in dict_legend_information[legend_panel_coordinate].keys():
+			dict_legend_information[legend_panel_coordinate]["legend_coordinate"] = legend_coordinate
+
+
+
+		# make x limits tight
+		if dict_parameters["figure_x_limits_tight"]:
+			which_axis = 'x'
+			set_axis_limits(object_axis, which_axis, x_min, x_max)
 
 		# show noise-filtered-averaged line
 		if dict_parameters["show_block_averaged_line"]:
@@ -714,14 +828,14 @@ def plot(list_data_legend_and_others, dict_parameters):
 			Y_block_averaged = ndimage.filters.uniform_filter(Y, 
 				size=dict_parameters["line_block_average_block_size"], 
 				mode="nearest")
-			object_plot, = object_axis.plot(X,Y_block_averaged,
+			object_line, = object_axis.plot(X,Y_block_averaged,
 				linewidth=dict_parameters["block_averaged_line_width"],
 				color=line_color,
 				)
 
-		object_plot.set_label(legend)
+		object_line.set_label(legend)
 		list_legend_labels.append(legend)
-		list_line_objects.append(object_plot)
+		list_line_objects.append(object_line)
 
 		#----------------------------------------------------------------------------------------------
 		# Grid
@@ -733,21 +847,21 @@ def plot(list_data_legend_and_others, dict_parameters):
 			dict_parameters["grid_line_style"],
 			dict_parameters["grid_line_width"],
 			dict_parameters["grid_line_color"],
-			dict_parameters["grid_line_transparency"],
+			dict_parameters["grid_line_opacity"],
 			dict_parameters["grid_z_order"])
 
 		#----------------------------------------------------------------------------------------------
 		# Add panel number 
 		#----------------------------------------------------------------------------------------------
 		if panel_label is not None:
-			x_panel_label, y_panel_label = panel_label_coordinates
+			x_panel_label, y_panel_label = panel_label_coordinate
 			add_panel_label(object_axis, x_panel_label, y_panel_label, panel_label,
 				dict_parameters["panel_label_font_size"],
 				dict_parameters["panel_label_horizontal_alignment"],
 				dict_parameters["panel_label_vertical_alignment"],
 				dict_parameters["panel_box_face_color"],
 				dict_parameters["panel_box_edge_color"],
-				dict_parameters["panel_box_transparency"],
+				dict_parameters["panel_box_opacity"],
 				dict_parameters["panel_box_padding"],
 				dict_parameters["panel_box_line_width"],
 				dict_parameters["panel_box_line_style"],
@@ -755,14 +869,23 @@ def plot(list_data_legend_and_others, dict_parameters):
 				)
 		
 		ccc += 1
+
+	#----------------------------------------------------------------------------------------------
+	# Add legend
+	#----------------------------------------------------------------------------------------------
+	if dict_parameters["legend_on"]:
+		add_and_refine_legend(dict_legend_information.values(), dict_parameters)
+
+
 	#----------------------------------------------------------------------------------------------
 	# Set the limits of X axis to match the global_x_min and global_x_max
 	#----------------------------------------------------------------------------------------------
-	which_axis = 'x'
-	for i in range(0,dict_parameters["figure_number_of_rows"]):
-		for j in range(0, dict_parameters["figure_number_of_columns"]):
-			object_axis = list_axis_objects[i,j]
-		set_axis_limits(object_axis,which_axis,global_x_min, global_x_max)
+	if dict_parameters["figure_use_global_x_limits"]:
+		which_axis = 'x'
+		for i in range(0,dict_parameters["figure_number_of_rows"]):
+			for j in range(0, dict_parameters["figure_number_of_columns"]):
+				object_axis = list_axis_objects[i,j]
+			set_axis_limits(object_axis,which_axis,global_x_min, global_x_max)
 
 	#----------------------------------------------------------------------------------------------
 	# Remove overlapping tick labels
@@ -815,16 +938,16 @@ def plot(list_data_legend_and_others, dict_parameters):
 		for j in range(n_columns):
 			object_axis = list_axis_objects[i,j]
 			object_legend = object_axis.get_legend()
-			refine_figure(object_axis, object_figure, dict_parameters, list_line_objects, list_legend_labels)
+			refine_figure(object_axis, object_figure, dict_parameters)
 
 	return (object_figure, list_axis_objects)
 
 
 if __name__ == '__main__':
-	list_data_legend_and_others = read_data(file_listInputDataFiles)
+	list_input_information = read_input_information(file_input_information)
 	object_plot_parameters = PlotLinesParameters.PlotParameters()
 
-	list_plot_parameters = read_plot_parameters(file_plotParameters,
+	list_plot_parameters = read_plot_parameters(file_plot_parameters,
 						object_plot_parameters.get_convention(),
 						object_plot_parameters.get_defaults())
 
@@ -839,7 +962,7 @@ if __name__ == '__main__':
 	if list_plot_parameters["use_scipy"] is True:
 		import scipy
 
-	object_figure, list_axis_objects = plot(list_data_legend_and_others, list_plot_parameters)
+	object_figure, list_axis_objects = plot(list_input_information, list_plot_parameters)
 
 	#-----------------------------------------------------------------
 	# Save figure
