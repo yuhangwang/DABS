@@ -8,40 +8,42 @@ class InputFileParameters:
 	"""
 	Input file parameters 
 	"""
-	def __init__(self):
-		self._convention_ = {
-			"FILE":"file",
-			"LEGEND":"legend",
-			"LEGEND COORDINATE":"legend_coordinate",
-			"LEGEND PANEL COORDINATE":"legend_panel_coordinate",
-			'PANEL COORDINATE':"panel_coordinate",
-			"PANEL LABEL":"panel_label",
-			"PANEL LABEL COORDINATE":"panel_label_coordinate",
-			}
+	_convention_ = {
+		"FILE":"file",
+		"LEGEND":"legend",
+		"LEGEND COORDINATE":"legend_coordinate",
+		"LEGEND PANEL COORDINATE":"legend_panel_coordinate",
+		'PANEL COORDINATE':"panel_coordinate",
+		"PANEL LABEL":"panel_label",
+		"PANEL LABEL COORDINATE":"panel_label_coordinate",
+		}
 
-		self._defaults_ = {
-			"file":None,
-			"legend":None,
-			"legend_coordinate":"best",
-			"legend_panel_coordinate":0,
-			"panel_coordinate":(0,0),
-			"panel_label":None,
-			"panel_label_coordinate":None,
-			}
+	_defaults_ = {
+		"file":None,
+		"legend":None,
+		"legend_coordinate":"best",
+		"legend_panel_coordinate": (0,0),
+		"panel_coordinate":(0,0),
+		"panel_label":None,
+		"panel_label_coordinate":None,
+		}
 
-	def get_convention(self):
+	@staticmethod
+	def get_convention():
 		"""
 		Get the convention dictionary
 		"""
-		return self._convention_
+		return InputFileParameters._convention_
 
-	def get_defaults(self):
+	@staticmethod
+	def get_defaults():
 		"""
 		Get the default value dictionary
 		"""
 		return InputFileParameters._defaults_
 
-	def get_description(self):
+	@staticmethod
+	def get_description():
 		"""
 		Description of this class 
 		"""
@@ -95,7 +97,7 @@ class PanelParameters:
 		"PANEL BOX EDGE COLOR":"panel_box_edge_color",
 		"PANEL BOX OPACITY":"panel_box_opacity",
 		"PANEL BOX PADDING":"panel_box_padding",
-		"PNAEL BOX LINE WIDTH":"panel_box_line_width",
+		"PANEL BOX LINE WIDTH":"panel_box_line_width",
 		"PANEL BOX LINE STYLE":"panel_box_line_style",
 		"PANEL BOX SHAPE":"panel_box_shape",
 		}
@@ -615,3 +617,52 @@ class PlotParameters:
 
 	def get_defaults(self):
 		return self._defaults_.copy()
+
+
+class ParameterManager:
+	_list_of_parameter_classes_ =  [
+			InputFileParameters,
+			ExternalDependencyParameters,
+			FigureParameters,
+			PanelParameters,
+			AxisParameters,
+			LineParameters,
+			LegendParameters,
+			GridParameters,
+			TickParameters,
+			ColorParameters,
+			]
+	@staticmethod
+	def show_parameters(parameter_type="public", file_output=None):
+		msg = ""
+		for _class in ParameterManager._list_of_parameter_classes_:
+			dict_convention = getattr(_class, "get_convention")()
+			dict_defaults   = getattr(_class, "get_defaults")()
+			type_parameter = getattr(_class, "get_description")()
+			msg += "------------------------------------------------\n"
+			msg += "--------    {0} -------\n".format(type_parameter)
+			msg += "------------------------------------------------\n"
+			for key_public in sorted(dict_convention.keys()):
+				key_internal = dict_convention[key_public]
+				default_value = dict_defaults[key_internal]
+				if parameter_type == "public":
+					key = key_public
+				else:
+					key = key_internal
+				msg += "{0}: {1}\n".format(key, default_value)
+			msg += '\n'
+
+		if file_output is not None:
+			OUT = open(file_output, 'w')
+			OUT.write(msg)
+			OUT.close()
+		else:
+			print(msg)
+
+
+if __name__ == "__main__":
+	file_public = "PUBLIC_PARAMETERS.txt"
+	file_internal = "INTERNAL_PARAMETERS.txt"
+	manager = ParameterManager()
+	manager.show_parameters("public", file_public)
+	manager.show_parameters("internal", file_internal)

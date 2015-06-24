@@ -112,7 +112,8 @@ def string_to_tuple_or_not(input):
 	convert string to a list 
 	"""
 	number_float = pyparsing.Word(pyparsing.nums+'.')
-	content = pyparsing.Word(pyparsing.alphas) | number_float 
+	separator = pyparsing.Suppress(',')
+	content = pyparsing.Word(pyparsing.alphas) | number_float | separator
 	parens = pyparsing.nestedExpr('(', ')', content=content)
 
 	list_result = parens.parseString(input).asList()[0]
@@ -144,7 +145,12 @@ def read_input_information(file_input_information):
 			for i in range(len(tmp_list)):
 				tmp_list[i] = tmp_list[i].strip()
 
-			dict_current_line = PlotLinesParameters.InputFileParameters.get_defaults()
+			# use default values
+			dict_default =  PlotLinesParameters.InputFileParameters.get_defaults()
+			dict_current_line = dict()
+			for key,value in dict_default.items():
+				dict_current_line[key] = value
+
 			for item in tmp_list:
 				key, value = item.split(":")
 				key = key.strip()
@@ -169,7 +175,6 @@ def read_input_information(file_input_information):
 			dict_current_line["input_data"] = numpy.loadtxt(dict_current_line["file"])
 			print("Loading data file: {0}".format(dict_current_line["file"]))
 			list_input_information.append(dict_current_line)
-	print(list_input_information)
 	return list_input_information
 
 

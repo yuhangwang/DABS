@@ -18,7 +18,7 @@ dir_figure_root = "./figure"
 
 
 
-function write_str_to_file (str, output_file_name)
+function write_str_to_file (output_file_name, str)
 	-- Write a string into an output file
 	local OUT = io.open(output_file_name, 'w')
 	io.output(OUT)
@@ -26,6 +26,17 @@ function write_str_to_file (str, output_file_name)
 	io.close(OUT)
 end
 
+function  update_input_information_list(list_target, file_input, legend,legend_coordinate, legend_panel_coordinate, panel_coordinate, panel_label, panel_label_coordinate)
+  local list_local = {}
+  table.insert(list_local, string.format("FILE: %s", file_input))
+  table.insert(list_local, string.format("LEGEND: %s", legend))
+  table.insert(list_local, string.format("LEGEND COORDINATE: %s", legend_coordinate))
+  table.insert(list_local, string.format("LEGEND PANEL COORDINATE: %s", legend_panel_coordinate))
+  table.insert(list_local, string.format("PANEL COORDINATE: %s", panel_coordinate))
+  table.insert(list_local, string.format("PANEL LABEL: %s", panel_label))
+  table.insert(list_local, string.format("PANEL LABEL COORDINATE: %s", panel_label_coordinate))
+  table.insert(list_target, table.concat(list_local, '; '))
+end
 
 if FLAG_create_test_data then
   cmd = "python create_sample_data.py"
@@ -44,31 +55,30 @@ if ID_test_case == 1 then
       --------------------------------------------------------------------
       file_list_of_inputs = table.concat({dir_output, file_list_of_inputs}, '/')
 
-      local OUT = io.open(file_list_of_inputs, 'w')
-      io.output(OUT)
-      
+      local list_input_file_parameters = {}
       local list_input_file_names = {"data1.dat", "data2.dat", "data3.dat", "data4.dat"}
       local list_legends = {"data1", "data2", "data3", 'data4'}
-      local list_plot_panel_id = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
+      local list_panel_coordinates = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
       local list_panel_labels = {'A', "B", "C", "D"}
       local panel_label_coordinates = "(0.05, 0.8)"
       local list_panel_label_coordinates = {panel_label_coordinates, panel_label_coordinates,
                 panel_label_coordinates, panel_label_coordinates}
 
       for i,file_name in pairs(list_input_file_names)  do
-        local input_file = table.concat({dir_data_root, file_name}, '/')
+        local file_input = table.concat({dir_data_root, file_name}, '/')
         local legend = list_legends[i]
-        local id_panel = list_plot_panel_id[i]
+        local legend_coordinate = "(0.02, 0.9)"
+        -- local legend_panel_coordinate = list_panel_coordinates[i]
+        local legend_panel_coordinate = "(3,0)"
+        local panel_coordinate = list_panel_coordinates[i]
         local panel_label = list_panel_labels[i]
-        local panel_label_coordinates = list_panel_label_coordinates[i]
-        local line_content = string.format("%s; %s; %s; %s; %s\n", input_file, legend, id_panel, 
-                      panel_label, panel_label_coordinates)
-        io.write(line_content)
+        local panel_label_coordinate = list_panel_label_coordinates[i]
+        update_input_information_list(list_input_file_parameters, file_input, legend, legend_coordinate, legend_panel_coordinate, panel_coordinate, panel_label, panel_label_coordinate)
       end
       
-      io.close(OUT)
-
-      
+      local text_body = table.concat(list_input_file_parameters, '\n')
+      write_str_to_file(file_list_of_inputs, text_body)
+      print("Input file parameters: ", file_list_of_inputs)
 
       --------------------------------------------------------------------
       -- Step 2. create a file containing plotting parameters
@@ -117,8 +127,9 @@ if ID_test_case == 1 then
   		table_parameters["BLOCK AVERAGED LINE WIDTH"] = 2
 
   		-- Legend
+      table_parameters["LEGEND ON"] = "YES"
   		table_parameters["LEGEND FONT SIZE"] = 18
-  		table_parameters["LEGEND BOX ANCHOR COORDINATE TUPLE"] = "(0.75, 0.1)"
+  		table_parameters["LEGEND BOX ANCHOR COORDINATE TUPLE"] = "(0.75 0.1)"
   		table_parameters["LEGEND FONT WEIGHT"] = 0
 
   		for key, value in pairs(table_parameters) do

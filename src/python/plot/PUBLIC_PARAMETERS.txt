@@ -1,0 +1,159 @@
+------------------------------------------------
+--------    INPUT FILE KEYWORDS -------
+------------------------------------------------
+FILE: None
+LEGEND: None
+LEGEND COORDINATE: best
+LEGEND PANEL COORDINATE: (0, 0)
+PANEL COORDINATE: (0, 0)
+PANEL LABEL: None
+PANEL LABEL COORDINATE: None
+
+------------------------------------------------
+--------    EXERNAL DEPENDENCY PARAMETERS -------
+------------------------------------------------
+USE LATEX: False
+USE SCIPY: False
+
+------------------------------------------------
+--------    FIGURE PARAMETERS -------
+------------------------------------------------
+FIGURE DPI: 150
+FIGURE HEIGHT: 8
+FIGURE LENGTH: 12
+FIGURE NUMBER OF COLUMNS: 1
+FIGURE NUMBER OF ROWS: 1
+FIGURE OUTPUT FILE NAME: output.png
+FIGURE PADDING: 0.2
+FIGURE SHARE X: False
+FIGURE SHARE Y: False
+FIGURE SUBPLOTS HORIZONTAL SPACING: None
+FIGURE SUBPLOTS VERTICAL SPACING: None
+FIGURE TITLE: None
+FIGURE TITLE FONT SIZE: 40
+FIGURE TRANSPARENT: False
+FIGURE USE GLOBAL X LIMITS: False
+FIGURE X LIMITS TIGHT: True
+FIGURE Y LIMITS TIGHT: False
+
+------------------------------------------------
+--------    PANEL PARAMETERS -------
+------------------------------------------------
+PANEL BOX EDGE COLOR: w
+PANEL BOX FACE COLOR: w
+PANEL BOX LINE STYLE: solid
+PANEL BOX LINE WIDTH: 1
+PANEL BOX OPACITY: 0.8
+PANEL BOX PADDING: 0.2
+PANEL BOX SHAPE: square
+PANEL LABEL FONT SIZE: 25
+PANEL LABEL HORIZONTAL ALIGNMENT: left
+PANEL LABEL VERTICAL ALIGNMENT: center
+
+------------------------------------------------
+--------    AXIS PARAMETERS -------
+------------------------------------------------
+X LABEL: X
+X LABEL FONT SIZE: 30
+X LABEL PADDING: None
+Y LABEL: Y
+Y LABEL FONT SIZE: 30
+Y LABEL PADDING: None
+
+------------------------------------------------
+--------    LINE PARAMETERS -------
+------------------------------------------------
+BLOCK AVERAGED LINE WIDTH: 2
+LINE BLOCK AVERAGE BLOCK SIZE: 1
+LINE OPACITY: 1.0
+LINE STYLE: -
+SHOW BLOCK AVERAGED LINE: False
+
+------------------------------------------------
+--------    LEGEND PARAMETERS -------
+------------------------------------------------
+LEGEND BORDER PADDING: 0.5
+LEGEND COLUMN SPACING: 0.8
+LEGEND EDGE COLOR: k
+LEGEND FACE COLOR: w
+LEGEND FACE OPACITY: 1.0
+LEGEND FONT SIZE: 15
+LEGEND FONT WEIGHT: 800
+LEGEND FRAME OPACITY: 0.5
+LEGEND HANDLE LENGTH: 2
+LEGEND LINE WIDTH: 8
+LEGEND LOCATION: lower left
+LEGEND MARKER SCALE: 1
+LEGEND NUMBER OF MAKRER POINTS: None
+LEGEND NUMBER OF SCATTER MAKRER POINTS: None
+LEGEND ON: False
+LEGEND PADDING BETWEEN BORDER AND AXES: 0
+LEGEND PADDING BETWEEN HANDLE AND TEXT: 0.5
+LEGEND VERTICAL SPACING: 0.5
+NUMBER OF LEGEND COLUMNS: 1
+ROUND LEGEND BOX: True
+SHOW LEGEND FRAME: True
+USE GLOBAL LEGEND: True
+
+------------------------------------------------
+--------    GRID PARAMETERS -------
+------------------------------------------------
+GRID AXIS: both
+GRID LINE COLOR: k
+GRID LINE OPACITY: 0.2
+GRID LINE STYLE: --
+GRID LINE WIDTH: 1
+GRID TICKS: major
+GRID Z ORDER: -1
+SHOW GRID: True
+
+------------------------------------------------
+--------    TICK PARAMETERS -------
+------------------------------------------------
+HIDE FIRST X TICK LABEL: False
+HIDE FIRST Y TICK LABEL: False
+HIDE LAST X TICK LABEL: False
+HIDE LAST Y TICK LABEL: False
+HIDE OVERLAPPING X TICK LABEL: False
+HIDE OVERLAPPING Y TICK LABEL: False
+X TICK AND LABEL Z ORDER: 0
+X TICK COLOR: k
+X TICK IN OUT OR INOUT: inout
+X TICK LABEL COLOR: k
+X TICK LABEL FONT SIZE: 20
+X TICK LABEL FONT WEIGHT: 0
+X TICK LABEL NUMBER OF DECIMAL PLACES: None
+X TICK LABEL PADDING: 10
+X TICK LABEL SHOW BOTTOM: True
+X TICK LABEL SHOW TOP: False
+X TICK LENGTH: 5
+X TICK MAJOR MINOR OR BOTH: major
+X TICK MAX NUMBER: 10
+X TICK RESET OLD PARAMETER: False
+X TICK SHOW BOTTOM: True
+X TICK SHOW TOP: True
+X TICK WIDTH: 2
+Y TICK AND LABEL Z ORDER: 0
+Y TICK COLOR: k
+Y TICK IN OUT OR INOUT: inout
+Y TICK LABEL COLOR: k
+Y TICK LABEL FONT SIZE: 20
+Y TICK LABEL FONT WEIGHT: 0
+Y TICK LABEL NUMBER OF DECIMAL PLACES: None
+Y TICK LABEL PADDING: 10
+Y TICK LABEL SHOW LEFT: True
+Y TICK LABEL SHOW RIGHT: False
+Y TICK LENGTH: 5
+Y TICK MAJOR MINOR OR BOTH: major
+Y TICK MAX NUMBER: 10
+Y TICK RESET OLD PARAMETER: False
+Y TICK SHOW LEFT: True
+Y TICK SHOW RIGHT: True
+Y TICK WIDTH: 2
+
+------------------------------------------------
+--------    COLOR PARAMETERS -------
+------------------------------------------------
+COLOR ORDER: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
+USE COLOR MAP COOL: False
+
