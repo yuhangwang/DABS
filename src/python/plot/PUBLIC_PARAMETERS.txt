@@ -8,6 +8,10 @@ LEGEND PANEL COORDINATE: (0, 0)
 PANEL COORDINATE: (0, 0)
 PANEL LABEL: None
 PANEL LABEL COORDINATE: None
+X MAX: None
+X MIN: None
+Y MAX: None
+Y MIN: None
 
 ------------------------------------------------
 --------    EXERNAL DEPENDENCY PARAMETERS -------

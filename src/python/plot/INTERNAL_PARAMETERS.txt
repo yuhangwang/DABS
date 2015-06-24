@@ -8,6 +8,10 @@ legend_panel_coordinate: (0, 0)
 panel_coordinate: (0, 0)
 panel_label: None
 panel_label_coordinate: None
+x_max: None
+x_min: None
+y_max: None
+y_min: None
 
 ------------------------------------------------
 --------    EXERNAL DEPENDENCY PARAMETERS -------
