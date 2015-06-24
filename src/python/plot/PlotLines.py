@@ -79,6 +79,17 @@ def string_to_number_or_not(input):
 	else:
 		return input
 
+def string_to_None_or_not(input):
+	"""
+	Convert string "None" to python type 'None'
+	"""
+	# only proceed when the input type is "str"
+	if type(input) is not str: return input 
+
+	if re.match(r"^None$", input):
+		return None 
+	else:
+		return input
 
 def to_boolean_list_or_not(my_input):
 	"""
@@ -163,11 +174,15 @@ def read_input_information(file_input_information):
 					msg = "ERROR HINT: input keyword not recognized: \"{0}\"".format(key)
 					raise UserWarning(msg)
 
+				# convert string to list/tuple
 				if is_convertible_to_list(value):
 					value = string_to_tuple_or_not(value)
 				else:
 					value = string_to_bool_or_not(value)
 					value = string_to_number_or_not(value)
+
+				# convert string "None" to real python None type
+				value = string_to_None_or_not(value)
 
 				dict_current_line[key] = value
 				print(key,': ', value)
@@ -756,7 +771,10 @@ def plot(list_input_information, dict_parameters):
 		panel_label = item["panel_label"]
 		panel_label_coordinate = item["panel_label_coordinate"]
 		file_input = item["file"]
-
+		user_x_min = item["x_min"]
+		user_x_max = item["x_max"]
+		user_y_min = item["y_min"]
+		user_y_max = item["y_max"]
 
 
 		# if panel_coordinate != last_which_panel:
@@ -822,12 +840,40 @@ def plot(list_input_information, dict_parameters):
 
 
 
+		#-------------------------------------------------------------
 		# make x limits tight
+		#-------------------------------------------------------------
 		if dict_parameters["figure_x_limits_tight"]:
 			which_axis = 'x'
 			set_axis_limits(object_axis, which_axis, x_min, x_max)
 
+
+		#-------------------------------------------------------------
+		# set new x limits
+		#-------------------------------------------------------------
+		x_min, x_max = object_axis.get_xlim()
+		if user_x_min is not None:
+			x_min = user_x_min
+		elif user_x_max is not None:
+			x_max = user_x_max 
+		print(x_min,x_max)
+		object_axis.set_xlim([x_min, x_max])
+		
+		#-------------------------------------------------------------
+		# set new y limits
+		#-------------------------------------------------------------
+		y_min, y_max = object_axis.get_ylim()
+		if user_y_min is not None:
+			y_min = user_y_min
+		elif user_y_max is not None:
+			y_max = user_y_max 
+		object_axis.set_ylim([y_min, y_max])
+		
+
+
+		#-------------------------------------------------------------
 		# show noise-filtered-averaged line
+		#-------------------------------------------------------------
 		if dict_parameters["show_block_averaged_line"]:
 			from scipy import ndimage
 			Y_block_averaged = ndimage.filters.uniform_filter(Y, 
@@ -841,6 +887,7 @@ def plot(list_input_information, dict_parameters):
 		object_line.set_label(legend)
 		list_legend_labels.append(legend)
 		list_line_objects.append(object_line)
+
 
 		#----------------------------------------------------------------------------------------------
 		# Grid

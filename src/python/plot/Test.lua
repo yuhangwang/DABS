@@ -26,7 +26,18 @@ function write_str_to_file (output_file_name, str)
 	io.close(OUT)
 end
 
-function  update_input_information_list(list_target, file_input, legend,legend_coordinate, legend_panel_coordinate, panel_coordinate, panel_label, panel_label_coordinate)
+function  update_input_information_list(list_target, file_input, legend,legend_coordinate, legend_panel_coordinate, panel_coordinate, panel_label, panel_label_coordinate, dict_min_max)
+  -- Update the input information list
+  local x_min = "None"
+  local x_max = "None"    
+  local y_min = "None"
+  local y_max = "None"
+  if dict_min_max ~= nil then
+    x_min = dict_min_max["x_min"]
+    x_max = dict_min_max["x_max"]
+    y_min = dict_min_max["y_min"]
+    y_max = dict_min_max["y_max"]
+  end
   local list_local = {}
   table.insert(list_local, string.format("FILE: %s", file_input))
   table.insert(list_local, string.format("LEGEND: %s", legend))
@@ -35,6 +46,10 @@ function  update_input_information_list(list_target, file_input, legend,legend_c
   table.insert(list_local, string.format("PANEL COORDINATE: %s", panel_coordinate))
   table.insert(list_local, string.format("PANEL LABEL: %s", panel_label))
   table.insert(list_local, string.format("PANEL LABEL COORDINATE: %s", panel_label_coordinate))
+  table.insert(list_local, string.format("X MIN: %s", x_min))
+  table.insert(list_local, string.format("X MAX: %s", x_max))
+  table.insert(list_local, string.format("Y MIN: %s", y_min))
+  table.insert(list_local, string.format("Y MAX: %s", y_max))
   table.insert(list_target, table.concat(list_local, '; '))
 end
 
@@ -64,6 +79,7 @@ if ID_test_case == 1 then
       local list_panel_label_coordinates = {panel_label_coordinates, panel_label_coordinates,
                 panel_label_coordinates, panel_label_coordinates}
 
+      local dict_min_max = {x_min="None", x_max=1.9, y_min="None", y_max=3.0}
       for i,file_name in pairs(list_input_file_names)  do
         local file_input = table.concat({dir_data_root, file_name}, '/')
         local legend = list_legends[i]
@@ -73,7 +89,7 @@ if ID_test_case == 1 then
         local panel_coordinate = list_panel_coordinates[i]
         local panel_label = list_panel_labels[i]
         local panel_label_coordinate = list_panel_label_coordinates[i]
-        update_input_information_list(list_input_file_parameters, file_input, legend, legend_coordinate, legend_panel_coordinate, panel_coordinate, panel_label, panel_label_coordinate)
+        update_input_information_list(list_input_file_parameters, file_input, legend, legend_coordinate, legend_panel_coordinate, panel_coordinate, panel_label, panel_label_coordinate, dict_min_max)
       end
       
       local text_body = table.concat(list_input_file_parameters, '\n')

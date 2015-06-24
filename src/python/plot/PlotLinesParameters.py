@@ -16,6 +16,10 @@ class InputFileParameters:
 		'PANEL COORDINATE':"panel_coordinate",
 		"PANEL LABEL":"panel_label",
 		"PANEL LABEL COORDINATE":"panel_label_coordinate",
+		"X MIN":"x_min",
+		"X MAX":"x_max",
+		"Y MIN":"y_min",
+		"Y MAX":"y_max",
 		}
 
 	_defaults_ = {
@@ -26,6 +30,10 @@ class InputFileParameters:
 		"panel_coordinate":(0,0),
 		"panel_label":None,
 		"panel_label_coordinate":None,
+		"x_min":None,
+		"x_max":None,
+		"y_min":None,
+		"y_max":None,
 		}
 
 	@staticmethod
