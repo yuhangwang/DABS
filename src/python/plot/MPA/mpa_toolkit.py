@@ -8,7 +8,10 @@ Usage: python PlotLines.py FILE_LIST-OF-INPUT-DATA-FILE-NAMES FILE_PLOT-PARAMETE
 # Use Python 3 compatibility
 #================================================
 from __future__ import print_function, division
-# from __future__ import unicode_literals
+#------------------------------------------------
+import re
+import pyparsing
+#------------------------------------------------
 
 def is_string(input):
 	"""
@@ -144,3 +147,21 @@ def return_bigger(input_1, input_2):
 		return input_1
 	else:
 		return input_2
+
+def initialize_a_2d_array_with_None(n_rows, n_columns):
+	"""
+	Return a 2D array (python list of lists) initialized with None 
+	:param int n_rows: number of rows 
+	:param int n_columns: number of columns 
+	:return: python list of lists 
+	"""
+
+	#----------------------------------------------------------------------------------------------
+	# make a 2D array to store the global min/max for each figure axis
+	#----------------------------------------------------------------------------------------------
+	array2d = []
+	for i_row in range(0,n_rows):
+		array2d.append([])
+		for i_column in range(0, n_columns):
+			array2d[i_row].append(None)
+	return array2d

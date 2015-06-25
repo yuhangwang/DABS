@@ -10,7 +10,7 @@ Usage: python mpa.py FILE_LIST-OF-INPUT-DATA-FILE-NAMES FILE_PLOT-PARAMETERS
 from __future__ import print_function, division
 #================================================
 import matplotlib
-import matplotlib.pyplot as Plot 
+import matplotlib.pyplot 
 import sys
 import re
 import numpy 
@@ -21,6 +21,7 @@ import pyparsing
 import mpa_core_io   as MPA_IO
 import mpa_core_plot as MPA_PLOT
 from mpa_core_parameter import AllParameters as MPA_CLASS_AllParameters
+from mpa_core_parameter import InputFileParameters as MPA_CLASS_InputFileParameters
 #================================================
 
 def main(file_input_information, file_plot_parameters, preview=False):
@@ -34,9 +35,13 @@ def main(file_input_information, file_plot_parameters, preview=False):
 	#-------------------------------------------------------------------
 	# [1] Read inputs
 	#-------------------------------------------------------------------
-	list_input_information = MPA_IO.read_input(file_input_information)
+	dict_default_input_parameters = MPA_CLASS_InputFileParameters.get_defaults()
+	dict_convention_input_parameters = MPA_CLASS_InputFileParameters.get_convention()
+	list_input_information = MPA_IO.read_input(file_input_information, 
+		dict_default_input_parameters,
+		dict_convention_input_parameters)
+	
 	object_default_parameters = MPA_CLASS_AllParameters()
-
 	dict_plot_parameters = MPA_IO.read_parameter(file_plot_parameters,
 						object_default_parameters.get_convention(),
 						object_default_parameters.get_defaults())
@@ -50,7 +55,7 @@ def main(file_input_information, file_plot_parameters, preview=False):
 	#-----------------------------------------------------------------
 	# [4] Save
 	#-----------------------------------------------------------------
-	save_figure(object_figure, 
+	MPA_IO.write_figure(object_figure, 
 		dict_plot_parameters["figure_output_file_name"],
 		figure_dpi = dict_plot_parameters["figure_dpi"],
 		figure_padding = dict_plot_parameters["figure_padding"],
@@ -60,7 +65,7 @@ def main(file_input_information, file_plot_parameters, preview=False):
 	#-----------------------------------------------------------------
 	# [5] Preview?
 	#-----------------------------------------------------------------
-	if preview: Plot.show()
+	if preview: matplotlib.pyplot.show()
 
 	return (object_figure, list_axis_objects)
 

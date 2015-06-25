@@ -41,9 +41,9 @@ function  update_input_information_list(list_target, file_input, legend,legend_a
   local list_local = {}
   table.insert(list_local, string.format("FILE: %s", file_input))
   table.insert(list_local, string.format("LEGEND: %s", legend))
-  table.insert(list_local, string.format("LEGEND COORDINATE: %s", legend_anchor_coordinate))
-  table.insert(list_local, string.format("LEGEND PANEL COORDINATE: %s", legend_panel_indices))
-  table.insert(list_local, string.format("PANEL COORDINATE: %s", panel_indices))
+  table.insert(list_local, string.format("LEGEND ANCHOR COORDINATE: %s", legend_anchor_coordinate))
+  table.insert(list_local, string.format("LEGEND PANEL INDICES: %s", legend_panel_indices))
+  table.insert(list_local, string.format("PANEL INDICES: %s", panel_indices))
   table.insert(list_local, string.format("PANEL LABEL: %s", panel_label))
   table.insert(list_local, string.format("PANEL LABEL COORDINATE: %s", panel_label_coordinate))
   table.insert(list_local, string.format("X MIN: %s", x_min))
@@ -106,8 +106,8 @@ if ID_test_case == 1 then
   		local table_parameters = {}
 
   		-- External dependencies
-  		table_parameters["USE LATEX"] = "YES"
-  		table_parameters["USE SCIPY"] = "YES"
+  		table_parameters["USE LATEX"] = "True"
+  		table_parameters["USE SCIPY"] = "True"
 
   		-- Figure
   		-- table_parameters["FIGURE TITLE"] = "DOJF2 RMSD"
@@ -115,8 +115,8 @@ if ID_test_case == 1 then
   		table_parameters["FIGURE TITLE FONT SIZE"] = 40
   		table_parameters["FIGURE NUMBER OF ROWS"] = 4
   		table_parameters["FIGURE NUMBER OF COLUMNS"] = 1
-  		table_parameters["FIGURE SHARE X"] = "YES"
-  		table_parameters["FIGURE SHARE Y"] = "YES"
+  		table_parameters["FIGURE SHARE X"] = "True"
+  		table_parameters["FIGURE SHARE Y"] = "True"
   		table_parameters["FIGURE LENGTH"] = 10
   		table_parameters["FIGURE HEIGHT"] = 20
 
@@ -132,18 +132,18 @@ if ID_test_case == 1 then
 
   		-- Ticks
   		table_parameters["X TICK LABEL NUMBER OF DECIMAL PLACES"] = 1
-  		table_parameters["HIDE OVERLAPPING Y TICK LABEL"] = "YES"
+  		table_parameters["HIDE OVERLAPPING Y TICK LABEL"] = "True"
 
   		-- Lines
   		table_parameters["LINE STYLE"] 	= '-'
   		table_parameters["LINE TRANSPARENCY"] = 0.3
   		table_parameters["COLOR ORDER"] = "(k, r, g, b, m)"
-  		table_parameters["SHOW BLOCK AVERAGED LINE"] = "YES"
+  		table_parameters["SHOW BLOCK AVERAGED LINE"] = "True"
   		table_parameters["LINE BLOCK AVERAGE BLOCK SIZE"] = 50
   		table_parameters["BLOCK AVERAGED LINE WIDTH"] = 2
 
   		-- Legend
-      table_parameters["LEGEND ON"] = "YES"
+      table_parameters["LEGEND ON"] = "True"
   		table_parameters["LEGEND FONT SIZE"] = 18
   		table_parameters["LEGEND BOX ANCHOR COORDINATE TUPLE"] = "(0.75 0.1)"
   		table_parameters["LEGEND FONT WEIGHT"] = 0
@@ -159,9 +159,11 @@ if ID_test_case == 1 then
   		--------------------------------------------------------------------
   		-- Step 3. plot
   		--------------------------------------------------------------------
-  		local in_script = "PlotLines.py"
-  		local cmd = table.concat({"python", in_script,  file_list_of_inputs, file_plot_parameters}, " ")
+  		local in_script = "mpa.py"
+      local show_preview = "yes-preview"
+  		local cmd = table.concat({"python", in_script,  file_list_of_inputs, file_plot_parameters, show_preview}, " ")
   		os.execute(cmd)
+      print(string.format("Output figure: %s", file_name_output))
 
 
 end  	

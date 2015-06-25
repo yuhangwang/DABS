@@ -3,6 +3,11 @@ MPA AXIS MODIFIER
 AUTHOR: YUHANG WANG
 DATE: 06-24-2015
 """
+#-------------------------------------------------
+import re
+#-------------------------------------------------
+import matplotlib.pyplot
+#-------------------------------------------------
 
 def add_axis_label(object_axis, axis_name, label_content, label_font_size, label_padding):
 	"""
@@ -94,7 +99,7 @@ def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
 	:param grid_line_opacity: line opacity (default: 1.0)
 	:param grid_z_order: grid order along z (any number; default: 0)
 	"""
-	Plot.grid(show_grid, which_ticks, which_axis, 
+	matplotlib.pyplot.grid(show_grid, which_ticks, which_axis, 
 		figure=object_figure,
 		linestyle=grid_line_style,
 		linewidth=grid_line_width,

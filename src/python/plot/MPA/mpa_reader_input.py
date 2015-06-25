@@ -4,15 +4,18 @@ AUTHOR: YUHANG WANG
 DATE: 06-24-2015
 """
 #--------------------------------------------------------
+import numpy
+#--------------------------------------------------------
 import mpa_toolkit as MPA_TOOL
 #--------------------------------------------------------
 
-def read_input_information(file_input_information, dict_default):
+def read_input_information(file_input_information, dict_default, dict_convention):
 	"""
 	Read a file containing a list of input file names
 	Then put the content of each data file into a list 
 	:param str file_input_information: file that contains a list of file names 
 	:param dict dict_default: a dict that has all the default values
+	:param dict dict_convention: a dictionary of input parameter keyword convention pairs
 	:return: a python list of numpy arrays
 	"""
 	print("======================================================")
@@ -31,9 +34,9 @@ def read_input_information(file_input_information, dict_default):
 				tmp_list[i] = tmp_list[i].strip()
 
 			# use default values
-			dict_default =  dict_default.get_defaults()
 			dict_current_line = dict()
 			for key,value in dict_default.items():
+				print(key,value)
 				dict_current_line[key] = value
 
 			for item in tmp_list:
@@ -42,14 +45,14 @@ def read_input_information(file_input_information, dict_default):
 				value = value.strip()
 				
 				# change to internal keyword
-				if key in dict_current_line.keys():
-					key = dict_current_line[key]
+				if key in dict_convention.keys():
+					key = dict_convention[key]
 				else:
 					msg = "ERROR HINT: input keyword not recognized: \"{0}\"".format(key)
 					raise UserWarning(msg)
 
 				# convert string to list/tuple
-				if is_convertible_to_list(value):
+				if MPA_TOOL.is_convertible_to_list(value):
 					value = MPA_TOOL.string_to_tuple_or_not(value)
 				else:
 					value = MPA_TOOL.string_to_bool_or_not(value)

@@ -3,7 +3,9 @@ MPA LEGEND MODIFIER
 AUTHOR: YUHANG WANG
 DATE: 06-24-2015
 """
-
+#----------------------------------------------------------
+import matplotlib.pyplot
+#----------------------------------------------------------
 
 def add_legend(list_line_objects, list_legend_labels,
 		use_round_legend_box,
@@ -63,7 +65,7 @@ def add_legend(list_line_objects, list_legend_labels,
 	:param float legend_face_color: legend face color (default: None, i.e., use matplotlib default)
 	:param float legend_edge_color: legend edge color (default: None, i.e., use matplotlib default)
 	"""
-	Plot.legend(list_line_objects, list_legend_labels,
+	matplotlib.pyplot.legend(list_line_objects, list_legend_labels,
 		fancybox=use_round_legend_box,
 		loc=legend_at_which_figure_corner, 
 		bbox_to_anchor=legend_anchor_coordinate,
@@ -80,11 +82,11 @@ def add_legend(list_line_objects, list_legend_labels,
 		borderaxespad=legend_padding_between_border_and_axes,
 		columnspacing=legend_column_spacing,
 		)
-	object_legend = Plot.gca().get_legend()
+	object_legend = matplotlib.pyplot.gca().get_legend()
 	object_legend_lines = object_legend.get_lines() # get all the lines.Line2D instance from the legend
 	object_legend_text  = object_legend.get_texts() # get all the text.Text instance from the legend
-	Plot.setp(object_legend_lines, linewidth=legend_line_width)
-	Plot.setp(object_legend_text, fontweight=legend_font_weight)
+	matplotlib.pyplot.setp(object_legend_lines, linewidth=legend_line_width)
+	matplotlib.pyplot.setp(object_legend_text, fontweight=legend_font_weight)
 
 	# Change legend face color
 	object_legend_frame = object_legend.get_frame() # get the patch.Rectangle instance surrounding the legend
@@ -105,7 +107,7 @@ def add_and_refine_legend(list_legend_information,dict_parameters):
 		The value is a sub-dictionary with keys: "object_axis", "list_line_objects", "list_legend_labels", "legend_anchor_coordinate"
 	:param dict dict_parameters: python dictionary of plotting parameters 
 	"""
-	object_old_axis_object = Plot.gca() # store the current axis object
+	object_old_axis_object = matplotlib.pyplot.gca() # store the current axis object
 	for dict_legend_parameters in list_legend_information:
 		object_axis = dict_legend_parameters["object_axis"]
 		list_line_objects = dict_legend_parameters["list_line_objects"]
@@ -113,7 +115,7 @@ def add_and_refine_legend(list_legend_information,dict_parameters):
 		legend_anchor_coordinate = dict_legend_parameters["legend_anchor_coordinate"]
 		# set new current axis
 		print(object_axis)
-		Plot.sca(object_axis)
+		matplotlib.pyplot.sca(object_axis)
 		add_legend(list_line_objects, list_legend_labels, 
 			use_round_legend_box = dict_parameters["use_round_legend_box"], 
 			legend_at_which_figure_corner = dict_parameters["legend_at_which_figure_corner"],
@@ -138,4 +140,4 @@ def add_and_refine_legend(list_legend_information,dict_parameters):
 			)
 	
 	# reset current axis back to the original
-	Plot.sca(object_old_axis_object)
+	matplotlib.pyplot.sca(object_old_axis_object)
