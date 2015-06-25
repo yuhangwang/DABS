@@ -26,7 +26,7 @@ function write_str_to_file (output_file_name, str)
 	io.close(OUT)
 end
 
-function  update_input_information_list(list_target, file_input, legend,legend_anchor_coordinate, legend_panel_indices, panel_indices, panel_label, panel_label_coordinate, dict_min_max)
+function  update_input_information_list(list_target, file_input, legend,legend_anchor_coordinate, legend_panel_indices, legend_number_of_columns, panel_indices, panel_label, panel_label_coordinate, dict_min_max)
   -- Update the input information list
   local x_min = "None"
   local x_max = "None"    
@@ -43,6 +43,7 @@ function  update_input_information_list(list_target, file_input, legend,legend_a
   table.insert(list_local, string.format("LEGEND: %s", legend))
   table.insert(list_local, string.format("LEGEND ANCHOR COORDINATE: %s", legend_anchor_coordinate))
   table.insert(list_local, string.format("LEGEND PANEL INDICES: %s", legend_panel_indices))
+  table.insert(list_local, string.format("LEGEND NUMBER OF COLUMNS: %s", legend_number_of_columns))
   table.insert(list_local, string.format("PANEL INDICES: %s", panel_indices))
   table.insert(list_local, string.format("PANEL LABEL: %s", panel_label))
   table.insert(list_local, string.format("PANEL LABEL COORDINATE: %s", panel_label_coordinate))
@@ -73,9 +74,13 @@ if ID_test_case == 1 then
       local list_input_file_parameters = {}
       local list_input_file_names = {"data1.dat", "data2.dat", "data3.dat", "data4.dat"}
       local list_legends = {"data1", "data2", "data3", 'data4'}
-      local list_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
+      local list_legend_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(2,0)"}
+      local list_legend_anchor_coordinates = {"(0.98, 0.95)", "(0.98, 0.95)", "(0.51, 0.95)", "---"}
+      local list_legend_number_of_columns = {1,1,2,"---"}
+      local list_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(2,0)"}
       local list_panel_labels = {'A', "B", "C", "D"}
-      local panel_label_coordinates = "(0.05, 0.8)"
+
+      local panel_label_coordinates = "(0.05, 0.9)"
       local list_panel_label_coordinates = {panel_label_coordinates, panel_label_coordinates,
                 panel_label_coordinates, panel_label_coordinates}
 
@@ -83,13 +88,13 @@ if ID_test_case == 1 then
       for i,file_name in pairs(list_input_file_names)  do
         local file_input = table.concat({dir_data_root, file_name}, '/')
         local legend = list_legends[i]
-        local legend_anchor_coordinate = "(0.02, 0.9)"
-        -- local legend_panel_indices = list_panel_indices[i]
-        local legend_panel_indices = "(3,0)"
+        local legend_anchor_coordinate = list_legend_anchor_coordinates[i]
+        local legend_panel_indices = list_legend_panel_indices[i]
+        local legend_number_of_columns = list_legend_number_of_columns[i]
         local panel_indices = list_panel_indices[i]
         local panel_label = list_panel_labels[i]
         local panel_label_coordinate = list_panel_label_coordinates[i]
-        update_input_information_list(list_input_file_parameters, file_input, legend, legend_anchor_coordinate, legend_panel_indices, panel_indices, panel_label, panel_label_coordinate, dict_min_max)
+        update_input_information_list(list_input_file_parameters, file_input, legend, legend_anchor_coordinate, legend_panel_indices, legend_number_of_columns, panel_indices, panel_label, panel_label_coordinate, dict_min_max)
       end
       
       local text_body = table.concat(list_input_file_parameters, '\n')
@@ -113,7 +118,7 @@ if ID_test_case == 1 then
   		-- table_parameters["FIGURE TITLE"] = "DOJF2 RMSD"
       table_parameters["FIGURE OUTPUT FILE NAME"] = file_name_output
   		table_parameters["FIGURE TITLE FONT SIZE"] = 40
-  		table_parameters["FIGURE NUMBER OF ROWS"] = 4
+  		table_parameters["FIGURE NUMBER OF ROWS"] = 3
   		table_parameters["FIGURE NUMBER OF COLUMNS"] = 1
   		table_parameters["FIGURE SHARE X"] = "True"
   		table_parameters["FIGURE SHARE Y"] = "True"
@@ -145,7 +150,6 @@ if ID_test_case == 1 then
   		-- Legend
       table_parameters["LEGEND ON"] = "True"
   		table_parameters["LEGEND FONT SIZE"] = 18
-  		table_parameters["LEGEND BOX ANCHOR COORDINATE TUPLE"] = "(0.75 0.1)"
   		table_parameters["LEGEND FONT WEIGHT"] = 0
 
   		for key, value in pairs(table_parameters) do

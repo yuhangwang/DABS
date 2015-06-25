@@ -10,7 +10,7 @@ class LegendParameters:
 	"""
 	_convention_ = {
 		"LEGEND ON":"legend_on",
-		"LEGEND AT WHICH FIGURE CORNER":"legend_at_which_figure_corner",
+		"LEGEND ANCHOR CORNER":"legend_anchor_corner",
 		"LEGEND FRAME OPACITY":"legend_frame_opacity",
 		"LEGEND FONT SIZE":"legend_font_size",
 		"LEGEND FONT WEIGHT":"legend_font_weight",
@@ -29,13 +29,12 @@ class LegendParameters:
 		"LEGEND FACE OPACITY":"legend_face_opacity",
 		"ROUND LEGEND BOX":"use_round_legend_box",
 		"SHOW LEGEND FRAME":"show_legend_frame",
-		"NUMBER OF LEGEND COLUMNS":"number_of_legend_columns",
 		"USE GLOBAL LEGEND":"use_global_legend",
 		}
 
 	_defaults_ = {
 		"legend_on":False,
-		"legend_at_which_figure_corner":"lower left",
+		"legend_anchor_corner":"upper right",
 		"legend_frame_opacity":0.5,
 		"legend_font_size":15,
 		"legend_font_weight":800,
@@ -54,7 +53,7 @@ class LegendParameters:
 		"legend_face_opacity":1.0,
 		"use_round_legend_box":True,
 		"show_legend_frame":True,
-		"number_of_legend_columns":1,
+
 		"use_global_legend":True,
 		}
 

@@ -1,8 +1,7 @@
 """
 MPA TOOKIT
-Author: Yuhang Wang
-Date: 06/18/2015
-Usage: python PlotLines.py FILE_LIST-OF-INPUT-DATA-FILE-NAMES FILE_PLOT-PARAMETERS
+AUTHOR: YUHANG WANG
+DATE:  06/18/2015
 """
 #================================================
 # Use Python 3 compatibility
@@ -58,7 +57,7 @@ def string_to_number_or_not(input):
 
 	if re.match(r"^\d+$", input):
 		return int(float(input))
-	elif re.match(r"^\d*\.\d+$", input):
+	elif re.match(r"^\d*\.\d*$", input):
 		return float(input)
 	else:
 		return input

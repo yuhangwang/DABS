@@ -1,0 +1,164 @@
+------------------------------------------------
+--------    INPUT FILE KEYWORDS -------
+------------------------------------------------
+file: None
+legend: None
+legend_anchor_coordinate: (0.9, 0.9)
+legend_panel_indices: (0, 0)
+panel_indices: (0, 0)
+panel_label: None
+panel_label_coordinate: None
+x_max: None
+x_min: None
+y_max: None
+y_min: None
+
+------------------------------------------------
+--------    EXERNAL DEPENDENCY PARAMETERS -------
+------------------------------------------------
+use_latex: False
+use_scipy: False
+
+------------------------------------------------
+--------    FIGURE PARAMETERS -------
+------------------------------------------------
+figure_dpi: 150
+figure_height: 8
+figure_length: 12
+figure_number_of_columns: 1
+figure_number_of_rows: 1
+figure_output_file_name: output.png
+figure_padding: 0.2
+figure_share_x: none
+figure_share_y: none
+figure_subplots_horizontal_spacing: None
+figure_subplots_vertical_spacing: None
+figure_title: None
+figure_title_font_size: 40
+figure_transparent: False
+figure_x_limits_tight: True
+figure_x_limits_user_defined: False
+figure_y_limits_tight: False
+figure_y_limits_user_defined: False
+
+------------------------------------------------
+--------    PANEL PARAMETERS -------
+------------------------------------------------
+panel_box_edge_color: w
+panel_box_face_color: w
+panel_box_line_style: solid
+panel_box_line_width: 1
+panel_box_opacity: 0.8
+panel_box_padding: 0.2
+panel_box_shape: square
+panel_label_font_size: 25
+panel_label_horizontal_alignment: left
+panel_label_vertical_alignment: center
+
+------------------------------------------------
+--------    AXIS PARAMETERS -------
+------------------------------------------------
+x_label: X
+x_label_font_size: 30
+x_label_padding: None
+y_label: Y
+y_label_font_size: 30
+y_label_padding: None
+
+------------------------------------------------
+--------    LINE PARAMETERS -------
+------------------------------------------------
+block_averaged_line_width: 2
+line_block_average_block_size: 1
+line_opacity: 1.0
+line_style: -
+show_block_averaged_line: False
+
+------------------------------------------------
+--------    LEGEND PARAMETERS -------
+------------------------------------------------
+legend_at_which_figure_corner: lower left
+legend_border_padding: 0.5
+legend_column_spacing: 0.8
+legend_edge_color: k
+legend_face_color: w
+legend_face_opacity: 1.0
+legend_font_size: 15
+legend_font_weight: 800
+legend_frame_opacity: 0.5
+legend_handle_length: 2
+legend_line_width: 8
+legend_marker_scale: 1
+legend_number_of_marker_points: None
+legend_number_of_scatter_marker_points: None
+legend_on: False
+legend_padding_between_border_and_axes: 0
+legend_padding_between_handle_and_text: 0.5
+legend_vertical_spacing: 0.5
+number_of_legend_columns: 1
+use_round_legend_box: True
+show_legend_frame: True
+use_global_legend: True
+
+------------------------------------------------
+--------    GRID PARAMETERS -------
+------------------------------------------------
+grid_axis: both
+grid_line_color: k
+grid_line_opacity: 0.2
+grid_line_style: --
+grid_line_width: 1
+grid_ticks: major
+grid_z_order: -1
+show_grid: True
+
+------------------------------------------------
+--------    TICK PARAMETERS -------
+------------------------------------------------
+x_tick_label_hide_first: False
+y_tick_label_hide_first: False
+x_tick_label_hide_last: False
+y_tick_label_hide_last: False
+x_tick_label_hide_overlap: False
+y_tick_label_hide_overlap: False
+x_tick_and_label_z_order: 0
+x_tick_color: k
+x_tick_in_out_or_inout: inout
+x_tick_label_color: k
+x_tick_label_font_size: 20
+x_tick_label_font_weight: 0
+x_tick_label_number_of_decimal_places: None
+x_tick_label_padding: 10
+x_tick_label_show_bottom: True
+x_tick_label_show_top: False
+x_tick_length: 5
+x_tick_major_minor_or_both: major
+x_tick_max_number: 10
+x_tick_reset_old_parameter: False
+x_tick_show_bottom: True
+x_tick_show_top: True
+x_tick_width: 2
+y_tick_and_label_z_order: 0
+y_tick_color: k
+y_tick_in_out_or_inout: inout
+y_tick_label_color: k
+y_tick_label_font_size: 20
+y_tick_label_font_weight: 0
+y_tick_label_number_of_decimal_places: None
+y_tick_label_padding: 10
+y_tick_label_show_left: True
+y_tick_label_show_right: False
+y_tick_length: 5
+y_tick_major_minor_or_both: major
+y_tick_max_number: 10
+y_tick_reset_old_parameter: False
+y_tick_show_left: True
+y_tick_show_right: True
+y_tick_width: 2
+
+------------------------------------------------
+--------    COLOR PARAMETERS -------
+------------------------------------------------
+color_order: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
+use_color_map_cool: False
+
