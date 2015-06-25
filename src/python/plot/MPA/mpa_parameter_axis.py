@@ -22,8 +22,8 @@ class AxisParameters:
 		"y_label":'Y',
 		"x_label_padding":None,
 		"y_label_padding":None,
-		"x_label_font_size":30,
-		"y_label_font_size":30,
+		"x_label_font_size":40,
+		"y_label_font_size":40,
 		}
 
 	@staticmethod

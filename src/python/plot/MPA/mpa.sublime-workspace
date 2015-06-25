@@ -520,10 +520,21 @@
 	"buffers":
 	[
 		{
-			"file": "/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
+			"file": "/Scr/scr-test-steven/Manuscripts/BetP1/RD_substrate.tex",
 			"settings":
 			{
-				"buffer_size": 7529,
+				"buffer_size": 5411,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "/Scr/scr-test-steven/Manuscripts/BetP1/fig_distance_choline-D153.tex",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		}
@@ -569,15 +580,18 @@
 	],
 	"file_history":
 	[
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/Track-distance-choline-D153.lua",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_input.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_line.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_line.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/INTERNAL_PARAMETERS.txt",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/mpa.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/mpa.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_axis.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_input.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_plot_parameters.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/Track-distance-choline-D153.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/mpa.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_property_single_axis.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_line.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_PanelDB.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_panel_label.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_property_all_axes.py",
@@ -587,7 +601,6 @@
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_legend.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_toolkit.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_axis.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_input.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/PUBLIC_PARAMETERS.txt",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_create.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_python3_compatibility.py",
@@ -694,13 +707,11 @@
 		"/home/steven/modulefiles/cmod/tools/cabal/1.22.5.0",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/pbc/wrap_about.tcl",
 		"/Scr/scr-test-steven/Manuscripts/BetP1/Figures.tex",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/PBCWrap/Track.lua",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/measure/get_com_distance.tcl",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/get_com_distance.tcl"
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/PBCWrap/Track.lua"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -714,6 +725,17 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"PLACES",
+			"DECIMAL",
+			"X TICK",
+			"PLACES",
+			"LINE BLOCK",
+			"update_input_information_list",
+			"legend_coordiante",
+			"legend_panel_coordiinate",
+			"make_plot",
+			"WHICH CO",
+			"LEGEND AT",
 			"TRANSPARENCY",
 			"print",
 			"show_le",
@@ -830,18 +852,7 @@
 			"refine_fi",
 			"refine",
 			"which_panel",
-			"legend_panel_id",
-			"LEGEND PANEL ID",
-			"list_line_ob",
-			"=======",
-			"======= ",
-			"read_in",
-			"output_line",
-			"list_plot_inputs",
-			"list_target",
-			"update_legend_list",
-			"list_target",
-			"table_plot_inputs"
+			"legend_panel_id"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -882,32 +893,60 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
+					"file": "/Scr/scr-test-steven/Manuscripts/BetP1/RD_substrate.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7529,
+						"buffer_size": 5411,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7283,
-								7283
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2964.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Scr/scr-test-steven/Manuscripts/BetP1/fig_distance_choline-D153.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -993,7 +1032,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 273.0,
+	"side_bar_width": 220.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -147,7 +147,6 @@ if ID_test_case == 1 then
   		table_parameters["LINE OPACITY"] = 0.3
   		table_parameters["COLOR ORDER"] = "(k, r, g, b, m)"
   		table_parameters["SHOW BLOCK AVERAGED LINE"] = "True"
-  		table_parameters["LINE BLOCK AVERAGE BLOCK SIZE"] = 50
   		table_parameters["BLOCK AVERAGED LINE WIDTH"] = 2
 
   		-- Legend
