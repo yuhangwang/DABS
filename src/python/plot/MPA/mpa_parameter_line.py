@@ -13,7 +13,6 @@ class LineParameters:
 		"LINE STYLE":"line_style",
 		"LINE OPACITY":"line_opacity",
 		"SHOW BLOCK AVERAGED LINE":"show_block_averaged_line",
-		"LINE BLOCK AVERAGE BLOCK SIZE":"line_block_average_block_size",
 		"BLOCK AVERAGED LINE WIDTH":"block_averaged_line_width",
 		}
 
@@ -21,8 +20,7 @@ class LineParameters:
 		"line_style":'-',
 		"line_opacity":1.0,
 		"show_block_averaged_line":False,
-		"line_block_average_block_size":1,
-		"block_averaged_line_width":2,
+		"block_averaged_line_width":1,
 		}
 
 	@staticmethod

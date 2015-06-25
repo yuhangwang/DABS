@@ -105,7 +105,7 @@ def plot(object_figure,
 		if dict_plot_parameters["show_block_averaged_line"]:
 			from scipy import ndimage
 			Y_block_averaged = ndimage.filters.uniform_filter(Y, 
-				size=dict_plot_parameters["line_block_average_block_size"], 
+				size=dict_user_input["line_block_average_block_size"], 
 				mode="nearest")
 			object_line, = object_axis.plot(X,Y_block_averaged,
 				linewidth=dict_plot_parameters["block_averaged_line_width"],

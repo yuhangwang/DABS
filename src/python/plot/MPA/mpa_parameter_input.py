@@ -22,6 +22,7 @@ class InputFileParameters:
 		"X MAX":"x_max",
 		"Y MIN":"y_min",
 		"Y MAX":"y_max",
+		"LINE BLOCK AVERAGE BLOCK SIZE":"line_block_average_block_size",
 		}
 
 	_defaults_ = {
@@ -37,6 +38,7 @@ class InputFileParameters:
 		"x_max":None,
 		"y_min":None,
 		"y_max":None,
+		"line_block_average_block_size":1,
 		}
 
 	@staticmethod

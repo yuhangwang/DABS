@@ -4,8 +4,108 @@
 		"selected_items":
 		[
 			[
+				"tu",
+				"tuple_panel_indices"
+			],
+			[
+				"tup",
+				"tuple_legend_panel_indices"
+			],
+			[
+				"set_",
+				"set_item"
+			],
+			[
+				"objec",
+				"object_axis"
+			],
+			[
+				"legend",
+				"legend_anchor_coordinate"
+			],
+			[
 				"MPA",
-				"MPA_TOOL"
+				"MPA_CLASS_PanelDB"
+			],
+			[
+				"item",
+				"item_key"
+			],
+			[
+				"ite",
+				"item_key"
+			],
+			[
+				"tuple",
+				"tuple_panel_indices"
+			],
+			[
+				"dict_p",
+				"dict_panel_information"
+			],
+			[
+				"MpaProx",
+				"MpaProxyModifierPanelLabel"
+			],
+			[
+				"MpaPro",
+				"MpaProxyModifierLegend"
+			],
+			[
+				"dict_",
+				"dict_panel_information"
+			],
+			[
+				"leg",
+				"legend_panel_indices"
+			],
+			[
+				"dict",
+				"dict_legend_parameters"
+			],
+			[
+				"legend_",
+				"legend_number_of_columns"
+			],
+			[
+				"legen",
+				"legend_anchor_coordinate"
+			],
+			[
+				"number",
+				"legend_number_of_columns"
+			],
+			[
+				"list_le",
+				"list_legend_anchor_coordinates"
+			],
+			[
+				"list_lge",
+				"list_legend_panel_indices"
+			],
+			[
+				"ar",
+				"array2D_global_y_max"
+			],
+			[
+				"arra",
+				"array2D_global_y_min"
+			],
+			[
+				"arr",
+				"array2D_global_x_max"
+			],
+			[
+				"MpaPlot",
+				"MpaPlotLine"
+			],
+			[
+				"array",
+				"array2D_global_y_max"
+			],
+			[
+				"MpaPlotP",
+				"MpaPlotProertyAllAxes"
 			],
 			[
 				"read_",
@@ -40,10 +140,6 @@
 				"array2D_global_x_min"
 			],
 			[
-				"dict_p",
-				"dict_parameters"
-			],
-			[
 				"id_",
 				"id_row_panel"
 			],
@@ -56,20 +152,12 @@
 				"line_text"
 			],
 			[
-				"legend",
-				"legend_coordiante"
-			],
-			[
 				"dict_legen",
 				"dict_legend_information"
 			],
 			[
 				"list_l",
 				"list_legend_information"
-			],
-			[
-				"list_le",
-				"list_legend_labels"
 			],
 			[
 				"list_lege",
@@ -368,10 +456,6 @@
 				"figure_number_of_rows"
 			],
 			[
-				"objec",
-				"object_figure"
-			],
-			[
 				"list_legend",
 				"list_legend_labels"
 			],
@@ -430,100 +514,16 @@
 			[
 				"tick_label",
 				"tick_label_number_of_decimal_places"
-			],
-			[
-				"tick_label_font",
-				"tick_label_font_weight"
-			],
-			[
-				"column",
-				"columnspacing"
-			],
-			[
-				"legend_padding",
-				"legend_padding_between_border_and_axes"
-			],
-			[
-				"legend_handl",
-				"legend_padding_between_handle_and_text"
-			],
-			[
-				"show",
-				"show_legend_frame"
-			],
-			[
-				"legend_box",
-				"lengend_box_anchor_coordiante_tuple"
-			],
-			[
-				"Tick",
-				"TickParameters"
-			],
-			[
-				"s",
-				"staticmethod"
-			],
-			[
-				"rest",
-				"reset_old_specifications"
-			],
-			[
-				"show_ri",
-				"show_right_tick_labels"
-			],
-			[
-				"show_left_tick",
-				"show_left_tick_labels"
-			],
-			[
-				"show_bo",
-				"show_bottom_tick_labels"
-			],
-			[
-				"show_top_",
-				"show_top_tick_labels"
-			],
-			[
-				"tick_and_label",
-				"tick_and_label_z_order"
-			],
-			[
-				"spec",
-				"specifications"
-			],
-			[
-				"title",
-				"title_font_size"
-			],
-			[
-				"dict_",
-				"dict_parameters"
-			],
-			[
-				"grid_line",
-				"grid_line_width"
-			],
-			[
-				"dic",
-				"dict_parameters"
-			],
-			[
-				"Figure",
-				"FigureParameters"
-			],
-			[
-				"Axis",
-				"AxisParameters"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "mpa_parameter_grid.py",
+			"file": "/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
 			"settings":
 			{
-				"buffer_size": 984,
+				"buffer_size": 7529,
 				"line_ending": "Unix"
 			}
 		}
@@ -565,12 +565,35 @@
 	},
 	"expanded_folders":
 	[
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA"
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA"
 	],
 	"file_history":
 	[
-		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_core_plot.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/mpa.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_input.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_plot_parameters.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/Track-distance-choline-D153.lua",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/mpa.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_property_single_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_line.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_PanelDB.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_panel_label.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_property_all_axes.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_legend.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_legend.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_plot.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_legend.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_toolkit.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_input.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/PUBLIC_PARAMETERS.txt",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_create.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_python3_compatibility.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_proxy_tick.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_single_axis_properties.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_core_plot.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_core.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_plot_refine_ticks.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_core_io.py",
@@ -582,7 +605,6 @@
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_tick.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_grid.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_figure.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/PlotLinesParameters.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_line.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_axis.py",
@@ -674,33 +696,11 @@
 		"/Scr/scr-test-steven/Manuscripts/BetP1/Figures.tex",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/PBCWrap/Track.lua",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/measure/get_com_distance.tcl",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/get_com_distance.tcl",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/pbc/wrap_trajectory.tcl",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/dcds/protein_substrate/reName.sh",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/README.md",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/tcl/get_com_distance.tcl",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/tcl/get_distance.tcl",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/tcl/get_rmsd.tcl",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/choline-D153/Track-distance-choline-D153.lua",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Introduction.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Result-Discussion.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Abstract.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Main.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Makefile",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Ma",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/betp_result_substrate_release.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/betp_figs.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/betp_results.tex",
-		"/Scr/scr-test-steven/Gitcode/HaskellPlatform/README.md",
-		"/home/steven/modulefiles/cmod/compilers/ghc/7.8.3",
-		"/Scr/scr-test-steven/Programs/GHC/ghc-7.8.3/INSTALL",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/OUTLINE.md",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/betp_intro.tex",
-		"/Scr/scr-test-steven/Programs/Cabal/cabal-install-1.22.5.0/README.md"
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/get_com_distance.tcl"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -714,6 +714,59 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"TRANSPARENCY",
+			"print",
+			"show_le",
+			"file_input",
+			"line_col",
+			"legend_panel_indices",
+			"data",
+			"user_input",
+			"input_item",
+			"item",
+			"panel_indices",
+			"legend_label",
+			"panel_label",
+			"dict_panel_information",
+			"list_panel_information",
+			"dict_panel_i",
+			"dict_current_panel",
+			"dict_legend_parameters",
+			"dict_legend_information",
+			"list_legend_information",
+			"dict_legend_information",
+			"list_legend_information",
+			"dict_panel_information",
+			"dict_legend_parameters",
+			"dict_legend_information",
+			"dict_parameters",
+			"MpaProxyModifierAxis",
+			"MpaPlotProxyTick",
+			"add_common_labels",
+			"legend",
+			"number_of_legend_columns",
+			"add_and_refine_legend",
+			"number_of_legend_columns",
+			"list_number_of_legend_columsn",
+			"legend_at_which_figure_corner",
+			"AT WHICH",
+			"legend_at_which_figure_corner",
+			"list_legend_panel_indices",
+			"MpaTool",
+			"list_input_information",
+			"last_which_panel",
+			"list_line_objects",
+			"list_line",
+			"list_legend_labels",
+			"list_legend",
+			"list_legend_labels",
+			"list_line_objects",
+			"dict_legend_information",
+			"MpaPlotTick",
+			"MpaPlotTicks",
+			"MpaModifierAxis",
+			"MpaModifierFigure",
+			"_refine",
 			"plot_refine_ticks",
 			"refine_figure",
 			"list_plot_parameters",
@@ -788,60 +841,7 @@
 			"list_target",
 			"update_legend_list",
 			"list_target",
-			"table_plot_inputs",
-			"panel_tag_coordinate",
-			"list_input_information",
-			"panel_tag",
-			"which_panel",
-			"list_input_file_information",
-			"add_and_ref",
-			"dict_legend_information",
-			"list_legend_information",
-			"add_and_refine",
-			"add_and",
-			"add_and_",
-			"object_plot",
-			"legend_panel_id",
-			"list_legend_information",
-			"legend_coordinate",
-			"input_data",
-			"input_file_data",
-			"read_input_in",
-			"dict_panel_legend",
-			"object_figure",
-			"sca",
-			"list_legend_coordinates",
-			"refine_figure",
-			"list_line_objects",
-			"legend_box_anchor_coordinate_tuple",
-			"LEGEND COORDINATE",
-			"LEGEND BOX ANCHOR COORDINATE TUPLE",
-			"refine_fi",
-			"add_legend",
-			"legend",
-			"use_global_le",
-			"add_legend",
-			"InputFileKeywords",
-			"read_input",
-			"input_file_name",
-			"input_file_legend",
-			"input",
-			"input_file_legend",
-			"input_file",
-			"FILE",
-			"INPUT",
-			"FILE",
-			"INPUT FILE",
-			"INPUT ",
-			"FILE",
-			"INPUT FILE",
-			"INPUT ",
-			"panel_label_coordinates",
-			"read_input_information",
-			"read_input",
-			"file_plotParameters",
-			"file_listInputDataFiles",
-			"read_data"
+			"table_plot_inputs"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -849,6 +849,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"OPACITY",
 			"legend_panel_indices",
 			"legend_at_which_figure_corner",
 			"LEGEND ANCHOR COORDINATE",
@@ -886,28 +887,27 @@
 			[
 				{
 					"buffer": 0,
-					"file": "mpa_parameter_grid.py",
-					"semi_transient": true,
+					"file": "/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 984,
+						"buffer_size": 7529,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								7283,
+								7283
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Lua/Lua.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2964.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -955,7 +955,7 @@
 	"project": "mpa.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -993,7 +993,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 261.0,
+	"side_bar_width": 273.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

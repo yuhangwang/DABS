@@ -36,7 +36,6 @@ def read_input_information(file_input_information, dict_default, dict_convention
 			# use default values
 			dict_current_line = dict()
 			for key,value in dict_default.items():
-				print(key,value)
 				dict_current_line[key] = value
 
 			for item in tmp_list:
@@ -62,7 +61,6 @@ def read_input_information(file_input_information, dict_default, dict_convention
 				value = MPA_TOOL.string_to_None_or_not(value)
 
 				dict_current_line[key] = value
-				print(key,': ', value)
 
 			# load input data
 			dict_current_line["input_data"] = numpy.loadtxt(dict_current_line["file"])

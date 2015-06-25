@@ -235,7 +235,6 @@ def set_axis_limits(object_axis, which_axis, new_min, new_max):
 	if which_axis == 'x':
 		object_axis.set_xlim([new_min,new_max])
 	elif which_axis == 'y':
-		print("new y limits:", new_min, new_max)
 		object_axis.set_ylim([new_min,new_max])
 	else:
 		return

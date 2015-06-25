@@ -26,7 +26,7 @@ function write_str_to_file (output_file_name, str)
 	io.close(OUT)
 end
 
-function  update_input_information_list(list_target, file_input, legend,legend_anchor_coordinate, legend_panel_indices, legend_number_of_columns, panel_indices, panel_label, panel_label_coordinate, dict_min_max)
+function  update_input_information_list(list_target, file_input, legend,legend_anchor_coordinate, legend_panel_indices, legend_number_of_columns, panel_indices, panel_label, panel_label_coordinate, block_average_block_size, dict_min_max)
   -- Update the input information list
   local x_min = "None"
   local x_max = "None"    
@@ -51,6 +51,7 @@ function  update_input_information_list(list_target, file_input, legend,legend_a
   table.insert(list_local, string.format("X MAX: %s", x_max))
   table.insert(list_local, string.format("Y MIN: %s", y_min))
   table.insert(list_local, string.format("Y MAX: %s", y_max))
+  table.insert(list_local, string.format("LINE BLOCK AVERAGE BLOCK SIZE: %s", block_average_block_size))
   table.insert(list_target, table.concat(list_local, '; '))
 end
 
@@ -79,6 +80,7 @@ if ID_test_case == 1 then
       local list_legend_number_of_columns = {1,1,2,"---"}
       local list_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(2,0)"}
       local list_panel_labels = {'A', "B", "C", "D"}
+      local list_block_average_block_size = {10,2,100,50}
 
       local panel_label_coordinates = "(0.05, 0.9)"
       local list_panel_label_coordinates = {panel_label_coordinates, panel_label_coordinates,
@@ -94,7 +96,8 @@ if ID_test_case == 1 then
         local panel_indices = list_panel_indices[i]
         local panel_label = list_panel_labels[i]
         local panel_label_coordinate = list_panel_label_coordinates[i]
-        update_input_information_list(list_input_file_parameters, file_input, legend, legend_anchor_coordinate, legend_panel_indices, legend_number_of_columns, panel_indices, panel_label, panel_label_coordinate, dict_min_max)
+        local block_average_block_size = list_block_average_block_size[i]
+        update_input_information_list(list_input_file_parameters, file_input, legend, legend_anchor_coordinate, legend_panel_indices, legend_number_of_columns, panel_indices, panel_label, panel_label_coordinate, block_average_block_size, dict_min_max)
       end
       
       local text_body = table.concat(list_input_file_parameters, '\n')
@@ -141,7 +144,7 @@ if ID_test_case == 1 then
 
   		-- Lines
   		table_parameters["LINE STYLE"] 	= '-'
-  		table_parameters["LINE TRANSPARENCY"] = 0.3
+  		table_parameters["LINE OPACITY"] = 0.3
   		table_parameters["COLOR ORDER"] = "(k, r, g, b, m)"
   		table_parameters["SHOW BLOCK AVERAGED LINE"] = "True"
   		table_parameters["LINE BLOCK AVERAGE BLOCK SIZE"] = 50
@@ -164,7 +167,7 @@ if ID_test_case == 1 then
   		-- Step 3. plot
   		--------------------------------------------------------------------
   		local in_script = "mpa.py"
-      local show_preview = "yes-preview"
+        local show_preview = "yes-preview"
   		local cmd = table.concat({"python", in_script,  file_list_of_inputs, file_plot_parameters, show_preview}, " ")
   		os.execute(cmd)
       print(string.format("Output figure: %s", file_name_output))

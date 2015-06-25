@@ -7,9 +7,7 @@ import sys
 import os
 folder_mpa_source = "MPA"
 path_mpa = os.path.join(".", folder_mpa_source)
-print(path_mpa)
 sys.path.insert(0, path_mpa )
-print(sys.path)
 
 import mpa_core as MPA 
 

@@ -56,7 +56,5 @@ def read_plot_parameters(file_plot_parameters, dict_convention, dict_default_par
 			if type(value) is str and MPA_TOOL.is_convertible_to_list(value):
 				value = MPA_TOOL.string_to_tuple_or_not(value)
 
-			print("{0}\t==>\t{1}".format(new_key, value))
 			dict_plot_parameters[new_key] = value
-	print("\n")
 	return dict_plot_parameters
