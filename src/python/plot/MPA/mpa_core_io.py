@@ -9,13 +9,17 @@ DATE: 06-24-2015
 import mpa_reader_file_parameters   as MpaFileParameterReader
 import mpa_reader_global_parameters as MpaGlobalParameterReader
 import mpa_reader_local_parameters  as MpaLocalParameterReader
-impore mpa_writer_figure 			as MpaFigureWriter
+import mpa_writer_figure 			as MpaFigureWriter
+from mpa_syntax_marker import InputSectionMarkers as MpaInputSectionMarker
+from mpa_syntax_marker import CommentMarkers      as MpaCommentMarkers
+from mpa_data_type_ConfigRecord import ConfigRecordParser as MPA_CLASS_ConfigRecordParser
 #----------------------------------------------------
 
 
 #----------------------------------------------------
 #                     INPUT
 #----------------------------------------------------
+
 def read_config(file_configuration):
 	"""
 	Read a file containing a list of plot parameters 
@@ -28,38 +32,64 @@ def read_config(file_configuration):
 	print("  File: {0}".format(file_configuration))
 	print("======================================================")
 	
-	list_lines_file_parameters 	 = []
-	list_lines_global_parameters = []
-	list_lines_local_parameters  = []
+	object_file_parameter_parser = MPA_CLASS_ConfigRecordParser()
+	object_global_parameter_parser = MPA_CLASS_ConfigRecordParser()
+	object_local_parameter_parser = MPA_CLASS_ConfigRecordParser()
+
+	dict_section_markers = MpaInputSectionMarker.get_dict()
+	dict_comment_markers = MpaCommentMarkers.get_dict()
+	
+	symbol_comment = dict_comment_markers["INLINE COMMENT"]
+	regex_pattern_comment = re.compile(r"^{0}.*".format(symbol_comment))
+	
     # Update parameters based on user's specifications
 	with open(file_configuration, 'r') as IN:
+		which_section = None
+		local_list_file_parameters = []
+		local_list_global_parameters = []
+		local_list_local_parameters = []
 		for line in IN:
 			line = line.strip()
-			if re.match(r"^@.+", line): 
+			if regex_pattern_comment.match(line): continue # skip comments
+			if line == '': continue # skip empty lines
+
+			if line == MpaInputSectionMarker["FILE PARAMETER BEGIN"]:
+				which_section = "FILE"
+			elif line == MpaInputSectionMarker["GLOBAL PARAMETER BEGIN"]:
+				which_section = "GLOBAL"
+			elif line == MpaInputSectionMarker["LOCAL PARAMETER BEGIN"]
+				which_section = "LOCAL"
+
+			if which_section == "FILE":
 				# file parameters
-				line = line[1:].strip() 
-				list_lines_file_parameters.append(line)
+				object_file_parameter_parser.read(line)
 
-			elif re.match(r"^@@.+", line): 
+			elif which_section == "GLOBAL": 
 				# global parameters
-				line = line[2:].strip()
-				list_lines_global_parameters.append(line)
+				object_global_parameter_parser.read(line)
 
-			elif re.match(r"^@@@.+", line):
+			elif which_section == "LOCAL":
 				# local parameters
-				line = line[3:].strip()
-				list_lines_local_parameters.append(line)
+				object_global_parameter_parser.read(line)
 
 			else: continue # skip comments
 
+	# Purge reading buffer and add the last information read into the record 
+	object_file_parameter_parser.purge_buffer()
+	object_global_parameter_parser.purge_buffer()
+	object_local_parameter_parser.purge_buffer()
+
 	# Read file parameters 
-	dict_file_parameters = MpaFigureWriter.read(list_lines_file_parameters)
+	tuple_file_parameters = object_file_parameter_parser.get_parameters()
+	dict_file_parameters = MpaFigureWriter.read(tuple_file_parameters)
 
 	# Read global parameters
-	dict_global_plot_parameters = MpaGlobalParameterReader.read(list_lines_global_parameters)
+	tuple_global_parameters = object_global_parameter_parser.get_parameters()
+	dict_global_plot_parameters = MpaGlobalParameterReader.read(tuple_global_parameters)
 
 	# Read local parameters 
-	dict_local_plot_parameters = MpaLocalParameterReader.read(list_lines_local_parameters)
+	tuple_local_parameters = object_local_parameter_parser.get_parameters()
+	dict_local_plot_parameters = MpaLocalParameterReader.read(tuple_local_parameters)
 
 	return (dict_file_parameters, dict_global_plot_parameters, dict_local_plot_parameters)
 

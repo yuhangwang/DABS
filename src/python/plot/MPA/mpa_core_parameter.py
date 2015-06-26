@@ -11,7 +11,7 @@ from mpa_parameter_color import ColorParameters
 from mpa_parameter_dependency import ExternalDependencyParameters
 from mpa_parameter_figure import FigureParameters
 from mpa_parameter_grid   import GridParameters
-from mpa_parameter_input  import InputFileParameters 
+from mpa_parameter_file   import FileParameters 
 from mpa_parameter_legend import LegendParameters
 from mpa_parameter_line   import LineParameters
 from mpa_parameter_panel  import PanelParameters
@@ -128,7 +128,7 @@ class AllParameters:
 
 class ParameterManager:
 	_list_of_parameter_classes_ =  [
-			InputFileParameters,
+			FileParameters,
 			ExternalDependencyParameters,
 			FigureParameters,
 			PanelParameters,

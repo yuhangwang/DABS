@@ -1,72 +1,50 @@
 """
-MPA INPUT INFORMATION READER
+MPA FILE PARAMETER READER
 AUTHOR: YUHANG WANG 
-DATE: 06-24-2015
+DATE: 06-25-2015
 """
 #--------------------------------------------------------
-import numpy
-#--------------------------------------------------------
-import mpa_toolkit as MPA_TOOL
+from mpa_syntax_marker  import ParameterSeparators as MpaParameterSeparators
+from mpa_parameter_file import FileParameters      as MpaFileParameters
 #--------------------------------------------------------
 
-def read(file_input_information, dict_default, dict_convention):
+def read(list_parameters):
 	"""
 	Read file parameters 
-	:param str file_input_information: file that contains a list of file names 
-	:param dict dict_default: a dict that has all the default values
-	:param dict dict_convention: a dictionary of input parameter keyword convention pairs
-	:return: a python list of numpy arrays
+	:param list_parameters: a list/tuple of parameters 
+	:return: a python dictionary of dictionaries 
 	"""
-	print("======================================================")
-	print("  Read input data files and legends")
-	print("  File: {0}".format(file_input_information))
-	print("======================================================")
-	
-	list_input_information = []
-	with open(file_input_information, 'r') as IN:
-		for line in IN:
-			line = line.strip()
-			tmp_list = line.split(";")
+	dict_file_parametes = dict()
+	dict_parameter_separators = MpaParameterSeparators.get_dict()
+	dict_convention = MpaFileParameters.get_convention()
+	dict_defaults   = MpaFileParameters.get_defaults()
 
-			# remove extra leading/trailing white spaces
-			for i in range(len(tmp_list)):
-				tmp_list[i] = tmp_list[i].strip()
+	symbol_parameter_separator = dict_parameter_separators["PARAMETER SEPARATOR"]
+	symbol_key_value_separator = dict_parameter_separators["KEY VALUE SEPARATOR"]
 
-			# use default values
-			dict_current_line = dict()
-			for key,value in dict_default.items():
-				dict_current_line[key] = value
+	for line in list_parameters:
+		local_list = line.split(symbol_parameter_separator)
+		local_dict = dict()
+		for _item in local_list:
+			key,value = _item.split(symbol_key_value_separator)
+			key = key.strip()
+			value = value.strip()
+			local_dict[key] = value
 
-			for item in tmp_list:
-				key, value = item.split(":")
-				key = key.strip()
-				value = value.strip()
-				
-				# change to internal keyword
-				if key in dict_convention.keys():
-					key = dict_convention[key]
-				else:
-					msg = "ERROR HINT: input keyword not recognized: \"{0}\"".format(key)
-					raise UserWarning(msg)
+		file_name = local_dict["FILE"]
+		dict_file_parametes[file_name] = dict()
+		
+		# [1] set the defaults
+		for key,value in dict_defaults.items():
+			dict_file_parametes[file_name][key] = value 
+		
+		# [2] update
+		for key,value in local_dict.items():
+			if key in dict_convention.keys():
+				internal_key = dict_convention[key]
+			else:
+				print("WARNING: you have specified an unknown parameter: \"{0}\"".format(key))
+				continue
+			dict_file_parametes[file_name][internal_key] = value 
 
-				# convert string to list/tuple
-				if MPA_TOOL.is_convertible_to_list(value):
-					value = MPA_TOOL.string_to_tuple_or_not(value)
-				else:
-					value = MPA_TOOL.string_to_bool_or_not(value)
-					value = MPA_TOOL.string_to_number_or_not(value)
-
-				# convert string "None" to real python None type
-				value = MPA_TOOL.string_to_None_or_not(value)
-
-				dict_current_line[key] = value
-
-			# load input data
-			dict_current_line["input_data"] = numpy.loadtxt(dict_current_line["file"])
-
-			print("Loading data file: {0}".format(dict_current_line["file"]))
-
-			# append
-			list_input_information.append(dict_current_line)
-
-	return list_input_information
+	return dict_file_parametes

@@ -15,12 +15,13 @@ import mpa_plot_create			  as MpaPlotCreate
 #---------------------------------------------------------------
 
 
-def plot(list_input_information, dict_plot_parameters):
+def plot(dict_file_parameters, dict_global_parameters, dict_local_parameters):
 	"""
-	Plot every data series in list_input_information
+	Plot every data series in dict_file_parameters
 	
-	:param list list_input_information: a list of dictionaries
-	:param dict dict_plot_parameters: a python dictionary of plotting parameters
+	:param list dict_file_parameters: a list of dictionaries
+	:param dict dict_global_parameters: a python dictionary of global plotting parameters
+	:param dict dict_local_parameters: a python dictionary of local plotting parameters (per figure panel)
 	:return: object for the current plot
 	"""
 	#-------------------------------------------------------------------
@@ -29,7 +30,7 @@ def plot(list_input_information, dict_plot_parameters):
 	#---------------------------------------------------
 	#		Dependency: Latex
 	#---------------------------------------------------
-	if dict_plot_parameters["use_latex"] is True:
+	if dict_global_parameters["use_latex"] is True:
 		matplotlib.rcParams['text.usetex'] = True
 		matplotlib.rcParams['text.latex.unicode'] = True
 		matplotlib.rcParams['text.latex.preamble'] = [r'\boldmath']
@@ -37,7 +38,7 @@ def plot(list_input_information, dict_plot_parameters):
 	#-------------------------------------------------------------------
 	# Create a list of figure/axis objects 
 	#-------------------------------------------------------------------
-	[object_figure, list_axis_objects, dict_plot_parameters] = MpaPlotCreate.figure(dict_plot_parameters)
+	[object_figure, list_axis_objects, dict_global_parameters] = MpaPlotCreate.figure(dict_global_parameters)
 	
 	#-------------------------------------------------------------------
 	# Plot lines
@@ -46,13 +47,13 @@ def plot(list_input_information, dict_plot_parameters):
 	 array2D_global_y_min, array2D_global_y_max,
 	 dict_panel_information] = MpaPlotLine.plot(object_figure, 
 					 							list_axis_objects,
-					 							dict_plot_parameters,
-												list_input_information)
+					 							dict_local_parameters,
+												dict_file_parameters)
 	
 	#----------------------------------------------------------------------------------------------
 	# Refine properties for all axes
 	#----------------------------------------------------------------------------------------------
-	MpaPlotProertyAllAxes.refine_all_axes(object_figure, list_axis_objects, dict_plot_parameters, dict_panel_information,
+	MpaPlotProertyAllAxes.refine_all_axes(object_figure, list_axis_objects, dict_global_parameters, dict_panel_information,
 		array2D_global_x_min,
 		array2D_global_x_max,
 		array2D_global_y_min,
