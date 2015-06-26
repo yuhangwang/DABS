@@ -50,8 +50,8 @@ def plot(dict_data_parameters, dict_global_parameters, dict_local_parameters):
 	#----------------------------------------------------------------------------------------------
 	# Refine properties per figure panel
 	#----------------------------------------------------------------------------------------------
-	# MpaPlotPanel.refine_all_figure_panels(object_figure, list_axis_objects, 
-	# 	dict_local_parameters, dict_legends)
+	MpaPlotPanel.refine_all_figure_panels(object_figure, list_axis_objects, 
+		dict_local_parameters, dict_legends)
 
 	#----------------------------------------------------------------------------------------------
 	# Refine properties for the entire figure
