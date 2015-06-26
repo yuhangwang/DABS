@@ -15,15 +15,27 @@ class AxisParameters:
 		"Y LABEL PADDING":"y_label_padding",
 		"X LABEL FONT SIZE":"x_label_font_size",
 		"Y LABEL FONT SIZE":"y_label_font_size",
+		"X LIMIT USER DEFINED ON":'x_limit_user_defined',
+		"Y LIMIT USER DEFINED ON":'y_limit_user_defined',
+		"X MIN":"x_min",
+		"X MAX":"x_max",
+		"Y MIN":"y_min",
+		"Y MAX":"y_max",
 	}
 
-	_defaults_ = {
+	_default_ = {
 		"x_label":'X',
 		"y_label":'Y',
 		"x_label_padding":None,
 		"y_label_padding":None,
 		"x_label_font_size":40,
 		"y_label_font_size":40,
+		"x_limit_user_defined":False,
+		"y_limit_user_defined":False,
+		"x_min":None,
+		"x_max":None,
+		"y_min":None,
+		"y_max":None,
 		}
 
 	@staticmethod
@@ -34,11 +46,11 @@ class AxisParameters:
 		return AxisParameters._convention_
 
 	@staticmethod
-	def get_defaults():
+	def get_default():
 		"""
 		Get the default value dictionary
 		"""
-		return AxisParameters._defaults_.copy()
+		return AxisParameters._default_.copy()
 
 	@staticmethod
 	def get_description():

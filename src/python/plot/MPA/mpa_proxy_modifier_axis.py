@@ -147,12 +147,7 @@ def make_all_axis_limits_tight(list_axis_objects, dict_plot_parameters,
 					)
 
 
-def set_user_defined_axis_limits(object_axis, dict_plot_parameters,
-	user_x_min,
-	user_x_max,
-	user_y_min,
-	user_y_max,
-	):
+def set_user_defined_axis_limits(object_axis, dict_plot_parameters):
 	"""
 	set user-defined axis limits
 
@@ -162,28 +157,32 @@ def set_user_defined_axis_limits(object_axis, dict_plot_parameters,
 	:param float user_y_min: user defined y minimum
 	:param float user_y_min: user defined y maximum
 	"""
+	user_x_min = dict_plot_parameters["x_min"]
+	user_x_max = dict_plot_parameters["x_max"]
+	user_y_min = dict_plot_parameters["y_min"]
+	user_y_max = dict_plot_parameters["y_max"]
 
 	#-------------------------------------------------------------
 	# Use user-defined x limits
 	#-------------------------------------------------------------
-	if dict_plot_parameters["figure_x_limits_user_defined"]:
+	if dict_plot_parameters["x_limit_user_defined_on"]:
 		x_min, x_max = object_axis.get_xlim()
 		if user_x_min is not None:
 			x_min = user_x_min
-			object_axis.set_xlim([x_min, x_max])
+			MpaModifierAxis.set_axis_limits(object_axis, 'x', x_min, x_max)
 		if user_x_max is not None:
 			x_max = user_x_max 
-			object_axis.set_xlim([x_min, x_max])
+			MpaModifierAxis.set_axis_limits(object_axis, 'x', x_min, x_max)
 	
 	#-------------------------------------------------------------
 	# Use user-defined y limits
 	#-------------------------------------------------------------
-	if dict_plot_parameters["figure_y_limits_user_defined"]:
+	if dict_plot_parameters["y_limits_user_defined_on"]:
 		y_min, y_max = object_axis.get_ylim()
 		if user_y_min is not None:
 			y_min = user_y_min
-			object_axis.set_ylim([y_min, y_max])
+			MpaModifierAxis.set_axis_limits(object_axis, 'y', y_min, y_max)
 		if user_y_max is not None:
 			y_max = user_y_max 
-			object_axis.set_ylim([y_min, y_max])
+			MpaModifierAxis.set_axis_limits(object_axis, 'y', y_min, y_max)
 		

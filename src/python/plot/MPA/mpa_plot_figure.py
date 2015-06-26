@@ -47,7 +47,7 @@ def add_axis_labels(object_figure, dict_plot_parameters):
 	
 
 
-def refine_all_axes(object_figure, list_axis_objects, dict_plot_parameters, dict_panel_information,
+def refine_figure(object_figure, list_axis_objects, dict_plot_parameters, dict_panel_information,
 	array2D_global_x_min,
 	array2D_global_x_max,
 	array2D_global_y_min,

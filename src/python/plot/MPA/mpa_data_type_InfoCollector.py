@@ -1,10 +1,10 @@
 """
-MPA DATA TYPE: "PanelDB" -- FIGURE PANEL INFORMATION DATABASE
+MPA DATA TYPE: "InfoCollector" 
 AUTHOR: YUHANG WANG
 DATE: 06-25-2015
 """
 
-class PanelDB:
+class InfoCollector:
 	def __init__(self):
 		self._panel_dict = dict()
 

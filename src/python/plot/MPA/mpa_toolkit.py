@@ -141,7 +141,21 @@ def string_to_tuple_or_not(input):
 	list_result = tuple(list_result)
 	return list_result
 
-	
+def transform_string_to_python_data_type(input_string):
+	"""
+	Transform a string to proper python data type
+	:param str input_string: input string 
+	:return: either a proper data type or the original string 
+	"""
+	output = input_string
+	if is_convertible_to_list(output):
+		output = string_to_tuple_or_not(output)
+	output = string_to_None_or_not(output)
+	output = string_to_number_or_not(output)
+	output = string_to_number_or_not(output)
+	output = string_to_bool_or_not(output)
+	return output
+
 def return_smaller(input_1, input_2):
 	"""
 	Compare two inputs and return the smaller one 
@@ -189,3 +203,4 @@ def initialize_a_2d_array_with_None(n_rows, n_columns):
 		for i_column in range(0, n_columns):
 			array2d[i_row].append(None)
 	return array2d
+

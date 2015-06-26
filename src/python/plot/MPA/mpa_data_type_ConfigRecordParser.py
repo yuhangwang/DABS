@@ -4,6 +4,8 @@ AUTHOR: YUHANG WANG
 DATE: 06-25-2015
 """
 #------------------------------------------------------------------------
+import re
+#------------------------------------------------------------------------
 from mpa_syntax_marker import ScopeMarkers        as MpaScopeMarkers
 #------------------------------------------------------------------------
 
@@ -21,11 +23,13 @@ class ConfigRecordParser:
 		Read an input string
 		:param str input_string: input string 
 		"""
-		if self.regex_pattern_scope_end(input_string) and len(self._list_buffer) > 0:
+		if self.regex_pattern_scope_end.match(input_string):
+			if len(self._list_buffer) > 0:
 				# convert list to a string
 				line = ";".join(self._list_buffer)
 				self._list_parameters.append(line)
 				self._list_buffer = [] # reset
+			else: return
 		elif input_string != '':
 			self._list_buffer.append(input_string)
 		else:

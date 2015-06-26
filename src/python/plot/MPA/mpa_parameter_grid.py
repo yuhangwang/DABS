@@ -20,7 +20,7 @@ class GridParameters:
 		"SHOW GRID":"show_grid",
 		}
 
-	_defaults_ = {
+	_default_ = {
 		"grid_ticks":"major",
 		"grid_axis":"both",
 		"grid_line_color":'k',
@@ -39,11 +39,11 @@ class GridParameters:
 		return GridParameters._convention_
 
 	@staticmethod
-	def get_defaults():
+	def get_default():
 		"""
 		Get the default value dictionary
 		"""
-		return GridParameters._defaults_.copy()
+		return GridParameters._default_.copy()
 
 	@staticmethod
 	def get_description():

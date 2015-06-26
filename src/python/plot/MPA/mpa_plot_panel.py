@@ -4,11 +4,11 @@ AUTHOR: YUHANG WANG
 DATE: 06-25-2015
 """
 #---------------------------------------------------
-import mpa_plot_ticks      as MpaPlotTicks
-import mpa_modifier_axis   as MpaModifierAxis 
+import mpa_modifier_axis   		 as MpaModifierAxis 
+import mpa_proxy_modifier_axis   as MpaProxyModifierAxis
 #---------------------------------------------------
 
-def refine_single_axis(object_axis, object_figure, dict_plot_parameters, 
+def refine_figure_panel(object_axis, object_figure, dict_plot_parameters, 
 	user_x_min,
 	user_x_max,
 	user_y_min,
@@ -28,7 +28,7 @@ def refine_single_axis(object_axis, object_figure, dict_plot_parameters,
 	#-------------------------------------------------------------
 	# set user defined axis limits
 	#-------------------------------------------------------------
-	MpaPlotTicks.set_user_defined_axis_limits(object_axis, dict_plot_parameters,
+	MpaProxyModifierAxis.set_user_defined_axis_limits(object_axis, dict_plot_parameters,
 		user_x_min,
 		user_x_max,
 		user_y_min,
@@ -49,3 +49,24 @@ def refine_single_axis(object_axis, object_figure, dict_plot_parameters,
 		dict_plot_parameters["grid_z_order"])
 
 
+def refine_all_figure_panels(object_figure, list_axis_objects, dict_legends,
+	dict_local_parameters):
+	"""
+	Refine the 
+	:param object objec_figure: maplotlib Figure object 
+	:param list list_axis_objects: list of matplotlib Axis objects 
+	:param dict dict_local_parameters: a python dict of local plot parameters with panel indices as keys
+		and sub-dictionaries as values
+	:param dict dict_legends: a python dict of legend parameters for all axes 
+		with panel indices as keys and sub-dictionaries as values 
+	"""
+
+	for panel_indices, dict_plot_parameters in dict_local_parameters.items():
+		i_row, i_column = panel_indices
+		object_axis = list_axis_objects[i_row, i_column]
+
+		# Refine axis limits
+		MpaProxyModifierAxis.set_user_defined_axis_limits(object_axis, dict_plot_parameters)
+
+
+	

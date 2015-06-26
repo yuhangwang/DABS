@@ -6,18 +6,48 @@ DATE: 06-24-2015
 #----------------------------------------------------
 # Import parameters
 #----------------------------------------------------
-from mpa_parameter_axis  import AxisParameters
-from mpa_parameter_color import ColorParameters
-from mpa_parameter_dependency import ExternalDependencyParameters
+from mpa_parameter_data   import DataParameters 
+from mpa_parameter_axis   import AxisParameters
+from mpa_parameter_color  import ColorParameters
 from mpa_parameter_figure import FigureParameters
 from mpa_parameter_grid   import GridParameters
-from mpa_parameter_file   import FileParameters 
 from mpa_parameter_legend import LegendParameters
 from mpa_parameter_line   import LineParameters
 from mpa_parameter_panel  import PanelParameters
 from mpa_parameter_tick   import TickParameters
-from mpa_parameter_twin_axis import TwinAxisParameters
+from mpa_parameter_dependency import ExternalDependencyParameters
+from mpa_parameter_twin_axis  import TwinAxisParameters
 #----------------------------------------------------
+
+class UserDataParameters:
+	"""
+	Global parameters for the entire figure 
+	"""
+	def __init__(self):
+		self._list_of_parameter_classes_ = [
+			DataParameters,
+			]
+
+		self._convention_ = {}
+		self._default_ = {}
+
+		# Fill up self._convention_ and self._default_
+		for _class in self._list_of_parameter_classes_:
+			dict_convention = getattr(_class, "get_convention")()
+			dict_defaults   = getattr(_class, "get_default")()
+			for key, value in dict_convention.items():
+				self._convention_[key] = value
+
+			for key, value in dict_defaults.items():
+				self._default_[key] = value
+
+
+	def get_convention(self):
+		return self._convention_
+
+	def get_default(self):
+		return self._default_.copy()
+
 
 class GlobalParameters:
 	"""
@@ -28,27 +58,28 @@ class GlobalParameters:
 			ExternalDependencyParameters,
 			FigureParameters,
 			TwinAxisParameters,
+			ColorParameters,
 			]
 
 		self._convention_ = {}
-		self._defaults_ = {}
+		self._default_ = {}
 
-		# Fill up self._convention_ and self._defaults_
+		# Fill up self._convention_ and self._default_
 		for _class in self._list_of_parameter_classes_:
 			dict_convention = getattr(_class, "get_convention")()
-			dict_defaults   = getattr(_class, "get_defaults")()
+			dict_defaults   = getattr(_class, "get_default")()
 			for key, value in dict_convention.items():
 				self._convention_[key] = value
 
 			for key, value in dict_defaults.items():
-				self._defaults_[key] = value
+				self._default_[key] = value
 
 
 	def get_convention(self):
 		return self._convention_
 
-	def get_defaults(self):
-		return self._defaults_.copy()
+	def get_default(self):
+		return self._default_.copy()
 
 
 class LocalParameters:
@@ -63,28 +94,27 @@ class LocalParameters:
 			LegendParameters,
 			GridParameters,
 			TickParameters,
-			ColorParameters,
 			]
 
 		self._convention_ = {}
-		self._defaults_ = {}
+		self._default_ = {}
 
-		# Fill up self._convention_ and self._defaults_
+		# Fill up self._convention_ and self._default_
 		for _class in self._list_of_parameter_classes_:
 			dict_convention = getattr(_class, "get_convention")()
-			dict_defaults   = getattr(_class, "get_defaults")()
+			dict_defaults   = getattr(_class, "get_default")()
 			for key, value in dict_convention.items():
 				self._convention_[key] = value
 
 			for key, value in dict_defaults.items():
-				self._defaults_[key] = value
+				self._default_[key] = value
 
 
 	def get_convention(self):
 		return self._convention_
 
-	def get_defaults(self):
-		return self._defaults_.copy()
+	def get_default(self):
+		return self._default_.copy()
 
 
 class AllParameters:
@@ -106,29 +136,29 @@ class AllParameters:
 			]
 
 		self._convention_ = {}
-		self._defaults_ = {}
+		self._default_ = {}
 
-		# Fill up self._convention_ and self._defaults_
+		# Fill up self._convention_ and self._default_
 		for _class in self._list_of_parameter_classes_:
 			dict_convention = getattr(_class, "get_convention")()
-			dict_defaults   = getattr(_class, "get_defaults")()
+			dict_defaults   = getattr(_class, "get_default")()
 			for key, value in dict_convention.items():
 				self._convention_[key] = value
 
 			for key, value in dict_defaults.items():
-				self._defaults_[key] = value
+				self._default_[key] = value
 
 
 	def get_convention(self):
 		return self._convention_
 
-	def get_defaults(self):
-		return self._defaults_.copy()
+	def get_default(self):
+		return self._default_.copy()
 
 
 class ParameterManager:
 	_list_of_parameter_classes_ =  [
-			FileParameters,
+			DataParameters,
 			ExternalDependencyParameters,
 			FigureParameters,
 			PanelParameters,
@@ -141,11 +171,11 @@ class ParameterManager:
 			TwinAxisParameters,
 			]
 	@staticmethod
-	def show_parameters(parameter_type="public", file_output=None):
+	def show(parameter_type="public", file_output=None):
 		msg = ""
 		for _class in ParameterManager._list_of_parameter_classes_:
 			dict_convention = getattr(_class, "get_convention")()
-			dict_defaults   = getattr(_class, "get_defaults")()
+			dict_defaults   = getattr(_class, "get_default")()
 			type_parameter = getattr(_class, "get_description")()
 			msg += "------------------------------------------------\n"
 			msg += "--------    {0} -------\n".format(type_parameter)
@@ -172,5 +202,5 @@ if __name__ == "__main__":
 	file_public = "PUBLIC_PARAMETERS.txt"
 	file_internal = "INTERNAL_PARAMETERS.txt"
 	manager = ParameterManager()
-	manager.show_parameters("public", file_public)
-	manager.show_parameters("internal", file_internal)
+	manager.show("public", file_public)
+	manager.show("internal", file_internal)

@@ -27,9 +27,14 @@ class FigureParameters:
 		"FIGURE Y LIMITS TIGHT":"figure_y_limits_tight",
 		"FIGURE X LIMITS USER DEFINED":"figure_x_limits_user_defined",
 		"FIGURE Y LIMITS USER DEFINED":"figure_y_limits_user_defined",
+		"FIGURE AXIS LABEL ON":"figure_axis_label_on",
+		"FIGURE X LABEL":"figure_x_label",
+		"FIGURE Y LABEL":"figure_y_label",
+		"FIGURE X LABEL PADDING":"figure_x_label_padding",
+		"FIGURE Y LABEL PADDING":"figure_y_label_padding",
 		}
 
-	_defaults_ = {
+	_default_ = {
 		"figure_output_file_name":"output.png",
 		"figure_title":None,
 		"figure_title_font_size":40,
@@ -48,6 +53,11 @@ class FigureParameters:
 		"figure_y_limits_tight":False,
 		"figure_x_limits_user_defined":False,
 		"figure_y_limits_user_defined":False,
+		"figure_axis_label_on":False,
+		"figure_x_label":None,
+		"figure_y_label":None,
+		"figure_x_label_padding":60,
+		"figure_y_label_padding":60,
 		}
 
 	@staticmethod
@@ -58,11 +68,11 @@ class FigureParameters:
 		return FigureParameters._convention_
 
 	@staticmethod
-	def get_defaults():
+	def get_default():
 		"""
 		Get the default value dictionary
 		"""
-		return FigureParameters._defaults_.copy()
+		return FigureParameters._default_.copy()
 
 	@staticmethod
 	def get_description():

@@ -9,9 +9,9 @@ class InputSectionMarkers:
 	Configuration file section markers 
 	"""
 	_conventions_ = {
-		"FILE PARAMETER BEGIN":"[FILE]",
-		"GLOBAL PARAMETER BEGIN":"[GLOBAL]",
-		"LOCAL PARAMETER BEGIN":"[LOCAL]",
+		"DATA PARAMETER BEGIN":"[[DATA]]",
+		"GLOBAL PARAMETER BEGIN":"[[GLOBAL]]",
+		"LOCAL PARAMETER BEGIN":"[[LOCAL]]",
 	}
 
 	@staticmethod
@@ -37,7 +37,7 @@ class ScopeMarkers:
 	e.g., the parameters for one particular figure panel.
 	"""
 	_conventions_ = {
-		"SCOPE END":"//"
+		"SCOPE END":"==="
 	}
 
 	@staticmethod

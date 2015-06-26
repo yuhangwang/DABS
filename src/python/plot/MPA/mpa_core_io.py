@@ -4,15 +4,17 @@ AUTHOR: YUHANG WANG
 DATE: 06-24-2015
 """
 #----------------------------------------------------
-# Import parameters
+from __future__ import print_function, division
 #----------------------------------------------------
-import mpa_reader_file_parameters   as MpaFileParameterReader
-import mpa_reader_global_parameters as MpaGlobalParameterReader
-import mpa_reader_local_parameters  as MpaLocalParameterReader
-import mpa_writer_figure 			as MpaFigureWriter
+import re
+#----------------------------------------------------
+import mpa_reader_data_parameter   as MpaDataParameterReader
+import mpa_reader_global_parameter as MpaGlobalParameterReader
+import mpa_reader_local_parameter  as MpaLocalParameterReader
+import mpa_writer_figure 		   as MpaFigureWriter
 from mpa_syntax_marker import InputSectionMarkers as MpaInputSectionMarker
 from mpa_syntax_marker import CommentMarkers      as MpaCommentMarkers
-from mpa_data_type_ConfigRecord import ConfigRecordParser as MPA_CLASS_ConfigRecordParser
+from mpa_data_type_ConfigRecordParser import ConfigRecordParser as MPA_CLASS_ConfigRecordParser
 #----------------------------------------------------
 
 
@@ -25,14 +27,14 @@ def read_config(file_configuration):
 	Read a file containing a list of plot parameters 
 	and put them into a python dictionary.
 	:param str file_configuration: name of the input configuration file
-	:return: (dict_file_parameters, dict_global_plot_parameters, dict_local_plot_parameters)
+	:return: (dict_data_parameters, dict_global_plot_parameters, dict_local_plot_parameters)
 	"""
 	print("======================================================")
 	print("  Reading input configuration file")
 	print("  File: {0}".format(file_configuration))
 	print("======================================================")
 	
-	object_file_parameter_parser = MPA_CLASS_ConfigRecordParser()
+	object_data_parameter_parser = MPA_CLASS_ConfigRecordParser()
 	object_global_parameter_parser = MPA_CLASS_ConfigRecordParser()
 	object_local_parameter_parser = MPA_CLASS_ConfigRecordParser()
 
@@ -45,7 +47,7 @@ def read_config(file_configuration):
     # Update parameters based on user's specifications
 	with open(file_configuration, 'r') as IN:
 		which_section = None
-		local_list_file_parameters = []
+		local_list_data_parameters = []
 		local_list_global_parameters = []
 		local_list_local_parameters = []
 		for line in IN:
@@ -53,16 +55,19 @@ def read_config(file_configuration):
 			if regex_pattern_comment.match(line): continue # skip comments
 			if line == '': continue # skip empty lines
 
-			if line == MpaInputSectionMarker["FILE PARAMETER BEGIN"]:
-				which_section = "FILE"
-			elif line == MpaInputSectionMarker["GLOBAL PARAMETER BEGIN"]:
+			if line == dict_section_markers["DATA PARAMETER BEGIN"]:
+				which_section = "DATA"
+				continue
+			elif line == dict_section_markers["GLOBAL PARAMETER BEGIN"]:
 				which_section = "GLOBAL"
-			elif line == MpaInputSectionMarker["LOCAL PARAMETER BEGIN"]
+				continue
+			elif line == dict_section_markers["LOCAL PARAMETER BEGIN"]:
 				which_section = "LOCAL"
+				continue
 
-			if which_section == "FILE":
+			if which_section == "DATA":
 				# file parameters
-				object_file_parameter_parser.read(line)
+				object_data_parameter_parser.read(line)
 
 			elif which_section == "GLOBAL": 
 				# global parameters
@@ -70,18 +75,18 @@ def read_config(file_configuration):
 
 			elif which_section == "LOCAL":
 				# local parameters
-				object_global_parameter_parser.read(line)
+				object_local_parameter_parser.read(line)
 
 			else: continue # skip comments
 
 	# Purge reading buffer and add the last information read into the record 
-	object_file_parameter_parser.purge_buffer()
+	object_data_parameter_parser.purge_buffer()
 	object_global_parameter_parser.purge_buffer()
-	object_local_parameter_parser.purge_buffer()
+	# object_local_parameter_parser.purge_buffer()
 
 	# Read file parameters 
-	tuple_file_parameters = object_file_parameter_parser.get_parameters()
-	dict_file_parameters = MpaFigureWriter.read(tuple_file_parameters)
+	tuple_data_parameters = object_data_parameter_parser.get_parameters()
+	dict_data_parameters  = MpaDataParameterReader.read(tuple_data_parameters)
 
 	# Read global parameters
 	tuple_global_parameters = object_global_parameter_parser.get_parameters()
@@ -91,7 +96,11 @@ def read_config(file_configuration):
 	tuple_local_parameters = object_local_parameter_parser.get_parameters()
 	dict_local_plot_parameters = MpaLocalParameterReader.read(tuple_local_parameters)
 
-	return (dict_file_parameters, dict_global_plot_parameters, dict_local_plot_parameters)
+	if len(dict_data_parameters.keys()) == 0:
+		msg = "ERROR HINT: YOU MUST SPECIFY AT LEAST ONE GROUP OF INPUT DATA PARAMETERS\n"
+		raise UserWarning(msg)
+
+	return (dict_data_parameters, dict_global_plot_parameters, dict_local_plot_parameters)
 
 #----------------------------------------------------
 #                     OUTPUT

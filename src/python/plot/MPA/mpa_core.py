@@ -20,9 +20,6 @@ import pyparsing
 #------------------------------------------------
 import mpa_core_io   as MPA_IO
 import mpa_core_plot as MPA_PLOT
-from mpa_core_parameter import GlobalParameters    as MPA_CLASS_GlobalParameters
-from mpa_core_parameter import LocalParameters     as MPA_CLASS_LocalParameters
-from mpa_core_parameter import InputFileParameters as MPA_CLASS_InputFileParameters
 #================================================
 
 def main(file_configuration, preview=False):
@@ -35,24 +32,23 @@ def main(file_configuration, preview=False):
 	#-------------------------------------------------------------------
 	# [1] Read inputs
 	#-------------------------------------------------------------------
-	[dict_file_parameters, dict_global_plot_parameters, 
-	 dict_local_plot_parameters] = MPA_IO.read_config(file_input_information)
-	
+	[dict_data_parameters, dict_global_parameters, 
+	 dict_local_parameters] = MPA_IO.read_config(file_configuration)
 	#-------------------------------------------------------------------
 	# [3] Plot
 	#-------------------------------------------------------------------
-	object_figure, list_axis_objects = MPA_PLOT.plot(dict_file_parameters, 
-		dict_global_plot_parameters,
-		dict_local_plot_parameters)
+	object_figure, list_axis_objects = MPA_PLOT.plot(dict_data_parameters, 
+		dict_global_parameters,
+		dict_local_parameters)
 
 	#-----------------------------------------------------------------
 	# [4] Save
 	#-----------------------------------------------------------------
 	MPA_IO.write_figure(object_figure, 
-		dict_plot_parameters["figure_output_file_name"],
-		figure_dpi = dict_plot_parameters["figure_dpi"],
-		figure_padding = dict_plot_parameters["figure_padding"],
-		figure_transparent = dict_plot_parameters["figure_transparent"],
+		dict_global_parameters["figure_output_file_name"],
+		figure_dpi = dict_global_parameters["figure_dpi"],
+		figure_padding = dict_global_parameters["figure_padding"],
+		figure_transparent = dict_global_parameters["figure_transparent"],
 		)
 	
 	#-----------------------------------------------------------------
@@ -65,11 +61,11 @@ def main(file_configuration, preview=False):
 
 if __name__ == '__main__':
 	ccc = 1
-	file_input_information = sys.argv[ccc]
+	file_configuration = sys.argv[ccc]
 	ccc += 1
 	file_plot_parameters = sys.argv[ccc]
 
 	preview=True
-	main(file_input_information, file_plot_parameters, preview)
+	main(file_configuration, file_plot_parameters, preview)
 
 	

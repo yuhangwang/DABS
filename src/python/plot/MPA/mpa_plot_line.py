@@ -7,59 +7,67 @@ DATE: 06-25-2015
 import numpy
 import matplotlib.pyplot 
 #-----------------------------------------------
-from mpa_data_type_PanelDB import PanelDB as MPA_CLASS_PanelDB
+from mpa_data_type_InfoCollector import InfoCollector as MPA_CLASS_InfoCollector
 import mpa_toolkit                   as MpaTool 
-import mpa_plot_property_single_axis as MpaPlotPropertySingleAxis 
+import mpa_plot_refine_panel as MpaPlotPropertySingleAxis 
 #-----------------------------------------------
 
 def plot(object_figure, 
 	list_axis_objects, 
-	dict_plot_parameters,
-	list_input_information,
+	dict_data_parameters,
+	dict_global_parameters,
 	):
 	"""
 	Plot line objects 
 	:param object object_figure: a matplotlib Figure object 
 	:param list list_axis_objects: list of matplotlib Axis objects 
-	:param dict dict_plot_parameters: a dictionary of MPA plot parameters 
-	:param list list_input_information: a list of dictionaries of input information for each axis 
-	:return: (array2D_global_x_min, array2D_global_x_max, 
-			  array2D_global_y_min, array2D_global_y_max,
-			  dict_panel_information)
+	:param list dict_data_parameters: a dictionary of user data parameters 
+		which file name as key and a dictionary as value
+	:param dict dict_global_parameters: a dictionary of global plot parameters 
+	:return: (dict_legends, dict_global_xy_minmax) 
+		Example usage: 
+			object_axis = dict_legends[(0,1)]["objec_axis"]
+			data_x_min = dict_global_xy_minmax[(0,0)]['x']["min"]
 	"""
 	#---------------------------------------------------
 	#		Dependency: SciPy
 	#---------------------------------------------------
-	if dict_plot_parameters["use_scipy"] is True:
+	if dict_global_parameters["use_scipy"] is True:
 		import scipy
-		if dict_plot_parameters["show_block_averaged_line"] is False:
-			msg = "ERROR HINT: you must set \"USE SCIPY\" = True to use \"SHOW BLOCK AVERAGED LINE\" \n"
-			raise UserWarning(msg)
 
 	#----------------------------------------------------------------------------------------------
 	# make a 2D array to store the global min/max for each figure axis
 	#----------------------------------------------------------------------------------------------
-	n_rows = dict_plot_parameters["figure_number_of_rows"]
-	n_columns = dict_plot_parameters["figure_number_of_columns"]
-	array2D_global_x_min = MpaTool.initialize_a_2d_array_with_None(n_rows, n_columns)
-	array2D_global_x_max = MpaTool.initialize_a_2d_array_with_None(n_rows, n_columns)
-	array2D_global_y_min = MpaTool.initialize_a_2d_array_with_None(n_rows, n_columns)
-	array2D_global_y_max = MpaTool.initialize_a_2d_array_with_None(n_rows, n_columns)
+	n_rows, n_columns = numpy.shape(list_axis_objects)
+	dict_global_xy_minmax = dict()
+	for i_row in range(n_rows):
+		for i_column in range(n_columns):
+			panel_indices = (i_row,i_column)
+			dict_global_xy_minmax[panel_indices] = dict()
+			dict_global_xy_minmax[panel_indices]['x'] = dict()
+			dict_global_xy_minmax[panel_indices]['y'] = dict()
+			dict_global_xy_minmax[panel_indices]['x']["min"] = None
+			dict_global_xy_minmax[panel_indices]['x']["max"] = None			
+			dict_global_xy_minmax[panel_indices]['y']["min"] = None
+			dict_global_xy_minmax[panel_indices]['y']["max"] = None
 
 	#----------------------------------------------------------------------------------------------
 	# Create a PanelDB object to store all panel information
 	#----------------------------------------------------------------------------------------------
-	object_panelDB = MPA_CLASS_PanelDB()
+	object_legendInfoCollector = MPA_CLASS_InfoCollector()
 
 	#----------------------------------------------------------------------------------------------
 	# ========= *** Start Plotting!  *** ================
 	#----------------------------------------------------------------------------------------------
 	ccc = 0
-	for dict_user_input in list_input_information:
-		tuple_panel_indices = dict_user_input["panel_indices"]
-		user_data   = dict_user_input["input_data"]
-		panel_id_row, panel_id_column = tuple_panel_indices
-		object_axis_for_panel = list_axis_objects[panel_id_row, panel_id_column]
+	# set line color
+	list_global_color_order = dict_global_parameters["color_order"]
+	for file_name, dict_data in dict_data_parameters.items():
+		tuple_panel_indices = dict_data["data_panel_indices"]
+		user_data   = dict_data["data_value"]
+		print("data panel indices: ", tuple_panel_indices)
+		panel_id_row, _panel_id_column = tuple_panel_indices
+		object_axis_for_panel = list_axis_objects[panel_id_row, _panel_id_column]
 
 
 		# skip dummy axis objects
@@ -68,29 +76,33 @@ def plot(object_figure,
 			continue
 
 		# Get X & Y from user_data
-		X = user_data[:,0]
-		Y = user_data[:,1]
+		data_X = user_data[:,0]
+		data_Y = user_data[:,1]
+
+		if dict_data["data_line_color"] is None:
+			data_line_color = list_global_color_order[ccc%len(list_global_color_order)]
+		else:
+			data_line_color = dict_data["data_line_color"]
 
 
-		# set line color
-		list_colors = dict_plot_parameters["color_order"]
-		line_color = list_colors[ccc%len(list_colors)]
-
-
-		# User-defined axis min/max 
-		user_x_min = dict_user_input["x_min"]
-		user_x_max = dict_user_input["x_max"]
-		user_y_min = dict_user_input["y_min"]
-		user_y_max = dict_user_input["y_max"]
 		# update global min/max along X
-		x_min = numpy.amin(X)
-		x_max = numpy.amax(X)
-		y_min = numpy.amin(Y)
-		y_max = numpy.amax(Y)
-		array2D_global_x_min[panel_id_row][panel_id_column] = MpaTool.return_smaller(array2D_global_x_min[panel_id_row][panel_id_column], x_min)
-		array2D_global_x_max[panel_id_row][panel_id_column] = MpaTool.return_bigger(array2D_global_x_max[panel_id_row][panel_id_column], x_max)
-		array2D_global_y_min[panel_id_row][panel_id_column] = MpaTool.return_smaller(array2D_global_y_min[panel_id_row][panel_id_column], y_min)
-		array2D_global_y_max[panel_id_row][panel_id_column] = MpaTool.return_bigger(array2D_global_y_max[panel_id_row][panel_id_column], y_max)
+		data_x_min = numpy.amin(data_X)
+		data_x_max = numpy.amax(data_X)
+		data_y_min = numpy.amin(data_Y)
+		data_y_max = numpy.amax(data_Y)
+
+		# update global x/y min/max
+		dict_global_xy_minmax[tuple_panel_indices]['x']['min'] = MpaTool.return_smaller(
+			dict_global_xy_minmax[tuple_panel_indices]['x']['min'], data_x_min)
+
+		dict_global_xy_minmax[tuple_panel_indices]['x']['max'] = MpaTool.return_bigger(
+			dict_global_xy_minmax[tuple_panel_indices]['x']['max'], data_x_max)
+
+		dict_global_xy_minmax[tuple_panel_indices]['y']['min'] = MpaTool.return_smaller(
+			dict_global_xy_minmax[tuple_panel_indices]['y']['min'], data_y_min)
+
+		dict_global_xy_minmax[tuple_panel_indices]['y']['max'] = MpaTool.return_bigger(
+			dict_global_xy_minmax[tuple_panel_indices]['y']['max'], data_y_max)
 
 
 		# Set the current active Axes instance to this axis 
@@ -99,91 +111,52 @@ def plot(object_figure,
 		#-------------------------------------------------
 		#  Plot!
 		#-------------------------------------------------
-		object_line, = object_axis_for_panel.plot(X,Y, 
-			color=line_color,
-			alpha=dict_plot_parameters["line_opacity"],
-			linestyle=dict_plot_parameters["line_style"],
+		object_line, = object_axis_for_panel.plot(data_X,data_Y, 
+			color=data_line_color,
+			alpha=dict_data["data_line_opacity"],
+			linestyle=dict_data["data_line_style"],
 			)
 
 		#-------------------------------------------------------------
 		# Also plot the noise-filtered-averaged line
 		#-------------------------------------------------------------
-		if dict_plot_parameters["show_block_averaged_line"]:
+		if dict_data["data_show_block_average"]:
 			from scipy import ndimage
-			Y_block_averaged = ndimage.filters.uniform_filter(Y, 
-				size=dict_user_input["line_block_average_block_size"], 
+			Y_block_averaged = ndimage.filters.uniform_filter(data_Y, 
+				size=dict_data["data_block_average_block_size"], 
 				mode="nearest")
-			object_line, = object_axis_for_panel.plot(X,Y_block_averaged,
-				linewidth=dict_plot_parameters["block_averaged_line_width"],
-				color=line_color,
+			object_line, = object_axis_for_panel.plot(data_X,Y_block_averaged,
+				linewidth=dict_data["data_block_average_line_width"],
+				color=data_line_color,
 				)
 
 		#-------------------------------------------------------------
-		# Add panel label information
+		# Add data legend information
 		#-------------------------------------------------------------
-		# panel label
-		object_panelDB.set_item(tuple_panel_indices,
-			"panel_label", dict_user_input["panel_label"])
-		
-		# panel label coordinate
-		object_panelDB.set_item(tuple_panel_indices,
-			"panel_label_coordinate", dict_user_input["panel_label_coordinate"])
-		
-		# panel axis object
-		object_panelDB.set_item(tuple_panel_indices,
-			"object_axis", object_axis_for_panel)
-
-		#-------------------------------------------------------------
-		# Add panel legend information
-		#-------------------------------------------------------------
-		tuple_legend_panel_indices = dict_user_input["legend_panel_indices"]
+		tuple_legend_panel_indices = dict_data["data_legend_panel_indices"] # note: this can be different than tuple_panel_indices
 		id_row_legend_panel, id_column_legend_panel = tuple_legend_panel_indices
 		object_axis_for_legend = list_axis_objects[id_row_legend_panel, id_column_legend_panel]
-		
-		# active legend for this axis
-		object_panelDB.set_item(tuple_legend_panel_indices,
-			"legend_on", True)
 
 		# axis object
-		object_panelDB.set_item(tuple_legend_panel_indices, 
+		object_legendInfoCollector.set_item(tuple_legend_panel_indices, 
 			"object_axis", object_axis_for_legend)
-
-		# legend anchor coordinate
-		object_panelDB.set_item(tuple_legend_panel_indices, 
-			"legend_anchor_coordinate", dict_user_input["legend_anchor_coordinate"])
-
-		# legend number of columns
-		object_panelDB.set_item(tuple_legend_panel_indices,
-			"legend_number_of_columns", dict_user_input["legend_number_of_columns"])
-
-		# legend anchor coordinate 
-		object_panelDB.set_item(tuple_legend_panel_indices,
-			"legend_anchor_coordinate", dict_user_input["legend_anchor_coordinate"])
 		
+		# active legend for this axis
+		object_legendInfoCollector.set_item(tuple_legend_panel_indices,
+			"data_legend_on", True)
+
 		# list of legend labels 
-		object_panelDB.append_item(tuple_legend_panel_indices, 
-			"list_legend_labels", dict_user_input["legend"])
+		object_legendInfoCollector.append_item(tuple_legend_panel_indices, 
+			"list_legend_labels", dict_data["data_legend"])
 
 		# list of line objects
-		object_panelDB.append_item(tuple_legend_panel_indices,
+		object_legendInfoCollector.append_item(tuple_legend_panel_indices,
 			"list_line_objects", object_line)
 
-		#----------------------------------------------------------------------------------------------
-		# Refine axis properties
-		#----------------------------------------------------------------------------------------------
-		MpaPlotPropertySingleAxis.refine_single_axis(object_axis_for_panel, object_figure, dict_plot_parameters, 
-			user_x_min,
-			user_x_max,
-			user_y_min,
-			user_y_max,
-			)
-		#----------------------------------------------------------------------------------------------
 
 		ccc += 1 # ==> continue to the next iteration
 		#----------------------------------------------------------------------------------------------
 
-	dict_panel_information = object_panelDB.get_dict()
+	dict_legends = object_legendInfoCollector.get_dict()
 
-	return (array2D_global_x_min, array2D_global_x_max,
-			array2D_global_y_min, array2D_global_y_max,
-			dict_panel_information)
+	return (dict_legends, dict_global_xy_minmax)

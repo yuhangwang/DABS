@@ -13,7 +13,7 @@ class TwinAxisParameters:
 		"TWINY AXIS SOURCE INDEX LIST":"twiny_axis_source_index_list",
 	}
 
-	_defaults_ = {
+	_default_ = {
 		"twinx_axis_source_index_list":None,
 		"twiny_axis_source_index_list":None,
 	}
@@ -26,11 +26,11 @@ class TwinAxisParameters:
 		return TwinAxisParameters._convention_
 
 	@staticmethod
-	def get_defaults():
+	def get_default():
 		"""
 		Get the default value dictionary
 		"""
-		return TwinAxisParameters._defaults_.copy()	
+		return TwinAxisParameters._default_.copy()	
 
 	@staticmethod
 	def get_description():

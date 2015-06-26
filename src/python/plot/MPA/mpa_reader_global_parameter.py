@@ -4,9 +4,9 @@ AUTHOR: YUHANG WANG
 DATE: 06-24-2015
 """
 #--------------------------------------------------------
-import mpa_toolkit as MPA_TOOL
+import mpa_toolkit as MpaTk
 from mpa_syntax_marker  import ParameterSeparators as MpaParameterSeparators
-from mpa_parameter_file import GlobalParameters      as MpaGlobalParameters
+from mpa_core_parameter import GlobalParameters    as MpaGlobalParameters
 #--------------------------------------------------------
 
 def read(list_parameters):
@@ -17,8 +17,10 @@ def read(list_parameters):
 	"""
 	dict_global_parametes = dict()
 	dict_parameter_separators = MpaParameterSeparators.get_dict()
-	dict_convention = MpaGlobalParameters.get_convention()
-	dict_defaults = MpaGlobalParameters.get_defaults()
+	object_mpaGlobalParameters = MpaGlobalParameters()
+	dict_mpaGlobalParameters = object_mpaGlobalParameters.get_convention()
+	dict_convention = object_mpaGlobalParameters.get_convention()
+	dict_default = object_mpaGlobalParameters.get_default()
 
 	symbol_parameter_separator = dict_parameter_separators["PARAMETER SEPARATOR"]
 	symbol_key_value_separator = dict_parameter_separators["KEY VALUE SEPARATOR"]
@@ -35,28 +37,19 @@ def read(list_parameters):
 			value = r"{0}".format(value)
 
 			# check whether string "value" can be converted to boolean
-			value = MPA_TOOL.string_to_bool_or_not(value)
-
-			# If not, try to convert it to a number
-			value = MPA_TOOL.string_to_number_or_not(value)
-
-			# Try to convert it to a list
-			if type(value) is str and MPA_TOOL.is_convertible_to_list(value):
-				value = MPA_TOOL.string_to_tuple_or_not(value)
-
-			local_dict[key] = value
+			local_dict[key]  = MpaTk.transform_string_to_python_data_type(value)
 
 		# [1] set the defaults
-		for key,value in dict_defaults.items():
-			dict_global_parametes[file_name][key] = value 
+		for key,value in dict_default.items():
+			dict_global_parametes[key] = value 
 
 		# [2] update
 		for key,value in local_dict.items():
 			if key in dict_convention.keys():
-				internal_key = dict_convention[key]
+				key = dict_convention[key] # change to internal representation of the key
 			else:
-				print("WARNING: you have specified an unknown parameter: \"{0}\"".format(key))
+				print("WARNING: you have specified an unknown GLOBAL PARAMETER: \"{0}\"".format(key))
 				continue
-			dict_global_parametes[internal_key] = value 
+			dict_global_parametes[key] = value 
 
-	return dict_plot_parameter_global
+	return dict_global_parametes

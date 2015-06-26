@@ -13,7 +13,7 @@ class ExternalDependencyParameters:
 		"USE SCIPY":"use_scipy",
 		}
 
-	_defaults_ = {
+	_default_ = {
 		"use_latex":False,
 		"use_scipy":False,
 		}
@@ -26,11 +26,11 @@ class ExternalDependencyParameters:
 		return ExternalDependencyParameters._convention_
 
 	@staticmethod
-	def get_defaults():
+	def get_default():
 		"""
 		Get the default value dictionary
 		"""
-		return ExternalDependencyParameters._defaults_.copy()
+		return ExternalDependencyParameters._default_.copy()
 
 	@staticmethod
 	def get_description():

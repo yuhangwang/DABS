@@ -52,7 +52,7 @@ class TickParameters:
 		}
 
 	# Default parameters corresponding to entries in _convention_
-	_user_defaults_ = {
+	_user_default_ = {
 		"x_tick_major_minor_or_both":"major",
 		"y_tick_major_minor_or_both":"major",
 		"x_tick_in_out_or_inout":"inout",
@@ -102,7 +102,7 @@ class TickParameters:
 	# For example, 'y' axis doesn't have ticks on the top.
 	# This is useful since we can now use a for loop
 	# to iterate all options for x and y axis uniformly.
-	_internal_defaults_ = {
+	_internal_default_ = {
 		"y_tick_show_top":False,
 		"y_tick_show_bottom":False,
 		"x_tick_show_left":False,
@@ -114,8 +114,8 @@ class TickParameters:
 		}
 
 	## Now merge the two default dictionaries
-	_defaults_ = _user_defaults_.copy()
-	_defaults_.update(_internal_defaults_)
+	_defaults_ = _user_default_.copy()
+	_defaults_.update(_internal_default_)
 
 	@staticmethod
 	def get_convention():
@@ -125,7 +125,7 @@ class TickParameters:
 		return TickParameters._convention_
 
 	@staticmethod
-	def get_defaults():
+	def get_default():
 		"""
 		Get the default value dictionary
 		"""

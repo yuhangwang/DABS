@@ -9,6 +9,8 @@ class LegendParameters:
 	Legend parameters
 	"""
 	_convention_ = {
+		"LEGEND ANCHOR COORDINATE":"legend_anchor_coordinate",
+		"LEGEND NUMBER OF COLUMNS":"legend_number_of_columns",
 		"LEGEND ANCHOR CORNER":"legend_anchor_corner",
 		"LEGEND FRAME OPACITY":"legend_frame_opacity",
 		"LEGEND FONT SIZE":"legend_font_size",
@@ -31,7 +33,9 @@ class LegendParameters:
 		"USE GLOBAL LEGEND":"use_global_legend",
 		}
 
-	_defaults_ = {
+	_default_ = {
+		"legend_anchor_coordinate": (0.9,0.9),
+		"legend_number_of_columns":1,
 		"legend_anchor_corner":"upper right",
 		"legend_frame_opacity":0.5,
 		"legend_font_size":26,
@@ -51,7 +55,6 @@ class LegendParameters:
 		"legend_face_opacity":1.0,
 		"use_round_legend_box":True,
 		"show_legend_frame":True,
-
 		"use_global_legend":True,
 		}
 
@@ -63,11 +66,11 @@ class LegendParameters:
 		return LegendParameters._convention_
 
 	@staticmethod
-	def get_defaults():
+	def get_default():
 		"""
 		Get the default value dictionary
 		"""
-		return LegendParameters._defaults_.copy()
+		return LegendParameters._default_.copy()
 
 	@staticmethod
 	def get_description():
