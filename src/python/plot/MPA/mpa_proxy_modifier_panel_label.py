@@ -19,7 +19,9 @@ def add_figure_panel_labels(dict_panel_information, dict_plot_parameters):
 
 	"""
 	object_old_axis_object = matplotlib.pyplot.gca() # store the current axis object
+	print("panel_info:", dict_panel_information)
 	for _panel_index_tuple, _dict_panel in dict_panel_information.items():
+		print(_panel_index_tuple)
 		object_axis = _dict_panel["object_axis"]
 		panel_label = _dict_panel["panel_label"]
 		[x, y] = _dict_panel["panel_label_coordinate"]

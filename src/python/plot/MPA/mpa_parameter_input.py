@@ -12,6 +12,7 @@ class InputFileParameters:
 	_convention_ = {
 		"FILE":"file",
 		"LEGEND":"legend",
+		"LEGEND ON":"legend_on",
 		"LEGEND ANCHOR COORDINATE":"legend_anchor_coordinate",
 		"LEGEND PANEL INDICES":"legend_panel_indices",
 		"LEGEND NUMBER OF COLUMNS":"legend_number_of_columns",
@@ -28,6 +29,7 @@ class InputFileParameters:
 	_defaults_ = {
 		"file":None,
 		"legend":None,
+		"legend_on":False,
 		"legend_anchor_coordinate": (0.9,0.9),
 		"legend_panel_indices": (0,0),
 		"legend_number_of_columns":1,

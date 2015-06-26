@@ -20,7 +20,8 @@ import pyparsing
 #------------------------------------------------
 import mpa_core_io   as MPA_IO
 import mpa_core_plot as MPA_PLOT
-from mpa_core_parameter import AllParameters as MPA_CLASS_AllParameters
+from mpa_core_parameter import GlobalParameters    as MPA_CLASS_GlobalParameters
+from mpa_core_parameter import LocalParameters     as MPA_CLASS_LocalParameters
 from mpa_core_parameter import InputFileParameters as MPA_CLASS_InputFileParameters
 #================================================
 
@@ -41,11 +42,11 @@ def main(file_input_information, file_plot_parameters, preview=False):
 		dict_default_input_parameters,
 		dict_convention_input_parameters)
 	
-	object_default_parameters = MPA_CLASS_AllParameters()
+	object_parameter_global = MPA_CLASS_GlobalParameters()
+	object_parameter_local = MPA_CLASS_LocalParameters()
 	dict_plot_parameters = MPA_IO.read_parameter(file_plot_parameters,
-						object_default_parameters.get_convention(),
-						object_default_parameters.get_defaults())
-
+						object_parameter_global,
+						object_parameter_local)
 
 	#-------------------------------------------------------------------
 	# [3] Plot

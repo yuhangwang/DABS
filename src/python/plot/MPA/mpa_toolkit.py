@@ -12,6 +12,31 @@ import re
 import pyparsing
 #------------------------------------------------
 
+def is_list_tuple(input):
+	"""
+	Check whether input is a list/tuple
+	:param input: input 
+	"""
+	if isinstance(input, list): 
+		return True 
+	elif isinstance(input, tuple): 
+		return True 
+	else:
+		return False  
+
+def is_multidimensional_list_tuple(input):
+	"""
+	Check whether input list is multidimensional 
+	:param input: input
+	"""
+	# check whether input is actually a list or not 
+	if not is_list_tuple(input): return False 
+
+	if is_list_tuple(input[0]): 
+		return True
+	else:
+		return False
+
 def is_string(input):
 	"""
 	Check whether input is a string: plain string or unicode 

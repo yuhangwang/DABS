@@ -59,7 +59,13 @@ def plot(object_figure,
 		tuple_panel_indices = dict_user_input["panel_indices"]
 		user_data   = dict_user_input["input_data"]
 		panel_id_row, panel_id_column = tuple_panel_indices
-		object_axis = list_axis_objects[panel_id_row, panel_id_column]
+		object_axis_for_panel = list_axis_objects[panel_id_row, panel_id_column]
+
+
+		# skip dummy axis objects
+		if object_axis_for_panel is None: 
+			print("skip", tuple_panel_indices)
+			continue
 
 		# Get X & Y from user_data
 		X = user_data[:,0]
@@ -88,12 +94,12 @@ def plot(object_figure,
 
 
 		# Set the current active Axes instance to this axis 
-		matplotlib.pyplot.sca(object_axis)
+		matplotlib.pyplot.sca(object_axis_for_panel)
 
 		#-------------------------------------------------
 		#  Plot!
 		#-------------------------------------------------
-		object_line, = object_axis.plot(X,Y, 
+		object_line, = object_axis_for_panel.plot(X,Y, 
 			color=line_color,
 			alpha=dict_plot_parameters["line_opacity"],
 			linestyle=dict_plot_parameters["line_style"],
@@ -107,7 +113,7 @@ def plot(object_figure,
 			Y_block_averaged = ndimage.filters.uniform_filter(Y, 
 				size=dict_user_input["line_block_average_block_size"], 
 				mode="nearest")
-			object_line, = object_axis.plot(X,Y_block_averaged,
+			object_line, = object_axis_for_panel.plot(X,Y_block_averaged,
 				linewidth=dict_plot_parameters["block_averaged_line_width"],
 				color=line_color,
 				)
@@ -115,18 +121,32 @@ def plot(object_figure,
 		#-------------------------------------------------------------
 		# Add panel label information
 		#-------------------------------------------------------------
+		# panel label
 		object_panelDB.set_item(tuple_panel_indices,
 			"panel_label", dict_user_input["panel_label"])
+		
+		# panel label coordinate
 		object_panelDB.set_item(tuple_panel_indices,
 			"panel_label_coordinate", dict_user_input["panel_label_coordinate"])
+		
+		# panel axis object
+		object_panelDB.set_item(tuple_panel_indices,
+			"object_axis", object_axis_for_panel)
 
 		#-------------------------------------------------------------
 		# Add panel legend information
 		#-------------------------------------------------------------
 		tuple_legend_panel_indices = dict_user_input["legend_panel_indices"]
+		id_row_legend_panel, id_column_legend_panel = tuple_legend_panel_indices
+		object_axis_for_legend = list_axis_objects[id_row_legend_panel, id_column_legend_panel]
+		
+		# active legend for this axis
+		object_panelDB.set_item(tuple_legend_panel_indices,
+			"legend_on", True)
+
 		# axis object
 		object_panelDB.set_item(tuple_legend_panel_indices, 
-			"object_axis", object_axis)
+			"object_axis", object_axis_for_legend)
 
 		# legend anchor coordinate
 		object_panelDB.set_item(tuple_legend_panel_indices, 
@@ -151,7 +171,7 @@ def plot(object_figure,
 		#----------------------------------------------------------------------------------------------
 		# Refine axis properties
 		#----------------------------------------------------------------------------------------------
-		MpaPlotPropertySingleAxis.refine_single_axis(object_axis, object_figure, dict_plot_parameters, 
+		MpaPlotPropertySingleAxis.refine_single_axis(object_axis_for_panel, object_figure, dict_plot_parameters, 
 			user_x_min,
 			user_x_max,
 			user_y_min,

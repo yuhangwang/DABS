@@ -18,6 +18,8 @@ def refine_legend(dict_panel_information,dict_plot_parameters):
 	"""
 	object_old_axis_object = matplotlib.pyplot.gca() # store the current axis object
 	for _panel_indices, _dict_panel in dict_panel_information.items():
+		if ("legend_on" not in _dict_panel.keys()) or (_dict_panel["legend_on"] is False): continue 
+
 		object_axis = _dict_panel["object_axis"]
 		list_line_objects = _dict_panel["list_line_objects"]
 		list_legend_labels = _dict_panel["list_legend_labels"]

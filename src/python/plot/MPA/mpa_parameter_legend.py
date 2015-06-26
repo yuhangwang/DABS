@@ -9,7 +9,6 @@ class LegendParameters:
 	Legend parameters
 	"""
 	_convention_ = {
-		"LEGEND ON":"legend_on",
 		"LEGEND ANCHOR CORNER":"legend_anchor_corner",
 		"LEGEND FRAME OPACITY":"legend_frame_opacity",
 		"LEGEND FONT SIZE":"legend_font_size",
@@ -33,7 +32,6 @@ class LegendParameters:
 		}
 
 	_defaults_ = {
-		"legend_on":False,
 		"legend_anchor_corner":"upper right",
 		"legend_frame_opacity":0.5,
 		"legend_font_size":26,

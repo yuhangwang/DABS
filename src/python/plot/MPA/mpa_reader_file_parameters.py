@@ -9,10 +9,9 @@ import numpy
 import mpa_toolkit as MPA_TOOL
 #--------------------------------------------------------
 
-def read_input_information(file_input_information, dict_default, dict_convention):
+def read_file_parameters(file_input_information, dict_default, dict_convention):
 	"""
-	Read a file containing a list of input file names
-	Then put the content of each data file into a list 
+	Read file parameters 
 	:param str file_input_information: file that contains a list of file names 
 	:param dict dict_default: a dict that has all the default values
 	:param dict dict_convention: a dictionary of input parameter keyword convention pairs

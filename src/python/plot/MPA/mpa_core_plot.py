@@ -37,14 +37,14 @@ def plot(list_input_information, dict_plot_parameters):
 	#-------------------------------------------------------------------
 	# Create a list of figure/axis objects 
 	#-------------------------------------------------------------------
-	[object_figure, list_axis_objects] = MpaPlotCreate.figure(dict_plot_parameters)
+	[object_figure, list_axis_objects, dict_plot_parameters] = MpaPlotCreate.figure(dict_plot_parameters)
 	
 	#-------------------------------------------------------------------
 	# Plot lines
 	#-------------------------------------------------------------------
 	[array2D_global_x_min, array2D_global_x_max, 
 	 array2D_global_y_min, array2D_global_y_max,
-	 dict_legend_information] = MpaPlotLine.plot(object_figure, 
+	 dict_panel_information] = MpaPlotLine.plot(object_figure, 
 					 							list_axis_objects,
 					 							dict_plot_parameters,
 												list_input_information)
@@ -52,7 +52,7 @@ def plot(list_input_information, dict_plot_parameters):
 	#----------------------------------------------------------------------------------------------
 	# Refine properties for all axes
 	#----------------------------------------------------------------------------------------------
-	MpaPlotProertyAllAxes.refine_all_axes(object_figure, list_axis_objects, dict_plot_parameters, dict_legend_information,
+	MpaPlotProertyAllAxes.refine_all_axes(object_figure, list_axis_objects, dict_plot_parameters, dict_panel_information,
 		array2D_global_x_min,
 		array2D_global_x_max,
 		array2D_global_y_min,

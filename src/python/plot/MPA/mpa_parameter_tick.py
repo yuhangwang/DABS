@@ -4,8 +4,6 @@ AUTHOR: YUHANG WANG
 DATE: 06-24-2015
 """
 
-
-
 class TickParameters:
 	"""
 	Tick and its label parameters

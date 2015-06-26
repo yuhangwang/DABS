@@ -16,7 +16,76 @@ from mpa_parameter_legend import LegendParameters
 from mpa_parameter_line   import LineParameters
 from mpa_parameter_panel  import PanelParameters
 from mpa_parameter_tick   import TickParameters
+from mpa_parameter_twin_axis import TwinAxisParameters
 #----------------------------------------------------
+
+class GlobalParameters:
+	"""
+	Global parameters for the entire figure 
+	"""
+	def __init__(self):
+		self._list_of_parameter_classes_ = [
+			ExternalDependencyParameters,
+			FigureParameters,
+			TwinAxisParameters,
+			]
+
+		self._convention_ = {}
+		self._defaults_ = {}
+
+		# Fill up self._convention_ and self._defaults_
+		for _class in self._list_of_parameter_classes_:
+			dict_convention = getattr(_class, "get_convention")()
+			dict_defaults   = getattr(_class, "get_defaults")()
+			for key, value in dict_convention.items():
+				self._convention_[key] = value
+
+			for key, value in dict_defaults.items():
+				self._defaults_[key] = value
+
+
+	def get_convention(self):
+		return self._convention_
+
+	def get_defaults(self):
+		return self._defaults_.copy()
+
+
+class LocalParameters:
+	"""
+	Local parameters for each figure panel 
+	"""
+	def __init__(self):
+		self._list_of_parameter_classes_ = [
+			PanelParameters,
+			AxisParameters,
+			LineParameters,
+			LegendParameters,
+			GridParameters,
+			TickParameters,
+			ColorParameters,
+			]
+
+		self._convention_ = {}
+		self._defaults_ = {}
+
+		# Fill up self._convention_ and self._defaults_
+		for _class in self._list_of_parameter_classes_:
+			dict_convention = getattr(_class, "get_convention")()
+			dict_defaults   = getattr(_class, "get_defaults")()
+			for key, value in dict_convention.items():
+				self._convention_[key] = value
+
+			for key, value in dict_defaults.items():
+				self._defaults_[key] = value
+
+
+	def get_convention(self):
+		return self._convention_
+
+	def get_defaults(self):
+		return self._defaults_.copy()
+
 
 class AllParameters:
 	"""
@@ -33,6 +102,7 @@ class AllParameters:
 			GridParameters,
 			TickParameters,
 			ColorParameters,
+			TwinAxisParameters,
 			]
 
 		self._convention_ = {}
@@ -68,6 +138,7 @@ class ParameterManager:
 			GridParameters,
 			TickParameters,
 			ColorParameters,
+			TwinAxisParameters,
 			]
 	@staticmethod
 	def show_parameters(parameter_type="public", file_output=None):

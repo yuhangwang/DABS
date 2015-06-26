@@ -77,8 +77,7 @@ def refine_all_axes(object_figure, list_axis_objects, dict_plot_parameters, dict
 	#----------------------------------------------------------------------------------------------
 	# Add & refine legend
 	#----------------------------------------------------------------------------------------------
-	if dict_plot_parameters["legend_on"]:
-		MpaProxyModifierLegend.refine_legend(dict_panel_information, dict_plot_parameters)
+	MpaProxyModifierLegend.refine_legend(dict_panel_information, dict_plot_parameters)
 
 	#----------------------------------------------------------------------------------------------
 	# Make axis limits tight

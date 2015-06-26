@@ -78,7 +78,7 @@ if ID_test_case == 1 then
       local list_legend_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(2,0)"}
       local list_legend_anchor_coordinates = {"(0.98, 0.95)", "(0.98, 0.95)", "(0.51, 0.95)", "---"}
       local list_legend_number_of_columns = {1,1,2,"---"}
-      local list_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(2,0)"}
+      local list_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
       local list_panel_labels = {'A', "B", "C", "D"}
       local list_block_average_block_size = {10,2,100,50}
 
@@ -118,6 +118,8 @@ if ID_test_case == 1 then
   		table_parameters["USE SCIPY"] = "True"
 
   		-- Figure
+      -- Add twin axis
+      table_parameters["TWINX AXIS SOURCE INDEX LIST"] = "((0,0))"
   		-- table_parameters["FIGURE TITLE"] = "DOJF2 RMSD"
       table_parameters["FIGURE OUTPUT FILE NAME"] = file_name_output
   		table_parameters["FIGURE TITLE FONT SIZE"] = 40
@@ -150,7 +152,6 @@ if ID_test_case == 1 then
   		table_parameters["BLOCK AVERAGED LINE WIDTH"] = 2
 
   		-- Legend
-      table_parameters["LEGEND ON"] = "True"
   		table_parameters["LEGEND FONT SIZE"] = 18
   		table_parameters["LEGEND FONT WEIGHT"] = 0
 
