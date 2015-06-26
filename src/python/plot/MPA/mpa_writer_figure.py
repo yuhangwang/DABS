@@ -4,7 +4,7 @@ AUTHOR: YUHANG WANG
 DATE: 06-24-2015
 """
 
-def write_figure(object_figure, output_file_name, 
+def write(object_figure, output_file_name, 
 	figure_dpi,
 	figure_padding=0.2,
 	figure_transparent=False,

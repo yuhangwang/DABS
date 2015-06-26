@@ -6,9 +6,10 @@ DATE: 06-24-2015
 #----------------------------------------------------
 # Import parameters
 #----------------------------------------------------
-from mpa_reader_input import read_input_information as input_reader
-from mpa_reader_plot_parameters import read_plot_parameters as parameter_reader
-from mpa_writer_figure import write_figure as figure_writer
+import mpa_reader_file_parameters   as MpaFileParameterReader
+import mpa_reader_global_parameters as MpaGlobalParameterReader
+import mpa_reader_local_parameters  as MpaLocalParameterReader
+impore mpa_writer_figure 			as MpaFigureWriter
 #----------------------------------------------------
 
 
@@ -20,7 +21,7 @@ def read_config(file_configuration):
 	Read a file containing a list of plot parameters 
 	and put them into a python dictionary.
 	:param str file_configuration: name of the input configuration file
-	:return: (dict_global_parameters, dict_local_parameters, dict_file_parameters)
+	:return: (dict_file_parameters, dict_global_plot_parameters, dict_local_plot_parameters)
 	"""
 	print("======================================================")
 	print("  Reading input configuration file")
@@ -48,8 +49,19 @@ def read_config(file_configuration):
 				# local parameters
 				line = line[3:].strip()
 				list_lines_local_parameters.append(line)
-				
+
 			else: continue # skip comments
+
+	# Read file parameters 
+	dict_file_parameters = MpaFigureWriter.read(list_lines_file_parameters)
+
+	# Read global parameters
+	dict_global_plot_parameters = MpaGlobalParameterReader.read(list_lines_global_parameters)
+
+	# Read local parameters 
+	dict_local_plot_parameters = MpaLocalParameterReader.read(list_lines_local_parameters)
+
+	return (dict_file_parameters, dict_global_plot_parameters, dict_local_plot_parameters)
 
 #----------------------------------------------------
 #                     OUTPUT
@@ -58,4 +70,4 @@ def write_figure(*arg, **kwargs):
 	"""
 	Proxy for figure image writer
 	"""
-	return figure_writer(*arg, **kwargs)
+	return MpaFigureWriter.write(*arg, **kwargs)

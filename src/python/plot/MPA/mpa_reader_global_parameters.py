@@ -7,7 +7,7 @@ DATE: 06-24-2015
 import mpa_toolkit as MPA_TOOL
 #--------------------------------------------------------
 
-def read_global_parameters():
+def read():
 			key,value = line.split(':')
 
 			key = key.strip()

@@ -9,7 +9,7 @@ import numpy
 import mpa_toolkit as MPA_TOOL
 #--------------------------------------------------------
 
-def read_file_parameters(file_input_information, dict_default, dict_convention):
+def read(file_input_information, dict_default, dict_convention):
 	"""
 	Read file parameters 
 	:param str file_input_information: file that contains a list of file names 
