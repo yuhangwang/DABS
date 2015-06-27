@@ -22,7 +22,7 @@ X = numpy.linspace(data_start,data_end,number_of_sample_points)
 list_data.append([[X[i], numpy.sin(X[i])+noise[i]] for i in range(number_of_sample_points)])
 list_data.append([[X[i], numpy.cos(X[i])+noise[i]] for i in range(number_of_sample_points)])
 list_data.append([[X[i], numpy.tanh(X[i])+noise[i]] for i in range(number_of_sample_points)])
-list_data.append([[X[i], numpy.cosh(X[i])+noise[i]] for i in range(number_of_sample_points)])
+list_data.append([[200*X[i], numpy.cosh(X[i])+noise[i]] for i in range(number_of_sample_points)])
 
 for i in range(len(list_data)):
 	file_name = os.path.join(dir_current, dir_output, list_file_names[i])

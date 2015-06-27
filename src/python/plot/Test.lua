@@ -39,7 +39,7 @@ function add_global_parameters(dict_global_parameters)
 
     -- Figure
     --   Add twin axis
-    -- dict_global_parameters["TWINX AXIS SOURCE INDEX LIST"] = "((0,0))"
+    dict_global_parameters["TWINY AXIS SOURCE INDEX LIST"] = "((0,0))"
     dict_global_parameters["FIGURE OUTPUT FILE NAME"] = file_name_output
     dict_global_parameters["FIGURE TITLE FONT SIZE"] = 40
     dict_global_parameters["FIGURE NUMBER OF ROWS"] = 3
@@ -105,10 +105,10 @@ if ID_test_case == 1 then
 
       local list_input_file_names = {"data1.dat", "data2.dat", "data3.dat", "data4.dat"}
       local list_legends = {"data1", "data2", "data3", 'data4'}
-      local list_legend_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(2,0)"}
+      local list_legend_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
       local list_legend_anchor_coordinates = {"(0.98, 0.95)", "(0.98, 0.95)", "(0.51, 0.95)", "---"}
       local list_legend_number_of_columns = {1,1,2,"---"}
-      local list_line_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(2,0)"}
+      local list_line_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
       local list_block_average_block_size = {10,2,100,50}
 
       local list_panel_labels = {'A', "B", "C", "D"}
@@ -165,9 +165,9 @@ if ID_test_case == 1 then
         local panel_indices = list_panel_indices[i]
         local global_key = panel_indices
         dict_local_parameters[global_key] = {}
+        dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
         dict_local_parameters[global_key]["PANEL LABEL ON"] = "True"
         dict_local_parameters[global_key]["PANEL LABEL"] = list_panel_labels[i]
-        dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
         dict_local_parameters[global_key]["X TICK LABEL NUMBER OF DECIMAL PLACES"] = list_x_label_decimal_places[i]
         dict_local_parameters[global_key]["Y TICK LABEL NUMBER OF DECIMAL PLACES"] = list_y_label_decimal_places[i]
         dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "False"
@@ -179,6 +179,41 @@ if ID_test_case == 1 then
         dict_local_parameters[global_key]["Y TICK LABEL HIDE FIRST"] = 1
         dict_local_parameters[global_key]["Y TICK LABEL HIDE LAST"] = 1
       end
+
+      -- Special treatment for the twin axis 
+      local panel_indices = "(0,0)"
+      local global_key = panel_indices
+      dict_local_parameters[global_key] = {}
+      dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
+      dict_local_parameters[global_key]["X TICK SHOW BOTTOM"] = "True"
+      dict_local_parameters[global_key]["X TICK SHOW TOP"] = "False"
+      dict_local_parameters[global_key]["X TICK SHOW BOTTOM"] = "True"
+      dict_local_parameters[global_key]["Y TICK SHOW LEFT"] = "True"
+      dict_local_parameters[global_key]["Y TICK SHOW RIGHT"] = "True"
+      dict_local_parameters[global_key]["X TICK LABEL SHOW BOTTOM"] = "True"
+      dict_local_parameters[global_key]["X TICK LABEL SHOW TOP"] = "False"
+      dict_local_parameters[global_key]["X TICK LABEL SHOW BOTTOM"] = "True"
+      dict_local_parameters[global_key]["Y TICK LABEL SHOW LEFT"] = "True"
+      dict_local_parameters[global_key]["Y TICK LABEL SHOW RIGHT"] = "False"
+
+      local panel_indices = "(3,0)"
+      local global_key = panel_indices
+      dict_local_parameters[global_key] = {}
+      dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
+      dict_local_parameters[global_key]["X TICK LABEL NUMBER OF DECIMAL PLACES"] = 0
+      dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "False"
+      dict_local_parameters[global_key]["Y LIMIT TIGHT ON"] = "False"
+      dict_local_parameters[global_key]["X TICK SHOW TOP"] = "True"
+      dict_local_parameters[global_key]["X TICK SHOW BOTTOM"] = "False"
+      dict_local_parameters[global_key]["Y TICK SHOW LEFT"] = "False"
+      dict_local_parameters[global_key]["Y TICK SHOW RIGHT"] = "False"
+      dict_local_parameters[global_key]["X TICK LABEL SHOW TOP"] = "True"
+      dict_local_parameters[global_key]["X TICK LABEL SHOW BOTTOM"] = "False"
+      dict_local_parameters[global_key]["Y TICK LABEL SHOW LEFT"] = "False"
+      dict_local_parameters[global_key]["Y TICK LABEL SHOW RIGHT"] = "False"
+
+
+
       MpaTk.write_intersection_gap(file_plot_config, symbol_intersection_gap, write_mode)
       MpaTk.write_section_header(file_plot_config, section_title, symbol_section_separator, write_mode)
       MpaTk.write_dict2d_to_file(file_plot_config, dict_local_parameters, write_mode, symbol_scope_separator, symbol_inline_comment)
