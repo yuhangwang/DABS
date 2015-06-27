@@ -57,7 +57,7 @@ function add_global_parameters(dict_global_parameters, file_output)
     dict_global_parameters["FIGURE X LABEL"]   = "Time (ns)"
     dict_global_parameters["FIGURE Y LABEL"]   = "RMSD ($\\mathrm{\\AA}$)" -- Angstrom's unicode is \u212B in python
     dict_global_parameters["FIGURE X LABEL PADDING"] = 60
-    dict_global_parameters["FIGURE Y LABEL PADDING"] = 60
+    dict_global_parameters["FIGURE Y LABEL PADDING"] = 70
 
 end
 
@@ -108,7 +108,6 @@ if ID_test_case == 1 then
       local list_legends = {"data1", "data2", "data3", 'data4'}
       local list_legend_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(0,0)"}
       
-      local list_legend_number_of_columns = {1,1,2,"---"}
       local list_line_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
       local list_block_average_block_size = {10,2,100,50}
       local list_data_line_colors = {'r','k', 'g' ,'b'}
@@ -205,6 +204,7 @@ if ID_test_case == 1 then
       dict_local_parameters[global_key]["AXIS BOTTOM SPINE LINE WIDTH"] = 2
       dict_local_parameters[global_key]["X TICK LABEL COLOR"] = 'r'
       dict_local_parameters[global_key]["X TICK COLOR"] = 'r'
+      dict_local_parameters[global_key]["LEGEND NUMBER OF COLUMNS"] = 1
       
       local panel_indices = "(3,0)"
       local global_key = panel_indices
