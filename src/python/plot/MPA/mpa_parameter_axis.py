@@ -11,20 +11,32 @@ class AxisParameters:
 	_convention_ = {
 		"X LABEL":"x_label",
 		"Y LABEL":"y_label",
+
 		"X LABEL PADDING":"x_label_padding",
 		"Y LABEL PADDING":"y_label_padding",
+
 		"X LABEL FONT SIZE":"x_label_font_size",
 		"Y LABEL FONT SIZE":"y_label_font_size",
+
 		"X LIMIT USER DEFINED ON":"x_limit_user_defined_on",
 		"Y LIMIT USER DEFINED ON":"y_limit_user_defined_on",
 		"X LIMIT TIGHT ON":"x_limit_tight_on",
 		"Y LIMIT TIGHT ON":"y_limit_tight_on",
+
 		"X MIN":"x_min",
 		"X MAX":"x_max",
 		"Y MIN":"y_min",
 		"Y MAX":"y_max",
-		"AXIS SPINE LIST":"axis_spine_list",
-		"AXIS SPINE COLOR LIST":"axis_spine_color_list",
+
+		"AXIS TOP SPINE COLOR":"axis_top_spine_color",
+		"AXIS BOTTOM SPINE COLOR":"axis_bottom_spine_color",
+		"AXIS LEFT SPINE COLOR":"axis_left_spine_color",
+		"AXIS RIGHT SPINE COLOR":"axis_right_spine_color",
+
+		"AXIS TOP SPINE LINE WIDTH":"axis_top_spine_line_width",
+		"AXIS BOTTOM SPINE LINE WIDTH":"axis_bottom_spine_line_width",
+		"AXIS LEFT SPINE LINE WIDTH":"axis_left_spine_line_width",
+		"AXIS RIGHT SPINE LINE WIDTH":"axis_right_spine_line_width",
 	}
 
 	_default_ = {
@@ -42,8 +54,16 @@ class AxisParameters:
 		"x_max":None,
 		"y_min":None,
 		"y_max":None,
-		"axis_spine_list":None,
-		"axis_spine_color_list":None,
+		
+		"axis_top_spine_color":None,
+		"axis_bottom_spine_color":None,
+		"axis_left_spine_color":None,
+		"axis_right_spine_color":None,
+		
+		"axis_top_spine_line_width":None,
+		"axis_bottom_spine_line_width":None,
+		"axis_left_spine_line_width":None,
+		"axis_right_spine_line_width":None,
 		}
 
 	@staticmethod

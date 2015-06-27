@@ -102,5 +102,9 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 		#----------------------------------------------------------------------------------------------
 		# Set axis spine color
 		#----------------------------------------------------------------------------------------------
-		if dict_panel_parameters["axis_spine_list"] is not None:
-			MpaProxyModifierAxis.set_spine_color(object_axis, dict_panel_parameters)
+		MpaProxyModifierAxis.set_spine_color(object_axis, dict_panel_parameters)
+			
+		#----------------------------------------------------------------------------------------------
+		# Set axis spine line width
+		#----------------------------------------------------------------------------------------------
+		MpaProxyModifierAxis.set_spine_line_width(object_axis, dict_panel_parameters)

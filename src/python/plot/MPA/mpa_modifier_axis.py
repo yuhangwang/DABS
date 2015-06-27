@@ -18,6 +18,15 @@ def set_spine_color(object_axis, which_spine, new_color):
 	"""
 	object_axis.spines[which_spine].set_color(new_color)
 
+def set_spine_line_width(object_axis, which_spine, new_line_width):
+	"""
+	Change spine line width
+	:param object object_axis: matplotlib Axis object 
+	:param str which_spine: "top" | "bottom" | "left" | "right"
+	:param float new_line_width: new line width
+	"""
+	object_axis.spines[which_spine].set_linewidth(new_line_width)
+
 def get_tick_labels(object_axis, which_axis):
 	"""
 	Return the axis tick labels for the target axis 

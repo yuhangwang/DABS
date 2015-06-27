@@ -49,7 +49,7 @@ function add_global_parameters(dict_global_parameters, file_output)
     dict_global_parameters["FIGURE SHARE Y"] = "False"
     dict_global_parameters["FIGURE LENGTH"] = 10
     dict_global_parameters["FIGURE HEIGHT"] = 20
-    dict_global_parameters["FIGURE SUBPLOTS VERTICAL SPACING"] = 0
+    dict_global_parameters["FIGURE SUBPLOTS VERTICAL SPACING"] = 0.2
     dict_global_parameters["FIGURE SUBPLOTS HORIZONTAL SPACING"] = 0
 
     -- Labels
@@ -111,7 +111,7 @@ if ID_test_case == 1 then
       local list_legend_number_of_columns = {1,1,2,"---"}
       local list_line_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
       local list_block_average_block_size = {10,2,100,50}
-      local list_data_line_colors = {'k','r', 'g' ,'b'}
+      local list_data_line_colors = {'r','k', 'g' ,'b'}
 
       local list_panel_labels = {'A', "B", "C", "D"}
       local panel_label_coordinates = "(0.05, 0.9)"
@@ -175,14 +175,14 @@ if ID_test_case == 1 then
         dict_local_parameters[global_key]["PANEL LABEL"] = list_panel_labels[i]
         dict_local_parameters[global_key]["X TICK LABEL NUMBER OF DECIMAL PLACES"] = list_x_label_decimal_places[i]
         dict_local_parameters[global_key]["Y TICK LABEL NUMBER OF DECIMAL PLACES"] = list_y_label_decimal_places[i]
-        dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "False"
+        dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "True"
         dict_local_parameters[global_key]["Y LIMIT TIGHT ON"] = "False"
         dict_local_parameters[global_key]["X TICK LABEL HIDE OVERLAP"] = "True"
-        dict_local_parameters[global_key]["X TICK LABEL HIDE FIRST"] = 2
-        dict_local_parameters[global_key]["X TICK LABEL HIDE LAST"] = 2        
+        dict_local_parameters[global_key]["X TICK LABEL HIDE FIRST"] = 0
+        dict_local_parameters[global_key]["X TICK LABEL HIDE LAST"] = 0      
         dict_local_parameters[global_key]["Y TICK LABEL HIDE OVERLAP"] = "True"
-        dict_local_parameters[global_key]["Y TICK LABEL HIDE FIRST"] = 1
-        dict_local_parameters[global_key]["Y TICK LABEL HIDE LAST"] = 1
+        dict_local_parameters[global_key]["Y TICK LABEL HIDE FIRST"] = 0
+        dict_local_parameters[global_key]["Y TICK LABEL HIDE LAST"] = 0
         dict_local_parameters[global_key]["LEGEND ANCHOR COORDINATE"] = list_legend_anchor_coordinates[i]
         print(global_key, list_legend_anchor_coordinates[i])
       end
@@ -201,13 +201,17 @@ if ID_test_case == 1 then
       dict_local_parameters[global_key]["X TICK LABEL SHOW BOTTOM"] = "True"
       dict_local_parameters[global_key]["Y TICK LABEL SHOW LEFT"] = "True"
       dict_local_parameters[global_key]["Y TICK LABEL SHOW RIGHT"] = "False"
-
+      dict_local_parameters[global_key]["AXIS BOTTOM SPINE COLOR"] = 'r'
+      dict_local_parameters[global_key]["AXIS BOTTOM SPINE LINE WIDTH"] = 2
+      dict_local_parameters[global_key]["X TICK LABEL COLOR"] = 'r'
+      dict_local_parameters[global_key]["X TICK COLOR"] = 'r'
+      
       local panel_indices = "(3,0)"
       local global_key = panel_indices
       dict_local_parameters[global_key] = {}
       dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
       dict_local_parameters[global_key]["X TICK LABEL NUMBER OF DECIMAL PLACES"] = 0
-      dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "False"
+      dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "True"
       dict_local_parameters[global_key]["Y LIMIT TIGHT ON"] = "False"
       dict_local_parameters[global_key]["X TICK SHOW TOP"] = "True"
       dict_local_parameters[global_key]["X TICK SHOW BOTTOM"] = "False"
@@ -219,8 +223,9 @@ if ID_test_case == 1 then
       dict_local_parameters[global_key]["Y TICK LABEL SHOW RIGHT"] = "False"
       dict_local_parameters[global_key]["X TICK COLOR"] = 'b'
       dict_local_parameters[global_key]["X TICK LABEL COLOR"] = 'b'
-      dict_local_parameters[global_key]["AXIS SPINE LIST"] = "(top, bottom)"
-      dict_local_parameters[global_key]["AXIS SPINE COLOR LIST"] = "(b,b)"
+      dict_local_parameters[global_key]["AXIS TOP SPINE COLOR"] = 'b'
+      dict_local_parameters[global_key]["AXIS BOTTOM SPINE COLOR"] = "none"
+      dict_local_parameters[global_key]["AXIS TOP SPINE LINE WIDTH"] = 2
 
 
 
