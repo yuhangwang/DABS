@@ -105,11 +105,12 @@ if ID_test_case == 1 then
 
       local list_input_file_names = {"data1.dat", "data2.dat", "data3.dat", "data4.dat"}
       local list_legends = {"data1", "data2", "data3", 'data4'}
-      local list_legend_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
-      local list_legend_anchor_coordinates = {"(0.98, 0.95)", "(0.98, 0.95)", "(0.51, 0.95)", "---"}
+      local list_legend_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(0,0)"}
+      
       local list_legend_number_of_columns = {1,1,2,"---"}
       local list_line_panel_indices = {"(0,0)", "(1,0)", "(2,0)", "(3,0)"}
       local list_block_average_block_size = {10,2,100,50}
+      local list_data_line_colors = {'k','r', 'g' ,'b'}
 
       local list_panel_labels = {'A', "B", "C", "D"}
       local panel_label_coordinates = "(0.05, 0.9)"
@@ -127,6 +128,7 @@ if ID_test_case == 1 then
         dict_data_parameters[global_key]["DATA PANEL INDICES"] = list_line_panel_indices[i]
         dict_data_parameters[global_key]["DATA BLOCK AVERAGE BLOCK SIZE"] = list_block_average_block_size[i]
         dict_data_parameters[global_key]["DATA SHOW BLOCK AVERAGE"] = "True"
+        dict_data_parameters[global_key]["DATA LINE COLOR"] = list_data_line_colors[i]
       end
 
       MpaTk.write_section_header(file_plot_config, section_title, symbol_section_separator, 'w')
@@ -159,12 +161,14 @@ if ID_test_case == 1 then
       local list_panel_labels = {'A', 'B', 'C'}
       local list_x_label_decimal_places = {1, 1, 1} 
       local list_y_label_decimal_places = {2, 1, 2}
+      local list_legend_anchor_coordinates = {"(0.4, 0.95)", "(0.98, 0.95)", "(0.45, 0.95)"}
       local write_mode = 'a'
 
       for i = 1, #list_panel_indices do
         local panel_indices = list_panel_indices[i]
         local global_key = panel_indices
         dict_local_parameters[global_key] = {}
+        dict_local_parameters[global_key]["GRID ON"] = "True"
         dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
         dict_local_parameters[global_key]["PANEL LABEL ON"] = "True"
         dict_local_parameters[global_key]["PANEL LABEL"] = list_panel_labels[i]
@@ -178,12 +182,13 @@ if ID_test_case == 1 then
         dict_local_parameters[global_key]["Y TICK LABEL HIDE OVERLAP"] = "True"
         dict_local_parameters[global_key]["Y TICK LABEL HIDE FIRST"] = 1
         dict_local_parameters[global_key]["Y TICK LABEL HIDE LAST"] = 1
+        dict_local_parameters[global_key]["LEGEND ANCHOR COORDINATE"] = list_legend_anchor_coordinates[i]
+        print(global_key, list_legend_anchor_coordinates[i])
       end
 
       -- Special treatment for the twin axis 
       local panel_indices = "(0,0)"
       local global_key = panel_indices
-      dict_local_parameters[global_key] = {}
       dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
       dict_local_parameters[global_key]["X TICK SHOW BOTTOM"] = "True"
       dict_local_parameters[global_key]["X TICK SHOW TOP"] = "False"
@@ -211,6 +216,8 @@ if ID_test_case == 1 then
       dict_local_parameters[global_key]["X TICK LABEL SHOW BOTTOM"] = "False"
       dict_local_parameters[global_key]["Y TICK LABEL SHOW LEFT"] = "False"
       dict_local_parameters[global_key]["Y TICK LABEL SHOW RIGHT"] = "False"
+      dict_local_parameters[global_key]["X TICK COLOR"] = 'b'
+      dict_local_parameters[global_key]["X TICK LABEL COLOR"] = 'b'
 
 
 

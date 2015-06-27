@@ -46,7 +46,9 @@ def add_axis_label(object_axis, axis_name, label_content, label_font_size, label
 		print(msg)
 		return
 
-def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
+def add_grid(object_figure, object_axis, show_grid, 
+		which_ticks="major", 
+		which_axis="both",
 		grid_line_style='-', 
 		grid_line_width=2,
 		grid_line_color='k',
@@ -55,6 +57,7 @@ def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
 	"""
 	Add grids 
 	:param object_figure: matplotlib Figure object
+	:param object_axis: matplotlib Axis object
 	:param show_grid: True or False
 	:param which_tick: "major"(default), "minor" or "both"
 	:param which_axis: 'x', 'y' or "both"(default)
@@ -64,6 +67,9 @@ def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
 	:param grid_line_opacity: line opacity (default: 1.0)
 	:param grid_z_order: grid order along z (any number; default: 0)
 	"""
+	object_old_axis = object_figure.gca() 
+	object_figure.sca(object_axis) # switch current axis to new axis object
+
 	matplotlib.pyplot.grid(show_grid, which_ticks, which_axis, 
 		figure=object_figure,
 		linestyle=grid_line_style,
@@ -71,6 +77,7 @@ def add_grid(object_figure, show_grid, which_ticks="major", which_axis="both",
 		color=grid_line_color,
 		alpha=grid_line_opacity,
 		zorder=grid_z_order)
+	object_figure.sca(object_old_axis) # switch back to old axis 
 
 def refine_ticks(object_axis, which_axis, 
 		tick_major_minor_or_both, 

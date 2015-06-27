@@ -12,6 +12,25 @@ import matplotlib.pyplot
 import mpa_modifier_axis   as MpaModifierAxis 
 #---------------------------------------------------------------
 
+def add_grid(object_figure, object_axis, dict_panel_parameters):
+	"""
+	Add grid to a particular object axis 
+
+	:param object object_figure: matplotlib Figure object 
+	:param object object_axis: matplotlib Axis object 
+	:param dict dict_panel_parameters: a dictionary of parameters for a particular figure panel 
+	"""
+	MpaModifierAxis.add_grid(object_figure, object_axis,
+		dict_panel_parameters["grid_on"],
+		dict_panel_parameters["grid_ticks"],
+		dict_panel_parameters["grid_axis"],
+		dict_panel_parameters["grid_line_style"],
+		dict_panel_parameters["grid_line_width"],
+		dict_panel_parameters["grid_line_color"],
+		dict_panel_parameters["grid_line_opacity"],
+		dict_panel_parameters["grid_z_order"],
+		)
+	
 def refine_ticks(object_axis, dict_panel_parameters):
 	"""
 	Refine the figure using parameters stored in the dictionary "dict_panel_parameters"

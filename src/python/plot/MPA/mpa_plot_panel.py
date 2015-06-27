@@ -9,47 +9,6 @@ import mpa_proxy_modifier_panel 	  as MpaProxyModifierPanel
 import mpa_proxy_modifier_legend      as MpaProxyModifierLegend  
 #---------------------------------------------------
 
-def refine_figure_panel(object_axis, object_figure, dict_panel_parameters, 
-	user_x_min,
-	user_x_max,
-	user_y_min,
-	user_y_max,
-	):
-	"""
-	Refine each axis 
-	:param object object_axis: a matplotlib Axis object 
-	:param object object_figure: a matplotlib Figure object 
-	:param dict dict_panel_parameters: a dictionary of plotting parameters 
-	:param float: user_x_min: user-defined minimum for x axis 
-	:param float: user_x_max: user-defined maximum for x axis 
-	:param float: user_y_min: user-defined minimum for y axis 
-	:param float: user_y_max: user-defined maximum for y axis 
-	"""
-
-	#-------------------------------------------------------------
-	# set user defined axis limits
-	#-------------------------------------------------------------
-	MpaProxyModifierAxis.set_user_defined_axis_limits(object_axis, dict_panel_parameters,
-		user_x_min,
-		user_x_max,
-		user_y_min,
-		user_y_max,
-		)
-
-	#---------------------------------------------------------------
-	# Grid
-	#---------------------------------------------------------------
-	MpaModifierAxis.add_grid(object_figure, 
-		dict_panel_parameters["show_grid"],
-		dict_panel_parameters["grid_ticks"],
-		dict_panel_parameters["grid_axis"],		
-		dict_panel_parameters["grid_line_style"],
-		dict_panel_parameters["grid_line_width"],
-		dict_panel_parameters["grid_line_color"],
-		dict_panel_parameters["grid_line_opacity"],
-		dict_panel_parameters["grid_z_order"])
-
-
 def refine_all_figure_panels(object_figure, list_axis_objects, 
 	dict_legends,
 	dict_global_xy_minmax,
@@ -132,3 +91,9 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 		#----------------------------------------------------------------------------------------------
 		MpaProxyModifierAxis.refine_ticks(object_axis, dict_panel_parameters)
 
+
+		#----------------------------------------------------------------------------------------------
+		# Add grid
+		#----------------------------------------------------------------------------------------------
+		if dict_panel_parameters["grid_on"]:
+			MpaProxyModifierAxis.add_grid(object_figure, object_axis, dict_panel_parameters)

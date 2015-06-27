@@ -10,6 +10,7 @@ class GridParameters:
 	Grid parameters 
 	"""
 	_convention_ = {
+		"GRID ON":"grid_on",
 		"GRID TICKS":"grid_ticks",
 		"GRID AXIS":"grid_axis",
 		"GRID LINE COLOR":"grid_line_color",
@@ -17,10 +18,10 @@ class GridParameters:
 		"GRID LINE WIDTH":"grid_line_width",
 		"GRID LINE STYLE":"grid_line_style",
 		"GRID Z ORDER":"grid_z_order",
-		"SHOW GRID":"show_grid",
 		}
 
 	_default_ = {
+		"grid_on":False,
 		"grid_ticks":"major",
 		"grid_axis":"both",
 		"grid_line_color":'k',
@@ -28,7 +29,6 @@ class GridParameters:
 		"grid_line_width":1,
 		"grid_line_style":'--',
 		"grid_z_order":-1,
-		"show_grid":True,
 		}
 
 	@staticmethod
