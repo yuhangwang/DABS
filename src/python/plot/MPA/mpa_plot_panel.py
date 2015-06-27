@@ -96,4 +96,11 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 		# Add grid
 		#----------------------------------------------------------------------------------------------
 		if dict_panel_parameters["grid_on"]:
-			MpaProxyModifierAxis.add_grid(object_figure, object_axis, dict_panel_parameters)
+			MpaProxyModifierAxis.add_grid(object_figure, object_axis, dict_panel_parameters)	
+
+			
+		#----------------------------------------------------------------------------------------------
+		# Set axis spine color
+		#----------------------------------------------------------------------------------------------
+		if dict_panel_parameters["axis_spine_list"] is not None:
+			MpaProxyModifierAxis.set_spine_color(object_axis, dict_panel_parameters)

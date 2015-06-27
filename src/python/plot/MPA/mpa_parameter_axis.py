@@ -23,6 +23,8 @@ class AxisParameters:
 		"X MAX":"x_max",
 		"Y MIN":"y_min",
 		"Y MAX":"y_max",
+		"AXIS SPINE LIST":"axis_spine_list",
+		"AXIS SPINE COLOR LIST":"axis_spine_color_list",
 	}
 
 	_default_ = {
@@ -40,6 +42,8 @@ class AxisParameters:
 		"x_max":None,
 		"y_min":None,
 		"y_max":None,
+		"axis_spine_list":None,
+		"axis_spine_color_list":None,
 		}
 
 	@staticmethod

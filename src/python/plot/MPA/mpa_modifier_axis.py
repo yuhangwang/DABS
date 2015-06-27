@@ -9,6 +9,15 @@ import re
 import matplotlib.pyplot
 #-------------------------------------------------
 
+def set_spine_color(object_axis, which_spine, new_color):
+	"""
+	Change spine color:
+	:param object object_axis: matplotlib Axis object 
+	:param str which_spine: "top" | "bottom" | "left" | "right"
+	:param new_color: any matplotlib color, e.g. 'r' (for red) or (1.0, 0.0, 0.0) (red in RGB format)
+	"""
+	object_axis.spines[which_spine].set_color(new_color)
+
 def get_tick_labels(object_axis, which_axis):
 	"""
 	Return the axis tick labels for the target axis 

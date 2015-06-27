@@ -55,10 +55,3 @@ def add_panel_label(object_axis, x, y,
 		bbox=dict_panel_box_properties,
 		)
 
-
-def change_spine_color(object_axis, which_spine, new_color):
-	"""
-	Change spine color:
-	:param str which_spine: "top" | "bottom" | "left" | "right"
-	"""
-	object_axis.spines[which_spine].set_color(new_color)

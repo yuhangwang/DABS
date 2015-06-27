@@ -12,6 +12,25 @@ import matplotlib.pyplot
 import mpa_modifier_axis   as MpaModifierAxis 
 #---------------------------------------------------------------
 
+def set_spine_color(object_axis, dict_panel_parameters):
+	"""
+	Set the color of the axis spines
+	:param object object_axis: matplotlib Axis object 
+	:param dict dict_panel_parameters: a dictionary of parameters for a particular figure panel 
+	"""
+	list_axis_spines = dict_panel_parameters["axis_spine_list"]
+	list_axis_spine_colors = dict_panel_parameters["axis_spine_color_list"]
+	if len(list_axis_spines) != len(list_axis_spine_colors):
+		msg = "ERROR HINT: The number of axis spines must equal to the number of axis spine colors\n"
+		msg += "YOUR AXIS SPINE LIST: {0}\n".format(list_axis_spines)
+		msg += "YOUR AXIS SPINE COLOR LIST: {0}\n".format(list_axis_spine_colors)
+		raise UserWarning(msg)
+
+	for i in range(len(list_axis_spines)):
+		which_spine = list_axis_spines[i]
+		color = list_axis_spine_colors[i]
+		MpaModifierAxis.set_spine_color(object_axis, which_spine, color)
+
 def add_grid(object_figure, object_axis, dict_panel_parameters):
 	"""
 	Add grid to a particular object axis 

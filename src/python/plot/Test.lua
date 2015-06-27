@@ -219,6 +219,8 @@ if ID_test_case == 1 then
       dict_local_parameters[global_key]["Y TICK LABEL SHOW RIGHT"] = "False"
       dict_local_parameters[global_key]["X TICK COLOR"] = 'b'
       dict_local_parameters[global_key]["X TICK LABEL COLOR"] = 'b'
+      dict_local_parameters[global_key]["AXIS SPINE LIST"] = "(top, bottom)"
+      dict_local_parameters[global_key]["AXIS SPINE COLOR LIST"] = "(b,b)"
 
 
 
