@@ -18,7 +18,7 @@ def add_figure_panel_labels(object_axis, dict_plot_parameters):
 	"""
 	object_old_axis_object = matplotlib.pyplot.gca() # store the current axis object
 	if dict_plot_parameters["panel_label"] is not None:
-		[x, y] = dict_plot_parameters["panel_label_coordinate"]
+		[x, y] = dict_plot_parameters["panel_label_box_anchor_coordinate"]
 	 	MpaModifierPanel.add_panel_label(object_axis, x, y, 
 	 		dict_plot_parameters["panel_label"],
 			dict_plot_parameters["panel_label_font_size"],

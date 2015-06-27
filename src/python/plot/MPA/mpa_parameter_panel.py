@@ -13,7 +13,6 @@ class PanelParameters:
 		"PANEL INDICES":"panel_indices",
 		"PANEL LABEL ON":"panel_label_on",
 		"PANEL LABEL":"panel_label",
-		"PANEL LABEL COORDINATE":"panel_label_coordinate",
 		"PANEL LABEL FONT SIZE":"panel_label_font_size",
 		"PANEL LABEL HORIZONTAL ALIGNMENT":"panel_label_horizontal_alignment",
 		"PANEL LABEL VERTICAL ALIGNMENT":"panel_label_vertical_alignment",
@@ -24,13 +23,13 @@ class PanelParameters:
 		"PANEL LABEL BOX LINE WIDTH":"panel_label_box_line_width",
 		"PANEL LABEL BOX LINE STYLE":"panel_label_box_line_style",
 		"PANEL LABEL BOX SHAPE":"panel_label_box_shape",
+		"PANEL LABEL BOX ANCHOR COORDINATE":"panel_label_box_anchor_coordinate",
 		}
 
 	_default_ = {
 		"panel_indices":None,
 		"panel_label_on":False,
 		"panel_label":None,
-		"panel_label_coordinate":(0.05,0.85),
 		"panel_label_font_size":25,
 		"panel_label_horizontal_alignment":"left",
 		"panel_label_vertical_alignment":"center",
@@ -41,6 +40,7 @@ class PanelParameters:
 		"panel_label_box_line_width":1,
 		"panel_label_box_line_style":"solid",
 		"panel_label_box_shape":"square",
+		"panel_label_box_anchor_coordinate":(0.01,0.90),
 		}
 
 	@staticmethod
