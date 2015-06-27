@@ -30,9 +30,10 @@ if FLAG_create_test_data then
 end
 
 -------------------------------------------------------------------
-function add_global_parameters(dict_global_parameters)
+function add_global_parameters(dict_global_parameters, file_output)
     -- Add global parameters
 
+    dict_global_parameters["FIGURE OUTPUT FILE"] = file_output
     -- External dependencies
     dict_global_parameters["USE LATEX"] = "True"
     dict_global_parameters["USE SCIPY"] = "True"
@@ -145,7 +146,7 @@ if ID_test_case == 1 then
       local write_mode = 'a'
       dict_global_parameters["GLOBAL PARAMETERS"] = {}
 
-      add_global_parameters(dict_global_parameters["GLOBAL PARAMETERS"])
+      add_global_parameters(dict_global_parameters["GLOBAL PARAMETERS"], file_name_output)
 
       MpaTk.write_intersection_gap(file_plot_config, symbol_intersection_gap, write_mode)
       MpaTk.write_section_header(file_plot_config, section_title, symbol_section_separator, write_mode)

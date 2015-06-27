@@ -45,7 +45,7 @@ def main(file_configuration, preview=False):
 	# [4] Save
 	#-----------------------------------------------------------------
 	MPA_IO.write_figure(object_figure, 
-		dict_global_parameters["figure_output_file_name"],
+		dict_global_parameters["figure_output_file"],
 		figure_dpi = dict_global_parameters["figure_dpi"],
 		figure_padding = dict_global_parameters["figure_padding"],
 		figure_transparent = dict_global_parameters["figure_transparent"],
