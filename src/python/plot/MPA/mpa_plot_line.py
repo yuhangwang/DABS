@@ -62,7 +62,8 @@ def plot(object_figure,
 	ccc = 0
 	# set line color
 	list_global_color_order = dict_global_parameters["color_order"]
-	for file_name, dict_data in dict_data_parameters.items():
+	for _key in sorted(dict_data_parameters.keys()): # preserve the order of the input data files
+		dict_data = dict_data_parameters[_key]
 		tuple_panel_indices = dict_data["data_panel_indices"]
 		user_data   = dict_data["data_value"]
 		print("data panel indices: ", tuple_panel_indices)

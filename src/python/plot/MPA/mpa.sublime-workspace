@@ -4,128 +4,328 @@
 		"selected_items":
 		[
 			[
-				"obj",
-				"object_file_parameter_parser"
+				"dic",
+				"dict_panel_parameters"
 			],
 			[
-				"_lis",
-				"_list_buffer"
+				"line",
+				"line_width"
 			],
 			[
-				"_list_",
-				"_list_current_scope"
+				"list_axi",
+				"list_axis_spine_line_width"
 			],
 			[
-				"dict",
-				"dict_file_parametes"
+				"which",
+				"which_spine"
 			],
 			[
-				"loc",
-				"local_dict"
-			],
-			[
-				"fl",
-				"file_name"
-			],
-			[
-				"dict_d",
-				"dict_defaults_file_parameters"
-			],
-			[
-				"lo",
-				"local_dict"
-			],
-			[
-				"local",
-				"local_dict"
-			],
-			[
-				"symb",
-				"symbol_key_value_separator"
+				"list_a",
+				"list_axis_spines"
 			],
 			[
 				"list",
-				"list_parameters"
+				"list_axis_spine_colors"
 			],
 			[
-				"tuple",
-				"tuple_local_parameters"
+				"list_ax",
+				"list_axis_spine_colors"
+			],
+			[
+				"axis",
+				"axis_spine_color_list"
+			],
+			[
+				"file",
+				"file_name_output"
 			],
 			[
 				"objec",
-				"object_local_parameter_reader"
+				"object_axis"
 			],
 			[
-				"obje",
-				"object_global_parameter_reader"
+				"obj",
+				"object_axis"
 			],
 			[
-				"object",
-				"object_global_parameter_reader"
+				"list_lge",
+				"list_legend_anchor_coordinates"
 			],
 			[
-				"MPA",
-				"MPA_CLASS_ConfigRecord"
+				"dict",
+				"dict_panel_parameters"
 			],
 			[
-				"_list",
-				"_list_current_scope"
+				"ob",
+				"object_axis"
+			],
+			[
+				"hide",
+				"hide_first"
+			],
+			[
+				"figure",
+				"figure_share_x"
+			],
+			[
+				"new",
+				"new_max"
+			],
+			[
+				"new_",
+				"new_min"
+			],
+			[
+				"dict_",
+				"dict_global_xy_minmax"
+			],
+			[
+				"MpaPro",
+				"MpaProxyModifierAxis"
+			],
+			[
+				"di",
+				"dictionary"
+			],
+			[
+				"list_panel",
+				"list_panel_labels"
+			],
+			[
+				"panel_l",
+				"panel_label"
+			],
+			[
+				"dict_glo",
+				"dict_gloal_xy_minmax"
+			],
+			[
+				"MpaPlot",
+				"MpaPlotPanel"
+			],
+			[
+				"Mpa",
+				"MpaProxyModifierAxis"
+			],
+			[
+				"dict_l",
+				"dict_legend_parameters"
+			],
+			[
+				"string_to",
+				"string_to_number_or_not"
+			],
+			[
+				"panel_i",
+				"panel_indices"
+			],
+			[
+				"tuple",
+				"tuple_panel_indices"
+			],
+			[
+				"figure_x_label",
+				"figure_x_label_padding"
+			],
+			[
+				"global",
+				"global_key"
+			],
+			[
+				"gl",
+				"global_key"
+			],
+			[
+				"list_pan",
+				"list_panel_indices"
+			],
+			[
+				"glo",
+				"global_key"
+			],
+			[
+				"sy",
+				"symbol_intersection_gap"
+			],
+			[
+				"symbol",
+				"symbol_system_path_separtor"
 			],
 			[
 				"sym",
-				"symbol_scope_end"
+				"symbol_intersection_gap"
 			],
 			[
-				"fo",
-				"format"
+				"write",
+				"write_mode"
 			],
 			[
-				"whi",
-				"which_section"
+				"symb",
+				"symbol_inline_comment"
 			],
 			[
-				"_",
-				"_conventions_"
+				"symbo",
+				"symbol_scope_separator"
 			],
 			[
-				"para",
-				"parameters"
+				"writ",
+				"write_mode"
 			],
 			[
-				"panel_labl",
-				"panel_label_coordinate"
+				"sorted",
+				"sorted_keys_level_1"
 			],
 			[
-				"figure_number",
+				"sorted_",
+				"sorted_dict_keys"
+			],
+			[
+				"ke",
+				"key_level_2"
+			],
+			[
+				"se",
+				"separator"
+			],
+			[
+				"write_",
+				"write_section_header"
+			],
+			[
+				"wr",
+				"write_mode"
+			],
+			[
+				"li",
+				"list_lines"
+			],
+			[
+				"key",
+				"key_level_1"
+			],
+			[
+				"wir",
+				"write_mode"
+			],
+			[
+				"file_",
+				"file_plot_config"
+			],
+			[
+				"valu",
+				"value_level_2"
+			],
+			[
+				"wri",
+				"write_mode"
+			],
+			[
+				"dict_loc",
+				"dict_local_plot_parameters"
+			],
+			[
+				"list_l",
+				"list_lines_global_parameters"
+			],
+			[
+				"list_",
+				"list_lines_local_parameters"
+			],
+			[
+				"object_",
+				"object_parameter_global"
+			],
+			[
+				"legend",
+				"legend_on"
+			],
+			[
+				"leg",
+				"legend_on"
+			],
+			[
+				"object_axis",
+				"object_axis_for_panel"
+			],
+			[
+				"object",
+				"object_axis"
+			],
+			[
+				"tup",
+				"tuple_panel_indices"
+			],
+			[
+				"figu",
 				"figure_number_of_columns"
 			],
 			[
-				"figure_nu",
-				"figure_subplots_horizontal_spacing"
+				"twin",
+				"twinx_axis_source"
 			],
 			[
-				"user_y",
-				"user_y_max"
+				"tu",
+				"tuple_panel_indices"
+			],
+			[
+				"set_",
+				"set_item"
+			],
+			[
+				"MPA",
+				"MPA_CLASS_PanelDB"
+			],
+			[
+				"item",
+				"item_key"
+			],
+			[
+				"ite",
+				"item_key"
+			],
+			[
+				"dict_p",
+				"dict_panel_information"
+			],
+			[
+				"MpaProx",
+				"MpaProxyModifierPanelLabel"
+			],
+			[
+				"legend_",
+				"legend_number_of_columns"
+			],
+			[
+				"legen",
+				"legend_anchor_coordinate"
+			],
+			[
+				"number",
+				"legend_number_of_columns"
+			],
+			[
+				"list_le",
+				"list_legend_anchor_coordinates"
+			],
+			[
+				"ar",
+				"array2D_global_y_max"
 			],
 			[
 				"arra",
 				"array2D_global_y_min"
 			],
 			[
-				"arry",
+				"arr",
 				"array2D_global_x_max"
 			],
 			[
-				"arr",
+				"array",
 				"array2D_global_y_max"
 			],
 			[
-				"dict_p",
-				"dict_plot_parameters"
-			],
-			[
-				"MPA_M",
-				"MPA_MODIFIER_FIGURE"
+				"MpaPlotP",
+				"MpaPlotProertyAllAxes"
 			],
 			[
 				"read_",
@@ -168,24 +368,8 @@
 				"file_input"
 			],
 			[
-				"line",
-				"line_text"
-			],
-			[
-				"legend",
-				"legend_coordiante"
-			],
-			[
 				"dict_legen",
 				"dict_legend_information"
-			],
-			[
-				"list_l",
-				"list_legend_information"
-			],
-			[
-				"list_le",
-				"list_legend_labels"
 			],
 			[
 				"list_lege",
@@ -202,10 +386,6 @@
 			[
 				"panel_label",
 				"panel_label_coordinate"
-			],
-			[
-				"string_to",
-				"string_to_bool_or_not"
 			],
 			[
 				"is_s",
@@ -236,10 +416,6 @@
 				"last_which_panel"
 			],
 			[
-				"which",
-				"which_axis"
-			],
-			[
 				"file_plot",
 				"file_plot_script"
 			],
@@ -260,24 +436,8 @@
 				"file_plot_input_list"
 			],
 			[
-				"wr",
-				"write_str_to_file"
-			],
-			[
-				"write",
-				"write_plot_parameters"
-			],
-			[
-				"wri",
-				"write_plot_input_list"
-			],
-			[
 				"panel",
 				"panel_tag_coordinate"
-			],
-			[
-				"figu",
-				"figure_name_distance"
 			],
 			[
 				"raw",
@@ -310,10 +470,6 @@
 			[
 				"stage",
 				"stage_end"
-			],
-			[
-				"di",
-				"dir_target"
 			],
 			[
 				"dir_",
@@ -358,220 +514,16 @@
 			[
 				"figure_nm",
 				"figure_number_of_columns"
-			],
-			[
-				"glo",
-				"global_x_max"
-			],
-			[
-				"glob",
-				"global_x_min"
-			],
-			[
-				"global",
-				"global_x_min"
-			],
-			[
-				"dir_fi",
-				"dir_figure_distance"
-			],
-			[
-				"file_output",
-				"file_output_data"
-			],
-			[
-				"dir_data",
-				"dir_data_distance"
-			],
-			[
-				"dir_figu",
-				"dir_figure_root"
-			],
-			[
-				"distance",
-				"distance_choline-D153"
-			],
-			[
-				"stri",
-				"string_file_list"
-			],
-			[
-				"writ",
-				"write_str_to_file"
-			],
-			[
-				"out",
-				"out_file_name"
-			],
-			[
-				"file_na",
-				"file_name_output"
-			],
-			[
-				"file_",
-				"file_name_output"
-			],
-			[
-				"x_tick_lable_hide",
-				"x_tick_label_hide_first"
-			],
-			[
-				"panel_box_line",
-				"panel_box_line_style"
-			],
-			[
-				"lines",
-				"linestyle"
-			],
-			[
-				"panel_box",
-				"panel_box_padding"
-			],
-			[
-				"panel_label_",
-				"panel_label_horizontal_alignment"
-			],
-			[
-				"panel_",
-				"panel_label_font_weight"
-			],
-			[
-				"font",
-				"fontsize"
-			],
-			[
-				"list_pan",
-				"list_panel_label_coordinates"
-			],
-			[
-				"list_x",
-				"list_x_noise"
-			],
-			[
-				"list_x_",
-				"list_x_points"
-			],
-			[
-				"num",
-				"number_of_sample_points"
-			],
-			[
-				"input",
-				"input_file"
-			],
-			[
-				"list_dat",
-				"list_data_file_names"
-			],
-			[
-				"list_new",
-				"list_new_ticks"
-			],
-			[
-				"upda",
-				"update_ticks_and_labels"
-			],
-			[
-				"list_legend",
-				"list_legend_labels"
-			],
-			[
-				"figure_subplots_",
-				"figure_subplots_horizontal_spacing"
-			],
-			[
-				"figure_subplots",
-				"figure_subplots_vertical_spacing"
-			],
-			[
-				"lis",
-				"list_object_axis"
-			],
-			[
-				"refine",
-				"refine_figure"
-			],
-			[
-				"list_",
-				"list_object_axis"
-			],
-			[
-				"file",
-				"file_name"
-			],
-			[
-				"figure_number_of_",
-				"figure_number_of_columns"
-			],
-			[
-				"figure_numb",
-				"figure_number_of_rows"
-			],
-			[
-				"legend_font",
-				"legend_font_weight"
-			],
-			[
-				"color",
-				"color_order"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "mpa_reader_file_parameters.py",
+			"file": "mpa_plot_line.py",
 			"settings":
 			{
-				"buffer_size": 1636,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "mpa_core_io.py",
-			"settings":
-			{
-				"buffer_size": 3903,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "mpa_reader_local_parameters.py",
-			"settings":
-			{
-				"buffer_size": 1676,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "mpa_data_type_ConfigRecordParser.py",
-			"settings":
-			{
-				"buffer_size": 1370,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "mpa_core.py",
-			"settings":
-			{
-				"buffer_size": 2643,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "mpa_plot_property_all_axes.py",
-			"settings":
-			{
-				"buffer_size": 4790,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "mpa_core_plot.py",
-			"settings":
-			{
-				"buffer_size": 2687,
+				"buffer_size": 6474,
 				"line_ending": "Unix"
 			}
 		}
@@ -613,22 +565,79 @@
 	},
 	"expanded_folders":
 	[
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA"
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA"
 	],
 	"file_history":
 	[
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_global_parameters.py",
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_file.py",
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_parameter.py",
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_syntax_marker.py",
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_ConfigRecordParser.py",
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_io.py",
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_PanelDB.py",
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_ticks.py",
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_toolkit.py",
-		"/home/steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_plot.py",
-		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_core_plot.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_panel.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_figure.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/create_sample_data.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_figure.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_panel.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mps_parameter_file.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_tick.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_grid.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_plot.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_create.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_line.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_plot_ticks.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_figure.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_legend.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_panel.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_panel.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_figure.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_panel_label.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_toolkit.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_plot_ticks.pyc",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_global_parameter.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_data_parameter.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_refine_figure.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_local_parameter.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_io.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_parameter.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_data.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_color.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_InfoCollector.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_dependency.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_legend.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_line.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_twin_axis.py",
+		"/home/steven/modulefiles/cmod/languages/luarocks/default",
+		"/home/steven/modulefiles/cmod/languages/lua/5.3.1",
+		"/home/steven/modulefiles/cmod/languages/lua/5.3.0",
+		"/home/steven/modulefiles/cmod/languages/lua/default",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_syntax_marker.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/mpa_toolkit_module.lua",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/mpa.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_ConfigRecordParser.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_file_parameter.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/plot_toolkit_module.lua",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/PlotToolkit.lua",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_writer_figure.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_global_parameters.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_file_parameters.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_input.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_property_all_axes.py",
+		"/Scr/scr-test-steven/Manuscripts/BetP1/RD_substrate.tex",
+		"/Scr/scr-test-steven/Manuscripts/BetP1/fig_distance_choline-D153.tex",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/Track-distance-choline-D153.lua",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/INTERNAL_PARAMETERS.txt",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/mpa.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_input.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_plot_parameters.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_property_single_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_PanelDB.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_legend.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/PUBLIC_PARAMETERS.txt",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_python3_compatibility.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_proxy_tick.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_single_axis_properties.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_core_plot.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_core.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_plot_refine_ticks.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_core_io.py",
@@ -640,7 +649,6 @@
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_tick.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_grid.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_figure.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/PlotLinesParameters.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_line.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_parameter_axis.py",
@@ -688,67 +696,11 @@
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat3/Makefile.cleanup",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat2/Makefile.cleanup",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat1/Makefile",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat1/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/PBCWrap/Track.lua",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/RMSD/Track-rmsd-seg.lua",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/RMSD/Track-rmsd-plot.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/choline-D153/PlotLines.py",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/choline-D153/Track.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/choline-D153/subl",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/RD_substrate.tex",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/RMSD/PlotLinesParameters.py",
-		"/Scr/scr-test-steven/Gitcode/allostery/src/allostery/plotting/refine_axis_ticks.py",
-		"/Scr/scr-test-steven/Scripts/Matplotlib/subplots_demo.py",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/archive/plotDist2.py",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/RMSD/get_rmsd.tcl",
-		"/Scr/steven/matplotlib_examples/subplots_demo.py",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/PCA_TM/PcaTmPack/plotPcaTime_TmEach.py",
-		"/home/steven/modulefiles/cmod/system/unicode/utf8",
-		"/Scr/scr-test-steven/Gitcode/allostery/src/allostery/plotting/refine_axis_labels.py",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/RMSD/PlotLines.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/create_sample_data.py",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/PCA_TM/PcaTmPack/plotPcaTime_core10.py",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/PCA_TM/TrackTmPca.sh",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/SaltbridgeAnalysis/plotFilteredDistances.py",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/SaltbridgeAnalysis/trackSaltBridge.sh",
-		"/Scr/scr-test-steven/projects/vp40/run/no_membrane/resid44-319/no_disulfide/submit/TrackSubmit.lua",
-		"/Scr/scr-test-steven/projects/vp40/run/no_membrane/resid44-319/no_disulfide/config/TrackNamdConf.lua",
-		"/Scr/scr-test-steven/projects/vp40/run/no_membrane/resid44-319/no_disulfide/scripts/makeNamdConf.lua",
-		"/Scr/scr-test-steven/Programs/Matplotlib/matplotlibrc",
-		"/Scr/scr-test-steven/Programs/Lua/lua-5.3.1/Makefile",
-		"/Scr/scr-test-steven/Programs/Lua/lua-5.3.1/src/Makefile",
-		"/Scr/scr-test-steven/Programs/Lua/lua-5.3.0/Makefile",
-		"/Scr/scr-test-steven/Programs/Lua/lua-5.3.0/src/Makefile",
-		"/Scr/scr-test-steven/Programs/Lua/lua-5.3.0/README",
-		"/home/steven/modulefiles/cmod/compilers/latex/2014",
-		"/Scr/scr-test-steven/install/latex/texlive/2014/README",
-		"/Scr/scr-test-steven/Programs/Cabal/cabal-install-1.22.6.0/README.md",
-		"/Scr/scr-test-steven/projects/betpx/MDTrimer/4DOJ/Full/run2/scripts/RMSD/Track-rmsd-all.lua",
-		"/home/steven/.myLuaModules/file_module.lua",
-		"/home/steven/.myLuaModules/path_module.lua",
-		"/Scr/scr-test-steven/Programs/HaskellPlatform/source/haskell-platform-2014.2.0.0/README",
-		"/home/steven/modulefiles/cmod/tools/cabal/1.22.5.0",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/pbc/wrap_about.tcl",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Figures.tex",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/PBCWrap/Track.lua",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/measure/get_com_distance.tcl",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/get_com_distance.tcl",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/vmdtcl/pbc/wrap_trajectory.tcl",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/dcds/protein_substrate/reName.sh",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/README.md",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/tcl/get_com_distance.tcl",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/tcl/get_distance.tcl",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/tcl/get_rmsd.tcl",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/choline-D153/Track-distance-choline-D153.lua",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Introduction.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Result-Discussion.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Abstract.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Main.tex",
-		"/Scr/scr-test-steven/Manuscripts/BetP1/Makefile"
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat1/Makefile.cleanup"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -762,134 +714,134 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"dict_plot_parameters",
-			"list_input_information",
-			"_list_current_scope",
-			"file_name",
-			"MpaGlobalParameters",
-			"GlobalParameters",
-			"MpaFileParameters",
-			"dict_file_parametes",
-			"new_key",
-			"dict_convention_global",
-			"dict_conventions",
-			"dict_default_file_parameters",
-			"internal_key",
-			"dict_convention_file_parameters",
-			"MpaFileParameters",
-			"dict_file_parametes",
-			"numpy",
-			"dict_convention_file_parameters",
-			"dict_convention_file_parametes",
-			"dict_defaults_file_parameters",
-			"InputFileParameters",
-			"MPA_CLASS_ConfigRecord",
-			"reader",
-			"input",
-			"_list_scope",
-			"ScopeEndingMarkers",
-			"BlockEndingMarkers",
-			"MpaSyntaxMarkers",
-			"y_panel_label",
-			"x_panel_label",
-			"ccc",
-			"array2D_global_x_min",
-			"object_legend",
-			"MPA_modifier_axis",
-			"MPA_MODIFIER_FIGURE",
-			"MPA_TOOL",
-			"MPA_MODIFIER_LEGEND",
-			"MPA_MODIFIER_AXIS",
-			"MPA_PLOT_TICKS",
-			"mpa_modifier_axis",
-			"MPA_MODIFIER_legend",
-			"MPA_MODIFIER_axis",
-			"MPA_PLOT_ticks",
-			"plot_refine_ticks",
-			"refine_tick",
-			"MPA_modifier_legend",
-			"MPA_modifier_axis",
-			"plot_refine_ticks",
-			"refine_figure",
-			"list_plot_parameters",
+			"\",\n",
+			"axis_spine_color_list",
+			"	\n",
+			"list_axis_spine_colors",
+			"add_gl",
+			"figure_output_file_name",
+			"data_file",
+			"a",
+			"refine_figure_panel",
+			"grid",
+			"add_grid",
+			"show_grid",
+			"grid",
+			"list_ylabel_decimal_places",
+			"list_xlabel_decimal_places",
+			"object_figure",
 			"dict_parameters",
-			"list_plot_parameters",
-			"object_plot_parameters",
-			"dict_input_file_keywords",
-			"make_plot",
-			"plot",
-			"update_ticks_and_labels",
-			"update_ticks",
-			"set_ylim",
-			"sharex",
-			"SHARE",
-			"sharex",
-			"SHARE",
-			"figure_share_y",
-			"set_axis_limits",
-			"list_panel_coordinates",
-			"panel_coordinate",
-			"coordinate",
-			"read_inpu",
-			"panel_coordinate",
-			"legend_coordinate",
-			"legend_panel_coordinate",
-			"legend_panel_indices",
-			"legend_panel_coordinate",
-			"legend_coordinate",
-			"legend_at_which_figure_corner",
-			"legend_location",
-			":\n",
-			"legend_location",
-			"legend_panel",
-			"legend_coo",
-			"legend_panel_coordinate",
-			"legend_coordinate",
-			"LEGEND COORDINATE",
-			"LEGEND COO",
-			"legend_location",
-			"legend_coordin",
-			"FIGURE",
-			"\"NO\"",
-			"YES",
-			"string_to_bool",
-			"read_plot_par",
-			"read_pa",
-			"return_bigger",
-			"id_column_panel",
-			"id_row_panel",
-			"last_which_panel",
-			"ight",
-			"PANEL",
-			"local ",
-			"tmp_list",
-			"string_t",
-			"get_x",
-			"x_",
+			"FIRST",
+			"hide_first",
+			"list_old_ticks",
+			"list_x_tick_labels",
+			"x_tick_labels",
+			"tick_labels",
+			"y",
 			"x",
-			"Parameters._defaults_",
-			"read_in",
-			"refine_fi",
-			"refine",
-			"which_panel",
-			"legend_panel_id",
-			"LEGEND PANEL ID",
-			"list_line_ob",
-			"=======",
-			"======= ",
-			"read_in",
-			"output_line",
-			"list_plot_inputs",
-			"list_target",
-			"update_legend_list",
-			"list_target",
-			"table_plot_inputs",
-			"panel_tag_coordinate",
+			"dict_plot_parameters",
+			"dict_legend",
+			"_dict_panel",
+			"MpaModifierAxis",
+			"_dict_panel",
+			"dict_local_parameters",
+			"dict_global_parameters",
+			"x_label_font_size",
+			"x",
+			"x_label_font_size",
+			"x",
+			"x_label",
+			"dict_plot_parameters",
+			"add_axis_labels",
+			"y_limit_user_defined",
+			"x_limit_user_defined",
+			"dict_local_plot_parameters",
+			"dict_global_plot_parameters",
+			"dict_plot_parameters",
+			"dict_legend_parameters",
+			"MpaPlotRefineFigure",
+			"dict_plot_parameters",
+			"MpaModifierAxis",
+			"MpaPlotTicks",
+			"set_user",
+			"dict_legend_information",
+			"dict_panel_information",
+			"3",
+			"MPA_TOOL",
+			"file_name",
+			"dict_file_parametes",
+			"_line_color",
+			"_y_max",
+			"_y_min",
+			"_x_max",
+			"_x_min",
+			"_Y",
+			"data_block_average_line_width",
+			"_X",
+			"_panel_id_row",
+			"_user_data",
+			"_tuple_panel_indices",
+			"panel_id_column",
+			"panel_id_row",
+			"user_data",
+			"tuple_panel_indices",
+			"y_max",
+			"y_min",
+			"x_max",
+			"x_min",
+			"user_xmin",
+			"Y",
+			"data_block_average_line_width",
+			"X",
+			"list_colors",
+			"line_color",
+			"dict_data",
+			"dict_global_parameters",
+			"dict_user_input",
+			"dict_plot_parameters",
+			"p",
 			"list_input_information",
-			"panel_tag",
-			"which_panel",
-			"list_input_file_information",
-			"add_and_ref"
+			"dict_file_parameters",
+			"dict_panel_information",
+			"array2D_global_y_max",
+			"array2D_global_y_min",
+			"array2D_global_x_max",
+			"array2D_global_x_min",
+			"as",
+			"MpaPlotProertyAllAxes",
+			"refine_all_axes",
+			"refine_panel",
+			"refine_single_axis",
+			"object_data_legend_DB",
+			"MPA_CLASS_InfoCollector",
+			"MPA_CLASS_PanelDB",
+			"PanelDB",
+			"object_panelDB",
+			"legend",
+			"legend_anchor_coordinate",
+			"legend_on",
+			"panel_label_coordinate",
+			"_defaults_",
+			"_internal_defaults_",
+			"_user_defaults_",
+			"_defaults_",
+			"get_defaults",
+			"_defaults_",
+			"get_defaults",
+			"show_parameters",
+			"get_defaults",
+			"internal_key",
+			"key",
+			"panle_indices",
+			"MpaLocalParameters",
+			"panel_box",
+			"BOX",
+			"dict_defaults",
+			"dict_mpaGlobalPon",
+			"key",
+			"internal_key",
+			"local_key",
+			"global_key"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -897,6 +849,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"panel_label_box",
+			"OPACITY",
 			"legend_panel_indices",
 			"legend_at_which_figure_corner",
 			"LEGEND ANCHOR COORDINATE",
@@ -929,24 +883,24 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "mpa_reader_file_parameters.py",
-					"semi_transient": false,
+					"file": "mpa_plot_line.py",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1636,
+						"buffer_size": 6474,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								62,
-								62
+								0,
+								0
 							]
 						],
 						"settings":
@@ -955,184 +909,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "mpa_core_io.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3903,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2987,
-								2987
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 945.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "mpa_reader_local_parameters.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1676,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1292,
-								1292
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 180.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "mpa_data_type_ConfigRecordParser.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1370,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1026,
-								1026
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 146.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "mpa_core.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2643,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1783,
-								1783
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 450.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "mpa_plot_property_all_axes.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4790,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3497,
-								3497
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 855.0,
+						"translation.y": 810.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "mpa_core_plot.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2687,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2145,
-								2145
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 450.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1140,7 +920,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -1177,7 +957,7 @@
 	"project": "mpa.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1215,7 +995,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 261.0,
+	"side_bar_width": 309.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

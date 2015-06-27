@@ -26,7 +26,7 @@ def read(list_parameters):
 	symbol_parameter_separator = dict_parameter_separators["PARAMETER SEPARATOR"]
 	symbol_key_value_separator = dict_parameter_separators["KEY VALUE SEPARATOR"]
 
-	for line in list_parameters:
+	for i, line in enumerate(list_parameters):
 		local_list = line.split(symbol_parameter_separator)
 		local_dict = dict()
 		for _item in local_list:
@@ -36,7 +36,7 @@ def read(list_parameters):
 			local_dict[key] = MpaTK.transform_string_to_python_data_type(value)
 
 		file_name = local_dict["DATA FILE"]
-		key_global = file_name
+		key_global = i
 		dict_data_parameters[key_global] = dict()
 		
 		# [1] set the defaults
