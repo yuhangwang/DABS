@@ -109,10 +109,23 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 			MpaProxyModifierAxis.make_panel_axis_limit_tight(object_axis, 'y', new_min, new_max)
 		
 
-		# #----------------------------------------------------------------------------------------------
-		# # Remove overlapping tick labels
-		# #----------------------------------------------------------------------------------------------
-		# MpaProxyModifierAxis.hide_tick_label_overlap(list_axis_objects, dict_panel_parameters)
+		#----------------------------------------------------------------------------------------------
+		# Remove overlapping tick labels
+		#----------------------------------------------------------------------------------------------
+		if dict_panel_parameters["x_tick_label_hide_overlap"]:
+			hide_first_how_many = dict_panel_parameters["x_tick_label_hide_first"]
+			hide_last_how_many = dict_panel_parameters["x_tick_label_hide_last"]
+			MpaProxyModifierAxis.hide_tick_label_overlap(object_axis, 'x', 
+				hide_first_how_many, 
+				hide_last_how_many,
+				dict_panel_parameters)		
+		if dict_panel_parameters["y_tick_label_hide_overlap"]:
+			hide_first_how_many = dict_panel_parameters["y_tick_label_hide_first"]
+			hide_last_how_many = dict_panel_parameters["y_tick_label_hide_last"]
+			MpaProxyModifierAxis.hide_tick_label_overlap(object_axis, 'y', 
+				hide_first_how_many, 
+				hide_last_how_many,
+				dict_panel_parameters)
 		
 		# #----------------------------------------------------------------------------------------------
 		# # Refine the figure ticks

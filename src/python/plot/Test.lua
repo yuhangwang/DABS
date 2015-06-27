@@ -48,6 +48,8 @@ function add_global_parameters(dict_global_parameters)
     dict_global_parameters["FIGURE SHARE Y"] = "False"
     dict_global_parameters["FIGURE LENGTH"] = 10
     dict_global_parameters["FIGURE HEIGHT"] = 20
+    dict_global_parameters["FIGURE SUBPLOTS VERTICAL SPACING"] = 0
+    dict_global_parameters["FIGURE SUBPLOTS HORIZONTAL SPACING"] = 0
 
     -- Labels
     dict_global_parameters["FIGURE AXIS LABEL ON"] = "True"
@@ -166,8 +168,14 @@ if ID_test_case == 1 then
         dict_local_parameters[global_key]["PANEL LABEL"] = list_panel_labels[i]
         dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
         dict_local_parameters[global_key]["X TICK LABEL NUMBER OF DECIMAL PLACES"] = list_xlabel_decimal_places[i]
-        dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "True"
-        dict_local_parameters[global_key]["Y LIMIT TIGHT ON"] = "True"
+        dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "False"
+        dict_local_parameters[global_key]["Y LIMIT TIGHT ON"] = "False"
+        dict_local_parameters[global_key]["X TICK LABEL HIDE OVERLAP"] = "True"
+        dict_local_parameters[global_key]["X TICK LABEL HIDE FIRST"] = 2
+        dict_local_parameters[global_key]["X TICK LABEL HIDE LAST"] = 2        
+        dict_local_parameters[global_key]["Y TICK LABEL HIDE OVERLAP"] = "True"
+        dict_local_parameters[global_key]["Y TICK LABEL HIDE FIRST"] = 1
+        dict_local_parameters[global_key]["Y TICK LABEL HIDE LAST"] = 1
       end
       MpaTk.write_intersection_gap(file_plot_config, symbol_intersection_gap, write_mode)
       MpaTk.write_section_header(file_plot_config, section_title, symbol_section_separator, write_mode)

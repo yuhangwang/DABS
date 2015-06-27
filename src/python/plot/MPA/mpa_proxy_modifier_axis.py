@@ -64,43 +64,25 @@ def refine_ticks_all_axes(list_axis_objects, object_figure, dict_panel_parameter
 			refine_ticks_single_axis(object_axis, object_figure, dict_panel_parameters)
 
 
-def hide_tick_label_overlap(list_axis_objects, dict_panel_parameters):
+def hide_tick_label_overlap(object_axis, which_axis, hide_first_how_many, hide_last_how_many, dict_panel_parameters):
 	"""
 	Hide the overlapping tick labels (either the first or the last tick label)
-	:param list list_axis_objects: list of axis objects 
-	:param dict dict_panel_parameters: a dictionary of plot parameters 
-	"""
-	if dict_panel_parameters["y_tick_label_hide_overlap"]:
-		# remove the first tick label for all but the last row of subplots
-		which_axis = 'y'
-		for i_row in range(0,dict_panel_parameters['figure_number_of_rows']-1):
-			for i_column in range(0,dict_panel_parameters["figure_number_of_columns"]):
-				object_axis = list_axis_objects[i_row,i_column]
-				list_y_tick_labels = object_axis.get_yticks().tolist()		
-				if dict_panel_parameters["y_tick_label_hide_first"]:
-					list_new_tick_labels = list_y_tick_labels[1:]
-				elif dict_panel_parameters["y_tick_label_hide_last"]:
-					list_new_tick_labels = list_y_tick_labels[:-1]
-				else:
-					list_new_tick_labels = list_y_tick_labels
-					MpaModifierAxis.update_ticks_and_labels(object_axis,which_axis, list_new_tick_labels)
-		
-	if dict_panel_parameters["x_tick_label_hide_overlap"]:
-		# remove the first tick label for all but the first column of subplots
-		which_axis = 'x'
-		for i_row in range(0,dict_panel_parameters['figure_number_of_rows']):
-			for i_column in range(1,dict_panel_parameters["figure_number_of_columns"]):
-				object_axis = list_axis_objects[i_row,i_column]
-				list_x_tick_labels = object_axis.get_xticks().tolist()
 
-				if dict_panel_parameters["x_tick_label_hide_first"]:
-					list_new_tick_labels = list_x_tick_labels[1:]
-				elif dict_panel_parameters["x_tick_label_hide_last"]:
-					list_new_tick_labels = list_x_tick_labels[:-1]
-				else:
-					list_new_tick_labels = list_x_tick_labels
-				MpaModifierAxis.update_ticks_and_labels(object_axis,which_axis, list_new_tick_labels)
-	
+	:param object object_axis: matplotlib Axis object 
+	:param str which_axis: 'x' or 'y'
+	:param int hide_first_how_many: a number that decides how many ticks to hide, counting forward
+	:param int hide_last_how_many: a number that decides how many ticks to hide, counting backward
+	:param dict dict_panel_parameters: a dictionary of parameters for this
+		particular figure panel 
+	"""
+	list_old_tick_labels = MpaModifierAxis.get_tick_labels(object_axis, which_axis)
+
+	if hide_last_how_many == 0: 
+		list_new_tick_labels = list_old_tick_labels[hide_first_how_many:]
+	else:
+		list_new_tick_labels = list_old_tick_labels[hide_first_how_many:-hide_last_how_many]
+
+	MpaModifierAxis.update_ticks_and_labels(object_axis,which_axis, list_new_tick_labels)
 	return 
 
 

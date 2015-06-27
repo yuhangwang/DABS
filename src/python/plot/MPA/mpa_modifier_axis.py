@@ -9,6 +9,24 @@ import re
 import matplotlib.pyplot
 #-------------------------------------------------
 
+def get_tick_labels(object_axis, which_axis):
+	"""
+	Return the axis tick labels for the target axis 
+	
+	:param object object_axis: matplotlib Axis object 
+	:param str which_axis: 'x' or 'y'
+	:return: list
+	"""
+	if which_axis == 'x':
+		return object_axis.get_xticks().tolist()
+	elif which_axis == 'y':
+		return object_axis.get_yticks().tolist()
+	else:
+		msg = "ERROR HINT: which_axis must be either 'x' or 'y'.\n"
+		msg += "  Your value = {0}\n".format(which_axis)
+		msg += "ERROR FROM mpa_modifier_axis.get_axis_tick_labels(object_axis, which_axis)\n"
+		raise UserWarning(msg)
+
 def add_axis_label(object_axis, axis_name, label_content, label_font_size, label_padding):
 	"""
 	Add axis labels 
