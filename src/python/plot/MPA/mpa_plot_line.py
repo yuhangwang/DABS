@@ -143,7 +143,7 @@ def plot(object_figure,
 		
 		# active legend for this axis
 		object_legendInfoCollector.set_item(tuple_legend_panel_indices,
-			"data_legend_on", True)
+			"panel_legend_on", True)
 
 		# list of legend labels 
 		object_legendInfoCollector.append_item(tuple_legend_panel_indices, 

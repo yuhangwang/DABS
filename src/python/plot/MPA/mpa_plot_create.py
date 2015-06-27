@@ -20,6 +20,8 @@ def figure(dict_global_plot_parameters):
 	"""
 	figureSize=(dict_global_plot_parameters["figure_length"], dict_global_plot_parameters["figure_height"])
 
+	print("sharex", dict_global_plot_parameters["figure_share_x"])
+	print("sharey", dict_global_plot_parameters["figure_share_y"])
 	auto_adjust_returning_dimension = False
 	object_figure, list_axis_objects = matplotlib.pyplot.subplots(
 		nrows=dict_global_plot_parameters["figure_number_of_rows"],

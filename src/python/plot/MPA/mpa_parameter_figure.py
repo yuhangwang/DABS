@@ -30,6 +30,8 @@ class FigureParameters:
 		"FIGURE AXIS LABEL ON":"figure_axis_label_on",
 		"FIGURE X LABEL":"figure_x_label",
 		"FIGURE Y LABEL":"figure_y_label",
+		"FIGURE X LABEL FONT SIZE":"figure_x_label_font_size",
+		"FIGURE Y LABEL FONT SIZE":"figure_y_label_font_size",
 		"FIGURE X LABEL PADDING":"figure_x_label_padding",
 		"FIGURE Y LABEL PADDING":"figure_y_label_padding",
 		}
@@ -56,6 +58,8 @@ class FigureParameters:
 		"figure_axis_label_on":False,
 		"figure_x_label":None,
 		"figure_y_label":None,
+		"figure_x_label_font_size":40,
+		"figure_y_label_font_size":40,
 		"figure_x_label_padding":60,
 		"figure_y_label_padding":60,
 		}

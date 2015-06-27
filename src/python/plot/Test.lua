@@ -44,8 +44,8 @@ function add_global_parameters(dict_global_parameters)
     dict_global_parameters["FIGURE TITLE FONT SIZE"] = 40
     dict_global_parameters["FIGURE NUMBER OF ROWS"] = 3
     dict_global_parameters["FIGURE NUMBER OF COLUMNS"] = 1
-    dict_global_parameters["FIGURE SHARE X"] = "True"
-    dict_global_parameters["FIGURE SHARE Y"] = "True"
+    dict_global_parameters["FIGURE SHARE X"] = "False"
+    dict_global_parameters["FIGURE SHARE Y"] = "False"
     dict_global_parameters["FIGURE LENGTH"] = 10
     dict_global_parameters["FIGURE HEIGHT"] = 20
 
@@ -153,16 +153,21 @@ if ID_test_case == 1 then
       --------------------------------------------------------------------
       local section_title = "[[LOCAL]]"
       local dict_local_parameters = {}
-      local list_panel_indices = {"(0,0)"}
-      local list_xlabel_decimal_places = {1}
+      local list_panel_indices = {"(0,0)", "(1,0)", "(2,0)"}
+      local list_panel_labels = {'A', 'B', 'C'}
+      local list_xlabel_decimal_places = {0, 0, 0}
       local write_mode = 'a'
 
       for i = 1, #list_panel_indices do
         local panel_indices = list_panel_indices[i]
         local global_key = panel_indices
         dict_local_parameters[global_key] = {}
+        dict_local_parameters[global_key]["PANEL LABEL ON"] = "True"
+        dict_local_parameters[global_key]["PANEL LABEL"] = list_panel_labels[i]
         dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
         dict_local_parameters[global_key]["X TICK LABEL NUMBER OF DECIMAL PLACES"] = list_xlabel_decimal_places[i]
+        dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "True"
+        dict_local_parameters[global_key]["Y LIMIT TIGHT ON"] = "True"
       end
       MpaTk.write_intersection_gap(file_plot_config, symbol_intersection_gap, write_mode)
       MpaTk.write_section_header(file_plot_config, section_title, symbol_section_separator, write_mode)

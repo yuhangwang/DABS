@@ -50,52 +50,52 @@ def refine_ticks_single_axis(object_axis, object_figure, dict_parameters):
 	matplotlib.pyplot.sca(object_old_axis_object)
 
 
-def refine_ticks_all_axes(list_axis_objects, object_figure, dict_plot_parameters):
+def refine_ticks_all_axes(list_axis_objects, object_figure, dict_panel_parameters):
 	"""
 	Refine the ticks for all axes 
 	:param list list_axis_objects: list of all axis objects 
 	:param object object_figure: matplotlib Figure object 
-	:param dict dict_plot_parameters: a dictionary of plot parameters 
+	:param dict dict_panel_parameters: a dictionary of plot parameters 
 	"""
 	n_rows, n_columns = numpy.shape(list_axis_objects)
 	for i in range(n_rows):
 		for j in range(n_columns):
 			object_axis = list_axis_objects[i,j]
-			refine_ticks_single_axis(object_axis, object_figure, dict_plot_parameters)
+			refine_ticks_single_axis(object_axis, object_figure, dict_panel_parameters)
 
 
-def hide_tick_label_overlap(list_axis_objects, dict_plot_parameters):
+def hide_tick_label_overlap(list_axis_objects, dict_panel_parameters):
 	"""
 	Hide the overlapping tick labels (either the first or the last tick label)
 	:param list list_axis_objects: list of axis objects 
-	:param dict dict_plot_parameters: a dictionary of plot parameters 
+	:param dict dict_panel_parameters: a dictionary of plot parameters 
 	"""
-	if dict_plot_parameters["y_tick_label_hide_overlap"]:
+	if dict_panel_parameters["y_tick_label_hide_overlap"]:
 		# remove the first tick label for all but the last row of subplots
 		which_axis = 'y'
-		for i_row in range(0,dict_plot_parameters['figure_number_of_rows']-1):
-			for i_column in range(0,dict_plot_parameters["figure_number_of_columns"]):
+		for i_row in range(0,dict_panel_parameters['figure_number_of_rows']-1):
+			for i_column in range(0,dict_panel_parameters["figure_number_of_columns"]):
 				object_axis = list_axis_objects[i_row,i_column]
 				list_y_tick_labels = object_axis.get_yticks().tolist()		
-				if dict_plot_parameters["y_tick_label_hide_first"]:
+				if dict_panel_parameters["y_tick_label_hide_first"]:
 					list_new_tick_labels = list_y_tick_labels[1:]
-				elif dict_plot_parameters["y_tick_label_hide_last"]:
+				elif dict_panel_parameters["y_tick_label_hide_last"]:
 					list_new_tick_labels = list_y_tick_labels[:-1]
 				else:
 					list_new_tick_labels = list_y_tick_labels
 					MpaModifierAxis.update_ticks_and_labels(object_axis,which_axis, list_new_tick_labels)
 		
-	if dict_plot_parameters["x_tick_label_hide_overlap"]:
+	if dict_panel_parameters["x_tick_label_hide_overlap"]:
 		# remove the first tick label for all but the first column of subplots
 		which_axis = 'x'
-		for i_row in range(0,dict_plot_parameters['figure_number_of_rows']):
-			for i_column in range(1,dict_plot_parameters["figure_number_of_columns"]):
+		for i_row in range(0,dict_panel_parameters['figure_number_of_rows']):
+			for i_column in range(1,dict_panel_parameters["figure_number_of_columns"]):
 				object_axis = list_axis_objects[i_row,i_column]
 				list_x_tick_labels = object_axis.get_xticks().tolist()
 
-				if dict_plot_parameters["x_tick_label_hide_first"]:
+				if dict_panel_parameters["x_tick_label_hide_first"]:
 					list_new_tick_labels = list_x_tick_labels[1:]
-				elif dict_plot_parameters["x_tick_label_hide_last"]:
+				elif dict_panel_parameters["x_tick_label_hide_last"]:
 					list_new_tick_labels = list_x_tick_labels[:-1]
 				else:
 					list_new_tick_labels = list_x_tick_labels
@@ -104,50 +104,20 @@ def hide_tick_label_overlap(list_axis_objects, dict_plot_parameters):
 	return 
 
 
-def make_all_axis_limits_tight(list_axis_objects, dict_plot_parameters,
-	array2D_global_x_min,
-	array2D_global_x_max,
-	array2D_global_y_min,
-	array2D_global_y_max,
-	):
+def make_panel_axis_limit_tight(object_axis, which_axis, new_min, new_max):
 	"""
-	Make all axis limits to match the global min/max of the input data series 
-	:param list list_axis_objects: list of matplotlib axis objects 
-	:param dict dict_plot_parameters: a dictionary of plot parameters 
-	:param list array2D_global_x_min: a 2D list of global x minimum for every axis 
-	:param list array2D_global_x_max: a 2D list of global x maximum for every axis 
-	:param list array2D_global_y_min: a 2D list of global y minimum for every axis 
-	:param list array2D_global_y_max: a 2D list of global y maximum for every axis 
+	Make panel axis limits to match the min/max of the input data series 
+	in this particular figure panel.
+
+	:param object object_axis: new axis objects 
+	:param str which_axis: 'x' or 'y'
+	:param float new_min: new axis minimum 
+	:param float new_max: new axis maximum
 	"""
-	#-------------------------------------------------------------
-	# make x limits tight
-	#-------------------------------------------------------------
-	if dict_plot_parameters["figure_x_limits_tight"]:
-		which_axis = 'x'
-		for panel_id_row in range(0, dict_plot_parameters["figure_number_of_rows"]):
-			for panel_id_column in range(0, dict_plot_parameters["figure_number_of_columns"]):
-				object_axis = list_axis_objects[panel_id_row, panel_id_column]
-				MpaModifierAxis.set_axis_limits(object_axis, 
-					which_axis, 
-					array2D_global_x_min[panel_id_row][panel_id_column],
-					array2D_global_x_max[panel_id_row][panel_id_column],
-					)
-	#-------------------------------------------------------------
-	# make y limits tight
-	#-------------------------------------------------------------
-	if dict_plot_parameters["figure_y_limits_tight"]:
-		which_axis = 'y'
-		for panel_id_row in range(0, dict_plot_parameters["figure_number_of_rows"]):
-			for panel_id_column in range(0, dict_plot_parameters["figure_number_of_columns"]):
-				object_axis = list_axis_objects[panel_id_row, panel_id_column]
-				MpaModifierAxis.set_axis_limits(object_axis, 
-					which_axis, 
-					array2D_global_y_min[panel_id_row][panel_id_column],
-					array2D_global_y_max[panel_id_row][panel_id_column],
-					)
+	MpaModifierAxis.set_axis_limits(object_axis, which_axis, new_min, new_max)
 
 
-def set_user_defined_axis_limits(object_axis, dict_plot_parameters):
+def set_user_defined_axis_limits(object_axis, dict_panel_parameters):
 	"""
 	set user-defined axis limits
 
@@ -157,15 +127,15 @@ def set_user_defined_axis_limits(object_axis, dict_plot_parameters):
 	:param float user_y_min: user defined y minimum
 	:param float user_y_min: user defined y maximum
 	"""
-	user_x_min = dict_plot_parameters["x_min"]
-	user_x_max = dict_plot_parameters["x_max"]
-	user_y_min = dict_plot_parameters["y_min"]
-	user_y_max = dict_plot_parameters["y_max"]
+	user_x_min = dict_panel_parameters["x_min"]
+	user_x_max = dict_panel_parameters["x_max"]
+	user_y_min = dict_panel_parameters["y_min"]
+	user_y_max = dict_panel_parameters["y_max"]
 
 	#-------------------------------------------------------------
 	# Use user-defined x limits
 	#-------------------------------------------------------------
-	if dict_plot_parameters["x_limit_user_defined_on"]:
+	if dict_panel_parameters["x_limit_user_defined_on"]:
 		x_min, x_max = object_axis.get_xlim()
 		if user_x_min is not None:
 			x_min = user_x_min
@@ -177,7 +147,7 @@ def set_user_defined_axis_limits(object_axis, dict_plot_parameters):
 	#-------------------------------------------------------------
 	# Use user-defined y limits
 	#-------------------------------------------------------------
-	if dict_plot_parameters["y_limits_user_defined_on"]:
+	if dict_panel_parameters["y_limit_user_defined_on"]:
 		y_min, y_max = object_axis.get_ylim()
 		if user_y_min is not None:
 			y_min = user_y_min

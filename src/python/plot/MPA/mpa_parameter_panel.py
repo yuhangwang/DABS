@@ -30,7 +30,7 @@ class PanelParameters:
 		"panel_indices":None,
 		"panel_label_on":False,
 		"panel_label":None,
-		"panel_label_coordinate":None,
+		"panel_label_coordinate":(0.05,0.85),
 		"panel_label_font_size":25,
 		"panel_label_horizontal_alignment":"left",
 		"panel_label_vertical_alignment":"center",

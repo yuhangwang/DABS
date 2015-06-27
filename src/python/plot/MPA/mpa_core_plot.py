@@ -12,6 +12,7 @@ import numpy
 import mpa_plot_line         	as MpaPlotLine 
 import mpa_plot_create			as MpaPlotCreate 
 import mpa_plot_panel			as MpaPlotPanel  
+import mpa_plot_figure			as MpaPlotFigure 
 #---------------------------------------------------------------
 
 
@@ -47,20 +48,20 @@ def plot(dict_data_parameters, dict_global_parameters, dict_local_parameters):
 					 							list_axis_objects,
 												dict_data_parameters,
 												dict_global_parameters)
-	#----------------------------------------------------------------------------------------------
-	# Refine properties per figure panel
-	#----------------------------------------------------------------------------------------------
-	MpaPlotPanel.refine_all_figure_panels(object_figure, list_axis_objects, 
-		dict_local_parameters, dict_legends)
 
 	#----------------------------------------------------------------------------------------------
 	# Refine properties for the entire figure
 	#----------------------------------------------------------------------------------------------
-	# MpaPlotPanel.refine_all_axes(object_figure, list_axis_objects, dict_global_parameters, dict_panel_information,
-	# 	array2D_global_x_min,
-	# 	array2D_global_x_max,
-	# 	array2D_global_y_min,
-	# 	array2D_global_y_max,
-	# 	)
+	MpaPlotFigure.refine_figure(object_figure, list_axis_objects, dict_global_parameters)
+
+	#----------------------------------------------------------------------------------------------
+	# Refine properties per figure panel
+	#----------------------------------------------------------------------------------------------
+	MpaPlotPanel.refine_all_figure_panels(
+		object_figure,
+		list_axis_objects, 
+		dict_legends, 
+		dict_gloal_xy_minmax,
+		dict_local_parameters)
 
 	return (object_figure, list_axis_objects)
