@@ -157,7 +157,8 @@ if ID_test_case == 1 then
       local dict_local_parameters = {}
       local list_panel_indices = {"(0,0)", "(1,0)", "(2,0)"}
       local list_panel_labels = {'A', 'B', 'C'}
-      local list_xlabel_decimal_places = {0, 0, 0}
+      local list_x_label_decimal_places = {1, 1, 1} 
+      local list_y_label_decimal_places = {2, 1, 2}
       local write_mode = 'a'
 
       for i = 1, #list_panel_indices do
@@ -167,7 +168,8 @@ if ID_test_case == 1 then
         dict_local_parameters[global_key]["PANEL LABEL ON"] = "True"
         dict_local_parameters[global_key]["PANEL LABEL"] = list_panel_labels[i]
         dict_local_parameters[global_key]["PANEL INDICES"] = panel_indices
-        dict_local_parameters[global_key]["X TICK LABEL NUMBER OF DECIMAL PLACES"] = list_xlabel_decimal_places[i]
+        dict_local_parameters[global_key]["X TICK LABEL NUMBER OF DECIMAL PLACES"] = list_x_label_decimal_places[i]
+        dict_local_parameters[global_key]["Y TICK LABEL NUMBER OF DECIMAL PLACES"] = list_y_label_decimal_places[i]
         dict_local_parameters[global_key]["X LIMIT TIGHT ON"] = "False"
         dict_local_parameters[global_key]["Y LIMIT TIGHT ON"] = "False"
         dict_local_parameters[global_key]["X TICK LABEL HIDE OVERLAP"] = "True"

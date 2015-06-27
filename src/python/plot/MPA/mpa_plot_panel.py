@@ -127,8 +127,8 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 				hide_last_how_many,
 				dict_panel_parameters)
 		
-		# #----------------------------------------------------------------------------------------------
-		# # Refine the figure ticks
-		# #----------------------------------------------------------------------------------------------
-		# MpaProxyModifierAxis.refine_ticks_all_axes(list_axis_objects, object_figure, dict_panel_parameters)
+		#----------------------------------------------------------------------------------------------
+		# Refine the figure ticks
+		#----------------------------------------------------------------------------------------------
+		MpaProxyModifierAxis.refine_ticks(object_axis, dict_panel_parameters)
 

@@ -12,12 +12,11 @@ import matplotlib.pyplot
 import mpa_modifier_axis   as MpaModifierAxis 
 #---------------------------------------------------------------
 
-def refine_ticks_single_axis(object_axis, object_figure, dict_parameters):
+def refine_ticks(object_axis, dict_panel_parameters):
 	"""
-	Refine the figure using parameters stored in the dictionary "dict_parameters"
+	Refine the figure using parameters stored in the dictionary "dict_panel_parameters"
 	:param object object_axis: matplotlib Axis object 
-	:param object object_figure: matplotlib Figure object 
-	:param dict dict_parameters: python dictionary of plotting parameters 
+	:param dict dict_panel_parameters: python dictionary of plotting parameters 
 	"""
 	object_old_axis_object = matplotlib.pyplot.gca()
 	matplotlib.pyplot.sca(object_axis)
@@ -26,42 +25,28 @@ def refine_ticks_single_axis(object_axis, object_figure, dict_parameters):
 	#----------------------------------------------------------------------------------------------
 	for which_axis in ['x','y']:
 		MpaModifierAxis.refine_ticks(object_axis, which_axis, 
-			tick_major_minor_or_both = dict_parameters[which_axis+"_tick_major_minor_or_both"], 
-			tick_in_out_or_inout = dict_parameters[which_axis+"_tick_in_out_or_inout"], 
-			tick_length = dict_parameters[which_axis+"_tick_length"], 
-			tick_width = dict_parameters[which_axis+"_tick_width"], 
-			tick_label_font_size = dict_parameters[which_axis+"_tick_label_font_size"],
-			tick_label_font_weight = dict_parameters[which_axis+"_tick_label_font_weight"],
-			tick_color = dict_parameters[which_axis+"_tick_color"], 
-			tick_label_color = dict_parameters[which_axis+"_tick_label_color"], 
-			tick_label_padding = dict_parameters[which_axis+"_tick_label_padding"],
-			tick_and_label_z_order = dict_parameters[which_axis+"_tick_and_label_z_order"],
-			tick_show_top = dict_parameters[which_axis+"_tick_show_top"],
-			tick_show_bottom = dict_parameters[which_axis+"_tick_show_bottom"],
-			tick_show_left = dict_parameters[which_axis+"_tick_show_left"],
-			tick_show_right = dict_parameters[which_axis+"_tick_show_right"],
-			tick_label_show_top = dict_parameters[which_axis+"_tick_label_show_top"],
-			tick_label_show_bottom = dict_parameters[which_axis+"_tick_label_show_bottom"],
-			tick_label_show_left = dict_parameters[which_axis+"_tick_label_show_left"],
-			tick_label_show_right = dict_parameters[which_axis+"_tick_label_show_right"],
-			tick_label_number_of_decimal_places = dict_parameters[which_axis+"_tick_label_number_of_decimal_places"],
-			tick_reset_old_parameter = dict_parameters[which_axis+"_tick_reset_old_parameter"],
+			tick_major_minor_or_both = dict_panel_parameters[which_axis+"_tick_major_minor_or_both"], 
+			tick_in_out_or_inout = dict_panel_parameters[which_axis+"_tick_in_out_or_inout"], 
+			tick_length = dict_panel_parameters[which_axis+"_tick_length"], 
+			tick_width = dict_panel_parameters[which_axis+"_tick_width"], 
+			tick_label_font_size = dict_panel_parameters[which_axis+"_tick_label_font_size"],
+			tick_label_font_weight = dict_panel_parameters[which_axis+"_tick_label_font_weight"],
+			tick_color = dict_panel_parameters[which_axis+"_tick_color"], 
+			tick_label_color = dict_panel_parameters[which_axis+"_tick_label_color"], 
+			tick_label_padding = dict_panel_parameters[which_axis+"_tick_label_padding"],
+			tick_and_label_z_order = dict_panel_parameters[which_axis+"_tick_and_label_z_order"],
+			tick_show_top = dict_panel_parameters[which_axis+"_tick_show_top"],
+			tick_show_bottom = dict_panel_parameters[which_axis+"_tick_show_bottom"],
+			tick_show_left = dict_panel_parameters[which_axis+"_tick_show_left"],
+			tick_show_right = dict_panel_parameters[which_axis+"_tick_show_right"],
+			tick_label_show_top = dict_panel_parameters[which_axis+"_tick_label_show_top"],
+			tick_label_show_bottom = dict_panel_parameters[which_axis+"_tick_label_show_bottom"],
+			tick_label_show_left = dict_panel_parameters[which_axis+"_tick_label_show_left"],
+			tick_label_show_right = dict_panel_parameters[which_axis+"_tick_label_show_right"],
+			tick_label_number_of_decimal_places = dict_panel_parameters[which_axis+"_tick_label_number_of_decimal_places"],
+			tick_reset_old_parameter = dict_panel_parameters[which_axis+"_tick_reset_old_parameter"],
 			)
 	matplotlib.pyplot.sca(object_old_axis_object)
-
-
-def refine_ticks_all_axes(list_axis_objects, object_figure, dict_panel_parameters):
-	"""
-	Refine the ticks for all axes 
-	:param list list_axis_objects: list of all axis objects 
-	:param object object_figure: matplotlib Figure object 
-	:param dict dict_panel_parameters: a dictionary of plot parameters 
-	"""
-	n_rows, n_columns = numpy.shape(list_axis_objects)
-	for i in range(n_rows):
-		for j in range(n_columns):
-			object_axis = list_axis_objects[i,j]
-			refine_ticks_single_axis(object_axis, object_figure, dict_panel_parameters)
 
 
 def hide_tick_label_overlap(object_axis, which_axis, hide_first_how_many, hide_last_how_many, dict_panel_parameters):
