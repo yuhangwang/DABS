@@ -62,6 +62,7 @@ def plot(object_figure,
 	ccc = 0
 	# set line color
 	list_global_color_order = dict_global_parameters["color_order"]
+	dict_line_color_counter = dict()
 	for _key in sorted(dict_data_parameters.keys()): # preserve the order of the input data files
 		dict_data = dict_data_parameters[_key]
 		tuple_panel_indices = dict_data["data_panel_indices"]
@@ -80,11 +81,16 @@ def plot(object_figure,
 		data_X = user_data[:,0]
 		data_Y = user_data[:,1]
 
+		# update line color counter 
+		if tuple_panel_indices not in dict_line_color_counter.keys():
+			dict_line_color_counter[tuple_panel_indices] = 0
+		else:
+			dict_line_color_counter[tuple_panel_indices] += 1
+
 		if dict_data["data_line_color"] is None:
-			data_line_color = list_global_color_order[ccc%len(list_global_color_order)]
+			data_line_color = list_global_color_order[dict_line_color_counter[tuple_panel_indices]%len(list_global_color_order)]
 		else:
 			data_line_color = dict_data["data_line_color"]
-
 
 		# update global min/max along X
 		data_x_min = numpy.amin(data_X)
@@ -142,10 +148,6 @@ def plot(object_figure,
 		object_legendInfoCollector.set_item(tuple_legend_panel_indices, 
 			"object_axis", object_axis_for_legend)
 		
-		# active legend for this axis
-		object_legendInfoCollector.set_item(tuple_legend_panel_indices,
-			"panel_legend_on", True)
-
 		# list of legend labels 
 		object_legendInfoCollector.append_item(tuple_legend_panel_indices, 
 			"list_legend_labels", dict_data["data_legend"])

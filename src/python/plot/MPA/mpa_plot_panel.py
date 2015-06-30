@@ -30,7 +30,7 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 
 		# Control: legend
 		if panel_indices in dict_legends.keys():
-			isPanelLegendOn = dict_legends[panel_indices]["panel_legend_on"]
+			isPanelLegendOn = dict_local_parameters[panel_indices]["legend_on"]
 			dict_legend_of_current_panel = dict_legends[panel_indices]
 		else:
 			isPanelLegendOn = False

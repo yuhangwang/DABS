@@ -9,6 +9,7 @@ class LegendParameters:
 	Legend parameters
 	"""
 	_convention_ = {
+		"LEGEND ON":"legend_on",
 		"LEGEND ANCHOR COORDINATE":"legend_anchor_coordinate",
 		"LEGEND NUMBER OF COLUMNS":"legend_number_of_columns",
 		"LEGEND ANCHOR CORNER":"legend_anchor_corner",
@@ -34,6 +35,7 @@ class LegendParameters:
 		}
 
 	_default_ = {
+		"legend_on":False,
 		"legend_anchor_coordinate": (0.9,0.9),
 		"legend_number_of_columns":1,
 		"legend_anchor_corner":"upper right",
