@@ -4,6 +4,7 @@ AUTHOR: YUHANG WANG
 DATE: 06-25-2015
 """
 
+
 class InputSectionMarkers:
 	"""
 	Configuration file section markers 
@@ -50,7 +51,7 @@ class ParameterSeparators:
 	"""
 	_conventions_ = {
 		"PARAMETER SEPARATOR":';',
-		"KEY VALUE SEPARATOR":':',
+		"KEY VALUE SEPARATOR":'::',
 	}
 
 	@staticmethod

@@ -12,6 +12,16 @@ import re
 import pyparsing
 #------------------------------------------------
 
+def get_array_item_i_safely(user_input, i):
+	"""
+	If input is a list, then return its item i 
+	If not, then just return user_input 
+	"""
+	if isinstance(user_input, (list, tuple)):
+		return user_input[i]
+	else:
+		return user_input
+
 def is_list_tuple(input):
 	"""
 	Check whether input is a list/tuple
@@ -132,7 +142,7 @@ def string_to_tuple_or_not(input):
 	"""
 	number_float = pyparsing.Word(pyparsing.nums+'.')
 	separator = pyparsing.Suppress(',')
-	content = pyparsing.Word(pyparsing.alphas) | number_float | separator
+	content = pyparsing.Word(pyparsing.alphas+":") | number_float | separator
 	parens = pyparsing.nestedExpr('(', ')', content=content)
 
 	list_result = parens.parseString(input).asList()[0]

@@ -81,7 +81,7 @@ function M.write_dict2d_to_file(file_output, dict_target, write_mode, symbol_sco
     local sorted_keys_level_2 = M.sort_dict_keys(dict_level_2)
     for i, key_level_2 in pairs(sorted_keys_level_2) do
       local value_level_2 = dict_level_2[key_level_2]
-      local line = string.format("%s: %s", key_level_2, value_level_2)
+      local line = string.format("%s:: %s", key_level_2, value_level_2)
       table.insert(list_lines, line)
     end
     
