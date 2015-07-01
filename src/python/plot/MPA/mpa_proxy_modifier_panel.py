@@ -18,6 +18,9 @@ def add_figure_panel_labels(object_axis, dict_plot_parameters):
 
 	"""
 	object_old_axis_object = matplotlib.pyplot.gca() # store the current axis object
+	
+	if dict_plot_parameters["panel_label"] is None: return
+
 	total_number_of_labels = len(dict_plot_parameters["panel_label"])
 	for i in range(total_number_of_labels):
 		if dict_plot_parameters["panel_label"][i] is not None:
