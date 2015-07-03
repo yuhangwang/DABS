@@ -45,6 +45,10 @@ function M.write_str_to_file (file_output, str, write_mode)
 	-- Write a string into an output file
   local mode = write_mode or 'w'
 	local OUT = io.open(file_output, mode)
+  if OUT == nil then
+    local msg = "ERROR HINT: cannot open file " .. file_output 
+    error(msg)
+  end
 	io.output(OUT)
 	io.write(str)
 	io.close(OUT)
