@@ -29,7 +29,9 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 		object_axis = list_axis_objects[i_row, i_column]
 
 		# Control: legend
-		if panel_indices in dict_legends.keys():
+		if dict_legends is None:
+			isPanelLegendOn = False
+		elif panel_indices in dict_legends.keys():
 			isPanelLegendOn = dict_local_parameters[panel_indices]["legend_on"]
 			dict_legend_of_current_panel = dict_legends[panel_indices]
 		else:
@@ -108,3 +110,11 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 		# Set axis spine line width
 		#----------------------------------------------------------------------------------------------
 		MpaProxyModifierAxis.set_spine_line_width(object_axis, dict_panel_parameters)
+
+		#----------------------------------------------------------------------------------------------
+		# Invert X/Y axis
+		#----------------------------------------------------------------------------------------------
+		if dict_panel_parameters["x_axis_inverted"]:
+			MpaProxyModifierAxis.invert_axis('x', object_axis)
+		elif dict_panel_parameters["y_axis_inverted"]:
+			MpaProxyModifierAxis.invert_axis('y', object_axis)

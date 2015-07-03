@@ -166,17 +166,6 @@ def refine_ticks(object_axis, which_axis,
 		reset=tick_reset_old_parameter,
 		)
 
-	# tick label font weight
-	ticks_font = matplotlib.font_manager.FontProperties(family='sans-serif', 
-		style='normal',
-		weight=tick_label_font_weight, 
-		stretch='normal')
-	if which_axis == 'x' or which_axis == "both":
-		object_axis.set_xticklabels(object_axis.get_xticks(), ticks_font, fontweight=0)
-	elif which_axis == 'y' or which_axis == "both":
-		object_axis.set_yticklabels(object_axis.get_yticks(), ticks_font)
-
-
 	# make x tick label a formatted string
 	if tick_label_number_of_decimal_places is not None:
 		def fn_formatter(tick_value, tick_position):

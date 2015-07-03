@@ -34,6 +34,10 @@ def read(list_parameters):
 			value = value.strip()
 			local_dict[key] = MpaTk.transform_string_to_python_data_type(value)
 
+		if "PANEL INDICES" not in local_dict.keys():
+			msg = "ERROR HINT: each local parameter section must have \"PANEL INDICES\" specified "
+			raise UserWarning(msg)
+			
 		panle_indices = local_dict["PANEL INDICES"]
 		key_global = panle_indices
 		dict_local_parametes[panle_indices] = dict()

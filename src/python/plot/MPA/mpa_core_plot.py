@@ -9,7 +9,7 @@ from __future__ import print_function, division
 import matplotlib.pyplot
 import numpy
 #---------------------------------------------------------------
-import mpa_plot_line         	as MpaPlotLine 
+import mpa_plot_controller      as MpaPlotController 
 import mpa_plot_create			as MpaPlotCreate 
 import mpa_plot_panel			as MpaPlotPanel  
 import mpa_plot_figure			as MpaPlotFigure 
@@ -42,9 +42,9 @@ def plot(dict_data_parameters, dict_global_parameters, dict_local_parameters):
 	[object_figure, list_axis_objects, dict_global_parameters] = MpaPlotCreate.figure(dict_global_parameters)
 	
 	#-------------------------------------------------------------------
-	# Plot lines
+	# Plot objects on the canvas
 	#-------------------------------------------------------------------
-	[dict_legends, dict_gloal_xy_minmax] = MpaPlotLine.plot(object_figure, 
+	[dict_legends, dict_gloal_xy_minmax] = MpaPlotController.plot(object_figure, 
 					 							list_axis_objects,
 												dict_data_parameters,
 												dict_global_parameters)

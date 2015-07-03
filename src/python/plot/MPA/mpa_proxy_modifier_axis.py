@@ -175,3 +175,17 @@ def set_user_defined_axis_limits(object_axis, dict_panel_parameters):
 			y_max = user_y_max 
 			MpaModifierAxis.set_axis_limits(object_axis, 'y', y_min, y_max)
 		
+
+def invert_axis(which_axis, object_axis):
+	"""
+	Invert an axis 
+	:param str which_axis: 'x' | 'y'
+	:param object object_axis: matplotlib Axis object 
+	"""
+	if which_axis == 'x':
+		object_axis.invert_xaxis()
+	elif which_axis == 'y':
+		object_axis.invert_yaxis()
+	else:
+		return 
+	return

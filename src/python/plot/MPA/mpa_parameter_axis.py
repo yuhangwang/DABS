@@ -28,6 +28,9 @@ class AxisParameters:
 		"Y MIN":"y_min",
 		"Y MAX":"y_max",
 
+		"X AXIS INVERTED":"x_axis_inverted",
+		"Y AXIS INVERTED":"y_axis_inverted",
+
 		"AXIS TOP SPINE COLOR":"axis_top_spine_color",
 		"AXIS BOTTOM SPINE COLOR":"axis_bottom_spine_color",
 		"AXIS LEFT SPINE COLOR":"axis_left_spine_color",
@@ -55,6 +58,9 @@ class AxisParameters:
 		"y_min":None,
 		"y_max":None,
 		
+		"x_axis_inverted":False,
+		"y_axis_inverted":False,
+
 		"axis_top_spine_color":None,
 		"axis_bottom_spine_color":None,
 		"axis_left_spine_color":None,

@@ -22,6 +22,8 @@ class DataParameters:
 		"DATA SHOW BLOCK AVERAGE":"data_show_block_average",
 		"DATA BLOCK AVERAGE BLOCK SIZE":"data_block_average_block_size",
 		"DATA BLOCK AVERAGE LINE WIDTH":"data_block_average_line_width",
+		"DATA PLOT TYPE":"data_plot_type",
+		"DATA MATRIX TRANSPOSE":"data_matrix_transpose",
 		}
 
 	_default_ = {
@@ -37,6 +39,8 @@ class DataParameters:
 		"data_show_block_average":False,
 		"data_block_average_block_size":1,
 		"data_block_average_line_width":1,
+		"data_plot_type":"line",
+		"data_matrix_transpose":False,
 		}
 
 	@staticmethod
