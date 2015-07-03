@@ -9,17 +9,17 @@ import matplotlib.pyplot
 import mpa_modifier_axis as MpaModifierAxis 
 #------------------------------------------------------
 
-def add_figure_common_axis_labels(object_figure, dict_global_parameters):
+def add_figure_common_axis_labels(list_axis_objects, dict_global_parameters):
 	"""
 	Add the common X/Y axis labels and figure title 
-	:param object object_figure: matplotlib Figure object 
+	:param object list_axis_objects: a list of matplotlib Axis objects 
 	:param dic dict_global_parameters: a python dict of global plot parameters 
 		with keywords as keys and the user-defined/default values as values
 	"""
 	#----------------------------------------------------------
 	# make an extra axis just to show the common X/Y label
 	#----------------------------------------------------------
-	object_extra_axis = object_figure.add_subplot(1,1,1)
+	object_extra_axis = list_axis_objects[-1, 0] # the extra axis is always the last one
 	object_extra_axis.patch.set_alpha(0.)
 
 	# turn off the extra axis's tick labels

@@ -44,7 +44,7 @@ def plot(dict_data_parameters, dict_global_parameters, dict_local_parameters):
 	#-------------------------------------------------------------------
 	# Plot objects on the canvas
 	#-------------------------------------------------------------------
-	[dict_legends, dict_gloal_xy_minmax] = MpaPlotController.plot(object_figure, 
+	dict_plot_object_info_collector = MpaPlotController.plot(object_figure, 
 					 							list_axis_objects,
 												dict_data_parameters,
 												dict_global_parameters)
@@ -60,8 +60,7 @@ def plot(dict_data_parameters, dict_global_parameters, dict_local_parameters):
 	MpaPlotPanel.refine_all_figure_panels(
 		object_figure,
 		list_axis_objects, 
-		dict_legends, 
-		dict_gloal_xy_minmax,
+		dict_plot_object_info_collector,
 		dict_local_parameters)
 
 	return (object_figure, list_axis_objects)

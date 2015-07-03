@@ -3,6 +3,8 @@ MPA PANEL MODIFIER
 AUTHOR: YUHANG WANG
 DATE: 06-24-2015
 """
+#----------------------------------------------------
+#----------------------------------------------------
 
 def add_panel_label(object_axis, x, y, 
 			panel_label, 

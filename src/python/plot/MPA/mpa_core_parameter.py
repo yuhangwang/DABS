@@ -17,6 +17,7 @@ from mpa_parameter_panel  import PanelParameters
 from mpa_parameter_tick   import TickParameters
 from mpa_parameter_dependency import ExternalDependencyParameters
 from mpa_parameter_twin_axis  import TwinAxisParameters
+from mpa_parameter_color_bar  import ColorBarParameters
 #----------------------------------------------------
 
 class UserDataParameters:
@@ -94,6 +95,7 @@ class LocalParameters:
 			LegendParameters,
 			GridParameters,
 			TickParameters,
+			ColorBarParameters,
 			]
 
 		self._convention_ = {}
@@ -133,6 +135,7 @@ class AllParameters:
 			TickParameters,
 			ColorParameters,
 			TwinAxisParameters,
+			ColorBarParameters,
 			]
 
 		self._convention_ = {}
@@ -169,6 +172,7 @@ class ParameterManager:
 			TickParameters,
 			ColorParameters,
 			TwinAxisParameters,
+			ColorParameters,
 			]
 	@staticmethod
 	def show(parameter_type="public", file_output=None):

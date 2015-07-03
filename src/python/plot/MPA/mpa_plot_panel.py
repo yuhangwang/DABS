@@ -7,11 +7,11 @@ DATE: 06-25-2015
 import mpa_proxy_modifier_axis        as MpaProxyModifierAxis 
 import mpa_proxy_modifier_panel 	  as MpaProxyModifierPanel 
 import mpa_proxy_modifier_legend      as MpaProxyModifierLegend  
+import mpa_proxy_modifier_color_bar      as MpaProxyModifierColorBar 
 #---------------------------------------------------
 
 def refine_all_figure_panels(object_figure, list_axis_objects, 
-	dict_legends,
-	dict_global_xy_minmax,
+	dict_plot_object_info_collector,
 	dict_local_parameters):
 	"""
 	Refine the 
@@ -23,20 +23,31 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 	:param dict dict_local_parameters: a python dict of local plot parameters with panel indices as keys
 		and sub-dictionaries as values
 	"""
+	dict_legends = dict_plot_object_info_collector["LINE"]["dict_legends"]
+	dict_global_xy_minmax = dict_plot_object_info_collector["LINE"]["dict_global_xy_minmax"]
+	dict_color_bars = dict_plot_object_info_collector["MATRIX"]["dict_color_bars"]
 
 	for panel_indices, dict_panel_parameters in dict_local_parameters.items():
 		i_row, i_column = panel_indices
 		object_axis = list_axis_objects[i_row, i_column]
 
-		# Control: legend
+		# Legend ON/OFF
 		if dict_legends is None:
 			isPanelLegendOn = False
 		elif panel_indices in dict_legends.keys():
 			isPanelLegendOn = dict_local_parameters[panel_indices]["legend_on"]
-			dict_legend_of_current_panel = dict_legends[panel_indices]
+			dict_legend_for_current_panel = dict_legends[panel_indices]
 		else:
 			isPanelLegendOn = False
 
+		# Color bar ON/OFF
+		if dict_color_bars is None:
+			isColorBarOn = False
+		elif panel_indices in dict_color_bars.keys():
+			isColorBarOn = dict_local_parameters[panel_indices]["color_bar_on"]
+			dict_color_bar_for_current_panel = dict_color_bars[panel_indices]
+		else:
+			isColorBarOn = False
 
 		#----------------------------------------------------------------------------------------------
 		# Refine axis limits
@@ -49,10 +60,16 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 		MpaProxyModifierPanel.add_figure_panel_labels(object_axis, dict_panel_parameters)
 
 		#----------------------------------------------------------------------------------------------
-		# Add & refine legend
+		# Add legends
 		#----------------------------------------------------------------------------------------------
 		if isPanelLegendOn:
-			MpaProxyModifierLegend.refine_legend(dict_legend_of_current_panel, dict_panel_parameters)
+			MpaProxyModifierLegend.add_legend(dict_legend_for_current_panel, dict_panel_parameters)
+
+		#----------------------------------------------------------------------------------------------
+		# Add color bars
+		#----------------------------------------------------------------------------------------------
+		if isColorBarOn:
+			MpaProxyModifierColorBar.add_color_bar(dict_color_bar_for_current_panel, dict_panel_parameters)
 
 		#----------------------------------------------------------------------------------------------
 		# Make axis limits tight
@@ -118,3 +135,8 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 			MpaProxyModifierAxis.invert_axis('x', object_axis)
 		elif dict_panel_parameters["y_axis_inverted"]:
 			MpaProxyModifierAxis.invert_axis('y', object_axis)
+		
+		#----------------------------------------------------------------------------------------------
+		# Add color bar
+		#----------------------------------------------------------------------------------------------
+

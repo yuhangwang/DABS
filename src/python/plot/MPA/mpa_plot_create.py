@@ -45,11 +45,13 @@ def figure(dict_global_plot_parameters):
 			id_row, id_column = _index_pair
 			object_axis = list_axis_objects[id_row, id_column]
 			new_axis_object = object_axis.twinx()
+			
 			# make a new 2D array matching the dimension of list_axis_objects
 			n_rows, n_columns = numpy.shape(list_axis_objects)
-			new_list = [new_axis_object]
-			for i in range(n_columns-1): new_list.append(None)
-			list_axis_objects = numpy.append(list_axis_objects,[new_list], axis=0)
+			list_new_axis_objects = [new_axis_object]
+			for i in range(n_columns-1): list_new_axis_objects.append(None)
+			
+			list_axis_objects = numpy.append(list_axis_objects,[list_new_axis_objects], axis=0)
 
 	#----------------------------------
 	# Create twin axis sharing y
@@ -63,13 +65,29 @@ def figure(dict_global_plot_parameters):
 			id_row, id_column = _index_pair
 			object_axis = list_axis_objects[id_row, id_column]
 			new_axis_object = object_axis.twiny()
+			
 			# make a new 2D array matching the dimension of list_axis_objects
 			n_rows, n_columns = numpy.shape(list_axis_objects)
-			new_list = [new_axis_object]
-			for i in range(n_columns-1): new_list.append(None)
-			list_axis_objects = numpy.append(list_axis_objects,[new_list], axis=0)
+			list_new_axis_objects = [new_axis_object]
 
+			for i in range(n_columns-1): list_new_axis_objects.append(None)
+			list_axis_objects = numpy.append(list_axis_objects,[list_new_axis_objects], axis=0)
+
+	#---------------------------------------------------
+	# Add a global dummy axis (for global common X/Y labels)
+	#---------------------------------------------------
+	object_extra_axis = object_figure.add_subplot(1,1,1)
+	n_rows, n_columns = numpy.shape(list_axis_objects)
+	list_new_axis_objects = [object_extra_axis]
+	
+	# append None to keep the number of columns matching the list_axis_objects 
+	for i in range(n_columns-1): list_new_axis_objects.append(None)
+	
+	list_axis_objects = numpy.append(list_axis_objects,[list_new_axis_objects], axis=0)
+
+	#---------------------------------------------------
 	# update the number of axis rows and columns
+	#---------------------------------------------------
 	n_rows, n_columns = numpy.shape(list_axis_objects)
 	dict_global_plot_parameters["figure_number_of_rows"] = n_rows
 	dict_global_plot_parameters["figure_number_of_columns"] = n_columns

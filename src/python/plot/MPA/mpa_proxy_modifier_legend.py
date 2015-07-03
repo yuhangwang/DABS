@@ -10,7 +10,7 @@ import mpa_modifier_legend as MpaModifierLegend
 #---------------------------------------------------
 
 
-def refine_legend(dict_legend, dict_panel_parameters):
+def add_legend(dict_legend, dict_panel_parameters):
 	"""
 	Add and refine the legends for a particular figure panel 
 	:param dict dict_legend: a dictionary of legend information for one particular figure panel 

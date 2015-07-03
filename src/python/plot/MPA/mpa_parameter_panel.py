@@ -24,6 +24,10 @@ class PanelParameters:
 		"PANEL LABEL BOX LINE STYLE":"panel_label_box_line_style",
 		"PANEL LABEL BOX SHAPE":"panel_label_box_shape",
 		"PANEL LABEL BOX ANCHOR COORDINATE":"panel_label_box_anchor_coordinate",
+		"PANEL COLOR BAR ON":"panel_color_bar_on",
+		"PANEL COLOR BAR SIZE":"panel_color_bar_size",
+		"PANEL COLOR BAR LOCATION":"panel_color_bar_location",
+		"PANEL COLOR BAR PADDING":"panel_color_bar_padding",
 		}
 
 	_default_ = {
@@ -41,6 +45,10 @@ class PanelParameters:
 		"panel_label_box_line_style":"solid",
 		"panel_label_box_shape":"square",
 		"panel_label_box_anchor_coordinate":(0.01,0.90),
+		"panel_color_bar_on":False,
+		"panel_color_bar_size":1.0,
+		"panel_color_bar_location":"right",
+		"panel_color_bar_padding":0.3,
 		}
 
 	@staticmethod

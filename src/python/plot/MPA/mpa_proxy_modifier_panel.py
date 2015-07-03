@@ -50,3 +50,12 @@ def add_figure_panel_labels(object_axis, dict_plot_parameters):
 				)
 	# reset current active axis
 	matplotlib.pyplot.sca(object_old_axis_object)
+
+def add_figure_panel_color_bar(object_axis, dict_plot_parameters):
+	"""
+	Add color bar to a figure panel 
+	:param object object_axis: matplotlib Axis object 
+	:param dict dict_plot_parameters: python dictionary of plotting parameters 
+	"""
+	MpaModifierPanel.add_panel_color_bar(object_axis,
+		dict_plot_parameters["panel"])

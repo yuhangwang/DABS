@@ -24,6 +24,8 @@ class DataParameters:
 		"DATA BLOCK AVERAGE LINE WIDTH":"data_block_average_line_width",
 		"DATA PLOT TYPE":"data_plot_type",
 		"DATA MATRIX TRANSPOSE":"data_matrix_transpose",
+		"DATA MATRIX COLOR BAR ON":"data_matrix_color_bar_on",
+		"DATA MATRIX COLOR BAR PANEL INDICES":"data_matrix_color_bar_panel_indices",
 		}
 
 	_default_ = {
@@ -41,6 +43,8 @@ class DataParameters:
 		"data_block_average_line_width":1,
 		"data_plot_type":"line",
 		"data_matrix_transpose":False,
+		"data_matrix_color_bar_on":False,
+		"data_matrix_color_bar_panel_indices":(0,0),
 		}
 
 	@staticmethod

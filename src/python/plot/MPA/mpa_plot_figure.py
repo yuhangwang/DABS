@@ -18,5 +18,5 @@ def refine_figure(object_figure, list_axis_objects, dict_global_parameters):
 	#----------------------------------------------------------------------------------------------
 	# Add figure common axis labels
 	#----------------------------------------------------------------------------------------------
-	MpaProxyModifierFigure.add_figure_common_axis_labels(object_figure, dict_global_parameters)
+	MpaProxyModifierFigure.add_figure_common_axis_labels(list_axis_objects, dict_global_parameters)
 
