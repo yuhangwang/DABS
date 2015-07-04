@@ -207,8 +207,3 @@ color_order: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
 twinx_axis_source_index_list: None
 twiny_axis_source_index_list: None
 
-------------------------------------------------
---------    COLOR PARAMETERS -------
-------------------------------------------------
-color_order: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
-

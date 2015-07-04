@@ -207,8 +207,3 @@ COLOR ORDER: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
 TWINX AXIS SOURCE INDEX LIST: None
 TWINY AXIS SOURCE INDEX LIST: None
 
-------------------------------------------------
---------    COLOR PARAMETERS -------
-------------------------------------------------
-COLOR ORDER: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
-

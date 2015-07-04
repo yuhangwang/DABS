@@ -129,7 +129,6 @@ class ParameterManager:
 			TickParameters,
 			ColorParameters,
 			TwinAxisParameters,
-			ColorParameters,
 			]
 	@staticmethod
 	def show(parameter_type="public", file_output=None):
