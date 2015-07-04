@@ -9,7 +9,8 @@ from __future__ import print_function, division
 import numpy
 import matplotlib.pyplot
 #---------------------------------------------------------------
-import mpa_modifier_axis   as MpaModifierAxis 
+import mpa_modifier_axis   	as MpaModifierAxis 
+import mpa_toolkit 			as MpaTk 
 #---------------------------------------------------------------
 
 def set_spine_color(object_axis, dict_panel_parameters):
@@ -110,9 +111,14 @@ def set_tick_labels(object_axis, dict_panel_parameters):
 	"""
 	for which_axis in ['x','y']:
 		if not dict_panel_parameters[which_axis+"_tick_label_user_defined_on"]: continue
-		print(dict_panel_parameters[which_axis+"_new_tick_label_array"])
+		_tick_label_array = []
+		for _label in  dict_panel_parameters[which_axis+"_new_tick_label_array"]:
+			if MpaTk.is_list_tuple(_label):
+				_tick_label_array.append(' '.join(_label))
+			else:
+				_tick_label_array.append(_label)
 		MpaModifierAxis.set_tick_labels(object_axis, which_axis,
-			new_tick_label_array = dict_panel_parameters[which_axis+"_new_tick_label_array"],
+			new_tick_label_array = _tick_label_array,
 			tick_label_font_size = dict_panel_parameters[which_axis+"_tick_label_font_size"],
 			)
 	return 

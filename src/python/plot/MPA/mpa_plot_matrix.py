@@ -36,7 +36,7 @@ def plot(list_data_keys, list_axis_objects, dict_data_parameters, dict_global_pa
 		dict_data = dict_data_parameters[_key]
 		tuple_panel_indices = dict_data["data_panel_indices"]
 		panel_id_row, _panel_id_column = tuple_panel_indices
-		object_axis_for_panel = list_axis_objects[panel_id_row, _panel_id_column]
+		object_panel_axis = list_axis_objects[panel_id_row, _panel_id_column]
 
 		#-------------------------------------------------
 		# User data
@@ -47,21 +47,28 @@ def plot(list_data_keys, list_axis_objects, dict_data_parameters, dict_global_pa
 
 		# skip dummy axis objects
 		#-------------------------------------------------
-		if object_axis_for_panel is None: 
+		if object_panel_axis is None: 
 			print("skip", tuple_panel_indices)
 			continue
 
 		#-------------------------------------------------
 		# Set the current active Axes instance to this axis 
 		#-------------------------------------------------
-		matplotlib.pyplot.sca(object_axis_for_panel)
+		matplotlib.pyplot.sca(object_panel_axis)
 
 		#-------------------------------------------------
 		#  Plot!
 		#-------------------------------------------------
 		print("panel: ", tuple_panel_indices)
-		object_matrix_plot = object_axis_for_panel.matshow(user_data)
+		object_matrix_plot = object_panel_axis.matshow(user_data,
+			vmin=dict_data["data_matrix_vertical_min"],
+			vmax=dict_data["data_matrix_vertical_max"])
 
+		#--------------------------------------------------------------------------------
+		# change  aspect ratio to be automatically adjusted
+		#--------------------------------------------------------------------------------
+		object_panel_axis.set_aspect("auto", adjustable="box-forced", anchor="SW")
+		
 		#-------------------------------------------------
 		# Collect color bar information
 		#-------------------------------------------------

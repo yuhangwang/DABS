@@ -140,9 +140,11 @@ def string_to_tuple_or_not(input):
 	"""
 	convert string to a list 
 	"""
+	# anything within the quoted string will be preserved
+	quoted_string_definition = pyparsing.QuotedString('"', escChar='\\')
 	separator = pyparsing.Suppress(',')
-	content = pyparsing.Word(pyparsing.alphas+":-[]"+pyparsing.nums+'.') | separator
-	parens = pyparsing.nestedExpr('(', ')', content=content)
+	content = pyparsing.Word(pyparsing.alphas+":-[]_^%$#@!"+pyparsing.nums+'.') | separator
+	parens = pyparsing.nestedExpr(opener='(', closer=')', content=content, ignoreExpr=quoted_string_definition)
 
 	list_result = parens.parseString(input).asList()[0]
 	list_result = to_boolean_list_or_not(list_result)

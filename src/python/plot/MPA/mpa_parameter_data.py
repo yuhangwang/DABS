@@ -26,6 +26,8 @@ class DataParameters:
 		"DATA MATRIX TRANSPOSE":"data_matrix_transpose",
 		"DATA MATRIX COLOR BAR ON":"data_matrix_color_bar_on",
 		"DATA MATRIX COLOR BAR PANEL INDICES":"data_matrix_color_bar_panel_indices",
+		"DATA MATRIX VERTICAL MIN":"data_matrix_vertical_min",
+		"DATA MATRIX VERTICAL MAX":"data_matrix_vertical_max",
 		}
 
 	_default_ = {
@@ -45,6 +47,8 @@ class DataParameters:
 		"data_matrix_transpose":False,
 		"data_matrix_color_bar_on":False,
 		"data_matrix_color_bar_panel_indices":(0,0),
+		"data_matrix_vertical_min":None,
+		"data_matrix_vertical_max":None,
 		}
 
 	@staticmethod
