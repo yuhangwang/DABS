@@ -27,6 +27,7 @@ def set_spine_line_width(object_axis, which_spine, new_line_width):
 	"""
 	object_axis.spines[which_spine].set_linewidth(new_line_width)
 
+
 def get_tick_labels(object_axis, which_axis):
 	"""
 	Return the axis tick labels for the target axis 
@@ -44,6 +45,49 @@ def get_tick_labels(object_axis, which_axis):
 		msg += "  Your value = {0}\n".format(which_axis)
 		msg += "ERROR FROM mpa_modifier_axis.get_axis_tick_labels(object_axis, which_axis)\n"
 		raise UserWarning(msg)
+
+
+def set_ticks(object_axis, which_axis, new_tick_array):
+	"""
+	Change ticks 
+	:param object object_axis: matplotlib Axis object 
+	:param str which_axis: 'x' or 'y'
+	:param list|tuple new_tick_array: an array of new ticks
+	"""
+	if new_tick_array is None: return 
+
+	if which_axis == 'x':
+		object_axis.get_xaxis().set_ticks(new_tick_array)
+	elif which_axis == 'y':
+		object_axis.get_yaxis().set_ticks(new_tick_array)
+	else:
+		msg = "ERROR HINT: you must specify either 'x' or 'y' axis;\n"
+		msg += " Your input: {0}".format(which_axis)
+		raise UserWarning(msg)
+	return
+
+def set_tick_labels(object_axis, which_axis, 
+	new_tick_label_array,
+	tick_label_font_size):
+	"""
+	Change tick labels 
+	:param object object_axis: matplotlib Axis object 
+	:param str which_axis: 'x' or 'y'
+	:param list|tuple new_tick_label_array: an array of new tick labels 
+	:param int tick_label_font_size: tick label font size 
+	"""
+	if new_tick_label_array is None: return 
+
+	if which_axis == 'x':
+		object_axis.get_xaxis().set_ticklabels(new_tick_label_array, fontsize=tick_label_font_size)
+	elif which_axis == 'y':
+		object_axis.get_yaxis().set_ticklabels(new_tick_label_array, fontsize=tick_label_font_size)
+	else:
+		msg = "ERROR HINT: you must specify either 'x' or 'y' axis;\n"
+		msg += " Your input: {0}".format(which_axis)
+		raise UserWarning(msg)
+	return 
+
 
 def add_axis_label(object_axis, axis_name, label_content, label_font_size, label_padding):
 	"""

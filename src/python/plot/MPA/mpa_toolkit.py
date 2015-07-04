@@ -140,9 +140,8 @@ def string_to_tuple_or_not(input):
 	"""
 	convert string to a list 
 	"""
-	number_float = pyparsing.Word(pyparsing.nums+'.')
 	separator = pyparsing.Suppress(',')
-	content = pyparsing.Word(pyparsing.alphas+":") | number_float | separator
+	content = pyparsing.Word(pyparsing.alphas+":-[]"+pyparsing.nums+'.') | separator
 	parens = pyparsing.nestedExpr('(', ')', content=content)
 
 	list_result = parens.parseString(input).asList()[0]

@@ -47,8 +47,14 @@ class TickParameters:
 		"Y TICK LABEL HIDE FIRST":"y_tick_label_hide_first",		
 		"X TICK LABEL HIDE LAST":"x_tick_label_hide_last",
 		"Y TICK LABEL HIDE LAST":"y_tick_label_hide_last",
-		"X TICK MAX NUMBER":"x_tick_max_number",
-		"Y TICK MAX NUMBER":"y_tick_max_number",
+		"X TICK USER DEFINED ON":"x_tick_user_defined_on",
+		"Y TICK USER DEFINED ON":"y_tick_user_defined_on",
+		"X NEW TICK ARRAY":"x_new_tick_array",
+		"Y NEW TICK ARRAY":"y_new_tick_array",
+		"X TICK LABEL USER DEFINED ON":"x_tick_label_user_defined_on",
+		"Y TICK LABEL USER DEFINED ON":"y_tick_label_user_defined_on",
+		"X NEW TICK LABEL ARRAY":"x_new_tick_label_array",
+		"Y NEW TICK LABEL ARRAY":"y_new_tick_label_array",
 		}
 
 	# Default parameters corresponding to entries in _convention_
@@ -91,8 +97,14 @@ class TickParameters:
 		"y_tick_label_hide_first":0,		
 		"x_tick_label_hide_last":0,
 		"y_tick_label_hide_last":0,
-		"x_tick_max_number":10,
-		"y_tick_max_number":10,
+		"x_tick_label_user_defined_on":False,
+		"y_tick_label_user_defined_on":False,
+		"x_new_tick_label_array":None,
+		"y_new_tick_label_array":None,
+		"x_tick_user_defined_on":False,
+		"y_tick_user_defined_on":False,
+		"x_new_tick_array":None,
+		"y_new_tick_array":None,
 		}
 
 	# The following additional defaults are only used internally

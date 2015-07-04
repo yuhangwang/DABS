@@ -110,6 +110,17 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 		#----------------------------------------------------------------------------------------------
 		MpaProxyModifierAxis.refine_ticks(object_axis, dict_panel_parameters)
 
+		#----------------------------------------------------------------------------------------------
+		# set user defined tick labels
+		#----------------------------------------------------------------------------------------------
+		MpaProxyModifierAxis.set_tick_labels(object_axis, dict_panel_parameters)
+
+
+		#----------------------------------------------------------------------------------------------
+		# set user defined tick labels
+		#----------------------------------------------------------------------------------------------
+		MpaProxyModifierAxis.set_ticks(object_axis, dict_panel_parameters)
+
 
 		#----------------------------------------------------------------------------------------------
 		# Add grid

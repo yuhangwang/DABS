@@ -101,6 +101,32 @@ def refine_ticks(object_axis, dict_panel_parameters):
 	matplotlib.pyplot.sca(object_old_axis_object)
 
 
+def set_tick_labels(object_axis, dict_panel_parameters):
+	"""
+	Change tick labels 
+	"""
+	for which_axis in ['x','y']:
+		if not dict_panel_parameters[which_axis+"_tick_label_user_defined_on"]: continue
+		print(dict_panel_parameters[which_axis+"_new_tick_label_array"])
+		MpaModifierAxis.set_tick_labels(object_axis, which_axis,
+			new_tick_label_array = dict_panel_parameters[which_axis+"_new_tick_label_array"],
+			tick_label_font_size = dict_panel_parameters[which_axis+"_tick_label_font_size"],
+			)
+	return 
+
+
+def set_ticks(object_axis, dict_panel_parameters):
+	"""
+	change ticks 
+	"""
+	for which_axis in ['x', 'y']:
+		if not dict_panel_parameters[which_axis+"_tick_user_defined_on"]: continue
+		MpaModifierAxis.set_ticks(object_axis, which_axis,
+			new_tick_array = dict_panel_parameters[which_axis+"_new_tick_array"])
+
+	return
+
+
 def hide_tick_label_overlap(object_axis, which_axis, hide_first_how_many, hide_last_how_many, dict_panel_parameters):
 	"""
 	Hide the overlapping tick labels (either the first or the last tick label)
