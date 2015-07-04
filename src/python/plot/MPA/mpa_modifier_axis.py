@@ -89,6 +89,26 @@ def set_tick_labels(object_axis, which_axis,
 	return 
 
 
+def rotate_tick_labels(object_axis, which_axis, rotation_degree):
+	"""
+	Rotate tick labels 
+	:param object object_axis: matplotlib Axes object 
+	:param str which_axis: 'x' or 'y'
+	:param float rotation_degree: rotation degrees 
+	"""
+	if rotation_degree is None: return 
+
+	if which_axis == 'x':
+		matplotlib.pyplot.setp(object_axis.xaxis.get_majorticklabels(), rotation=rotation_degree)
+	elif which_axis == 'y':
+		matplotlib.pyplot.setp(object_axis.yaxis.get_majorticklabels(), rotation=rotation_degree)
+	else:
+		msg = "ERROR HINT: you must specify either 'x' or 'y' axis;\n"
+		msg += " Your input: {0}".format(which_axis)
+		raise UserWarning(msg)
+	return 
+
+
 def add_axis_label(object_axis, axis_name, label_content, label_font_size, label_padding):
 	"""
 	Add axis labels 

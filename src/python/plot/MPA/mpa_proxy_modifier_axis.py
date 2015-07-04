@@ -104,6 +104,9 @@ def refine_ticks(object_axis, dict_panel_parameters):
 def set_tick_labels(object_axis, dict_panel_parameters):
 	"""
 	Change tick labels 
+
+	:param object object_axis: matplotlib Axis object 
+	:param dict dict_panel_parameters: python dictionary of plotting parameters 
 	"""
 	for which_axis in ['x','y']:
 		if not dict_panel_parameters[which_axis+"_tick_label_user_defined_on"]: continue
@@ -118,6 +121,9 @@ def set_tick_labels(object_axis, dict_panel_parameters):
 def set_ticks(object_axis, dict_panel_parameters):
 	"""
 	change ticks 
+
+	:param object object_axis: matplotlib Axis object 
+	:param dict dict_panel_parameters: python dictionary of plotting parameters 
 	"""
 	for which_axis in ['x', 'y']:
 		if not dict_panel_parameters[which_axis+"_tick_user_defined_on"]: continue
@@ -125,6 +131,19 @@ def set_ticks(object_axis, dict_panel_parameters):
 			new_tick_array = dict_panel_parameters[which_axis+"_new_tick_array"])
 
 	return
+
+
+def rotate_tick_labels(object_axis, dict_panel_parameters):
+	"""
+	Rotate tick labels 
+
+	:param object object_axis: matplotlib Axis object 
+	:param dict dict_panel_parameters: python dictionary of plotting parameters 
+	"""
+	for which_axis in ['x', 'y']:
+		MpaModifierAxis.rotate_tick_labels(object_axis, which_axis,
+			rotation_degree=dict_panel_parameters[which_axis+"_tick_label_rotation_degree"])
+	return 
 
 
 def hide_tick_label_overlap(object_axis, which_axis, hide_first_how_many, hide_last_how_many, dict_panel_parameters):

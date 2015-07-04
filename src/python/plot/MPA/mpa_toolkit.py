@@ -90,9 +90,9 @@ def string_to_number_or_not(input):
 	# only proceed when the input type is "str"
 	if type(input) is not str: return input 
 
-	if re.match(r"^\d+$", input):
+	if re.match(r"^[-]?\d+$", input):
 		return int(float(input))
-	elif re.match(r"^\d*\.\d*$", input):
+	elif re.match(r"^[-]?\d*\.\d*$", input):
 		return float(input)
 	else:
 		return input

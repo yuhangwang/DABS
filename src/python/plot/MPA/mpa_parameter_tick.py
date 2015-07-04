@@ -55,6 +55,8 @@ class TickParameters:
 		"Y TICK LABEL USER DEFINED ON":"y_tick_label_user_defined_on",
 		"X NEW TICK LABEL ARRAY":"x_new_tick_label_array",
 		"Y NEW TICK LABEL ARRAY":"y_new_tick_label_array",
+		"X TICK LABEL ROTATION DEGREE":"x_tick_label_rotation_degree",
+		"Y TICK LABEL ROTATION DEGREE":"y_tick_label_rotation_degree",
 		}
 
 	# Default parameters corresponding to entries in _convention_
@@ -105,6 +107,8 @@ class TickParameters:
 		"y_tick_user_defined_on":False,
 		"x_new_tick_array":None,
 		"y_new_tick_array":None,
+		"x_tick_label_rotation_degree":None,
+		"y_tick_label_rotation_degree":None,
 		}
 
 	# The following additional defaults are only used internally
