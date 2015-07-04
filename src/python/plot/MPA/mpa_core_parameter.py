@@ -12,7 +12,6 @@ from mpa_parameter_color  import ColorParameters
 from mpa_parameter_figure import FigureParameters
 from mpa_parameter_grid   import GridParameters
 from mpa_parameter_legend import LegendParameters
-from mpa_parameter_line   import LineParameters
 from mpa_parameter_panel  import PanelParameters
 from mpa_parameter_tick   import TickParameters
 from mpa_parameter_dependency import ExternalDependencyParameters
@@ -91,50 +90,9 @@ class LocalParameters:
 		self._list_of_parameter_classes_ = [
 			PanelParameters,
 			AxisParameters,
-			LineParameters,
 			LegendParameters,
 			GridParameters,
 			TickParameters,
-			ColorBarParameters,
-			]
-
-		self._convention_ = {}
-		self._default_ = {}
-
-		# Fill up self._convention_ and self._default_
-		for _class in self._list_of_parameter_classes_:
-			dict_convention = getattr(_class, "get_convention")()
-			dict_defaults   = getattr(_class, "get_default")()
-			for key, value in dict_convention.items():
-				self._convention_[key] = value
-
-			for key, value in dict_defaults.items():
-				self._default_[key] = value
-
-
-	def get_convention(self):
-		return self._convention_
-
-	def get_default(self):
-		return self._default_.copy()
-
-
-class AllParameters:
-	"""
-	Plot parameters
-	"""
-	def __init__(self):
-		self._list_of_parameter_classes_ = [
-			ExternalDependencyParameters,
-			FigureParameters,
-			PanelParameters,
-			AxisParameters,
-			LineParameters,
-			LegendParameters,
-			GridParameters,
-			TickParameters,
-			ColorParameters,
-			TwinAxisParameters,
 			ColorBarParameters,
 			]
 
@@ -166,7 +124,6 @@ class ParameterManager:
 			FigureParameters,
 			PanelParameters,
 			AxisParameters,
-			LineParameters,
 			LegendParameters,
 			GridParameters,
 			TickParameters,
