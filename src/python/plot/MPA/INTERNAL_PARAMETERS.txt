@@ -1,19 +1,24 @@
 ------------------------------------------------
---------    INPUT FILE KEYWORDS -------
+--------    INPUT DATA FILE KEYWORDS -------
 ------------------------------------------------
-file: None
-legend: None
-legend_anchor_coordinate: (0.9, 0.9)
-legend_number_of_columns: 1
-legend_panel_indices: (0, 0)
-line_block_average_block_size: 1
-panel_indices: (0, 0)
-panel_label: None
-panel_label_coordinate: None
-x_max: None
-x_min: None
-y_max: None
-y_min: None
+data_block_average_block_size: 1
+data_block_average_line_width: 1
+data_file: None
+data_legend: None
+data_legend_on: False
+data_legend_panel_indices: (0, 0)
+data_line_color: None
+data_line_opacity: 1.0
+data_line_style: -
+data_matrix_color_bar_on: False
+data_matrix_color_bar_panel_indices: (0, 0)
+data_matrix_transpose: False
+data_matrix_vertical_max: None
+data_matrix_vertical_min: None
+data_panel_indices: (0, 0)
+data_plot_type: line
+data_show_block_average: False
+data_value: None
 
 ------------------------------------------------
 --------    EXERNAL DEPENDENCY PARAMETERS -------
@@ -24,12 +29,13 @@ use_scipy: False
 ------------------------------------------------
 --------    FIGURE PARAMETERS -------
 ------------------------------------------------
+figure_axis_label_on: False
 figure_dpi: 150
 figure_height: 8
 figure_length: 12
 figure_number_of_columns: 1
 figure_number_of_rows: 1
-figure_output_file_name: output.png
+figure_output_file: output.png
 figure_padding: 0.2
 figure_share_x: none
 figure_share_y: none
@@ -38,46 +44,75 @@ figure_subplots_vertical_spacing: None
 figure_title: None
 figure_title_font_size: 40
 figure_transparent: False
+figure_x_label: 
+figure_x_label_font_size: 40
+figure_x_label_padding: 60
 figure_x_limits_tight: True
 figure_x_limits_user_defined: False
+figure_y_label: 
+figure_y_label_font_size: 40
+figure_y_label_padding: 60
 figure_y_limits_tight: False
 figure_y_limits_user_defined: False
 
 ------------------------------------------------
 --------    PANEL PARAMETERS -------
 ------------------------------------------------
-panel_box_edge_color: w
-panel_box_face_color: w
-panel_box_line_style: solid
-panel_box_line_width: 1
-panel_box_opacity: 0.8
-panel_box_padding: 0.2
-panel_box_shape: square
+panel_color_bar_location: right
+panel_color_bar_on: False
+panel_color_bar_padding: 0.3
+panel_color_bar_size: 1.0
+panel_indices: None
+panel_label: None
+panel_label_box_anchor_coordinate: (0.01, 0.9)
+panel_label_box_edge_color: w
+panel_label_box_face_color: w
+panel_label_box_line_style: solid
+panel_label_box_line_width: 1
+panel_label_box_opacity: 0.8
+panel_label_box_padding: 0.2
+panel_label_box_shape: square
 panel_label_font_size: 25
 panel_label_horizontal_alignment: left
+panel_label_on: False
 panel_label_vertical_alignment: center
 
 ------------------------------------------------
 --------    AXIS PARAMETERS -------
 ------------------------------------------------
+axis_bottom_spine_color: None
+axis_bottom_spine_line_width: None
+axis_left_spine_color: None
+axis_left_spine_line_width: None
+axis_right_spine_color: None
+axis_right_spine_line_width: None
+axis_top_spine_color: None
+axis_top_spine_line_width: None
+x_axis_inverted: False
 x_label: X
 x_label_font_size: 40
 x_label_padding: None
+x_limit_tight_on: False
+x_limit_user_defined_on: False
+x_max: None
+x_min: None
+y_axis_inverted: False
 y_label: Y
 y_label_font_size: 40
 y_label_padding: None
+y_limit_tight_on: False
+y_limit_user_defined_on: False
+y_max: None
+y_min: None
 
 ------------------------------------------------
 --------    LINE PARAMETERS -------
 ------------------------------------------------
-block_averaged_line_width: 1
-line_opacity: 1.0
-line_style: -
-show_block_averaged_line: False
 
 ------------------------------------------------
 --------    LEGEND PARAMETERS -------
 ------------------------------------------------
+legend_anchor_coordinate: (0.9, 0.9)
 legend_anchor_corner: upper right
 legend_border_padding: 0.5
 legend_column_spacing: 0.8
@@ -90,6 +125,7 @@ legend_frame_opacity: 0.5
 legend_handle_length: 2
 legend_line_width: 14
 legend_marker_scale: 1
+legend_number_of_columns: 1
 legend_number_of_marker_points: None
 legend_number_of_scatter_marker_points: None
 legend_on: False
@@ -108,57 +144,75 @@ grid_line_color: k
 grid_line_opacity: 0.2
 grid_line_style: --
 grid_line_width: 1
+grid_on: False
 grid_ticks: major
 grid_z_order: -1
-show_grid: True
 
 ------------------------------------------------
 --------    TICK PARAMETERS -------
 ------------------------------------------------
-x_tick_label_hide_first: False
-y_tick_label_hide_first: False
-x_tick_label_hide_last: False
-y_tick_label_hide_last: False
-x_tick_label_hide_overlap: False
-y_tick_label_hide_overlap: False
+x_new_tick_array: None
+x_new_tick_label_array: None
 x_tick_and_label_z_order: 0
 x_tick_color: k
 x_tick_in_out_or_inout: inout
 x_tick_label_color: k
 x_tick_label_font_size: 30
 x_tick_label_font_weight: 0
+x_tick_label_hide_first: 0
+x_tick_label_hide_last: 0
+x_tick_label_hide_overlap: False
 x_tick_label_number_of_decimal_places: None
 x_tick_label_padding: 10
+x_tick_label_rotation_degree: None
 x_tick_label_show_bottom: True
 x_tick_label_show_top: False
+x_tick_label_user_defined_on: False
 x_tick_length: 5
 x_tick_major_minor_or_both: major
-x_tick_max_number: 10
 x_tick_reset_old_parameter: False
 x_tick_show_bottom: True
 x_tick_show_top: True
+x_tick_user_defined_on: False
 x_tick_width: 2
+y_new_tick_array: None
+y_new_tick_label_array: None
 y_tick_and_label_z_order: 0
 y_tick_color: k
 y_tick_in_out_or_inout: inout
 y_tick_label_color: k
 y_tick_label_font_size: 30
 y_tick_label_font_weight: 0
+y_tick_label_hide_first: 0
+y_tick_label_hide_last: 0
+y_tick_label_hide_overlap: False
 y_tick_label_number_of_decimal_places: None
 y_tick_label_padding: 10
+y_tick_label_rotation_degree: None
 y_tick_label_show_left: True
 y_tick_label_show_right: False
+y_tick_label_user_defined_on: False
 y_tick_length: 5
 y_tick_major_minor_or_both: major
-y_tick_max_number: 10
 y_tick_reset_old_parameter: False
 y_tick_show_left: True
 y_tick_show_right: True
+y_tick_user_defined_on: False
 y_tick_width: 2
 
 ------------------------------------------------
 --------    COLOR PARAMETERS -------
 ------------------------------------------------
 color_order: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
-use_color_map_cool: False
+
+------------------------------------------------
+--------    TWIN AXIS PARAMETERS -------
+------------------------------------------------
+twinx_axis_source_index_list: None
+twiny_axis_source_index_list: None
+
+------------------------------------------------
+--------    COLOR PARAMETERS -------
+------------------------------------------------
+color_order: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
 
