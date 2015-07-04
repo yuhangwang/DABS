@@ -25,6 +25,9 @@ def add_color_bar(dict_color_bar, dict_panel_parameters):
 		bar_tick_label_font_size = dict_panel_parameters["color_bar_tick_label_font_size"],
 		bar_tick_label_number_of_decimal_places = dict_panel_parameters["color_bar_tick_label_number_of_decimal_places"],
 		bar_ticks = dict_panel_parameters["color_bar_tick_array"],
+		bar_tick_width = dict_panel_parameters["color_bar_tick_width"],
+		bar_tick_length = dict_panel_parameters["color_bar_tick_length"],
+		bar_tick_color = dict_panel_parameters["color_bar_tick_color"],
 		)
 
 	return object_color_bar

@@ -17,6 +17,9 @@ class ColorBarParameters:
 		"COLOR BAR TICK LABEL FONT SIZE":"color_bar_tick_label_font_size",
 		"COLOR BAR TICK LABEL NUMBER OF DECIMAL PLACES":"color_bar_tick_label_number_of_decimal_places",
 		"COLOR BAR TICK ARRAY":"color_bar_tick_array",
+		"COLOR BAR TICK WIDTH":"color_bar_tick_width",
+		"COLOR BAR TICK LENGTH":"color_bar_tick_length",
+		"COLOR BAR TICK COLOR":"color_bar_tick_color",
 		}
 
 	_default_ = {
@@ -27,6 +30,9 @@ class ColorBarParameters:
 		"color_bar_tick_label_font_size":20,
 		"color_bar_tick_label_number_of_decimal_places":None,
 		"color_bar_tick_array":None,
+		"color_bar_tick_width":2,
+		"color_bar_tick_length":7,
+		"color_bar_tick_color":'k',
 		}
 
 	@staticmethod

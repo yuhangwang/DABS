@@ -16,7 +16,10 @@ def add_color_bar(object_axis,object_matrix_plot,
 	bar_padding=0.3,
 	bar_tick_label_font_size=20,
 	bar_tick_label_number_of_decimal_places=None,
-	bar_ticks=None):
+	bar_ticks=None,
+	bar_tick_width=2,
+	bar_tick_length=7,
+	bar_tick_color='k'):
 	"""
 	Add color bar to an axis object 
 	:param object object_axis: matplotlib Axis object 
@@ -56,6 +59,14 @@ def add_color_bar(object_axis,object_matrix_plot,
 	#---------------------------------------
 	for tick in object_color_bar.ax.get_yticklabels():
 		tick.set_fontsize(bar_tick_label_font_size)
+
+	#---------------------------------------
+	# change tick thickness and length
+	#---------------------------------------
+	object_axis_color_bar.yaxis.set_tick_params(which="major", 
+		width=bar_tick_width, 
+		length=bar_tick_length, 
+		color=bar_tick_color)
 
 
 

@@ -4,6 +4,138 @@
 		"selected_items":
 		[
 			[
+				"data_matri",
+				"data_matrix_vertical_min"
+			],
+			[
+				"object_axi",
+				"object_axis_for_panel"
+			],
+			[
+				"new_ti",
+				"new_tick_label_array"
+			],
+			[
+				"new_t",
+				"new_tick_label_array"
+			],
+			[
+				"rege",
+				"regex_escape_right_paren"
+			],
+			[
+				"regex",
+				"regex_escape_left_paren"
+			],
+			[
+				"_tick_l",
+				"_tick_label_array"
+			],
+			[
+				"rot",
+				"rotation_degrees"
+			],
+			[
+				"ro",
+				"rotation_degrees"
+			],
+			[
+				"dict",
+				"dict_panel_parameters"
+			],
+			[
+				"font",
+				"fontsize"
+			],
+			[
+				"bar_tick",
+				"bar_tick_label_number_of_decimal_places"
+			],
+			[
+				"obje",
+				"object_color_bar"
+			],
+			[
+				"object_axis_",
+				"object_axis_color_bar"
+			],
+			[
+				"object_",
+				"object_matrix_plot"
+			],
+			[
+				"MpaProxyMo",
+				"MpaProxyModifierColorBar"
+			],
+			[
+				"objec",
+				"object_plotInfoCollector"
+			],
+			[
+				"dict_global",
+				"dict_global_xy_minmax"
+			],
+			[
+				"tup",
+				"tuple_color_bar_panel_indices"
+			],
+			[
+				"panel_col",
+				"panel_color_bar_size"
+			],
+			[
+				"Mpa",
+				"MpaModifierPanel"
+			],
+			[
+				"ojbect",
+				"object_axis_divider"
+			],
+			[
+				"object_ax",
+				"object_axis_color_bar"
+			],
+			[
+				"bar_",
+				"bar_padding"
+			],
+			[
+				"object_axis",
+				"object_axis_divider"
+			],
+			[
+				"loca",
+				"local_dict"
+			],
+			[
+				"which",
+				"which_axis"
+			],
+			[
+				"list",
+				"list_axis_objects"
+			],
+			[
+				"dict_data",
+				"dict_data_parameters"
+			],
+			[
+				"dict_gl",
+				"dict_global_parameters"
+			],
+			[
+				"dict_g",
+				"dict_global_parameters"
+			],
+			[
+				"get_",
+				"get_global_xy_minmax"
+			],
+			[
+				"dict_glo",
+				"dict_global_xy_minmax"
+			],
+			[
 				"dic",
 				"dict_panel_parameters"
 			],
@@ -16,16 +148,8 @@
 				"list_axis_spine_line_width"
 			],
 			[
-				"which",
-				"which_spine"
-			],
-			[
 				"list_a",
 				"list_axis_spines"
-			],
-			[
-				"list",
-				"list_axis_spine_colors"
 			],
 			[
 				"list_ax",
@@ -40,20 +164,12 @@
 				"file_name_output"
 			],
 			[
-				"objec",
-				"object_axis"
-			],
-			[
 				"obj",
 				"object_axis"
 			],
 			[
 				"list_lge",
 				"list_legend_anchor_coordinates"
-			],
-			[
-				"dict",
-				"dict_panel_parameters"
 			],
 			[
 				"ob",
@@ -96,16 +212,8 @@
 				"panel_label"
 			],
 			[
-				"dict_glo",
-				"dict_gloal_xy_minmax"
-			],
-			[
 				"MpaPlot",
 				"MpaPlotPanel"
-			],
-			[
-				"Mpa",
-				"MpaProxyModifierAxis"
 			],
 			[
 				"dict_l",
@@ -232,10 +340,6 @@
 				"list_lines_local_parameters"
 			],
 			[
-				"object_",
-				"object_parameter_global"
-			],
-			[
 				"legend",
 				"legend_on"
 			],
@@ -244,16 +348,8 @@
 				"legend_on"
 			],
 			[
-				"object_axis",
-				"object_axis_for_panel"
-			],
-			[
 				"object",
 				"object_axis"
-			],
-			[
-				"tup",
-				"tuple_panel_indices"
 			],
 			[
 				"figu",
@@ -418,102 +514,6 @@
 			[
 				"file_plot",
 				"file_plot_script"
-			],
-			[
-				"file_ou",
-				"file_output_figure"
-			],
-			[
-				"file_pl",
-				"file_plot_parameters"
-			],
-			[
-				"file_p",
-				"file_plot_parameters"
-			],
-			[
-				"file_plo",
-				"file_plot_input_list"
-			],
-			[
-				"panel",
-				"panel_tag_coordinate"
-			],
-			[
-				"raw",
-				"raw_file_concatenated"
-			],
-			[
-				"add",
-				"add_time"
-			],
-			[
-				"con",
-				"concatenate_files"
-			],
-			[
-				"file_name",
-				"file_name_distance_concatenated"
-			],
-			[
-				"id_re",
-				"id_repeat"
-			],
-			[
-				"id_rep",
-				"id_repeat_end"
-			],
-			[
-				"project",
-				"project_code_name"
-			],
-			[
-				"stage",
-				"stage_end"
-			],
-			[
-				"dir_",
-				"dir_target"
-			],
-			[
-				"rep",
-				"repeat_end"
-			],
-			[
-				"repe",
-				"repeat_eon"
-			],
-			[
-				"dir",
-				"dir_target_root"
-			],
-			[
-				"prefix",
-				"prefix_source"
-			],
-			[
-				"TM_CAl",
-				"TM_CAlpha_core10"
-			],
-			[
-				"dcd_tm_c",
-				"dcd_tm_ca_core10"
-			],
-			[
-				"tr",
-				"trr_protein"
-			],
-			[
-				"GB",
-				"GB_energy"
-			],
-			[
-				"trunc",
-				"truncated_file_distance_concatenated"
-			],
-			[
-				"figure_nm",
-				"figure_number_of_columns"
 			]
 		]
 	},
@@ -561,38 +561,45 @@
 	],
 	"file_history":
 	[
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_axis.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_panel.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_tick.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_toolkit.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_writer_figure.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_matrix.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_data.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_create.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_color_bar.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_color_bar.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_color_bar.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_controller.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_legend.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_panel.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_parameter.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_plot.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_panel.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_figure.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_panel.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_figure.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_local_parameter.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_axis.py",
+		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/archived/betpCrystTmDef.tcl",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_line.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_figure.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_figure.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/create_sample_data.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_figure.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_panel.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mps_parameter_file.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_tick.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_grid.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_plot.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_create.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_line.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_plot_ticks.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_figure.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_legend.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_panel.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_panel.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_figure.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_panel_label.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_toolkit.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/MPA/mpa_plot_ticks.pyc",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_global_parameter.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_data_parameter.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_refine_figure.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_local_parameter.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_io.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_parameter.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_data.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_color.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_InfoCollector.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_dependency.py",
@@ -610,7 +617,6 @@
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_file_parameter.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/plot_toolkit_module.lua",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/PlotToolkit.lua",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_writer_figure.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_global_parameters.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_file_parameters.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_input.py",
@@ -682,13 +688,7 @@
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat9/Makefile.cleanup",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat8/Makefile.cleanup",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat7/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat6/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat5/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat4/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat3/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat2/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat1/Makefile",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat1/Makefile.cleanup"
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat6/Makefile.cleanup"
 	],
 	"find":
 	{
@@ -706,6 +706,50 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"object_axis_of_current_panel",
+			"object_axis_for_panel",
+			"_",
+			"is_convertible_to_list",
+			"is_",
+			"rotation_degrees",
+			"LABEL ",
+			"new_tick_array",
+			"fmt",
+			"dict_color_bar",
+			"object_axis_color_bar",
+			"dict_legend",
+			"dict_color_bar_of_current_panel",
+			"dict_legend_of_current_panel",
+			"panel_",
+			"PANEL",
+			"COLOR",
+			"PANEL COLOR",
+			"PANEL ",
+			"Panel",
+			"PanelParameters",
+			"object_plotInfoCollector",
+			"dict_gloal_xy_minmax",
+			"object_colorBarInfoCollector",
+			"dict_color_bars",
+			"object_figure",
+			"object_axis_for_legend",
+			"object_legendInfoCollector",
+			"tuple_legend_panel_indices",
+			"new_list",
+			"ccc",
+			"bar_size_percentage",
+			"numpy",
+			"dict_data_parameters",
+			"dict_global_parameters",
+			"MPA_CLASS_InfoCollector",
+			"MpaPlotPropertySingleAxis",
+			"MpaTool",
+			"o",
+			"MpaPlotPropertySingleAxis",
+			"Single",
+			"object_figure",
+			"object_legendInfoCollector",
+			"MpaPlotLine",
 			"\",\n",
 			"axis_spine_color_list",
 			"	\n",
@@ -789,51 +833,7 @@
 			"line_color",
 			"dict_data",
 			"dict_global_parameters",
-			"dict_user_input",
-			"dict_plot_parameters",
-			"p",
-			"list_input_information",
-			"dict_file_parameters",
-			"dict_panel_information",
-			"array2D_global_y_max",
-			"array2D_global_y_min",
-			"array2D_global_x_max",
-			"array2D_global_x_min",
-			"as",
-			"MpaPlotProertyAllAxes",
-			"refine_all_axes",
-			"refine_panel",
-			"refine_single_axis",
-			"object_data_legend_DB",
-			"MPA_CLASS_InfoCollector",
-			"MPA_CLASS_PanelDB",
-			"PanelDB",
-			"object_panelDB",
-			"legend",
-			"legend_anchor_coordinate",
-			"legend_on",
-			"panel_label_coordinate",
-			"_defaults_",
-			"_internal_defaults_",
-			"_user_defaults_",
-			"_defaults_",
-			"get_defaults",
-			"_defaults_",
-			"get_defaults",
-			"show_parameters",
-			"get_defaults",
-			"internal_key",
-			"key",
-			"panle_indices",
-			"MpaLocalParameters",
-			"panel_box",
-			"BOX",
-			"dict_defaults",
-			"dict_mpaGlobalPon",
-			"key",
-			"internal_key",
-			"local_key",
-			"global_key"
+			"dict_user_input"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -841,6 +841,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
 			"panel_label_box",
 			"OPACITY",
 			"legend_panel_indices",
