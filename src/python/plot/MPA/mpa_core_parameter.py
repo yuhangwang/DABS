@@ -23,10 +23,12 @@ class UserDataParameters:
 	"""
 	Global parameters for the entire figure 
 	"""
-	def __init__(self):
-		self._list_of_parameter_classes_ = [
+	_list_of_parameter_classes_ = [
 			DataParameters,
 			]
+
+	def __init__(self):
+		self._list_of_parameter_classes_ = _list_of_parameter_classes_
 
 		self._convention_ = {}
 		self._default_ = {}
@@ -47,19 +49,28 @@ class UserDataParameters:
 
 	def get_default(self):
 		return self._default_.copy()
+
+	@staticmethod
+	def get_list_parameter_classes():
+		"""
+		Get a list of incorporated parameter classes 
+		"""
+		return UserDataParameters._list_of_parameter_classes_
 
 
 class GlobalParameters:
 	"""
 	Global parameters for the entire figure 
 	"""
-	def __init__(self):
-		self._list_of_parameter_classes_ = [
+	_list_of_parameter_classes_ = [
 			ExternalDependencyParameters,
 			FigureParameters,
 			TwinAxisParameters,
 			ColorParameters,
 			]
+
+	def __init__(self):
+		self._list_of_parameter_classes_ = _list_of_parameter_classes_
 
 		self._convention_ = {}
 		self._default_ = {}
@@ -81,13 +92,19 @@ class GlobalParameters:
 	def get_default(self):
 		return self._default_.copy()
 
+	@staticmethod
+	def get_list_parameter_classes():
+		"""
+		Get a list of incorporated parameter classes 
+		"""
+		return GlobalParameters._list_of_parameter_classes_
+
 
 class LocalParameters:
 	"""
 	Local parameters for each figure panel 
 	"""
-	def __init__(self):
-		self._list_of_parameter_classes_ = [
+	_list_of_parameter_classes_ = [
 			PanelParameters,
 			AxisParameters,
 			LegendParameters,
@@ -96,6 +113,9 @@ class LocalParameters:
 			ColorBarParameters,
 			]
 
+
+	def __init__(self):
+		self._list_of_parameter_classes_ = _list_of_parameter_classes_
 		self._convention_ = {}
 		self._default_ = {}
 
@@ -116,46 +136,50 @@ class LocalParameters:
 	def get_default(self):
 		return self._default_.copy()
 
+	@staticmethod
+	def get_list_parameter_classes():
+		"""
+		Get a list of incorporated parameter classes 
+		"""
+		return LocalParameters._list_of_parameter_classes_
+
 
 class ParameterManager:
-	_list_of_parameter_classes_ =  [
-			DataParameters,
-			ExternalDependencyParameters,
-			FigureParameters,
-			PanelParameters,
-			AxisParameters,
-			LegendParameters,
-			GridParameters,
-			TickParameters,
-			ColorParameters,
-			TwinAxisParameters,
-			]
+	_list_of_parameter_classes_ = dict()
+	_list_of_parameter_classes_["DATA"] = UserDataParameters.get_list_parameter_classes()
+	_list_of_parameter_classes_["GLOBAL"] = GlobalParameters.get_list_parameter_classes()
+	_list_of_parameter_classes_["LOCAL"] = LocalParameters.get_list_parameter_classes()
+	_list_of_parameter_categories_ = ["DATA", "GLOBAL", "LOCAL"]
 	@staticmethod
-	def show(parameter_type="public", file_output=None):
-		msg = ""
-		for _class in ParameterManager._list_of_parameter_classes_:
-			dict_convention = getattr(_class, "get_convention")()
-			dict_defaults   = getattr(_class, "get_default")()
-			type_parameter = getattr(_class, "get_description")()
-			msg += "------------------------------------------------\n"
-			msg += "--------    {0} -------\n".format(type_parameter)
-			msg += "------------------------------------------------\n"
-			for key_public in sorted(dict_convention.keys()):
-				key_internal = dict_convention[key_public]
-				default_value = dict_defaults[key_internal]
-				if parameter_type == "public":
-					key = key_public
-				else:
-					key = key_internal
-				msg += "{0}: {1}\n".format(key, default_value)
-			msg += '\n'
+	def show(parameter_type, file_output=None):
+		lines = ""
+		for category in ParameterManager._list_of_parameter_categories_:
+			lines += "--===================================--\n"
+			lines += "             [[{0}]]\n".format(category)
+			lines += "--===================================--\n"
+			for _class in ParameterManager._list_of_parameter_classes_[category]:
+				dict_convention = getattr(_class, "get_convention")()
+				dict_defaults   = getattr(_class, "get_default")()
+				type_parameter  = getattr(_class, "get_description")()
+				lines += "------------------------------------------------\n"
+				lines += "--------    {0} -------\n".format(type_parameter)
+				lines += "------------------------------------------------\n"
+				for key_public in sorted(dict_convention.keys()):
+					key_internal = dict_convention[key_public]
+					default_value = dict_defaults[key_internal]
+					if parameter_type == "public":
+						key = key_public
+					else:
+						key = key_internal
+					lines += "{0}: {1}\n".format(key, default_value)
+				lines += '\n'
 
 		if file_output is not None:
 			OUT = open(file_output, 'w')
-			OUT.write(msg)
+			OUT.write(lines)
 			OUT.close()
 		else:
-			print(msg)
+			print(lines)
 
 
 if __name__ == "__main__":

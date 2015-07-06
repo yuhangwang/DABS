@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"ref",
+				"ref_coords"
+			],
+			[
+				"hel",
+				"helix-pca"
+			],
+			[
+				"heli",
+				"helix_name"
+			],
+			[
+				"helix",
+				"helix-pca"
+			],
+			[
+				"he",
+				"helix_name"
+			],
+			[
+				"file_ou",
+				"file_output_prefix"
+			],
+			[
+				"list_out",
+				"list_output_dcds"
+			],
+			[
+				"file_out",
+				"file_output_eq_dcd"
+			],
+			[
+				"file_in",
+				"file_input_pdb"
+			],
+			[
+				"full_file_inpu",
+				"full_file_input_dcd"
+			],
+			[
+				"file",
+				"file_output_dcd"
+			],
+			[
+				"norm",
+				"normalized_projections"
+			],
+			[
+				"file_con",
+				"file_concatenated_prefix"
+			],
+			[
 				"data_matri",
 				"data_matrix_vertical_min"
 			],
@@ -158,10 +210,6 @@
 			[
 				"axis",
 				"axis_spine_color_list"
-			],
-			[
-				"file",
-				"file_name_output"
 			],
 			[
 				"obj",
@@ -460,60 +508,12 @@
 				"id_row_panel"
 			],
 			[
-				"file_in",
-				"file_input"
-			],
-			[
 				"dict_legen",
 				"dict_legend_information"
 			],
 			[
 				"list_lege",
 				"list_legend_labels"
-			],
-			[
-				"list_legend_",
-				"list_legend_coordinates"
-			],
-			[
-				"Inu",
-				"InputFileKeywords"
-			],
-			[
-				"panel_label",
-				"panel_label_coordinate"
-			],
-			[
-				"is_s",
-				"is_convertible_to_list"
-			],
-			[
-				"string",
-				"string_to_tuple_or_not"
-			],
-			[
-				"is_str",
-				"is_string_convertible_to_list"
-			],
-			[
-				"strin",
-				"string_to_list"
-			],
-			[
-				"file_out",
-				"file_output_figure"
-			],
-			[
-				"line_",
-				"line_color"
-			],
-			[
-				"last",
-				"last_which_panel"
-			],
-			[
-				"file_plot",
-				"file_plot_script"
 			]
 		]
 	},
@@ -561,6 +561,28 @@
 	],
 	"file_history":
 	[
+		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/scripts/get_helix_pca.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/scripts/get_helix_pca_projection.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/Track-all-tm-pca.lua",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/get_pca_projection_for_helix.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/scripts/align_trajectory.tcl",
+		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/scripts/align_trajectory.tcl",
+		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/Track-all-tm-pca.lua",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/scripts/select_atoms_psf_pdb.tcl",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/scripts/select_atoms_pdb.tcl",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/scripts/select_atoms_dcd.tcl",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/scripts/concat_dcd.tcl",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/Track-tm-pca.lua",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_parameter.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/PUBLIC_PARAMETERS.txt",
+		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/archived/plotTmPca.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_color_bar.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_color_bar.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_color_bar.py",
+		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/Track-tm-pca.lua",
+		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/scripts/select_atoms_pdb.tcl",
+		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/scripts/select_atoms_dcd.tcl",
+		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/scripts/concat_pdb_to_dcd.tcl",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_panel.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_axis.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_tick.py",
@@ -570,13 +592,9 @@
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_data.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_create.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_axis.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_color_bar.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_color_bar.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_color_bar.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_controller.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_legend.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_panel.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_parameter.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_plot.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_panel.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_figure.py",
@@ -631,7 +649,6 @@
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_property_single_axis.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_PanelDB.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_legend.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/PUBLIC_PARAMETERS.txt",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_python3_compatibility.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_proxy_tick.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_single_axis_properties.py",
@@ -671,24 +688,7 @@
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/PlotLines.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/INTERNAL_PARAMETERS.txt",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/parse.py",
-		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/PlotLines.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/PlotLines",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/Distance/choline-D153/Track.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/PlotLines",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/choline-D153/Track-distance-choline-D153.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/DCD_resample/Track-dcd-resample.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat8/rerun/r2_repeat8.conf",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/SUBSTRATE-RELEASE-README.md",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/choline-D153/Track.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/EqRunForAnton_byKraken2012/ASPP2/150mM/dcds/all/transferFile.sh",
-		"/home/steven/bin/Tidy.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat7/dcds/all/reName.sh",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/README",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/EqRunForAnton_byKraken2012/ASPP2/150mM/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat9/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat8/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat7/Makefile.cleanup",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/repeat6/Makefile.cleanup"
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/PlotLines.py"
 	],
 	"find":
 	{
@@ -706,6 +706,60 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"str_atom_selection",
+			"key_helices",
+			"prefix_output",
+			"which_helix",
+			"file_output_prefix",
+			"file_concatenated_prefix",
+			"file_standard_prefix",
+			"full_file_output",
+			"file_output",
+			"full_file_output_pdb",
+			"file_output_pdb",
+			"psf_pdb",
+			"full_file_output_pdb",
+			"file_output_pdb",
+			"file_concatenated_prefix",
+			"read_structures",
+			"number_of_files",
+			"list_file_names",
+			"full_file_topology_pdb",
+			"full_file_output",
+			"file_output",
+			"write_pdb",
+			"file_output_pdb",
+			"full_file_output_dcd",
+			"file_output_dcd",
+			"full_file_str_atom_selection",
+			"file_input_pdb",
+			"LineParameters",
+			"mpa_parameter_line",
+			"full_file_output_figure",
+			"allall_T",
+			"all",
+			"get_str_selection_10coreTMs",
+			"get_str_selection_allTMs",
+			"10core",
+			"ten_core",
+			"tag_normalized",
+			"pca",
+			"LA",
+			"np",
+			"topNumPC",
+			"full_file_ref_pdb",
+			"object_topoloty",
+			"getRMSDs",
+			"file_global_ref_pdb",
+			"key_helices",
+			"full_file_output_figure",
+			"i",
+			"full_file_output_figure",
+			"totalNumAtoms",
+			"traj",
+			"betp",
+			"get_helix",
+			"calcProjection",
 			"object_axis_of_current_panel",
 			"object_axis_for_panel",
 			"_",
@@ -779,61 +833,7 @@
 			"dict_legend",
 			"_dict_panel",
 			"MpaModifierAxis",
-			"_dict_panel",
-			"dict_local_parameters",
-			"dict_global_parameters",
-			"x_label_font_size",
-			"x",
-			"x_label_font_size",
-			"x",
-			"x_label",
-			"dict_plot_parameters",
-			"add_axis_labels",
-			"y_limit_user_defined",
-			"x_limit_user_defined",
-			"dict_local_plot_parameters",
-			"dict_global_plot_parameters",
-			"dict_plot_parameters",
-			"dict_legend_parameters",
-			"MpaPlotRefineFigure",
-			"dict_plot_parameters",
-			"MpaModifierAxis",
-			"MpaPlotTicks",
-			"set_user",
-			"dict_legend_information",
-			"dict_panel_information",
-			"3",
-			"MPA_TOOL",
-			"file_name",
-			"dict_file_parametes",
-			"_line_color",
-			"_y_max",
-			"_y_min",
-			"_x_max",
-			"_x_min",
-			"_Y",
-			"data_block_average_line_width",
-			"_X",
-			"_panel_id_row",
-			"_user_data",
-			"_tuple_panel_indices",
-			"panel_id_column",
-			"panel_id_row",
-			"user_data",
-			"tuple_panel_indices",
-			"y_max",
-			"y_min",
-			"x_max",
-			"x_min",
-			"user_xmin",
-			"Y",
-			"data_block_average_line_width",
-			"X",
-			"list_colors",
-			"line_color",
-			"dict_data",
-			"dict_global_parameters",
-			"dict_user_input"
+			"_dict_panel"
 		],
 		"highlight": true,
 		"in_selection": false,

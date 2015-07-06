@@ -1,3 +1,6 @@
+--===================================--
+             [[DATA]]
+--===================================--
 ------------------------------------------------
 --------    INPUT DATA FILE KEYWORDS -------
 ------------------------------------------------
@@ -20,6 +23,9 @@ DATA PLOT TYPE: line
 DATA SHOW BLOCK AVERAGE: False
 DATA VALUE: None
 
+--===================================--
+             [[GLOBAL]]
+--===================================--
 ------------------------------------------------
 --------    EXERNAL DEPENDENCY PARAMETERS -------
 ------------------------------------------------
@@ -55,6 +61,20 @@ FIGURE Y LABEL PADDING: 60
 FIGURE Y LIMITS TIGHT: False
 FIGURE Y LIMITS USER DEFINED: False
 
+------------------------------------------------
+--------    TWIN AXIS PARAMETERS -------
+------------------------------------------------
+TWINX AXIS SOURCE INDEX LIST: None
+TWINY AXIS SOURCE INDEX LIST: None
+
+------------------------------------------------
+--------    COLOR PARAMETERS -------
+------------------------------------------------
+COLOR ORDER: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
+
+--===================================--
+             [[LOCAL]]
+--===================================--
 ------------------------------------------------
 --------    PANEL PARAMETERS -------
 ------------------------------------------------
@@ -197,13 +217,16 @@ Y TICK USER DEFINED ON: False
 Y TICK WIDTH: 2
 
 ------------------------------------------------
---------    COLOR PARAMETERS -------
+--------    COLOR BAR PARAMETERS -------
 ------------------------------------------------
-COLOR ORDER: ['k', 'r', 'g', 'b', 'm', 'y', 'c']
-
-------------------------------------------------
---------    TWIN AXIS PARAMETERS -------
-------------------------------------------------
-TWINX AXIS SOURCE INDEX LIST: None
-TWINY AXIS SOURCE INDEX LIST: None
+COLOR BAR LOCATION: right
+COLOR BAR ON: False
+COLOR BAR PADDING: 0.3
+COLOR BAR SIZE: 0.3
+COLOR BAR TICK ARRAY: None
+COLOR BAR TICK COLOR: k
+COLOR BAR TICK LABEL FONT SIZE: 20
+COLOR BAR TICK LABEL NUMBER OF DECIMAL PLACES: None
+COLOR BAR TICK LENGTH: 7
+COLOR BAR TICK WIDTH: 2
 
