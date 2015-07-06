@@ -28,7 +28,7 @@ class UserDataParameters:
 			]
 
 	def __init__(self):
-		self._list_of_parameter_classes_ = _list_of_parameter_classes_
+		self._list_of_parameter_classes_ = UserDataParameters._list_of_parameter_classes_
 
 		self._convention_ = {}
 		self._default_ = {}
@@ -70,7 +70,7 @@ class GlobalParameters:
 			]
 
 	def __init__(self):
-		self._list_of_parameter_classes_ = _list_of_parameter_classes_
+		self._list_of_parameter_classes_ = GlobalParameters._list_of_parameter_classes_
 
 		self._convention_ = {}
 		self._default_ = {}
@@ -115,7 +115,7 @@ class LocalParameters:
 
 
 	def __init__(self):
-		self._list_of_parameter_classes_ = _list_of_parameter_classes_
+		self._list_of_parameter_classes_ = LocalParameters._list_of_parameter_classes_
 		self._convention_ = {}
 		self._default_ = {}
 
