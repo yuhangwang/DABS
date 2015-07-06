@@ -240,3 +240,22 @@ def invert_axis(which_axis, object_axis):
 	else:
 		return 
 	return
+
+
+def set_axis_label(object_axis, dict_panel_parameters):
+	"""
+	Set the axis label 
+	:param object object_axis: matplotlib "Axes" object 
+	:param dict dict_panel_parameters: a dictionary of parameters
+	"""
+	if dict_panel_parameters["x_label"] is not None:
+		MpaModifierAxis.set_axis_label(object_axis, 'x', 
+			dict_panel_parameters["x_label"],
+			dict_panel_parameters["x_label_font_size"],
+			dict_panel_parameters["x_label_padding"])
+
+	if dict_panel_parameters["y_label"] is not None:
+		MpaModifierAxis.set_axis_label(object_axis, 'y', 
+			dict_panel_parameters["y_label"],
+			dict_panel_parameters["y_label_font_size"],
+			dict_panel_parameters["y_label_padding"])

@@ -40,11 +40,11 @@ def add_figure_common_axis_labels(list_axis_objects, dict_global_parameters):
 	#----------------------------------------------------------------------------------------------
 	#	Axis Label
 	#----------------------------------------------------------------------------------------------
-	MpaModifierAxis.add_axis_label(object_extra_axis, 'x', 
+	MpaModifierAxis.set_axis_label(object_extra_axis, 'x', 
 		dict_global_parameters["figure_x_label"], 
 		dict_global_parameters["figure_x_label_font_size"],
 		dict_global_parameters["figure_x_label_padding"])
-	MpaModifierAxis.add_axis_label(object_extra_axis, 'y', 
+	MpaModifierAxis.set_axis_label(object_extra_axis, 'y', 
 		dict_global_parameters["figure_y_label"], 
 		dict_global_parameters["figure_y_label_font_size"],
 		dict_global_parameters["figure_y_label_padding"])

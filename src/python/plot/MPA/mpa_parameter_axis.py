@@ -44,8 +44,8 @@ class AxisParameters:
 	}
 
 	_default_ = {
-		"x_label":'X',
-		"y_label":'Y',
+		"x_label":None,
+		"y_label":None,
 		"x_label_padding":None,
 		"y_label_padding":None,
 		"x_label_font_size":40,

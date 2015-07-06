@@ -109,18 +109,18 @@ def rotate_tick_labels(object_axis, which_axis, rotation_degree):
 	return 
 
 
-def add_axis_label(object_axis, axis_name, label_content, label_font_size, label_padding):
+def set_axis_label(object_axis, which_axis, label_content, label_font_size, label_padding):
 	"""
 	Add axis labels 
 	:param object_axis: a matplotlib Axis object 
-	:param axis_name: 'x' or 'y'
+	:param which_axis: 'x' or 'y'
 	:param label_content: content of the label
 	:param label_font_size: font size for the label 
 	:param label_padding: padding between label and axis 
 	"""
-	if re.match(r"x", axis_name):
+	if re.match(r"x", which_axis):
 		object_axis.set_xlabel(label_content, fontsize=label_font_size, labelpad=label_padding)
-	elif re.match(r"y", axis_name):
+	elif re.match(r"y", which_axis):
 		object_axis.set_ylabel(label_content, fontsize=label_font_size, labelpad=label_padding)
 	else:
 		msg = "ERROR HINT: 'axis_name' argument should be 'x' or 'y'\n"

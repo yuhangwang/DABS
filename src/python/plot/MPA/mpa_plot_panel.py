@@ -60,6 +60,11 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 		MpaProxyModifierPanel.add_figure_panel_labels(object_axis, dict_panel_parameters)
 
 		#----------------------------------------------------------------------------------------------
+		# Add axis label
+		#----------------------------------------------------------------------------------------------
+		MpaProxyModifierAxis.set_axis_label(object_axis, dict_panel_parameters)
+
+		#----------------------------------------------------------------------------------------------
 		# Add legends
 		#----------------------------------------------------------------------------------------------
 		if isPanelLegendOn:
