@@ -28,6 +28,13 @@ class DataParameters:
 		"DATA MATRIX COLOR BAR PANEL INDICES":"data_matrix_color_bar_panel_indices",
 		"DATA MATRIX VERTICAL MIN":"data_matrix_vertical_min",
 		"DATA MATRIX VERTICAL MAX":"data_matrix_vertical_max",
+
+		"DATA MATRIX X EXTENT MIN":"data_matrix_x_extent_min",
+		"DATA MATRIX X EXTENT MAX":"data_matrix_x_extent_max",
+		"DATA MATRIX X EXTENT OFFSET":"data_matrix_x_extent_offset",
+		"DATA MATRIX Y EXTENT MIN":"data_matrix_y_extent_min",
+		"DATA MATRIX Y EXTENT MAX":"data_matrix_y_extent_max",
+		"DATA MATRIX Y EXTENT OFFSET":"data_matrix_y_extent_offset",
 		}
 
 	_default_ = {
@@ -49,6 +56,13 @@ class DataParameters:
 		"data_matrix_color_bar_panel_indices":(0,0),
 		"data_matrix_vertical_min":None,
 		"data_matrix_vertical_max":None,
+		
+		"data_matrix_x_extent_min":None,
+		"data_matrix_x_extent_max":None,
+		"data_matrix_x_extent_offset":-0.5,
+		"data_matrix_y_extent_min":None,
+		"data_matrix_y_extent_max":None,
+		"data_matrix_y_extent_offset":-0.5,
 		}
 
 	@staticmethod

@@ -40,6 +40,7 @@ class AxisParameters:
 		"AXIS BOTTOM SPINE LINE WIDTH":"axis_bottom_spine_line_width",
 		"AXIS LEFT SPINE LINE WIDTH":"axis_left_spine_line_width",
 		"AXIS RIGHT SPINE LINE WIDTH":"axis_right_spine_line_width",
+
 	}
 
 	_default_ = {
@@ -70,6 +71,7 @@ class AxisParameters:
 		"axis_bottom_spine_line_width":None,
 		"axis_left_spine_line_width":None,
 		"axis_right_spine_line_width":None,
+
 		}
 
 	@staticmethod

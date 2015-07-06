@@ -9,6 +9,7 @@ from __future__ import print_function, division
 import numpy
 import matplotlib.pyplot 
 #-----------------------------------------------
+import mpa_modifier_data   	as MpaModifierData  
 from mpa_data_type_InfoCollector import InfoCollector as MPA_CLASS_InfoCollector
 #---------------------------------------------------------------
 
@@ -60,9 +61,30 @@ def plot(list_data_keys, list_axis_objects, dict_data_parameters, dict_global_pa
 		#  Plot!
 		#-------------------------------------------------
 		print("panel: ", tuple_panel_indices)
+		number_of_data_rows, number_of_data_columns = numpy.shape(user_data)
 		object_matrix_plot = object_panel_axis.matshow(user_data,
 			vmin=dict_data["data_matrix_vertical_min"],
 			vmax=dict_data["data_matrix_vertical_max"])
+
+		#-----------------------------------------------------------------------------
+		# change matrix x/y extent
+		#-----------------------------------------------------------------------------
+		list_axis_extent = list(matplotlib.pyplot.getp(object_matrix_plot, "extent"))
+		
+		x_offset = dict_data["data_matrix_x_extent_offset"]
+		y_offset = dict_data["data_matrix_y_extent_offset"]
+
+		if dict_data["data_matrix_x_extent_min"] is not None:
+			list_axis_extent[0] = dict_data["data_matrix_x_extent_min"] + x_offset
+		if dict_data["data_matrix_x_extent_max"] is not None:
+			list_axis_extent[1] = dict_data["data_matrix_x_extent_max"] + x_offset
+		if dict_data["data_matrix_y_extent_min"] is not None:
+			list_axis_extent[2] = dict_data["data_matrix_y_extent_min"] + y_offset
+		if dict_data["data_matrix_y_extent_max"] is not None:
+			list_axis_extent[3] = dict_data["data_matrix_y_extent_max"] + y_offset
+
+		x_min, x_max, y_min, y_max = list_axis_extent
+		MpaModifierData .set_matrix_extent(object_matrix_plot, x_min, x_max, y_min, y_max)
 
 		#--------------------------------------------------------------------------------
 		# change  aspect ratio to be automatically adjusted
