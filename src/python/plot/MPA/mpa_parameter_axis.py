@@ -9,6 +9,7 @@ class AxisParameters:
 	Axis parameters 
 	"""		
 	_convention_ = {
+		"AXIS OFF":"axis_off",
 		"X LABEL":"x_label",
 		"Y LABEL":"y_label",
 
@@ -44,6 +45,7 @@ class AxisParameters:
 	}
 
 	_default_ = {
+		"axis_off":False,
 		"x_label":None,
 		"y_label":None,
 		"x_label_padding":None,

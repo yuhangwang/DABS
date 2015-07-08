@@ -282,3 +282,9 @@ def set_axis_limits(object_axis, which_axis, new_min, new_max):
 	else:
 		return
 
+def set_axis_off(object_axis):
+	"""
+	Hide an axis object 
+	:param object object_axis: matplotlib Axes object 
+	"""
+	object_axis.set_axis_off()

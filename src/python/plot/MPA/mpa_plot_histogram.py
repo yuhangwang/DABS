@@ -1,7 +1,7 @@
 """
-MPA PLOT: MATRIX
+MPA PLOT: HISTOGRAM
 AUTHOR: YUHANG WANG
-DATE: 07-03-2015
+DATE: 07-08-2015
 """
 #---------------------------------------------------------------
 from __future__ import print_function, division
@@ -15,19 +15,20 @@ from mpa_data_type_InfoCollector import InfoCollector as MPA_CLASS_InfoCollector
 
 def plot(list_data_keys, list_axis_objects, dict_data_parameters, dict_global_parameters):
 	"""
-	Plot matrices
+	Plot histogram objects
 	:param list list_data_keys: dictionary keys for items to be plotted in dict_data_parameters
 	:param list list_axis_objects: list of matplotlib Axis objects 
 	:param dict dict_data_parameters: a dictionary of user data parameters 
 	:param dict dict_global_parameters: a dictionary of global plot parameters
-	:return: dict_color_bars
+	:return: dict_legends 
 	Example usage: 
-		object_axis = dict_color_bars[(0,1)]["objec_axis"]
+		object_axis = dict_legends[(0,1)]["objec_axis"]
+		data_x_min = dict_global_xy_minmax[(0,0)]['x']["min"]
 	"""
 	#----------------------------------------------------------------------------------------------
 	# Create a PanelDB object to store all panel information
 	#----------------------------------------------------------------------------------------------
-	object_colorBarInfoCollector = MPA_CLASS_InfoCollector()
+	object_LegendInfoCollector = MPA_CLASS_InfoCollector()
 
 	#----------------------------------------------------------------------------------------------
 	# ========= *** Start Plotting!  *** ================
@@ -99,14 +100,14 @@ def plot(list_data_keys, list_axis_objects, dict_data_parameters, dict_global_pa
 			object_axis_for_color_bar = list_axis_objects[id_row_legend_panel, id_column_legend_panel]
 
 			# axis object
-			object_colorBarInfoCollector.set_item(tuple_color_bar_panel_indices, 
+			object_LegendInfoCollector.set_item(tuple_color_bar_panel_indices, 
 				"object_axis", object_axis_for_color_bar)
 
 			# add object_matrix_plot
-			object_colorBarInfoCollector.set_item(tuple_color_bar_panel_indices,
+			object_LegendInfoCollector.set_item(tuple_color_bar_panel_indices,
 				"object_matrix_plot", object_matrix_plot)
 			
 
-		dict_color_bars = object_colorBarInfoCollector.get_dict()
+		dict_color_bars = object_LegendInfoCollector.get_dict()
 
 	return dict_color_bars

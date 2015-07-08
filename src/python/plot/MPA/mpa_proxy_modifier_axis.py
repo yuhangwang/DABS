@@ -259,3 +259,12 @@ def set_axis_label(object_axis, dict_panel_parameters):
 			dict_panel_parameters["y_label"],
 			dict_panel_parameters["y_label_font_size"],
 			dict_panel_parameters["y_label_padding"])
+
+def set_axis_off(object_axis, dict_panel_parameters):
+	"""
+	Hide a certain axis 
+	:param object object_axis: matplotlib "Axes" object 
+	:param dict dict_panel_parameters: a dictionary of parameters
+	"""
+	if dict_panel_parameters["axis_off"]:
+		MpaModifierAxis.set_axis_off(object_axis)

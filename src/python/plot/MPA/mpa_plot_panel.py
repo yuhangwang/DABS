@@ -155,3 +155,8 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 			MpaProxyModifierAxis.invert_axis('x', object_axis)
 		elif dict_panel_parameters["y_axis_inverted"]:
 			MpaProxyModifierAxis.invert_axis('y', object_axis)
+		
+		#----------------------------------------------------------------------------------------------
+		# Hide axes
+		#----------------------------------------------------------------------------------------------
+		MpaProxyModifierAxis.set_axis_off(object_axis, dict_panel_parameters)

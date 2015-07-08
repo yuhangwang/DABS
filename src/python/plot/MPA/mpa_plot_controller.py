@@ -6,6 +6,7 @@ DATE: 06-25-2015
 #-----------------------------------------------
 import mpa_plot_line 	as MpaPlotLine 
 import mpa_plot_matrix 	as MpaPlotMatrix 
+import mpa_plot_histogram as MpaPlotHistogram 
 #-----------------------------------------------
 from mpa_data_type_InfoCollector import InfoCollector as MPA_CLASS_InfoCollector
 #-----------------------------------------------
@@ -50,17 +51,24 @@ def plot(object_figure,
 	#---------------------------------------------------
 	# Plot objects 
 	#---------------------------------------------------
-	[dict_legends, dict_global_xy_minmax, dict_color_bars] = [None, None, None]
+	dict_line_legends = None
+	dict_line_global_xy_minmax = None
+	dict_matrix_color_bar = None
+	dict_histogram_legends = None
 	for _plot_type in dict_grouped_global_keys:
 		_list_keys = dict_grouped_global_keys[_plot_type]
 		if _plot_type == "line":
-			[dict_legends, dict_global_xy_minmax] = MpaPlotLine.plot(_list_keys, list_axis_objects, dict_data_parameters, dict_global_parameters)
+			[dict_line_legends, dict_line_global_xy_minmax] = MpaPlotLine.plot(_list_keys, list_axis_objects, dict_data_parameters, dict_global_parameters)
 
-		if _plot_type == "matrix":
-			dict_color_bars = MpaPlotMatrix.plot(_list_keys, list_axis_objects, dict_data_parameters, dict_global_parameters)
+		elif _plot_type == "matrix":
+			dict_matrix_color_bars = MpaPlotMatrix.plot(_list_keys, list_axis_objects, dict_data_parameters, dict_global_parameters)
 
-	object_plotObjectInfoCollector.set_item("LINE", "dict_legends", dict_legends)
-	object_plotObjectInfoCollector.set_item("LINE", "dict_global_xy_minmax", dict_global_xy_minmax)
-	object_plotObjectInfoCollector.set_item("MATRIX", "dict_color_bars", dict_color_bars)
+		elif _plot_type == "histogram":
+			dict_histogram_legends = MpaPlotHistogram.plot(_list_keys, list_axis_objects, dict_data_parameters, dict_global_parameters)
+
+	object_plotObjectInfoCollector.set_item("LINE", "dict_legends", dict_line_legends)
+	object_plotObjectInfoCollector.set_item("LINE", "dict_line_global_xy_minmax", dict_line_global_xy_minmax)
+	object_plotObjectInfoCollector.set_item("MATRIX", "dict_matrix_color_bars", dict_matrix_color_bars)
+	object_plotObjectInfoCollector.set_item("HISTOGRAM", "dict_histogram_legends", dict_matrix_color_bars)
 
 	return object_plotObjectInfoCollector.get_dict()
