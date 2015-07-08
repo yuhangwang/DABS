@@ -28,6 +28,10 @@ class PanelParameters:
 		"PANEL COLOR BAR SIZE":"panel_color_bar_size",
 		"PANEL COLOR BAR LOCATION":"panel_color_bar_location",
 		"PANEL COLOR BAR PADDING":"panel_color_bar_padding",
+		"PANEL SUBDIVISION ON":"panel_subdivision_on",
+		"PANEL SUBDIVISION LOCATION":"panel_subdivision_location",
+		"PANEL SUBDIVISION SIZE":"panel_subdivision_size",
+		"PANEL SUBDIVISION PADDING":"panel_subdivision_padding",
 		}
 
 	_default_ = {
@@ -49,6 +53,10 @@ class PanelParameters:
 		"panel_color_bar_size":1.0,
 		"panel_color_bar_location":"right",
 		"panel_color_bar_padding":0.3,
+		"panel_subdivision_on":False,
+		"panel_subdivision_location":"right",
+		"panel_subdivision_size":1.0,
+		"panel_subdivision_padding":0.3,
 		}
 
 	@staticmethod

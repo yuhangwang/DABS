@@ -4,6 +4,9 @@ AUTHOR: YUHANG WANG
 DATE: 06-24-2015
 """
 #----------------------------------------------------
+import matplotlib.pyplot
+#----------------------------------------------------
+import mpl_toolkits.axes_grid1 as MplTkAxes
 #----------------------------------------------------
 
 def add_panel_label(object_axis, x, y, 
@@ -57,3 +60,17 @@ def add_panel_label(object_axis, x, y,
 		bbox=dict_panel_box_properties,
 		)
 
+def add_subdivision(object_axis, location, size, padding):
+	"""
+	Add a subdivision for a given figure panel 
+
+	:param object object_axis: matplotlib Axes object 
+	:param str location:  "top"| "bottom" | "left" | "right" 
+	:param float size: size of the subdivision 
+	:param float padding: padding between the new subdivision and the rest of the panel 
+	"""
+	object_axis_divider = MplTkAxes.make_axes_locatable(object_axis)
+	object_axis = object_axis_divider.append_axes(location, 
+		size=size, 
+		pad=padding)
+	return object_axis

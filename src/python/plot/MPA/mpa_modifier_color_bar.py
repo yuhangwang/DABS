@@ -26,7 +26,7 @@ def add_color_bar(object_axis,object_matrix_plot,
 	:parma object_matrix_plot: matplotlib Axis object returned  by matplotlib.pyplot.matshow()
 	:parma str bar_location:  "top"| "bottom" | "left" | "right"  (default: "right")
 	:param float bar_size:size of the color bar (default: 1.0)
-	:param float bar_padding: padding between colorbar and its master axis
+	:param float bar_padding: padding between colorbar and its master axis(default: 0.3)
 	:param int bar_tick_label_font_size: color bar tick label font size 
 	:param int bar_tick_label_number_of_decimal_places: number of decimal places to show (default: None, i.e. use matplotlib default)
 	:param list|tuple bar_ticks: a list/tuple of tick locations, e.g. (0, 0.5, 1.0) (default: None, i.e. use matplotlib default)

@@ -39,7 +39,8 @@ def plot(dict_data_parameters, dict_global_parameters, dict_local_parameters):
 	#-------------------------------------------------------------------
 	# Create a list of figure/axis objects 
 	#-------------------------------------------------------------------
-	[object_figure, list_axis_objects, dict_global_parameters] = MpaPlotCreate.figure(dict_global_parameters)
+	[object_figure, list_axis_objects, dict_global_parameters] = MpaPlotCreate.figure(dict_global_parameters,
+		dict_local_parameters)
 	
 	#-------------------------------------------------------------------
 	# Plot objects on the canvas
