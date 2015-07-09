@@ -23,7 +23,12 @@ def refine_all_figure_panels(object_figure, list_axis_objects,
 	:param dict dict_local_parameters: a python dict of local plot parameters with panel indices as keys
 		and sub-dictionaries as values
 	"""
-	dict_legends = dict_plot_object_info_collector["LINE"]["dict_legends"]
+	dict_legends = dict() 
+	for key, value in dict_plot_object_info_collector["LINE"]["dict_legends"].items():
+		dict_legends[key] = value 
+	for key, value in dict_plot_object_info_collector["HISTOGRAM"]["dict_legends"].items():
+		dict_legends[key] = value
+		
 	dict_global_xy_minmax = dict_plot_object_info_collector["LINE"]["dict_global_xy_minmax"]
 	dict_color_bars = dict_plot_object_info_collector["MATRIX"]["dict_color_bars"]
 

@@ -4,6 +4,66 @@
 		"selected_items":
 		[
 			[
+				"MpaPro",
+				"MpaProxyModifierAxis"
+			],
+			[
+				"oject",
+				"object_axis"
+			],
+			[
+				"set_ax",
+				"set_axis_off"
+			],
+			[
+				"gl",
+				"global_key"
+			],
+			[
+				"panel_sub",
+				"panel_subdivision_size"
+			],
+			[
+				"obje",
+				"object_axis"
+			],
+			[
+				"hi",
+				"histogram_data"
+			],
+			[
+				"his",
+				"histogram_data"
+			],
+			[
+				"which",
+				"which_data_column"
+			],
+			[
+				"full_path",
+				"full_path_file_input"
+			],
+			[
+				"hist",
+				"histogram_edges"
+			],
+			[
+				"number_of",
+				"number_of_data_columns"
+			],
+			[
+				"num",
+				"number_of_data_rows"
+			],
+			[
+				"taga",
+				"tag_analysis_detailed"
+			],
+			[
+				"dir_da",
+				"dir_data_distance"
+			],
+			[
 				"trun",
 				"truncated_file_distance_concatenated"
 			],
@@ -38,10 +98,6 @@
 			[
 				"list_of_",
 				"list_of_selection_object_lists"
-			],
-			[
-				"num",
-				"number_of_selected_atoms"
 			],
 			[
 				"str_",
@@ -97,10 +153,6 @@
 			],
 			[
 				"full_path_file_new",
-				"full_path_file_new_pdb"
-			],
-			[
-				"full_path",
 				"full_path_file_new_pdb"
 			],
 			[
@@ -356,10 +408,6 @@
 				"bar_tick_label_number_of_decimal_places"
 			],
 			[
-				"obje",
-				"object_color_bar"
-			],
-			[
 				"object_axis_",
 				"object_axis_color_bar"
 			],
@@ -406,10 +454,6 @@
 			[
 				"loca",
 				"local_dict"
-			],
-			[
-				"which",
-				"which_axis"
 			],
 			[
 				"dict_data",
@@ -470,50 +514,6 @@
 			[
 				"figure",
 				"figure_share_x"
-			],
-			[
-				"new",
-				"new_max"
-			],
-			[
-				"new_",
-				"new_min"
-			],
-			[
-				"dict_",
-				"dict_global_xy_minmax"
-			],
-			[
-				"MpaPro",
-				"MpaProxyModifierAxis"
-			],
-			[
-				"list_panel",
-				"list_panel_labels"
-			],
-			[
-				"panel_l",
-				"panel_label"
-			],
-			[
-				"MpaPlot",
-				"MpaPlotPanel"
-			],
-			[
-				"dict_l",
-				"dict_legend_parameters"
-			],
-			[
-				"string_to",
-				"string_to_number_or_not"
-			],
-			[
-				"panel_i",
-				"panel_indices"
-			],
-			[
-				"tuple",
-				"tuple_panel_indices"
 			]
 		]
 	},
@@ -561,21 +561,38 @@
 	],
 	"file_history":
 	[
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/choline-Y197/Track-distance.lua",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/Distance/choline-D153/Track-distance.lua",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/choline-D153/Track-distance.lua",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_controller.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_histogram.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_axis.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/distance/choline-D153/Track-plot.lua",
+		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/distance/choline-D153/plot_compare_distance_choline-D153.config",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_axis.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_panel.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/PUBLIC_PARAMETERS.txt",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_matrix.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/Distance/choline-D153/get_histogram.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_panel.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_plot.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_create.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_panel.py",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/Distance/choline-Y197/Track-distance.lua",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_color_bar.py",
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_figure.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/choline-D153/get_histogram.py",
+		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/choline-Y197/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/choline-D470/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/choline-S471/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/choline-G149/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/choline-A148/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/choline-D153/Track-distance.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/distance/choline-D153/Track-plot.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/pKa/Track-pka.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/Distance/W373-D153/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/W373-D153/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/pKa/Track-pka.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/Distance/archive_choline-D153/Track.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/Distance/choline-D153/Track-distance.lua",
-		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/choline-D153/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/Distance/S253-D153/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/Distance/S253-D153/Track-distance.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/Distance/W373-D153/Track-distance.lua",
@@ -600,15 +617,9 @@
 		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/Track-all-tm-pca.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASPP2/run/scripts/TM_PCA/Track-all-tm-pca.lua",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/substrate_release_repeats_ASPP2/scripts/RMSD/helix3in/ref_IF/Track-rmsd.lua",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_panel.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_axis.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_axis.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_figure.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_axis.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_data.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_matrix.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_data.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/PUBLIC_PARAMETERS.txt",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/figs/helix-pca/plot.config",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_parameter.py",
 		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/scripts/get_helix_pca.py",
@@ -622,7 +633,6 @@
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/scripts/concat_dcd.tcl",
 		"/Scr/scr-test-steven/projects/betp_monomer/MD/Anton/ASP2/run/scripts/TM_PCA/Track-tm-pca.lua",
 		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/archived/plotTmPca.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_color_bar.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_color_bar.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_color_bar.py",
 		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/Track-tm-pca.lua",
@@ -632,18 +642,12 @@
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_tick.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_toolkit.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_writer_figure.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_create.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_controller.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_legend.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_panel.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_core_plot.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_panel.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_proxy_modifier_panel.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_figure.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_local_parameter.py",
 		"/Scr/scr-test-steven/projects/crystal/BetP/TM_PCA/archived/betpCrystTmDef.tcl",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_line.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_parameter_figure.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/Test.lua",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_figure.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/create_sample_data.py",
@@ -684,11 +688,7 @@
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/INTERNAL_PARAMETERS.txt",
 		"/Scr/scr-test-steven/projects/betp_monomer/Analyses/publication/Distance/choline-D153/mpa.py",
 		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_input.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_plot_parameters.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_plot_property_single_axis.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_data_type_PanelDB.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_modifier_legend.py",
-		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_python3_compatibility.py"
+		"/Scr/scr-test-steven/Gitcode/DABasics/src/python/plot/MPA/mpa_reader_plot_parameters.py"
 	],
 	"find":
 	{
@@ -706,6 +706,25 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"dict_color_bars",
+			"dict_global_xy_minmax",
+			"list_dict_legends",
+			"MpaPlotMatrix",
+			"object_colorBarInfoCollector",
+			"grid",
+			"global_key",
+			"truncated_file_distance_concatenated",
+			"raw_file_distance_concatenated",
+			"file_distance_concatenated",
+			"panel_add_subdivision",
+			"full_path_file_figure_distance",
+			"file_figure_distance",
+			"i",
+			"raw_file_distance_concatenated",
+			"full_path_raw_file_distance_concatenated",
+			"full_path_file_distance_concatenated",
+			"raw_file_distance_concatenated",
+			"file_distance_concatenated",
 			"add_local_parameters",
 			"list_legends",
 			"folder_data",
@@ -814,26 +833,7 @@
 			"file_output_pdb",
 			"full_file_output_dcd",
 			"file_output_dcd",
-			"full_file_str_atom_selection",
-			"file_input_pdb",
-			"LineParameters",
-			"mpa_parameter_line",
-			"full_file_output_figure",
-			"allall_T",
-			"all",
-			"get_str_selection_10coreTMs",
-			"get_str_selection_allTMs",
-			"10core",
-			"ten_core",
-			"tag_normalized",
-			"pca",
-			"LA",
-			"np",
-			"topNumPC",
-			"full_file_ref_pdb",
-			"object_topoloty",
-			"getRMSDs",
-			"file_global_ref_pdb"
+			"full_file_str_atom_selection"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -920,7 +920,7 @@
 	"project": "mpa.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
