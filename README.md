@@ -1,2 +1,2 @@
 # DABasics
-Data Analytics Basics
+Data Analytics Basic Scripts
