@@ -5,8 +5,6 @@
 # usage: vmd -dispdev text -e select.tcl -args my.psf my.pdb str_selection.txt my_out_prefix
 #========================================================
 
-
-
 proc load {file_psf file_pdb} {
 	# load a pair of psf/pdb files 
 	# return the VMD molecule ID 
