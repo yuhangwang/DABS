@@ -1,6 +1,19 @@
 # align an atom selection to its moment of inertia
 # AUTHOR: YUHANG WANG
 # DATE: 08/17/2015
+# note: need to install external package "orient"  and "la"
+# instructions: http://www.ks.uiuc.edu/Research/vmd/script_library/scripts/orient/
+# summary (UNIX systems):
+# 1. download: http://www.ks.uiuc.edu/Research/vmd/script_library/scripts/orient/orient.tar.gz
+# 2. download: http://www.ks.uiuc.edu/Research/vmd/script_library/scripts/orient/la101psx.tar.gz
+# 3. tar xvf orient.tar.gz 
+# 4. tar xvf la101psx.tar.gz
+# 5. mkdir $HOME/vmd_pkg 
+# 6. mv orient $HOME/vmd_pkg
+# 7. mv la1.0 $HOME/vmd_pkg
+# 8. add the following lines to $HOME/.vmdrc 
+#	lappend auto_path $HOME/vmd_pkg/la1.0
+#	lappend auto_path $HOME/vmd_pkg/orient 
 
 
 proc load {file_psf file_pdb} {
