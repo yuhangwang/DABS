@@ -1,6 +1,7 @@
 # measure RMSD for the whole molecule
 # author: Yuhang Wang
 # date: 08/03/2015
+# update: 08/23/2015 (allow target and reference to have separate atom selections)
 #=================================================================
 proc get_selection_str {in_file_name} {
   ## Read a file and use its content a the returning string 
@@ -26,17 +27,19 @@ proc load {file_psf file_ref_pdb file_dcd} {
   return [list $molId_target $molId_ref]
 }
 
-proc align {molId_target molId_ref str_selection_for_align} {
+proc align {molId_target molId_ref str_selection_for_align_target str_selection_for_align_ref} {
   ## Align every frame to the 1st frame
 
-  puts "--------------------------------------------------------------"
-  puts "   Align the trajectory using this selection:"
-  puts "   $str_selection_for_align"
-  puts "--------------------------------------------------------------"
-  set atoms_align_ref     [atomselect $molId_ref $str_selection_for_align]
-  set atoms_align_target  [atomselect $molId_target $str_selection_for_align]
+  set atoms_align_ref     [atomselect $molId_ref $str_selection_for_align_ref]
+  set atoms_align_target  [atomselect $molId_target $str_selection_for_align_target]
   set atoms_to_move     [atomselect $molId_target all]
   set totalNumFrames [molinfo $molId_target get numframes]
+  
+  puts "--------------------------------------------------------------"
+  puts "   Align the trajectory using this selection:"
+  puts "     Target:    \"$str_selection_for_align_target\" \t [$atoms_align_target num] atoms"
+  puts "     reference: \"$str_selection_for_align_ref\" \t [$atoms_align_ref num] atoms"
+  puts "--------------------------------------------------------------"
 
   for {set i 0} {$i < $totalNumFrames} {incr i} {
     $atoms_align_target frame $i
@@ -52,19 +55,20 @@ proc align {molId_target molId_ref str_selection_for_align} {
 
 }
 
-proc get_rmsd {molId_target molId_ref str_selection} {
+proc get_rmsd {molId_target molId_ref str_selection_for_rmsd_target str_selection_for_rmsd_ref} {
   # measure RMSD frame by frame 
   # relative to frame-0
+  set list_rmsd {}
+  set atoms_rmsd_ref    [atomselect $molId_ref $str_selection_for_rmsd_ref]
+  set totalNumFrames    [molinfo $molId_target get numframes]
+  set atoms_rmsd_target [atomselect $molId_target $str_selection_for_rmsd_target]
+
   puts "--------------------------------------------------------------"
   puts "  Measure RMSD"
-  puts "  $str_selection"
+  puts "   Target:    \"$str_selection_for_rmsd_target\" \t [$atoms_rmsd_target num] atoms"
+  puts "   Reference: \"$str_selection_for_rmsd_ref\" \t [$atoms_rmsd_ref num] atoms"
   puts "--------------------------------------------------------------"
   
-  set list_rmsd {}
-  set atoms_rmsd_ref    [atomselect $molId_ref $str_selection]
-  set totalNumFrames    [molinfo $molId_target get numframes]
-  set atoms_rmsd_target [atomselect $molId_target $str_selection]
-
   for {set i 1} {$i < $totalNumFrames} {incr i} {
     $atoms_rmsd_target frame $i
     set data_rmsd [measure rmsd $atoms_rmsd_target $atoms_rmsd_ref]
@@ -104,24 +108,45 @@ proc main {argv} {
   set file_output [lindex $argv $ccc]
 
   incr ccc
-  # a file containing an atom selection string for alignment
-  set file_selection_for_align [lindex $argv $ccc]
+  # a file containing an atom selection string for alignment in the target molecule
+  set file_selection_for_align_target [lindex $argv $ccc]
 
   incr ccc
-  # a file containing an atom selection string for the RMSD measurement
-  set file_selection_for_rmsd [lindex $argv $ccc]
+  # a file containing an atom selection string for alignment in the reference molecule 
+  set file_selection_for_align_ref [lindex $argv $ccc]
 
+  incr ccc
+  # a file containing an atom selection string for the RMSD measurement in the target 
+  set file_selection_for_rmsd_target [lindex $argv $ccc]
+
+  incr ccc
+  # a file containing an atom selection string for the RMSD measurement in the reference
+  set file_selection_for_rmsd_ref [lindex $argv $ccc]
+
+  puts $file_psf 
+  puts $file_ref_pdb
+  puts $file_dcd 
+  puts $file_output
+  puts $file_selection_for_align_target
+  puts $file_selection_for_align_ref
+  puts $file_selection_for_rmsd_target
+  puts $file_selection_for_rmsd_ref
+
+  #############################################################################
   ## get atom selection string for alignment
-  set str_selection_for_align [get_selection_str $file_selection_for_align]
+  set str_selection_for_align_target [get_selection_str $file_selection_for_align_target]
+  set str_selection_for_align_ref [get_selection_str $file_selection_for_align_ref]
 
   ## get atom selection string for RMSD calculation
-  set str_selection_for_rmsd [get_selection_str $file_selection_for_rmsd]
+  set str_selection_for_rmsd_target [get_selection_str $file_selection_for_rmsd_target]
+  set str_selection_for_rmsd_ref [get_selection_str $file_selection_for_rmsd_ref]
+  #############################################################################
 
   set list_molIds [load $file_psf $file_ref_pdb $file_dcd]
   lassign $list_molIds molId_target molId_ref
   puts "list molIds: $molId_target ; $molId_ref"
-  align $molId_target $molId_ref $str_selection_for_align
-  set list_rmsd [get_rmsd $molId_target $molId_ref $str_selection_for_rmsd]
+  align $molId_target $molId_ref $str_selection_for_align_target $str_selection_for_align_ref
+  set list_rmsd [get_rmsd $molId_target $molId_ref $str_selection_for_rmsd_target $str_selection_for_rmsd_ref]
   write_output $list_rmsd $file_output
   mol delete $molId_target 
 }
