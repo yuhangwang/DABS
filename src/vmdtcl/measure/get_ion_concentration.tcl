@@ -56,7 +56,7 @@ proc main {argv} {
 	lassign [get_ion_concentration $molId] concentration_K concentration_Na concentration_Cl concentration_ions
 	puts "\[K+\]:  [format %.3f $concentration_K] mol/L"
 	puts "\[Na+\]: [format %.3f $concentration_Na] mol/L"
-	puts "\[Cl+\]: [format %.3f $concentration_Cl] mol/L"
+	puts "\[Cl-\]: [format %.3f $concentration_Cl] mol/L"
 	puts "\[ion\]: [format %.3f $concentration_ions] mol/L"
 }
 
